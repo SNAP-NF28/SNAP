@@ -1,9 +1,0 @@
-hello git !
-
-Comment envoyer les modifs sur Git :
-Sur mon ordi : 
-          faire un "Commit" du dossier
-          faire un "Push" du dossier
-
-Comment récupérer les dernières mises à jour :
-Sur mon ordi : faire un "Pull" de la branche "master" (normalement déjà là)
