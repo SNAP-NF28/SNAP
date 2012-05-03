@@ -4,50 +4,11 @@
   <meta charset="utf-8">
   <title>SNAP Device detection</title>
   <script src="./common/lib/jquery/jquery-1.7.2.min.js"></script>
+
 </head>
 <body>
   <script>
 	setTimeout("handleFormfactorDetection()",4000);
-	function handleFormfactorDetection(){
-		if(commonScriptsLoaded && specificScriptsLoaded){
-			doDeviceRouting();
-		} else {
-			setTimeout("handleFormfactorDetection()",1000);
-		}
-	};
-	
-	function commonScriptsLoaded(){
-		var commonScriptsLoaded = true;
-	};
-	
-	function specificScriptsLoaded(){
-		var specificScriptsLoaded = true;
-		
-		var device = getDevice();
-		
-		$("#loadingLbl").text(device);
-	};
-	
-	function doDeviceRouting(){
-		
-	};
-	
-	function getDevice(){
-		if(formfactor.is("phone")) {
-			return "tv";
-		};
-		if(formfactor.is("tablet")) {
-			return "tv";
-		};
-		if(formfactor.is("tv")) {
-			return "tv";
-		};
-		if(formfactor.is("desktop")) {
-			return "tv";
-		};
-		return "default";
-	}
-	
   </script>
 
   <p id="loadingLbl">Loading Scripts...</p>

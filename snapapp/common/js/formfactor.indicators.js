@@ -14,9 +14,31 @@
    limitations under the License.
 */
 
+function handleFormfactorDetection(){
+	if(commonScriptsLoaded && specificScriptsLoaded){
+		doDeviceRouting();
+	} else {
+		setTimeout("handleFormfactorDetection()",1000);
+	}
+};
+
+function commonScriptsLoaded(){
+	var commonScriptsLoaded = true;
+};
+
+function specificScriptsLoaded(){
+	var specificScriptsLoaded = true;
+	return factor;
+};
+
+function doDeviceRouting(){
+	$("#loadingLbl").text(device);
+};
+
 formfactor.register({
   'desktop': [
-    'screen'
+	 'desktop',
+     function() { return navigator.userAgent.toLowerCase().indexOf("macintosh") > 0 }
   ],
 /*  'handheld': [ //One day maybe :)
     'handheld',
@@ -24,10 +46,12 @@ formfactor.register({
     function() { return navigator.userAgent.indexOf("Opera Mobi") > 0; }
   ],*/
   'phone': [
+    'phone',
     function() { return navigator.userAgent.toLowerCase().indexOf("mobile") > 0 } ,
     function() { return navigator.userAgent.toLowerCase().indexOf("phone") > 0 },
   ],
 	'tablet': [
+	'tablet',
 	function () { return navigator.userAgent.toLowerCase().indexOf("android") > 0 && !(navigator.userAgent.toLowerCase().indexOf("mobile") > 0) },
     function () { return navigator.userAgent.indexOf("iPad") > 0 },
     function() { return navigator.userAgent.indexOf("Xoom") > 0 }
@@ -42,17 +66,17 @@ var factor = formfactor.detect([ //TODO: Look for ressources neededà
   {
     "formfactor": "phone",
     //"resources": ["/scripts/phone/jquery.touch.js", "/scripts/tablet/css-beziers.js", "/scripts/tablet/touchscroll.js", "/scripts/phone/controller.js", "/css/phone.css"]
-  	"callbacks": specificScriptsLoaded()
+  	//"callbacks": specificScriptsLoaded()
 },
   {
     "formfactor": "tv",
     //"resources": ["/scripts/tv/controller.js", "/css/tv.css"]
-	"callbacks": specificScriptsLoaded()
+	//"callbacks": specificScriptsLoaded()
   },
   {
     "formfactor": "tablet",
     //"resources": ["/css/tablet.css", '/css/tablet/touchscroll.css', "/scripts/tablet/jquery.touch.tablet.js", "/scripts/tablet/css-beziers.js", "/scripts/tablet/touchscroll.js", "/scripts/tablet/controller.js"]
-	"callbacks": specificScriptsLoaded() 
+	//"//callbacks": specificScriptsLoaded() 
  },
 /*  {
     "formfactor": "handheld",
@@ -61,16 +85,18 @@ var factor = formfactor.detect([ //TODO: Look for ressources neededà
   },*/
   {
     "formfactor": "desktop",
-    //"resources": ["/scripts/desktop/controller.js", "/css/desktop.css"]
-	"callbacks": specificScriptsLoaded()
+    "resources": ["/scripts/desktop/controller.js"]
+	//"callbacks": specificScriptsLoaded()
   }
 ],
 {
 	"formfactor": "default",
 	//"resources": ["/css/default.css"]
-	"callbacks": specificScriptsLoaded() 
+	//"callbacks": specificScriptsLoaded() 
 }
 );
+var device =  specificScriptsLoaded();
+
 /*
 if(!!factor) {
   $(document).ready(function() {
@@ -84,4 +110,6 @@ if(!!factor) {
   });
 }
 */
+
+
 
