@@ -24,6 +24,7 @@ function handleFormfactorDetection(){
 
 function commonScriptsLoaded(){
 	var commonScriptsLoaded = true;
+	alert("Loaded");
 };
 
 function specificScriptsLoaded(){
@@ -34,7 +35,7 @@ function specificScriptsLoaded(){
 };
 
 function doDeviceRouting(){
-	
+	alert("Redirect");
 };
 
 function selectedDevice(deviceName){
