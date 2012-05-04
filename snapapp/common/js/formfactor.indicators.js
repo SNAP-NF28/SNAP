@@ -28,17 +28,23 @@ function commonScriptsLoaded(){
 
 function specificScriptsLoaded(){
 	var specificScriptsLoaded = true;
+	$("#loadingLbl").text("We think your device is:");
+	$('#dd').text(factor);
 	return factor;
 };
 
 function doDeviceRouting(){
-	$("#loadingLbl").text(device);
+	
 };
+
+function selectedDevice(deviceName){
+	$('#dd').text(deviceName);
+}
 
 formfactor.register({
   'desktop': [
 	 'desktop',
-     function() { return navigator.userAgent.toLowerCase().indexOf("macintosh") > 0 }
+     function() { return true; } // default value
   ],
 /*  'handheld': [ //One day maybe :)
     'handheld',
@@ -85,7 +91,7 @@ var factor = formfactor.detect([ //TODO: Look for ressources neededà
   },*/
   {
     "formfactor": "desktop",
-    "resources": ["/scripts/desktop/controller.js"]
+    //"resources": ["/scripts/desktop/controller.js"]
 	//"callbacks": specificScriptsLoaded()
   }
 ],
@@ -95,6 +101,7 @@ var factor = formfactor.detect([ //TODO: Look for ressources neededà
 	//"callbacks": specificScriptsLoaded() 
 }
 );
+
 var device =  specificScriptsLoaded();
 
 /*

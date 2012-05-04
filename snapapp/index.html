@@ -3,16 +3,58 @@
 <head>
   <meta charset="utf-8">
   <title>SNAP Device detection</title>
-  <script src="./common/lib/jquery/jquery-1.7.2.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AngularJS Project for School :)">
+  <meta name="author" content="SNAP Project">
 
+  <link href="./common/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./common/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">  
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
   <script>
 	setTimeout("handleFormfactorDetection()",4000);
   </script>
 
-  <p id="loadingLbl">Loading Scripts...</p>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">SNAP</a>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Loading SNAP</h1>
+        <p id="loadingLbl">Analysing for your device...</p>
+			
+			<div class="btn-toolbar" style="margin-top: 18px;">
+			   <div class="btn-group">
+		          <button id='dd' class="btn-large btn-inverse dropdown-toggle" data-toggle="dropdown">Select your device <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+		            <li><a onclick='selectedDevice("phone")' >Smartphone</a></li>
+		            <li><a onclick='selectedDevice("tablet")' >Tablet</a></li>
+		            <li><a onclick='selectedDevice("tv")' >TV</a></li>
+		            <li><a onclick='selectedDevice("desktop")' >Desktop</a></li>
+		          </ul>
+		        </div><!-- /btn-group -->
+		      </div><!-- /btn-toolbar -->
+      </div>
+	
+	<footer>
+      <p>&copy; SNAP 2012</p>
+    </footer>
+  </div> <!-- /container -->
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="./common/lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="./common/lib/formfactor/formfactor-min.js"></script>
   <script src="./common/js/formfactor.indicators.js"></script>
   <!-- List here scripts that have to be loaded anyway -->
