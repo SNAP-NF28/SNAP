@@ -1,31 +1,44 @@
-areSpecificScriptsLoaded = false;
-areCommonScriptsLoaded = false;
+var areSpecificScriptsLoaded = false;
+var areCommonScriptsLoaded = false;
+var selectionTime, startTimeMS, timer, displayTimer; //" Global" vars
 
-function handleFormfactorDetection(){
-	if(areCommonScriptsLoaded && areSpecificScriptsLoaded){
-		doDeviceRouting();
-	} else {
-		var retryTime = 1000;
-		selectionTime += retryTime;
-		setTimeout("handleFormfactorDetection()",retryTime);
-	}
+function setGlobalTimer(timeMS, jsCode){
+	stopTimer();
+	selectionTime = timeMS;
+	startTimeMS = (new Date()).getTime();
+	timer = setTimeout(jsCode, selectionTime);
 };
+
+function overrideChoice(){
+	stopTimer();
+	selectedDevice("Select Device")
+}
+
+function stopTimer(){
+	if(timer){
+		clearTimeout(timer);
+	};
+	if(displayTimer){
+		clearTimeout(displayTimer);
+		$("#timeLbl").text("");
+	};
+} 
 
 function commonScriptsLoaded(){
 	areCommonScriptsLoaded = true;
-	//console.log("Common scripts loaded.");
+	console.log("Common scripts loaded.");
 	if(areSpecificScriptsLoaded){
-		displayRemainingTime();
+		redirectInXSec(2000);
 	}
 };
 
 function specificScriptsLoaded(factor, display){
 	areSpecificScriptsLoaded = true;
-	//console.log("Specific scripts loaded.")
+	console.log("Specific scripts loaded.")
 	$("#loadingLbl").text(display);
 	selectedDevice(factor);
 	if(areCommonScriptsLoaded){
-		displayRemainingTime();
+		redirectInXSec(3000);
 	};
 	return factor;
 };
@@ -55,28 +68,26 @@ function capitaliseFirstLetter(string){
 function onDeviceChange(deviceName){
 	if(deviceName === factor)
 	  return;
-	if(displayTimer){
-		clearTimeout(displayTimer);
-	};
 	areSpecificScriptsLoaded = false;
-	$("#loadingLbl").text("You said your device is a");
+	var txt = "You said your device is a";
+	$("#loadingLbl").text(txt);
 	selectedDevice(deviceName);	
 	formfactor.override( deviceName, {});
 	factor = formfactor.detect( formfactorActions,{});
-    specificScriptsLoaded(factor,"You said your device is a");
+    specificScriptsLoaded(factor,txt);
 }
 
-function resetTimer(){
-	clearTimeout(timer);
-	setGlobalTimer();
-	$('#timeLbl').text();
-}
 
 function selectedDevice(deviceName){
 	$('#dd').text(capitaliseFirstLetter(deviceName));
 };
 
-function displayRemainingTime(){
+function redirectInXSec(time){
+	setGlobalTimer(time, "doDeviceRouting()");
+	displayRemainingTime();
+}
+
+function displayRemainingTime(){	
 	var remainingTimeMS = selectionTime - ( (new Date()).getTime() - startTimeMS );
 	$('#timeLbl').text('Redirecting in ' + Math.max(Math.ceil(remainingTimeMS / 1000.),0) + ' s');
 	displayTimer = setTimeout("displayRemainingTime()", 1000);
