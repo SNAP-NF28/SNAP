@@ -26,7 +26,7 @@ function stopTimer(){
 
 function commonScriptsLoaded(){
 	areCommonScriptsLoaded = true;
-	console.log("Common scripts loaded.");
+	//console.log("Common scripts loaded.");
 	if(areSpecificScriptsLoaded){
 		redirectInXSec(3000);
 	}
@@ -34,7 +34,7 @@ function commonScriptsLoaded(){
 
 function specificScriptsLoaded(factor, display){
 	areSpecificScriptsLoaded = true;
-	console.log("Specific scripts loaded.")
+	//console.log("Specific scripts loaded.")
 	$("#loadingLbl").text(display);
 	selectedDevice(factor);
 	if(areCommonScriptsLoaded){
