@@ -29,7 +29,7 @@ function commonScriptsLoaded(){
 function specificScriptsLoaded(){
 	var specificScriptsLoaded = true;
 	$("#loadingLbl").text("We think your device is:");
-	$('#dd').text(factor);
+	selectedDevice(factor);
 	return factor;
 };
 

@@ -32,12 +32,15 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Loading SNAP</h1>
+        <h2>Loading SNAP</h2>
         <p id="loadingLbl">Analysing for your device...</p>
 			
-			<div class="btn-toolbar" style="margin-top: 18px;">
+			<div class="btn-toolbar">
 			   <div class="btn-group">
-		          <button id='dd' class="btn-large btn-inverse dropdown-toggle" data-toggle="dropdown">Select your device <span class="caret"></span></button>
+		          <button id='dd' style="min-width: 150px;" class="btn  btn-inverse dropdown-toggle" data-toggle="dropdown">Select your device </button>
+				  <button class="btn  btn-inverse dropdown-toggle" data-toggle="dropdown">
+				    <span class="caret"></span>
+				  </button>	
 					<ul class="dropdown-menu">
 		            <li><a onclick='selectedDevice("phone")' >Smartphone</a></li>
 		            <li><a onclick='selectedDevice("tablet")' >Tablet</a></li>
