@@ -17,9 +17,13 @@
 </head>
 <body>
   <script>
-    var selectionTime = 5000;
-	var startTimeMS = (new Date()).getTime();
-	setTimeout("handleFormfactorDetection()", selectionTime);
+	var selectionTime, startTimeMS, timer, displayTimer; //" Global" vars
+    function setGlobalTimer(){
+    	selectionTime = 5000;
+		startTimeMS = (new Date()).getTime();
+   		timer = setTimeout("handleFormfactorDetection()", selectionTime);
+	};
+	setGlobalTimer();
   </script>
 
   <div class="navbar navbar-fixed-top">
@@ -41,15 +45,15 @@
 			
 			<div class="btn-toolbar">
 			   <div class="btn-group">
-		          <button id='dd' style="min-width: 150px;" class="btn  btn-inverse dropdown-toggle" data-toggle="dropdown">Select your device </button>
-				  <button class="btn  btn-inverse dropdown-toggle" data-toggle="dropdown">
+		          <button id='dd' style="min-width: 150px;" class="btn  btn-inverse dropdown-toggle" data-toggle="dropdown" onclick='resetTimer()'>Select your device </button>
+				  <button class="btn  btn-inverse dropdown-toggle" data-toggle="dropdown" onclick='resetTimer()'>
 				    <span class="caret"></span>
 				  </button>	
 					<ul class="dropdown-menu">
-		            <li><a onclick='selectedDevice("phone")' >Smartphone</a></li>
-		            <li><a onclick='selectedDevice("tablet")' >Tablet</a></li>
-		            <li><a onclick='selectedDevice("tv")' >TV</a></li>
-		            <li><a onclick='selectedDevice("desktop")' >Desktop</a></li>
+		            <li><a onclick='onDeviceChange("phone")' >Smartphone</a></li>
+		            <li><a onclick='onDeviceChange("tablet")' >Tablet</a></li>
+		            <li><a onclick='onDeviceChange("tv")' >TV</a></li>
+		            <li><a onclick='onDeviceChange("desktop")' >Desktop</a></li>
 		          </ul>
 		        </div><!-- /btn-group -->
 		      </div><!-- /btn-toolbar -->

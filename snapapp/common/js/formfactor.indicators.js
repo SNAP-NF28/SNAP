@@ -14,8 +14,11 @@
    limitations under the License.
 */
 
+areSpecificScriptsLoaded = false;
+areCommonScriptsLoaded = false;
+
 function handleFormfactorDetection(){
-	if(commonScriptsLoaded && specificScriptsLoaded){
+	if(areCommonScriptsLoaded && areSpecificScriptsLoaded){
 		doDeviceRouting();
 	} else {
 		var retryTime = 1000;
@@ -25,30 +28,65 @@ function handleFormfactorDetection(){
 };
 
 function commonScriptsLoaded(){
-	var commonScriptsLoaded = true;
+	areCommonScriptsLoaded = true;
 	//alert("Loaded");
-	if(specificScriptsLoaded){
+	if(areSpecificScriptsLoaded){
 		displayRemainingTime();
 	}
 };
 
-function specificScriptsLoaded(){
-	var specificScriptsLoaded = true;
-	$("#loadingLbl").text("We think your device is:");
+function specificScriptsLoaded(factor){
+	areSpecificScriptsLoaded = true;
+	$("#loadingLbl").text("We think your device is a");
 	selectedDevice(factor);
-	if(commonScriptsLoaded){
+	if(areCommonScriptsLoaded){
 		displayRemainingTime();
 	}
 	return factor;
 };
 
 function doDeviceRouting(){
-	//alert("Redirect");
+	var targetPage;
+	switch(factor){
+	case "phone":
+	  targetPage = "./smartphone/index.html";
+	  break;
+	case "tablet":
+	  targetPage = "./tablet/index.html";
+	  break;
+	case "tv":
+	  targetPage = "./tv/index.html";
+	  break;
+	default:
+	  targetPage = "./desktop/index.html";
+	}
+	document.location.href = targetPage;
 };
 
 function capitaliseFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
+function onDeviceChange(deviceName){
+	if(deviceName === factor)
+	  return;
+	if(displayTimer){
+		clearTimeout(displayTimer);
+	}
+	areSpecificScriptsLoaded = false;
+	selectedDevice(deviceName);	
+	formfactor.override( deviceName, {});
+	factor = formfactor.detect( formfactorActions,{});
+	//alert(factor);
+    specificScriptsLoaded(factor);
+	
+}
+
+function resetTimer(){
+	clearTimeout(timer);
+	setGlobalTimer();
+	$('#timeLbl').text();
+}
 
 function selectedDevice(deviceName){
 	$('#dd').text(capitaliseFirstLetter(deviceName));
@@ -57,7 +95,7 @@ function selectedDevice(deviceName){
 function displayRemainingTime(){
 	var remainingTimeMS = selectionTime - ( (new Date()).getTime() - startTimeMS );
 	$('#timeLbl').text('Redirecting in ' + Math.max(Math.ceil(remainingTimeMS / 1000.),0) + ' s');
-	setTimeout("displayRemainingTime()", 1000);
+	displayTimer = setTimeout("displayRemainingTime()", 1000);
 };
 
 formfactor.register({
@@ -87,20 +125,22 @@ formfactor.register({
   ]
 });
 
-var factor = formfactor.detect([ //TODO: Look for ressources neededà
+
+
+var formfactorActions = [ //TODO: Look for ressources needed
   {
     "formfactor": "phone",
-    //"resources": ["/scripts/phone/jquery.touch.js", "/scripts/tablet/css-beziers.js", "/scripts/tablet/touchscroll.js", "/scripts/phone/controller.js", "/css/phone.css"]
+    //"resources": ["/FausseRessource/phone.js"]
   	//"callbacks": specificScriptsLoaded()
 },
   {
     "formfactor": "tv",
-    //"resources": ["/scripts/tv/controller.js", "/css/tv.css"]
+    //"resources": ["/FausseRessource/tv.js"]
 	//"callbacks": specificScriptsLoaded()
   },
   {
     "formfactor": "tablet",
-    //"resources": ["/css/tablet.css", '/css/tablet/touchscroll.css', "/scripts/tablet/jquery.touch.tablet.js", "/scripts/tablet/css-beziers.js", "/scripts/tablet/touchscroll.js", "/scripts/tablet/controller.js"]
+    //"resources": ["/FausseRessource/tablet.js"]
 	//"//callbacks": specificScriptsLoaded() 
  },
 /*  {
@@ -110,18 +150,20 @@ var factor = formfactor.detect([ //TODO: Look for ressources neededà
   },*/
   {
     "formfactor": "desktop",
-    //"resources": ["/scripts/desktop/controller.js"]
+    //"resources": ["/FausseRessource/desktop.js"]
 	//"callbacks": specificScriptsLoaded()
   }
-],
+];
+
+var factor = formfactor.detect( formfactorActions,
 {
 	"formfactor": "default",
-	//"resources": ["/css/default.css"]
+    //"resources": ["/FausseRessource/default.js"]
 	//"callbacks": specificScriptsLoaded() 
 }
 );
 
-var device =  specificScriptsLoaded();
+specificScriptsLoaded(factor);
 
 /*
 if(!!factor) {
