@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>SNAP Device detection</title>
+  <title>SNAP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="AngularJS Project for School :)">
   <meta name="author" content="SNAP Project">
@@ -41,7 +41,7 @@
 	padding-left:10px ; text-align: center;'>    
         <h2>Loading SNAP</h2>
         <IMG style="padding: 10px;" SRC="./common/img/ajax-loader.gif">
-        <p id="loadingLbl">Analysing for your device...</p>
+        <p id="loadingLbl">Looking at your device...</p>
 			
 			<div class="btn-toolbar">
 			   <div class="btn-group">
@@ -61,16 +61,21 @@
       </div>
 	
 	<footer>
-      <p>&copy; SNAP 2012</p>
+      <p>&copy; SNAP - 2012</p>
     </footer>
   </div> <!-- /container -->
-  
+
+  <!-- List here scripts that have to be loaded anyway (device specific scripts are loaded by ./startup/js/formfactor.indicators.js)-->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script src="./common/lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="./common/lib/formfactor/formfactor-min.js"></script>
-  <script src="./common/js/formfactor.indicators.js"></script>
-  <!-- List here scripts that have to be loaded anyway -->
+  <script src="./startup/js/startup.js"></script>
+  <script src="./startup/js/formfactor.indicators.js"></script>
   <script src="./common/lib/angular/angular.js"></script>
+  <script src="./common/js/models/facebook/facebook.js"></script>
+  <script src="./common/js/models/twitter/twitter.js"></script>
+  <script src="./common/js/models/google+/google+.js"></script>
+  <script src="./common/js/models/mocks/mocks.js"></script><!-- FIXME: Del for production -->
   <!-- Scripts are loaded-->
   <script>
 	commonScriptsLoaded();
