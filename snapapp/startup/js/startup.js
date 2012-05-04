@@ -19,14 +19,14 @@ function commonScriptsLoaded(){
 	}
 };
 
-function specificScriptsLoaded(factor){
+function specificScriptsLoaded(factor, display){
 	areSpecificScriptsLoaded = true;
 	//console.log("Specific scripts loaded.")
-	$("#loadingLbl").text("We think your device is a");
+	$("#loadingLbl").text(display);
 	selectedDevice(factor);
 	if(areCommonScriptsLoaded){
 		displayRemainingTime();
-	}
+	};
 	return factor;
 };
 
@@ -57,13 +57,13 @@ function onDeviceChange(deviceName){
 	  return;
 	if(displayTimer){
 		clearTimeout(displayTimer);
-	}
+	};
 	areSpecificScriptsLoaded = false;
 	$("#loadingLbl").text("You said your device is a");
 	selectedDevice(deviceName);	
 	formfactor.override( deviceName, {});
 	factor = formfactor.detect( formfactorActions,{});
-    specificScriptsLoaded(factor);
+    specificScriptsLoaded(factor,"You said your device is a");
 }
 
 function resetTimer(){

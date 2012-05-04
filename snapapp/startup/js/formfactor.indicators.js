@@ -70,4 +70,4 @@ var factor = formfactor.detect( formfactorActions,
 }
 );
 
-specificScriptsLoaded(factor);
+specificScriptsLoaded(factor,"We think your device is a");
