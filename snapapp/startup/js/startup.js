@@ -13,7 +13,7 @@ function handleFormfactorDetection(){
 
 function commonScriptsLoaded(){
 	areCommonScriptsLoaded = true;
-	console.log("Common scripts loaded.");
+	//console.log("Common scripts loaded.");
 	if(areSpecificScriptsLoaded){
 		displayRemainingTime();
 	}
@@ -21,7 +21,7 @@ function commonScriptsLoaded(){
 
 function specificScriptsLoaded(factor){
 	areSpecificScriptsLoaded = true;
-	console.log("Specific scripts loaded.")
+	//console.log("Specific scripts loaded.")
 	$("#loadingLbl").text("We think your device is a");
 	selectedDevice(factor);
 	if(areCommonScriptsLoaded){
