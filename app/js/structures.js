@@ -139,5 +139,55 @@ function Search() {
 	this.networks;
 }
 
+/**
+ * Description de la classe
+ *
+ * @type ResultSearch
+ * @class  Instance d'un resultat de recherche
+ *
+ * Description du constructeur
+ *
+ * @this {ResultSearch}
+ * @description Constructeur de la classe ResultSearch 
+ *
+ * Description des attributs
+ *
+ * @property typeSearch Type de recherche
+ * @property contSearch Résultat de la recherche
+ *
+ */
+function ResultSearch() {
+	/* Type de recherche */
+	this.typeSearch;
+	/* Résultat de la recherche */
+	this.contSearch;
+}
 
-
+/**
+ * Description de la classe
+ *
+ * @type SocialNetwork
+ * @class  Instance d'un reseau social
+ *
+ * Description du constructeur
+ *
+ * @this {SocialNetwork}
+ * @description Constructeur de la classe SocialNetwork 
+ *
+ * Description des attributs
+ *
+ * @property idNetwork Type de recherche
+ * @property name Résultat de la recherche
+ * @property picture Image du réseau social
+ *
+ */
+function SocialNetwork() {
+	/* ID du reseau */
+	this.idNetwork;
+	/* Nom de site */
+	this.name;
+	/* Adresse du site d'origine */
+	this.homeSite;
+	/* Image du réseau social */
+	this.picture;
+}
