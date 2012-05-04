@@ -18,19 +18,27 @@ function handleFormfactorDetection(){
 	if(commonScriptsLoaded && specificScriptsLoaded){
 		doDeviceRouting();
 	} else {
-		setTimeout("handleFormfactorDetection()",1000);
+		var retryTime = 1000;
+		selectionTime += retryTime;
+		setTimeout("handleFormfactorDetection()",retryTime);
 	}
 };
 
 function commonScriptsLoaded(){
 	var commonScriptsLoaded = true;
 	//alert("Loaded");
+	if(specificScriptsLoaded){
+		displayRemainingTime();
+	}
 };
 
 function specificScriptsLoaded(){
 	var specificScriptsLoaded = true;
 	$("#loadingLbl").text("We think your device is:");
 	selectedDevice(factor);
+	if(commonScriptsLoaded){
+		displayRemainingTime();
+	}
 	return factor;
 };
 
@@ -38,9 +46,19 @@ function doDeviceRouting(){
 	//alert("Redirect");
 };
 
+function capitaliseFirstLetter(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 function selectedDevice(deviceName){
-	$('#dd').text(deviceName);
-}
+	$('#dd').text(capitaliseFirstLetter(deviceName));
+};
+
+function displayRemainingTime(){
+	var remainingTimeMS = selectionTime - ( (new Date()).getTime() - startTimeMS );
+	$('#timeLbl').text('Redirecting in ' + Math.max(Math.ceil(remainingTimeMS / 1000.),0) + ' s');
+	setTimeout("displayRemainingTime()", 1000);
+};
 
 formfactor.register({
   'desktop': [

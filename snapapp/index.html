@@ -17,7 +17,9 @@
 </head>
 <body>
   <script>
-	setTimeout("handleFormfactorDetection()",4000);
+    var selectionTime = 5000;
+	var startTimeMS = (new Date()).getTime();
+	setTimeout("handleFormfactorDetection()", selectionTime);
   </script>
 
   <div class="navbar navbar-fixed-top">
@@ -32,8 +34,9 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit" style='padding-right:10px;
-	padding-left:10px ; text-align: center;'>
+	padding-left:10px ; text-align: center;'>    
         <h2>Loading SNAP</h2>
+        <IMG style="padding: 10px;" SRC="./common/img/ajax-loader.gif">
         <p id="loadingLbl">Analysing for your device...</p>
 			
 			<div class="btn-toolbar">
@@ -50,6 +53,7 @@
 		          </ul>
 		        </div><!-- /btn-group -->
 		      </div><!-- /btn-toolbar -->
+		<p id='timeLbl' style='color: darkred;'></p>
       </div>
 	
 	<footer>
