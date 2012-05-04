@@ -11,7 +11,7 @@ function setGlobalTimer(timeMS, jsCode){
 
 function overrideChoice(){
 	stopTimer();
-	selectedDevice("Select Device")
+	selectedDevice("Select Device");
 }
 
 function stopTimer(){
@@ -28,7 +28,7 @@ function commonScriptsLoaded(){
 	areCommonScriptsLoaded = true;
 	console.log("Common scripts loaded.");
 	if(areSpecificScriptsLoaded){
-		redirectInXSec(2000);
+		redirectInXSec(3000);
 	}
 };
 
@@ -38,7 +38,7 @@ function specificScriptsLoaded(factor, display){
 	$("#loadingLbl").text(display);
 	selectedDevice(factor);
 	if(areCommonScriptsLoaded){
-		redirectInXSec(3000);
+		redirectInXSec(4000);
 	};
 	return factor;
 };
@@ -66,8 +66,6 @@ function capitaliseFirstLetter(string){
 };
 
 function onDeviceChange(deviceName){
-	if(deviceName === factor)
-	  return;
 	areSpecificScriptsLoaded = false;
 	var txt = "You said your device is a";
 	$("#loadingLbl").text(txt);
