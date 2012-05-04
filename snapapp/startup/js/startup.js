@@ -71,7 +71,8 @@ function onDeviceChange(deviceName){
 	$("#loadingLbl").text(txt);
 	selectedDevice(deviceName);	
 	formfactor.override( deviceName, {});
-	factor = formfactor.detect( formfactorActions,{});
+	formfactor.detect( formfactorActions,{});//Load missing Scripts
+	factor = deviceName;
     specificScriptsLoaded(factor,txt);
 }
 
