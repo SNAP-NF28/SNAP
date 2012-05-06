@@ -1,0 +1,33 @@
+<img ng-src="{{mainImageUrl}}" class="phone">
+
+<h1>{{message.name}}</h1>
+
+<p>Message Id : {{message.idMsg}}</p>
+
+
+	<span>Contenu</span>
+	<p>
+		{{message.contMsg}}
+	</p>
+
+
+<ul class="specs">
+  <li>
+    <span>Date</span>
+    <dl>
+      <dt>Date du message : {{message.dateMsg}}</dt> 
+    </dl>
+  </li>
+  <li>
+    <span>Descriptions</span>
+    <dl>
+      <dt>AuteurId</dt>
+      <dd>{{message.idAuthor}}</dd>
+      <dt>Name</dt>
+      <dd>{{message.name}}</dd>
+    </dl>
+  </li>
+  <li>
+	<p> <a href="{{message.linkMsg}}">lien vers le message </a></p>
+  </li>
+</ul>

@@ -1,0 +1,14 @@
+﻿    {
+        "idMsg": 1, 
+		"idNetwork" : 1,
+        "idAuthor": 123456, 
+		"imageAuteur": "img/image_photoProfil.png", 
+        "imageNetwork": "img/logo_twitter.jpg", 
+        "name": "@LEquipe", 
+		"dateMsg" : "",
+		"linkMsg" : "#",
+        "contMsg": "Romain Grosjean est le premier Français à monter sur un podium depuis Jean Alesi au Grand Prix de Belgique en 1998...",
+		"listMedias" : "",
+		"localisation" : "",
+		"replyTo" : ""
+    }

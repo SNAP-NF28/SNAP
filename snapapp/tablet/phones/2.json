@@ -1,0 +1,14 @@
+﻿	{
+        "idMsg": 2, 
+		"idNetwork" : 0,
+        "idAuthor": 1234567, 
+		"imageAuteur": "img/image_photoProfil.png", 
+        "imageNetwork": "img/logo_googlePlus.jpg", 
+        "name": "Le Monde", 
+		"dateMsg" : "",
+		"linkMsg" : "#",
+        "contMsg": "Les voyageurs d'un train circulant entre Bruxelles et Namur, en Belgique, ont entendu, jeudi, un message antisémite au moment du départ...",
+		"listMedias" : "",
+		"localisation" : "",
+		"replyTo" : ""
+    }
