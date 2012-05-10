@@ -1,0 +1,151 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Description de la classe 
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @type Message
+<span class='line'>  5</span>  * @class  Instance d'un Message
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * Description du constructeur 
+<span class='line'>  8</span>  *
+<span class='line'>  9</span>  * @this {Message}
+<span class='line'> 10</span>  * @description Constructeur de la classe Message
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Description des attributs
+<span class='line'> 13</span>  *
+<span class='line'> 14</span>  * @property idNetwork ID du reseau du message
+<span class='line'> 15</span>  * @property idMsg ID du message
+<span class='line'> 16</span>  * @property idAuthor ID de l'auteur
+<span class='line'> 17</span>  * @property contMsg Contenu du message
+<span class='line'> 18</span>  * @property linkMsg Lien vers le message original
+<span class='line'> 19</span>  * @property dateMsg Date du message
+<span class='line'> 20</span>  * @property listMedias Liste des medias attaches au message
+<span class='line'> 21</span>  * @property localisation Localisation attachee au message
+<span class='line'> 22</span>  * @property replyTo ID du message parent auquel le message repond
+<span class='line'> 23</span>  */</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Message</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="WHIT">	</span><span class="COMM">/* ID du reseau du message */</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">	</span><span class="NAME">this.idNetwork</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">	</span><span class="COMM">/* ID du Message */</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">	</span><span class="NAME">this.idMsg</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">	</span><span class="COMM">/* ID de l'auteur */</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">	</span><span class="NAME">this.idAuthor</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">	</span><span class="COMM">/* Contenu du message */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">	</span><span class="NAME">this.contMsg</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="COMM">/* Lien vers le message original */</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">	</span><span class="NAME">this.linkMsg</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="COMM">/* Date du message */</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="NAME">this.dateMsg</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="COMM">/* Liste des medias attaches au message */</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">	</span><span class="NAME">this.listMedias</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">	</span><span class="COMM">/* Localisation attachee au message */</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">	</span><span class="NAME">this.localisation</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">	</span><span class="COMM">/* ID du message parent auquel le message repond */</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">	</span><span class="NAME">this.replyTo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="COMM">/**
+<span class='line'> 47</span>  * Description de la classe
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * @type Profil
+<span class='line'> 50</span>  * @class  Instance d'un Profil
+<span class='line'> 51</span>  *
+<span class='line'> 52</span>  * Description du constructeur
+<span class='line'> 53</span>  *
+<span class='line'> 54</span>  * @this {Profil}
+<span class='line'> 55</span>  * @description Constructeur de la classe Profil
+<span class='line'> 56</span>  *
+<span class='line'> 57</span>  * Description des attributs 
+<span class='line'> 58</span>  *
+<span class='line'> 59</span>  * @property idNetwork ID du reseau du profil
+<span class='line'> 60</span>  * @property idProfil ID du profil
+<span class='line'> 61</span>  * @property name Nom de l'utilisateur
+<span class='line'> 62</span>  * @property firstName Prenom de l'utilisateur
+<span class='line'> 63</span>  * @property nickName Surnom
+<span class='line'> 64</span>  * @property description Description du profil
+<span class='line'> 65</span>  * @property birthPlace Lieu de naissance
+<span class='line'> 66</span>  * @property birthDate Date de naissance
+<span class='line'> 67</span>  * @property lifePlace Lieu de vie
+<span class='line'> 68</span>  * @property workPlace Lieu de travail (entreprise ou ecole
+<span class='line'> 69</span>  * @property nbFriends Nombre d'amis
+<span class='line'> 70</span>  * @property nbFollowers Nombre de Followers
+<span class='line'> 71</span>  * @property nbFollows Nombre de Follows
+<span class='line'> 72</span>  * @property nbMsg Nombre de Messages
+<span class='line'> 73</span>  * @property inscriptionDate Date d'inscription
+<span class='line'> 74</span>  */</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Profil</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">	</span><span class="COMM">/* ID du reseau du profil */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">	</span><span class="NAME">this.idNetwork</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">	</span><span class="COMM">/* ID du profil */</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">	</span><span class="NAME">this.idProfil</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">	</span><span class="COMM">/* Nom de l'utilisateur */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="NAME">this.name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="COMM">/* Prenom de l'utilisateur */</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="NAME">this.firstName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">	</span><span class="COMM">/* Surnom */</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">	</span><span class="NAME">this.nickName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">	</span><span class="COMM">/* Description du profil */</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">	</span><span class="NAME">this.description</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="COMM">/* Lieu de naissance */</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">	</span><span class="NAME">this.birthPlace</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">	</span><span class="COMM">/* Date de naissance */</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">	</span><span class="NAME">this.birthDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">	</span><span class="COMM">/* Lieu de vie */</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">	</span><span class="NAME">this.lifePlace</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">	</span><span class="COMM">/* Lieu de travail (entreprise ou ecole) */</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">	</span><span class="NAME">this.workPlace</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">	</span><span class="COMM">/* Nombre d'amis */</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">	</span><span class="NAME">this.nbFriends</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">	</span><span class="COMM">/* Nombre de Followers */</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">	</span><span class="NAME">this.nbFollowers</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">	</span><span class="COMM">/* Nombre de Follows */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">	</span><span class="NAME">this.nbFollows</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">	</span><span class="COMM">/* Nombre de Messages */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	</span><span class="NAME">this.nbMsg</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">	</span><span class="COMM">/* Date d'inscription */</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">	</span><span class="NAME">this.inscriptionDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> 
+<span class='line'>109</span> </span><span class="COMM">/**
+<span class='line'>110</span>  * Description de la classe
+<span class='line'>111</span>  *
+<span class='line'>112</span>  * @type Recherche
+<span class='line'>113</span>  * @class  Instance d'une recherche
+<span class='line'>114</span>  *
+<span class='line'>115</span>  * Description du constructeur
+<span class='line'>116</span>  *
+<span class='line'>117</span>  * @this {Search}
+<span class='line'>118</span>  * @description Constructeur de la classe Recherche 
+<span class='line'>119</span>  *
+<span class='line'>120</span>  * Description des attributs
+<span class='line'>121</span>  *
+<span class='line'>122</span>  * @property typeSearch Type de recherche
+<span class='line'>123</span>  * @property contSearch Champ recherche
+<span class='line'>124</span>  * @property dateBegin Date de debut de la recherche
+<span class='line'>125</span>  * @property dateEnd Date de fin de la recherche
+<span class='line'>126</span>  * @property networks Reseau ou effectuer la recherche 
+<span class='line'>127</span>  *
+<span class='line'>128</span>  */</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Search</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">	</span><span class="COMM">/* Type de recherche */</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">	</span><span class="NAME">this.typeSearch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">	</span><span class="COMM">/* Champ recherche */</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">	</span><span class="NAME">this.contSearch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">	</span><span class="COMM">/* Date de debut de la recherche */</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">	</span><span class="NAME">this.dateBegin</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">	</span><span class="COMM">/* Date de fin de la recherche */</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">	</span><span class="NAME">this.dateEnd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">	</span><span class="COMM">/* Reseau ou effectuer la recherche */</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">	</span><span class="NAME">this.networks</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> 
+<span class='line'>143</span> 
+<span class='line'>144</span> </span></pre></body></html>
