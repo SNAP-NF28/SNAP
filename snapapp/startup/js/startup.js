@@ -7,7 +7,7 @@ function setGlobalTimer(timeMS, jsCode){
 	selectionTime = timeMS;
 	startTimeMS = (new Date()).getTime();
 	timer = setTimeout(jsCode, selectionTime);
-};
+}
 
 function overrideChoice(){
 	stopTimer();
@@ -17,11 +17,11 @@ function overrideChoice(){
 function stopTimer(){
 	if(timer){
 		clearTimeout(timer);
-	};
+	}
 	if(displayTimer){
 		clearTimeout(displayTimer);
 		$("#timeLbl").text("");
-	};
+	}
 } 
 
 function commonScriptsLoaded(){
@@ -30,7 +30,7 @@ function commonScriptsLoaded(){
 	if(areSpecificScriptsLoaded){
 		redirectInXSec(3000);
 	}
-};
+}
 
 function specificScriptsLoaded(factor, display){
 	areSpecificScriptsLoaded = true;
@@ -39,9 +39,9 @@ function specificScriptsLoaded(factor, display){
 	selectedDevice(factor);
 	if(areCommonScriptsLoaded){
 		redirectInXSec(4000);
-	};
+	}
 	return factor;
-};
+}
 
 function doDeviceRouting(){
 	var targetPage;
@@ -59,16 +59,16 @@ function doDeviceRouting(){
 	  targetPage = "./desktop/index.html";
 	}
 	document.location.href = targetPage;
-};
+}
 
 function capitaliseFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
-};
+}
 
 function onDeviceChange(deviceName){
 	areSpecificScriptsLoaded = false;
 	var txt = "You said your device is a";
-	$("#loadingLbl").text(txt);
+	$('#loadingLbl').text(txt);
 	selectedDevice(deviceName);	
 	formfactor.override( deviceName, {});
 	formfactor.detect( formfactorActions,{});//Load missing Scripts
@@ -79,7 +79,7 @@ function onDeviceChange(deviceName){
 
 function selectedDevice(deviceName){
 	$('#dd').text(capitaliseFirstLetter(deviceName));
-};
+}
 
 function redirectInXSec(time){
 	setGlobalTimer(time, "doDeviceRouting()");
@@ -90,4 +90,4 @@ function displayRemainingTime(){
 	var remainingTimeMS = selectionTime - ( (new Date()).getTime() - startTimeMS );
 	$('#timeLbl').text('Redirecting in ' + Math.max(Math.ceil(remainingTimeMS / 1000.),0) + ' s');
 	displayTimer = setTimeout("displayRemainingTime()", 1000);
-};
+}

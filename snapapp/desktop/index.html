@@ -1,1 +1,59 @@
-Desktop
+<!doctype html>
+<html ng-app="socialNetworks">
+  <head>	
+	<meta charset="utf-8">
+	  <title>SNAP</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="description" content="AngularJS Project for School :)">
+	  <meta name="author" content="SNAP Project">
+
+	  <link href="/snapapp/common/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	  <link href="/snapapp/common/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">  
+
+	    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	    <!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+	
+    <script src="/snapapp/common/lib/angular/angular.js"></script>
+   <!-- <script src="/snapapp/common/js/snapDocumentElements.js"></script><!--TO Suppr?-->
+    <script src="/snapapp/common/js/models/facebook/facebook.js"></script>
+    <script src="/snapapp/common/js/models/google+/google+.js"></script>
+    <script src="/snapapp/common/js/models/mocks/mocks.js"></script>
+    <script src="/snapapp/common/js/models/twitter/twitter.js"></script>
+    <script src="/snapapp/common/js/models/socialNetworks.js"></script>
+
+  </head>
+  <body>
+	<snap-common-scripts></snap-common-scripts>
+	<snap-navbar></snap-navbar>
+	
+	 <!-- Main hero unit for a primary marketing message or call to action -->
+      <div   ng-controller="SocialNetworkCtrl"  class="hero-unit" style='padding-right:10px;
+	padding-left:10px ; text-align: center;'>    
+        <h2>SNAP Desktop</h2>
+		<p>Whohohooo Snap Desktop Mode :)</p>
+
+          <input type="text" ng-model="search" class="search-query" placeholder="Search">
+          <table>
+              <thead>
+              <tr>
+                  <th>Social Network Name</th>
+                  <th>Social Network Picture</th>
+                  <th>Social Network icon</th>
+                  <th>Social Network citation</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="socialNetwork in socialNetworks | filter:search | orderBy:'name'">
+                  <td>{{socialNetwork.name}}</td>
+                  <td>{{socialNetwork.picture}}</td>
+                  <td>{{socialNetwork.icon}}</td>
+                  <td>{{socialNetwork.citation}}</td>
+              </tr>
+              </tbody>
+          </table>
+
+	  </div>
+  </body>	
+</html>
