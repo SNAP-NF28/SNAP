@@ -1,7 +1,28 @@
-angular.module('googleplus',['mocks']).
-    factory('Googleplus', function(Mock) {
+angular.module('googleplus',['SNMock']).
+    factory('Googleplus', function(SNMock) {
+
+        /**
+         * Class Description
+         *
+         * @type Googleplus
+         * @class
+         *
+         * Constructor Description
+         *
+         * @this {Googleplus}
+         * @description
+         *
+         * Attributes
+         *
+         * @property socialNetworkId
+         * @property name
+         * @property homeSite
+         * @property picture
+         *
+         */
+
         var Googleplus = function(){
-            var googleplus =  new Mock();
+            var googleplus =  new SNMock();
             //list attributes
             googleplus.name = "Googleplus";
             googleplus.citation = "G+citation"

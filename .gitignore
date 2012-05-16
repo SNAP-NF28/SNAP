@@ -9,3 +9,4 @@ build.xml
 .project
 .settings
 .idea/*
+jsdoc3/*

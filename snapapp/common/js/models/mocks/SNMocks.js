@@ -1,6 +1,6 @@
-angular.module('mocks',[]).
-    factory('Mock', function() {
-        var Mock = function(){
+angular.module('SNMock',[]).
+    factory('SNMock', function() {
+        var SNMock = function(){
             //init
             this.name = "Mock";
             this.picture = "MockPic";
@@ -8,10 +8,9 @@ angular.module('mocks',[]).
             this.citation = 'Mockcitation';
         };
 
-        Mock.prototype.getSNName = function(){
+        SNMock.prototype.getSNName = function(){
             return "Mock";
         }
-        return Mock;
+        return SNMock;
     });
-
 

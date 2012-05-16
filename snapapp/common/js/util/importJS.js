@@ -14,6 +14,8 @@
 $("head").append('<script src="/snapapp/common/lib/angular/angular.js"></script>');
 $("head").append('<script src="/snapapp/common/js/models/facebook/facebook.js"></script>');
 $("head").append('<script src="/snapapp/common/js/models/google+/google+.js"></script>');
-$("head").append('<script src="/snapapp/common/js/models/mocks/mocks.js"></script>');
+$("head").append('<script src="/snapapp/common/js/models/mocks/SNMocks.js"></script>');
+$("head").append('<script src="/snapapp/common/js/models/mocks/typeMocks.js"></script>');
+$("head").append('<script src="/snapapp/common/js/models/types.js"></script>');
 $("head").append('<script src="/snapapp/common/js/models/twitter/twitter.js"></script>');
 $("head").append('<script src="/snapapp/common/js/models/socialNetworks.js"></script>');
