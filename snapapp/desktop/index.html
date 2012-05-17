@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="socialNetworks">
+<html>
   <head>	
 	<meta charset="utf-8">
 	  <title>SNAP</title>
@@ -7,12 +7,13 @@
 	  <meta name="description" content="AngularJS Project for School :)">
 	  <meta name="author" content="SNAP Project">
 
-      <!-- import jQuery-->
+      <!-- import jQuery
       <script src="/snapapp/common/lib/jquery/jquery-1.7.2.min.js"></script>
 
-      <!-- import Js libs and files-->
-      <script src="/snapapp/common/js/util/importJS.js"></script>
-
+      <!-- import Js libs and files
+      <script src="/snapapp/common/js/util/importJS.js"></script>-->
+      <script src="/snapapp/common/js/load.js"></script>
+      <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
       <!-- import Css libs and files-->
       <script src="/snapapp/common/js/util/importCSS.js"></script>
   </head>
@@ -21,7 +22,7 @@
 	<snap-navbar></snap-navbar>
 	
 	 <!-- Main hero unit for a primary marketing message or call to action -->
-      <div   ng-controller="SocialNetworkCtrl"  class="hero-unit" style='padding-right:10px;
+      <div   ng-controller="desktopAppCtrl"  class="hero-unit" style='padding-right:10px;
 	padding-left:10px ; text-align: center;'>    
         <h2>SNAP Desktop</h2>
 		<p>Whohohooo Snap Desktop Mode :)</p>
