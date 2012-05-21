@@ -25,6 +25,7 @@ angular.module('twitter',['SNMock']).
             var twitter =  new SNMock();
             //list attributes
             twitter.name = "Twitter";
+			twitter.displayName = "Twitter";
             twitter.picture = "TwitPic";
             twitter.icon = 'twittIcon';
             return twitter;

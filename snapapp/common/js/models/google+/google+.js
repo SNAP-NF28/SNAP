@@ -25,6 +25,7 @@ angular.module('googleplus',['SNMock']).
             var googleplus =  new SNMock();
             //list attributes
             googleplus.name = "Googleplus";
+			googleplus.displayName = "Google+";
             googleplus.citation = "G+citation"
             return googleplus;
         }

@@ -25,6 +25,7 @@ angular.module('facebook',['SNMock']).
             var facebook =  new SNMock();
             //list attributes
             facebook.name = "Facebook";
+			facebook.displayName = "Facebook";
             return facebook;
         }
 
