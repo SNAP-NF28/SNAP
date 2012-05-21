@@ -16,7 +16,7 @@ angular.module('SNMock',['types']).
 		SNMock.prototype.getLastNMessages = function(n){
 			var listMessages=new Array();
 			for (i=0; i<n; i++) {
-			listMessages[i]=new Message();
+				listMessages[i]=new Message();
 			}
 			return listMessages;
 		}
