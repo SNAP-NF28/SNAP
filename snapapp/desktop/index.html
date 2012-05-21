@@ -1,29 +1,61 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app="components">
-<head>
+<!doctype html>
+<html>
+  <head>	
 	<meta charset="utf-8">
-	 <title>SNAP</title>
-    <script type="text/javascript" src="../common/lib/jquery/jquery-1.7.2.js"></script>
-    <script type="text/javascript" src="../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="js/components.js"></script>
-	<link rel="stylesheet" href="css/onglets.css">
-    <!--<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">-->
-</head>
-<body>
-    <tabs>
-        <pane title="Localization">
+	  <title>SNAP</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="description" content="AngularJS Project for School :)">
+	  <meta name="author" content="SNAP Project">
+
+      <!-- import jQuery
+      <script src="/snapapp/common/lib/jquery/jquery-1.7.2.min.js"></script>
+
+      <!-- import Js libs and files-->
+      <script src="/snapapp/common/js/load.js"></script>
+      <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
+      <!-- import Css libs and files-->
+      <script src="/snapapp/common/js/util/importCSS.js"></script>
+	  <link rel="stylesheet" href="css/onglets.css">
+  </head>
+  <body>
+    <snap-common-scripts></snap-common-scripts>
+	<snap-navbar></snap-navbar>
+	<div   ng-controller="desktopAppCtrl">
+	 <!-- Main hero unit for a primary marketing message or call to action 
+      <div   ng-controller="desktopAppCtrl"  class="hero-unit" style='padding-right:10px;
+	padding-left:10px ; text-align: center;'>    
+        <h2>SNAP Desktop</h2>
+		<p>Whohohooo Snap Desktop Mode :)</p>
+
+          <input type="text" ng-model="search" class="search-query" placeholder="Search">
+          <table>
+              <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Picture</th>
+                  <th>icon</th>
+                  <th>citation</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="socialNetwork in socialNetworks | filter:search | orderBy:'name'">
+                  <td>{{socialNetwork.name}}</td>
+                  <td>{{socialNetwork.picture}}</td>
+                  <td>{{socialNetwork.icon}}</td>
+                  <td>{{socialNetwork.citation}}</td>
+              </tr>
+              </tbody>
+          </table>
+
+	  </div>-->
+
+	<tabs>
+        <pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
             Date: {{ '2012-04-01' | date:'fullDate' }} <br>
             Currency: {{ 123456 | currency }} <br>
             Number: {{ 98765.4321 | number }} <br>
         </pane>
-        <pane title="Pouet">
-            <div>
-                Date: {{ '2012-05-02' | date:'fullDate' }} <br />
-                Currency: {{ 8742 | currency }} <br>
-                Number: {{ 666 | number }} <br>
-            </div>
-        </pane>
     </tabs>
-</body>
+	</div>
+  </body>	
 </html>

@@ -3,6 +3,7 @@ angular.module('SNMock',[]).
         var SNMock = function(){
             //init
             this.name = "Mock";
+			this.displayName = "Mock";
             this.picture = "MockPic";
             this.icon = 'cacaIcon';
             this.citation = 'Mockcitation';
