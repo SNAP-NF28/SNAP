@@ -1,7 +1,7 @@
 angular.module('typeMocks',[]).
 factory('MessageMock', function() {
     var MessageMock = function(){
-        //init
+		this.msgContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in purus vestibulum elit pretium pretium quis nec urna. Morbi facilisis nullam.";
 
     };
 

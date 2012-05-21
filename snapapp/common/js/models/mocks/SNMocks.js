@@ -1,5 +1,5 @@
-angular.module('SNMock',[]).
-    factory('SNMock', function() {
+angular.module('SNMock',['types']).
+    factory('SNMock', function(Message) {
         var SNMock = function(){
             //init
             this.name = "Mock";
@@ -12,6 +12,14 @@ angular.module('SNMock',[]).
         SNMock.prototype.getSNName = function(){
             return "Mock";
         }
+		
+		SNMock.prototype.getLastNMessages = function(n){
+			var listMessages=new Array();
+			for (i=0; i<n; i++) {
+			listMessages[i]=new Message();
+			}
+			return listMessages;
+		}
         return SNMock;
     });
 
