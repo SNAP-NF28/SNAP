@@ -51,9 +51,9 @@
 
 	<tabs>
         <pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
-            Date: {{ '2012-04-01' | date:'fullDate' }} <br>
-            Currency: {{ 123456 | currency }} <br>
-            Number: {{ 98765.4321 | number }} <br>
+			<div ng-repeat="message in socialNetwork.getLastNMessages(20)">
+				{{message.msgContent}}
+			</div>
         </pane>
     </tabs>
 	</div>
