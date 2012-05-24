@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
   <head>	
 	<meta charset="utf-8">
@@ -15,7 +15,7 @@
       <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
       <!-- import Css libs and files-->
       <script src="/snapapp/common/js/util/importCSS.js"></script>
-	  <link rel="stylesheet" href="css/onglets.css">
+	  <link rel="stylesheet" href="css/desktop.css">
   </head>
   <body>
     <snap-common-scripts></snap-common-scripts>
@@ -48,14 +48,31 @@
           </table>
 
 	  </div>-->
-
-	<tabs>
-        <pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
-			<div ng-repeat="message in socialNetwork.getLastNMessages(20)">
-				{{message.msgContent}}
-			</div>
-        </pane>
-    </tabs>
+	<div id="sideBar">
+		<input type="text" ng-model="search" class="search-query" placeholder="Search">
+	</div>
+	<div id="mainPage">
+		<tabs>
+			<pane title="All">
+			</pane>
+			<pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
+				<div ng-controller="desktopAppCtrlMsg">
+					<div class="msgContainer" ng-repeat="message in messages | filter:search">
+						<!-- Image du profil -->
+						<!-- Nom du profil -->
+						<div class="msgContent">
+							{{message.msgContent}}
+						</div>
+						<!-- Lien message original -->
+						<a href="dd">Détails</a>
+						<!-- Afficher bouton retweet -->
+						<!-- Afficher bouton j'aime -->
+						<!-- Afficher bouton partager -->
+					</div>
+				</div>
+			</pane>
+		</tabs>
+		<div>
 	</div>
   </body>	
 </html>

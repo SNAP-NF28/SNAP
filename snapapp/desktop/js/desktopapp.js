@@ -51,3 +51,11 @@ function desktopAppCtrl($scope, SocialNetworks) {
     $scope.socialNetworks = new SocialNetworks();
 }
 
+function desktopAppCtrlMsg($scope) {
+    $scope.messages = $scope.socialNetwork.getLastNMessages(20)
+}
+
+function getImageProfile(idProfile) {
+
+}
+
