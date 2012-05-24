@@ -1,5 +1,3 @@
-//UNDEFINED SI NEXISTANT
-
 angular.module('types',['typeMocks']).
     factory('Message', function(MessageMock) {
 
