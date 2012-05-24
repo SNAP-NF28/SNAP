@@ -7,26 +7,17 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-
-.fix-tabs{
-	position:absolute;
-    top:23px;
-} 
  
-.sidebar-nav-fixed {
-     position:fixed;
-     top:60px;
- }
+.msgImgProfile{
+	float : left;
+	width:60px;
+}
 
- @media (max-width: 767px) {
-     .sidebar-nav-fixed {
-         width:auto;
-     }
- }
+.cadreMsg{
+	float : left;
+	margin-left : 15px;
+}
 
- @media (max-width: 979px) {
-     .sidebar-nav-fixed {
-         position:static;
-        width: auto;
-     }
-
+.clear{
+	clear: both;
+}

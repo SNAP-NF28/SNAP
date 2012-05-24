@@ -15,7 +15,7 @@
       <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
       <!-- import Css libs and files-->
       <script src="/snapapp/common/js/util/importCSS.js"></script>
-	  <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+	  <!--<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">-->
 	  <link rel="stylesheet" href="./css/desktop.css">
 
   </head>
@@ -37,17 +37,36 @@
 						</pane>
 						<pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
-								<div class="msgContainer" ng-repeat="message in messages | filter:search">
+								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
+									<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+									<div class="cadreMsg">
 									<!-- Nom du profil -->
+									<b class="fullname">{{getNameProfile(message)}}</b>
 									<div class="msgContent">
 										{{message.msgContent}}
 									</div>
 									<!-- Lien message original -->
-									<a href="dd">Détails</a>
+									<a href="" >Détails</a>	
+									<button data-trigger="BS.showPopup" data-bs-showpopup-target="!body #demoPopup" class="btn danger">Launch Modal</button>
+										<div data-behavior="BS.Popup" class="modal fade" id="demoPopup">
+										  <div class="modal-header">
+											<a href="#" class="close">×</a>
+											<h3>Modal Heading</h3>
+										  </div>
+										  <div class="modal-body">
+											<p>One fine body...</p>
+										  </div>
+										  <div class="modal-footer">
+											<a href="#" class="btn primary dismiss stopEvent">Primary</a>
+											<a href="#" class="btn secondary dismiss stopEvent">Secondary</a>
+										  </div>
+										</div>
 									<!-- Afficher bouton retweet -->
 									<!-- Afficher bouton j'aime -->
 									<!-- Afficher bouton partager -->
+									</div>
+									<br class="clear" />
 								</div>
 							</div>
 						</pane>
