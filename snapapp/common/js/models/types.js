@@ -78,6 +78,7 @@ angular.module('types',['typeMocks']).
             var profile =  new ProfileMock();
             // /list attributes
             profile.socialNetworkId;
+			profile.imageProfileURL;
             profile.name;
             profile.firstName;
             profile.nickName;

@@ -20,6 +20,11 @@ angular.module('SNMock',['types']).
 			}
 			return listMessages;
 		}
+		
+		SNMock.prototype.getUserProfile = function(id){
+			var profile=new Profile();
+			return profile;
+		}
         return SNMock;
     });
 
