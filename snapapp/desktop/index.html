@@ -15,64 +15,45 @@
       <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
       <!-- import Css libs and files-->
       <script src="/snapapp/common/js/util/importCSS.js"></script>
-	  <link rel="stylesheet" href="css/desktop.css">
+	  <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+	  <link rel="stylesheet" href="./css/desktop.css">
+
   </head>
   <body>
     <snap-common-scripts></snap-common-scripts>
 	<snap-navbar></snap-navbar>
 	<div   ng-controller="desktopAppCtrl">
-	 <!-- Main hero unit for a primary marketing message or call to action 
-      <div   ng-controller="desktopAppCtrl"  class="hero-unit" style='padding-right:10px;
-	padding-left:10px ; text-align: center;'>    
-        <h2>SNAP Desktop</h2>
-		<p>Whohohooo Snap Desktop Mode :)</p>
-
-          <input type="text" ng-model="search" class="search-query" placeholder="Search">
-          <table>
-              <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Picture</th>
-                  <th>icon</th>
-                  <th>citation</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="socialNetwork in socialNetworks | filter:search | orderBy:'name'">
-                  <td>{{socialNetwork.name}}</td>
-                  <td>{{socialNetwork.picture}}</td>
-                  <td>{{socialNetwork.icon}}</td>
-                  <td>{{socialNetwork.citation}}</td>
-              </tr>
-              </tbody>
-          </table>
-
-	  </div>-->
-	<div id="sideBar">
-		<input type="text" ng-model="search" class="search-query" placeholder="Search">
-	</div>
-	<div id="mainPage">
-		<tabs>
-			<pane title="All">
-			</pane>
-			<pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
-				<div ng-controller="desktopAppCtrlMsg">
-					<div class="msgContainer" ng-repeat="message in messages | filter:search">
-						<!-- Image du profil -->
-						<!-- Nom du profil -->
-						<div class="msgContent">
-							{{message.msgContent}}
-						</div>
-						<!-- Lien message original -->
-						<a href="dd">Détails</a>
-						<!-- Afficher bouton retweet -->
-						<!-- Afficher bouton j'aime -->
-						<!-- Afficher bouton partager -->
-					</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="well sidebar-nav sidebar-nav-fixed">
+					<input type="text" ng-model="search" class="search-query" placeholder="Search">
+				</div><!--/.well -->
+			</div><!--/span-->
+			<div class="span9">
+				<div class="row-fluid">
+					<tabs class="fix-tabs">
+						<pane title="All">
+						</pane>
+						<pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
+							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
+								<div class="msgContainer" ng-repeat="message in messages | filter:search">
+									<!-- Image du profil -->
+									<!-- Nom du profil -->
+									<div class="msgContent">
+										{{message.msgContent}}
+									</div>
+									<!-- Lien message original -->
+									<a href="dd">Détails</a>
+									<!-- Afficher bouton retweet -->
+									<!-- Afficher bouton j'aime -->
+									<!-- Afficher bouton partager -->
+								</div>
+							</div>
+						</pane>
 				</div>
-			</pane>
-		</tabs>
-		<div>
+			</div>
+		</div>
 	</div>
   </body>	
 </html>
