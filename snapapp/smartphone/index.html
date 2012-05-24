@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AngularJS Project for School :)">
     <meta name="author" content="SNAP Project">
-
     <!-- import jQuery
    <script src="/snapapp/common/lib/jquery/jquery-1.7.2.min.js"></script>
 
@@ -14,39 +13,83 @@
    <script src="/snapapp/common/js/util/importJS.js"></script>-->
     <script src="/snapapp/common/js/load.js"></script>
     <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
+	<script src="/snapapp/smartphone/js/jquery-mobile-angular-adapter-standalone-1.0.7-rc1.js" type="text-javascript"></script>
     <!-- import Css libs and files-->
     <script src="/snapapp/common/js/util/importCSS.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.0.css">
+	<link rel="stylesheet"  type="text/css" href="css/jqm-icon-pack-1.1.1-original.css" />
 </head>
 <body>
 <snap-common-scripts></snap-common-scripts>
 <snap-navbar></snap-navbar>
 
 <!-- Main hero unit for a primary marketing message or call to action -->
-<div   ng-controller="smartphoneAppCtrl"  class="hero-unit" style='padding-right:10px;
-	padding-left:10px ; text-align: center;'>
-    <h2>SNAP Smartphone</h2>
-    <p>Whohohooo Snap Smartphone Mode :)</p>
+<body ng-controller="smartphoneAppCtrl">
+<div id="main" data-role="page">
+    <div data-role="header">
+        <h1>Header</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label>Text</label>
+            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
+			<h4>Hello {{yourName}} !</h4>
+        </div>
+		
+	<div data-role="content">
+        <div data-role="fieldcontain">
+            <select name="form.type">
+                <option>Select Type</option>
+                <option value="1">Type One</option>
+                <option value="2">Type Two</option>
+            </select>
+        </div>
+	</div>
+	 <div data-role="fieldcontain">
+            <label>Number of Things</label>
+            <input type="range" name="form.num_things" min="0" max="10" value="0"/>
+        </div>
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>Which of the following apply?</legend>
+                <input type="radio" name="form.options" id="form.options_a" value="a"/>
+                <label for="form.options_a">A</label>
+                <input type="radio" name="form.options" id="form.options_b" value="b"/>
+                <label for="form.options_b">B</label>
+                <input type="radio" name="form.options" id="form.options_c" value="c"/>
+                <label for="form.options_c">C</label>
+                <input type="radio" name="form.options" id="form.options_d" value="d"/>
+                <label for="form.options_d">D</label>
+            </fieldset>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="gusta">Me Gusta?</label>
+            <select name="form.gusta" data-role="slider">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+    </div>
+	<div data-role="footer"> 
+		<div data-role="navbar">
+			<ul> 
+				<li> <a href="#" data-icon="arrow-l"> </a></li>
+				<li> <a href="#" data-icon="home"> </a></li>
+				<li> <a href="#" data-icon="email"> </a></li>
+				<li> <a href="#" data-icon="search"> </a></li>
+				<li> <a href="#" data-icon="arrow-r"> </a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-    <input type="text" ng-model="search" class="search-query" placeholder="Search">
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Picture</th>
-            <th>icon</th>
-            <th>citation</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="socialNetwork in socialNetworks | filter:search | orderBy:'name'">
-            <td>{{socialNetwork.name}}</td>
-            <td>{{socialNetwork.picture}}</td>
-            <td>{{socialNetwork.icon}}</td>
-            <td>{{socialNetwork.citation}}</td>
-        </tr>
-        </tbody>
-    </table>
+</body>
+
+</body>
+</html>
 
 </div>
 </body>
 </html>
+
