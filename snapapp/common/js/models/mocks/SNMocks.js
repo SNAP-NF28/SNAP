@@ -1,5 +1,5 @@
 angular.module('SNMock',['types']).
-    factory('SNMock', function(Message) {
+    factory('SNMock', function(Message,Profile) {
         var SNMock = function(){
             //init
             this.name = "Mock";
