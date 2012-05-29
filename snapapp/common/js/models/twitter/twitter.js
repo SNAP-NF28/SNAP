@@ -1,5 +1,5 @@
 angular.module('twitter',['SNMock']).
-    factory('Twitter', function(SNMock) {
+    factory('Twitter', function(SNMock,Message,Profile) {
 
         /**
          * Class Description
@@ -22,18 +22,29 @@ angular.module('twitter',['SNMock']).
          */
 
         var Twitter = function(){
-            var twitter =  new SNMock();
+			SNMock.apply(this);
             //list attributes
-            twitter.name = "Twitter";
-			twitter.displayName = "Twitter";
-            twitter.picture = "TwitPic";
-            twitter.icon = 'twittIcon';
-            return twitter;
+            this.name = "Twitter";
+			this.displayName = "Twitter";
+            this.picture = "TwitPic";
+            this.icon = 'twittIcon';
+            return this;
         }
 
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }
+		
+		Twitter.prototype.getLastNMessages = function(n){
+			var listMessages=new Array();
+			for (i=0; i<n; i++) {
+				listMessages[i]=new Message();
+				listMessages[i].msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
+				listMessages[i].originalLink = "http://twitter.com/?id=000000";
+			}
+			return listMessages;
+		}
+		
         return Twitter;
     });
 

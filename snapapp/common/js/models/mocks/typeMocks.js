@@ -32,3 +32,5 @@ factory('MessageMock', function() {
 
         return SearchResultMock;
     });
+
+	

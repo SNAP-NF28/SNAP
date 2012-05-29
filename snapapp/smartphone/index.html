@@ -36,17 +36,10 @@
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
             <h4>Hello {{yourName}} !</h4>
-
-            <div class="testPages">
-                <!-- Nom du profil -->
-                <div class="pageContent">
-				
-                </div>
-            </div>
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("homePage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -63,14 +56,30 @@
         <h1>Header FB</h1>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain">
-            <label>Text</label>
+        <div data-role="fieldcontain" ng-controller="smartphoneFbContentCtrl">
+             <!--<label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>-->
+			Social network name (gotten with the method getSNName) : {{socialNetwork.getSNName()}}
+            <div id="msgFb" ng-repeat="message in messages">
+                <!-- Image du profil -->
+                <!--<img class="msgImgProfile" src="{{getImageProfile(message)}}" />-->
+                <!--<div class="cadreMsg">
+                                        <!-- Nom du profil -->
+                <!--<b class="fullname">{{getNameProfile(message)}}</b>-->
+				{{socialNetwork}}
+                <div class="msgContent">
+                    {{message.msgContent}}
+                    <!--{{message}}-->
+                    <br />
+                </div>
+                <!-- Lien message original -->
+
+            </div>
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("fbPage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -87,14 +96,29 @@
         <h1>Header Twitter</h1>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain">
-            <label>Text</label>
+        <div data-role="fieldcontain" ng-controller="smartphoneTwContentCtrl">
+ <!--<label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>-->
+            <div id="msgTw" ng-repeat="message in messages">
+                <!-- Image du profil -->
+                <!--<img class="msgImgProfile" src="{{getImageProfile(message)}}" />-->
+                <!--<div class="cadreMsg">
+                                        <!-- Nom du profil -->
+                <!--<b class="fullname">{{getNameProfile(message)}}</b>-->
+				{{socialNetwork}}
+                <div class="msgContent">
+                    {{message.msgContent}}
+                    <!--{{message}}-->
+                    <br />
+                </div>
+                <!-- Lien message original -->
+
+            </div>
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("twPage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -111,14 +135,29 @@
         <h1>Header Google+</h1>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain">
-            <label>Text</label>
+        <div data-role="fieldcontain" ng-controller="smartphoneGpContentCtrl">
+ <!--<label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>-->
+            <div id="msgGp" ng-repeat="message in messages">
+                <!-- Image du profil -->
+                <!--<img class="msgImgProfile" src="{{getImageProfile(message)}}" />-->
+                <!--<div class="cadreMsg">
+                                        <!-- Nom du profil -->
+                <!--<b class="fullname">{{getNameProfile(message)}}</b>-->
+				{{socialNetwork}}
+                <div class="msgContent">
+                    {{message.msgContent}}
+                    <!--{{message}}-->
+                    <br />
+                </div>
+                <!-- Lien message original -->
+
+            </div>
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("gpPage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -142,7 +181,7 @@
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("srchPage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -167,8 +206,8 @@
 
         </div>
     </div>
-	<div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("usrPage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -192,7 +231,7 @@
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("optionsPage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
