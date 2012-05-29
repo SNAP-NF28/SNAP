@@ -13,13 +13,13 @@
    <script src="/snapapp/common/js/util/importJS.js"></script>-->
     <script src="/snapapp/common/js/load.js"></script>
     <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
-	<!-- FIXME la lib adapter n'est pas chargee correctement si elle est dans le script load.js -->
-	<script src="/snapapp/smartphone/js/jquery-mobile-angular-adapter-standalone-1.0.7-rc1.js" type="text-javascript"></script>
+    <!-- FIXME la lib adapter n'est pas chargee correctement si elle est dans le script load.js -->
+    <script src="/snapapp/smartphone/js/jquery-mobile-angular-adapter-standalone-1.0.7-rc1.js" type="text-javascript"></script>
     <!-- import Css libs and files-->
     <script src="/snapapp/common/js/util/importCSS.js"></script>
-    
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.0.css">
-	<link rel="stylesheet"  type="text/css" href="css/jqm-icon-pack-1.1.1-original.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.0.css">
+    <link rel="stylesheet"  type="text/css" href="css/jqm-icon-pack-1.1.1-original.css" />
 </head>
 <body>
 <snap-common-scripts></snap-common-scripts>
@@ -35,27 +35,27 @@
         <div data-role="fieldcontain">
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-			<h4>Hello {{yourName}} !</h4>
-			
-					<div class="testPages" ng-repeat="page in pageOrder">
-						<!-- Nom du profil -->
-						<div class="pageContent">
-							{{page}}
-						</div>
-					</div>
+            <h4>Hello {{yourName}} !</h4>
+
+            <div class="testPages">
+                <!-- Nom du profil -->
+                <div class="pageContent">
+				
+                </div>
+            </div>
         </div>
-	</div>	
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage(getPrevPage())> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("homePage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("homePage")}}")> </a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div id="fbPage" data-role="page">
@@ -66,20 +66,20 @@
         <div data-role="fieldcontain">
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-			<h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>
         </div>
-	</div>	
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l"> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("fbPage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("fbPage")}}")> </a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div id="twPage" data-role="page">
@@ -90,20 +90,20 @@
         <div data-role="fieldcontain">
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-			<h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>
         </div>
-	</div>	
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l"> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("twPage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("twPage")}}")> </a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div id="gpPage" data-role="page">
@@ -114,44 +114,20 @@
         <div data-role="fieldcontain">
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-			<h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>
         </div>
-	</div>	
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l"> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<div id="optionsPage" data-role="page">
-    <div data-role="header" data-position="fixed">
-        <h1>Header Settings</h1>
     </div>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-            <label>Text</label>
-            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-			<h4>Hello {{yourName}} !</h4>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("gpPage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("gpPage")}}")> </a></li>
+            </ul>
         </div>
-	</div>	
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l"> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
+    </div>
 </div>
 
 <div id="srchPage" data-role="page">
@@ -162,20 +138,20 @@
         <div data-role="fieldcontain">
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-			<h4>Hello {{yourName}} !</h4>
+            <h4>Hello {{yourName}} !</h4>
         </div>
-	</div>	
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l"> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("srchPage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("srchPage")}}")> </a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div id="usrPage" data-role="page">
@@ -186,23 +162,49 @@
         <div data-role="fieldcontain">
             <label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-									<!-- Image du profil -->
-			<h4>Hello {{yourName}} !</h4>
-			
+            <!-- Image du profil -->
+            <h4>Hello {{yourName}} !</h4>
+
         </div>
-	</div>
-	<div data-role="footer" data-theme="c" data-position="fixed"> 
-		<div data-role="navbar">
-			<ul> 
-				<li> <a href="#" data-icon="arrow-l"> </a></li>
-				<li> <a href="#homePage" data-icon="home"> </a></li>
-				<li> <a href="#" data-icon="email"> </a></li>
-				<li> <a href="#srchPage" data-icon="search"> </a></li>
-				<li> <a href="#" data-icon="arrow-r"> </a></li>
-			</ul>
-		</div>
-	</div>
+    </div>
+	<div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("usrPage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("usrPage")}}")> </a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+<div id="optionsPage" data-role="page">
+    <div data-role="header" data-position="fixed">
+        <h1>Header Settings</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label>Text</label>
+            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
+            <h4>Hello {{yourName}} !</h4>
+        </div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneAppCtrlMsg">
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("optionsPage")}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("optionsPage")}}")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 
 </div>
 
