@@ -44,6 +44,29 @@ angular.module('twitter',['SNMock']).
 			}
 			return listMessages;
 		}
+
+        Twitter.prototype.connect = function(){
+
+            //FIXME: Set proper callback url
+            //twttr.anywhere.config({ callbackURL: "http://www.yoursite.com/anywhere-complete" });
+
+            if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
+                this.connectAlreadyCalled = true;
+                twttr.anywhere(function (T) {
+                T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
+                  authComplete: function(user) {
+                    // triggered when auth completed successfully
+                    console.log("You rock baby");
+                  },
+                  signOut: function() {
+                    // triggered when user logs out
+                    console.log("You suck baby");
+                  }
+                });
+              });
+            }
+            return ; //Must return connection object?
+        }
 		
         return Twitter;
     });

@@ -56,6 +56,7 @@
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
+								<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
 									<img class="msgImgProfile" src="{{getImageProfile(message)}}" />

@@ -29,12 +29,13 @@
 
     <div id="fb-root"></div>
 
-    <p> Test Facebook connect<br/>
+<!--     <p> Test Facebook connect<br/>
         <div class="fb-login-button" id="connexion">Login with Facebook</div><br/>
         <div id="userName" style="display: none"></div><br/>
 
         <button id="byebye" style="border-right-color: #000000;">Logout</button>
     </p>
+ -->
 
     <input type="text" ng-model="search" class="search-query" placeholder="Search">
     <table>
@@ -44,6 +45,7 @@
             <th>Picture</th>
             <th>icon</th>
             <th>citation</th>
+            <th>connect</th>
         </tr>
         </thead>
         <tbody>
@@ -52,6 +54,8 @@
             <td>{{socialNetwork.picture}}</td>
             <td>{{socialNetwork.icon}}</td>
             <td>{{socialNetwork.citation}}</td>
+            <td>{{socialNetwork.name}} connect: </td>
+            <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
         </tr>
         </tbody>
     </table>
