@@ -46,6 +46,7 @@ angular.module('twitter',['SNMock']).
 				listMessages[i]=new Message();
 				listMessages[i].msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
 				listMessages[i].originalLink = "http://twitter.com/?id=000000";
+				msg.date = 300; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
 			}
 			return listMessages;
 		}
