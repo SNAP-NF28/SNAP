@@ -65,42 +65,51 @@ function desktopAppCtrlMsg($scope) {
 	}
 	
 	$scope.cutMsg = function(message, length){
-	if(message.length>length) return message.substring(0,140) + "....";
-	return message;
-}
+		if(message.length>length) return message.substring(0,140) + "....";
+		return message;
+	}
 }
 
 
 function desktopAppCtrlAll($scope) {
- 	
+
+ 	var capsuleMessage = function(RS,Mess){
+        this.reseau=RS;
+		this.message=Mess;
+    }
+	
 	getMsgAll = function(nb){
-		var listMess =[];
-		listMess.push($scope.socialNetworks[0].getLastNMessages(nb));
-		/*for(i=0;i<$scope.socialNetworks.length;i++){
-			listMess.push($scope.socialNetworks[i].getLastNMessages(nb));
-		}*/
+		var temp;
+		var listMess = [];
+		for(j=0;j<$scope.socialNetworks.length;j++){
+			temp = $scope.socialNetworks[j].getLastNMessages(nb);
+			for(i=0;i<temp.length;i++){
+				var temp2 = new capsuleMessage(j,temp[i])
+				listMess.push(temp2);
+			}
+		}
 		return listMess;
+		console.log(listMess);
 	}
 	
 	$scope.messages = getMsgAll(20);
 	
-	/*$scope.getImageProfile = function(message) {
-		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+	$scope.getImageProfile = function(capsuleMessage) {
+		var img = $scope.socialNetworks[capsuleMessage.reseau].getUserProfile(capsuleMessage.message.socialNetworkId).imageProfileURL;
 		if (img) return img;
 		return "./img/defaultProfile.png";
 	}
 	
-	$scope.getNameProfile = function(message) {
-		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	$scope.getNameProfile = function(capsuleMessage) {
+		return $scope.socialNetworks[capsuleMessage.reseau].getUserProfile(capsuleMessage.message.socialNetworkId).name;
 	}
 	
-	$scope.cutMsg = function(message, length){
-	if(message.length>length) return message.substring(0,140) + "....";
-	return message;
-	}*/
+	$scope.cutMsg = function(capsuleMessage, length){
+		if(capsuleMessage.message.msgContent.length>length) return capsuleMessage.message.msgContent.substring(0,140) + "....";
+		return capsuleMessage.message.msgContent;
+	}
+	
 }
-
-
 function charCounter(target, max, idchamp, btn){ 
 	StrLen = target.value.length; 
 	CharsLeft = 140-StrLen;

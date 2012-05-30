@@ -55,35 +55,35 @@
 									<!-- Image du profil -->
 									<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
 									<div class="cadreMsg">
-									<!-- Nom du profil -->
-									<b class="fullname">{{getNameProfile(message)}}</b>
-									<div class="msgContent">
-										{{cutMsg(message.msgContent,"140")}}
-									</div>
-									<!-- MODAL -->
-									<a data-toggle="modal" href="#detailsAll">Détails</a>	
-										<div id="detailsAll" class="modal hide fade">
-										  <div class="modal-header">
-											<h3>Détails du message</h3>
-										  </div>
-										  <div class="modal-body">
-											<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
-											<div class="cadreMsg">
-											<b class="fullname">{{getNameProfile(message)}}</b>
-												<div class="msgContent">
-													{{message.msgContent}}
+										<!-- Nom du profil -->
+										<b class="fullname">{{getNameProfile(message)}}</b>
+										<div class="msgContent">
+											{{cutMsg(message,"140")}}
+										</div>
+										<!-- MODAL -->
+										<a data-toggle="modal" href="#detailsAll">Détails</a>	
+											<div id="detailsAll" class="modal hide fade">
+											  <div class="modal-header">
+												<h3>Détails du message</h3>
+											  </div>
+											  <div class="modal-body">
+												<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+												<div class="cadreMsg">
+												<b class="fullname">{{getNameProfile(message)}}</b>
+													<div class="msgContent">
+														{{message.message.msgContent}}
+													</div>
+												</div>
+												</div>
+												<div class="modal-footer">
+													<a href="#" class="btn" data-dismiss="modal" >Close</a>										
 												</div>
 											</div>
-											</div>
-											<div class="modal-footer">
-												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
-											</div>
-										</div>
-									<!-- FINMODAL -->
-									<!-- Afficher bouton retweet -->
-									<!-- Afficher bouton j'aime -->
-									<!-- Afficher bouton partager -->
-									<br class="clear" />
+										<!-- FINMODAL -->
+										<!-- Afficher bouton retweet -->
+										<!-- Afficher bouton j'aime -->
+										<!-- Afficher bouton partager -->
+										<br class="clear" />
 									</div>
 								</div>
 							</div>
