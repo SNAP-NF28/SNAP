@@ -18,8 +18,17 @@
 	  <!--<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">-->
 	  <link rel="stylesheet" href="./css/desktop.css">
 
+	  <script type="text/javascript">
+		function resize(){ 
+			var htmlheight = document.body.parentNode.scrollHeight; 
+			var windowheight = window.innerHeight; 
+			for(var i = 0; i < var frame = document.getElementsByName("pane").length; i++) {
+				document.getElementsByTagName("p")[i].style.max-height = windowheight-200 + "px";;
+			}
+		} 
+	  </script>
   </head>
-  <body>
+  <body onload="resize()" onresize="resize()">
     <snap-common-scripts></snap-common-scripts>
 	<snap-navbar></snap-navbar>
 	<div   ng-controller="desktopAppCtrl">
@@ -27,15 +36,25 @@
 		<div class="row-fluid">
 			<div class="span3">
 				<div class="well sidebar-nav sidebar-nav-fixed">
-					<input type="text" ng-model="search" class="search-query" placeholder="Search">
+					<form ng-submit="envoiMEssage()">
+						<textarea class="newMsg" placeholder="Nouveau message" 
+						onfocus="charCounter(this,140,'msgCounter','envoiMsg')" 
+						onkeydown="charCounter(this,140,'msgCounter','envoiMsg')" 
+						onkeyup="charCounter(this,140,'msgCounter','envoiMsg')" 
+						onBlur="charCounter(this,140,'msgCounter','envoiMsg')"></textarea>
+						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;">
+						<h1><small><div id="msgCounter">0</div></small></h1>
+					</form>
+					<input type="text" ng-model="search" class="search-query" placeholder="Rechercher">
+					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
 			<div class="span9">
 				<div class="row-fluid">
 					<tabs class="fix-tabs">
-						<pane title="All">
+						<pane class="pane" title="All">
 						</pane>
-						<pane ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
+						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->

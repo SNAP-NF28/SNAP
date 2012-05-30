@@ -64,3 +64,13 @@ function desktopAppCtrlMsg($scope) {
 	}
 }
 
+function charCounter(target, max, idchamp, btn){ 
+	StrLen = target.value.length; 
+	CharsLeft = 140-StrLen;
+	document.getElementById(btn).disabled="";
+	if (StrLen > max ) 
+	{ 
+		document.getElementById(btn).disabled="disabled";
+	} 
+    document.getElementById(idchamp).innerHTML = CharsLeft;
+} 
