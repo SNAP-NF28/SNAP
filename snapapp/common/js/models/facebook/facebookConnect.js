@@ -5,7 +5,7 @@
  * Time: 00:26
  * To change this template use File | Settings | File Templates.
  */
-
+/*
 $(document).ready(function() {
 
     window.fbAsyncInit = function() {
@@ -38,17 +38,6 @@ $(document).ready(function() {
 
     }
 
-    var js, id = 'facebook-jssdk';
-    if (document.getElementById(id)) {return;}
-    js = document.createElement('script');
-    js.id = id;
-    js.async = true;
-    js.src = "//connect.facebook.net/en_US/all.js";
-    document.getElementsByTagName('head')[0].appendChild(js);
-
-
-
-
 });
 
 function getListOfMessages() {
@@ -62,3 +51,4 @@ function getListOfMessages() {
     });
     return listOfMessageFb;
 };
+*/

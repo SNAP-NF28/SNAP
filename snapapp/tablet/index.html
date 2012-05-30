@@ -26,8 +26,8 @@
 	padding-left:10px ; text-align: center;'>
     <h2>SNAP Tablet</h2>
     <p>Whohohooo Snap Tablet Mode :)</p>
-
     <div id="fb-root"></div>
+
 
 <!--     <p> Test Facebook connect<br/>
         <div class="fb-login-button" id="connexion">Login with Facebook</div><br/>
@@ -52,10 +52,10 @@
         <tr ng-repeat="socialNetwork in socialNetworks | filter:search | orderBy:'name'">
             <td>{{socialNetwork.name}}</td>
             <td>{{socialNetwork.picture}}</td>
-            <td>{{socialNetwork.icon}}</td>
+            <td><img src="{{socialNetwork.icon}}"></td>
             <td>{{socialNetwork.citation}}</td>
             <td>{{socialNetwork.name}} connect: </td>
-            <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+            <td><span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span></td>
         </tr>
         </tbody>
     </table>
