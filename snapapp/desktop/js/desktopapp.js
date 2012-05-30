@@ -72,9 +72,19 @@ function desktopAppCtrlMsg($scope) {
 
 
 function desktopAppCtrlAll($scope) {
-    /*$scope.messages = $scope.socialNetwork.getLastNMessages(20);
+ 	
+	getMsgAll = function(nb){
+		var listMess =[];
+		listMess.push($scope.socialNetworks[0].getLastNMessages(nb));
+		/*for(i=0;i<$scope.socialNetworks.length;i++){
+			listMess.push($scope.socialNetworks[i].getLastNMessages(nb));
+		}*/
+		return listMess;
+	}
 	
-	$scope.getImageProfile = function(message) {
+	$scope.messages = getMsgAll(20);
+	
+	/*$scope.getImageProfile = function(message) {
 		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
 		if (img) return img;
 		return "./img/defaultProfile.png";
@@ -110,5 +120,4 @@ function resize(){
 		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-105 + "px";
 		else frame[i].style.maxHeight = windowheight-305 + "px";
 	}
-	console.log("test");
 } 
