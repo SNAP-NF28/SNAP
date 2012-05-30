@@ -21,16 +21,21 @@ angular.module('twitter',['SNMock']).
          *
          */
 
+		 /** Heritage des attributs de la classe SNMock **/
         var Twitter = function(){
 			SNMock.apply(this);
             //list attributes
             this.name = "Twitter";
 			this.displayName = "Twitter";
             this.picture = "TwitPic";
-            this.icon = 'twittIcon';
+            this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
             return this;
         }
-
+		
+		/** Heritage des methodes de la classe SNMock **/
+		Twitter.prototype = new SNMock();
+		
+		/** Surcharge des methodes de la classe SNMock **/
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }

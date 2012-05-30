@@ -59,10 +59,37 @@ function desktopAppCtrlMsg($scope) {
 		if (img) return img;
 		return "./img/defaultProfile.png";
 	}
+	
 	$scope.getNameProfile = function(message) {
 		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
+	
+	$scope.cutMsg = function(message, length){
+	if(message.length>length) return message.substring(0,140) + "....";
+	return message;
 }
+}
+
+
+function desktopAppCtrlAll($scope) {
+    /*$scope.messages = $scope.socialNetwork.getLastNMessages(20);
+	
+	$scope.getImageProfile = function(message) {
+		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+		if (img) return img;
+		return "./img/defaultProfile.png";
+	}
+	
+	$scope.getNameProfile = function(message) {
+		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	}
+	
+	$scope.cutMsg = function(message, length){
+	if(message.length>length) return message.substring(0,140) + "....";
+	return message;
+	}*/
+}
+
 
 function charCounter(target, max, idchamp, btn){ 
 	StrLen = target.value.length; 
@@ -73,4 +100,15 @@ function charCounter(target, max, idchamp, btn){
 		document.getElementById(btn).disabled="disabled";
 	} 
     document.getElementById(idchamp).innerHTML = CharsLeft;
+} 
+
+	
+function resize(){ 
+	var windowheight = window.innerHeight; 
+	var frame = document.getElementsByClassName("pane")
+	for(var i = 0; i < frame.length; i++) {
+		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-105 + "px";
+		else frame[i].style.maxHeight = windowheight-305 + "px";
+	}
+	console.log("test");
 } 

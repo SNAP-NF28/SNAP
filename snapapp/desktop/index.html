@@ -18,20 +18,17 @@
 	  <!--<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">-->
 	  <link rel="stylesheet" href="./css/desktop.css">
 
-	  <script type="text/javascript">
-		function resize(){ 
-			var htmlheight = document.body.parentNode.scrollHeight; 
-			var windowheight = window.innerHeight; 
-			for(var i = 0; i < var frame = document.getElementsByName("pane").length; i++) {
-				document.getElementsByTagName("p")[i].style.max-height = windowheight-200 + "px";;
-			}
-		} 
-	  </script>
   </head>
   <body onload="resize()" onresize="resize()">
     <snap-common-scripts></snap-common-scripts>
-	<snap-navbar></snap-navbar>
-	<div   ng-controller="desktopAppCtrl">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="#">SNAP</a>
+			</div>
+		</div>
+	</div>
+	<div class="mainPage" ng-controller="desktopAppCtrl">
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span3">
@@ -43,7 +40,7 @@
 						onkeyup="charCounter(this,140,'msgCounter','envoiMsg')" 
 						onBlur="charCounter(this,140,'msgCounter','envoiMsg')"></textarea>
 						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;">
-						<h1><small><div id="msgCounter">0</div></small></h1>
+						<h1><small><div id="msgCounter"></div></small></h1>
 					</form>
 					<input type="text" ng-model="search" class="search-query" placeholder="Rechercher">
 					</ul>
@@ -53,6 +50,43 @@
 				<div class="row-fluid">
 					<tabs class="fix-tabs">
 						<pane class="pane" title="All">
+							<div class="scrollable-pane" ng-controller="desktopAppCtrlAll">
+								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
+									<!-- Image du profil 
+									<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+									<div class="cadreMsg">
+									<!-- Nom du profil 
+									<b class="fullname">{{getNameProfile(message)}}</b>
+									<div class="msgContent">
+										{{cutMsg(message.msgContent,"140")}}
+									</div>
+									<!-- MODAL 
+									<a data-toggle="modal" href="#details{{socialNetwork.name}}">Détails</a>	
+										<div id="details{{socialNetwork.name}}" class="modal hide fade">
+										  <div class="modal-header">
+											<h3>Détails du message</h3>
+										  </div>
+										  <div class="modal-body">
+											<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+											<div class="cadreMsg">
+											<b class="fullname">{{getNameProfile(message)}}</b>
+												<div class="msgContent">
+													{{message.msgContent}}
+												</div>
+											</div>
+											</div>
+											<div class="modal-footer">
+												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+											</div>
+										</div>
+									<!-- FINMODAL 
+									<!-- Afficher bouton retweet 
+									<!-- Afficher bouton j'aime 
+									<!-- Afficher bouton partager 
+									<br class="clear" />
+									</div>-->
+								</div>
+							</div>
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
@@ -64,32 +98,37 @@
 									<!-- Nom du profil -->
 									<b class="fullname">{{getNameProfile(message)}}</b>
 									<div class="msgContent">
-										{{message.msgContent}}
+										{{cutMsg(message.msgContent,"140")}}
 									</div>
-									<!-- Lien message original -->
-									<a href="" >Détails</a>	
-									<button data-trigger="BS.showPopup" data-bs-showpopup-target="!body #demoPopup" class="btn danger">Launch Modal</button>
-										<div data-behavior="BS.Popup" class="modal fade" id="demoPopup">
+									<!-- MODAL -->
+									<a data-toggle="modal" href="#details{{socialNetwork.name}}">Détails</a>	
+										<div id="details{{socialNetwork.name}}" class="modal hide fade">
 										  <div class="modal-header">
-											<a href="#" class="close">×</a>
-											<h3>Modal Heading</h3>
+											<h3>Détails du message</h3>
 										  </div>
 										  <div class="modal-body">
-											<p>One fine body...</p>
-										  </div>
-										  <div class="modal-footer">
-											<a href="#" class="btn primary dismiss stopEvent">Primary</a>
-											<a href="#" class="btn secondary dismiss stopEvent">Secondary</a>
-										  </div>
+											<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+											<div class="cadreMsg">
+											<b class="fullname">{{getNameProfile(message)}}</b>
+												<div class="msgContent">
+													{{message.msgContent}}
+												</div>
+											</div>
+											</div>
+											<div class="modal-footer">
+												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+											</div>
 										</div>
+									<!-- FINMODAL -->
 									<!-- Afficher bouton retweet -->
 									<!-- Afficher bouton j'aime -->
 									<!-- Afficher bouton partager -->
-									</div>
 									<br class="clear" />
+									</div>
 								</div>
 							</div>
-						</pane>
+						</pane>	
+					</tabs>
 				</div>
 			</div>
 		</div>

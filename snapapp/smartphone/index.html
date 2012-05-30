@@ -18,8 +18,10 @@
     <!-- import Css libs and files-->
     <script src="/snapapp/common/js/util/importCSS.js"></script>
 
+	<link rel="stylesheet"  type="text/css" href="css/smartphone.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.0.css">
     <link rel="stylesheet"  type="text/css" href="css/jqm-icon-pack-1.1.1-original.css" />
+	
 </head>
 <body>
 <snap-common-scripts></snap-common-scripts>
@@ -51,33 +53,33 @@
     </div>
 </div>
 
-<div id="fbPage" data-role="page">
+<div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
     <div data-role="header" data-position="fixed">
-        <h1>Header FB</h1>
+        <img  class="logo" src="{{getIcon}}"/>
+		<h1>Header FB</h1>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain" ng-controller="smartphoneFbContentCtrl">
-             <!--<label>Text</label>
-            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <h4>Hello {{yourName}} !</h4>-->
-			Social network name (gotten with the method getSNName) : {{socialNetwork.getSNName()}}
-            <div id="msgFb" ng-repeat="message in messages">
-                <!-- Image du profil -->
-                <!--<img class="msgImgProfile" src="{{getImageProfile(message)}}" />-->
-                <!--<div class="cadreMsg">
-                                        <!-- Nom du profil -->
-                <!--<b class="fullname">{{getNameProfile(message)}}</b>-->
-				{{socialNetwork}}
-                <div class="msgContent">
-                    {{message.msgContent}}
-                    <!--{{message}}-->
-                    <br />
-                </div>
-                <!-- Lien message original -->
+        <div data-role="fieldcontain">
 
+            <div class="msgContent well" ng-repeat="message in messages">
+				
+				<div class="ui-block-a">
+					<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+				</div>
+				<div class="ui-block-b">
+					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
+					<!-- Message content -->
+					{{getNFirstCharacters(message, 140)}}
+				</div>
+				<div class="msgDetails">
+				<!-- Lien message original -->
+				</div>
+				
+				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+				<br class="clear"/>
             </div>
-        </div>
-    </div>
+			</div>
+		</div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
@@ -91,12 +93,13 @@
     </div>
 </div>
 
-<div id="twPage" data-role="page">
+<div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl">
     <div data-role="header" data-position="fixed">
+        <img  class="logo" src="{{getIcon}}" />
         <h1>Header Twitter</h1>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain" ng-controller="smartphoneTwContentCtrl">
+        <div data-role="fieldcontain">
  <!--<label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
             <h4>Hello {{yourName}} !</h4>-->
@@ -106,10 +109,8 @@
                 <!--<div class="cadreMsg">
                                         <!-- Nom du profil -->
                 <!--<b class="fullname">{{getNameProfile(message)}}</b>-->
-				{{socialNetwork}}
                 <div class="msgContent">
-                    {{message.msgContent}}
-                    <!--{{message}}-->
+					{{message.msgContent}}
                     <br />
                 </div>
                 <!-- Lien message original -->
@@ -130,13 +131,14 @@
     </div>
 </div>
 
-<div id="gpPage" data-role="page">
+<div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl">
     <div data-role="header" data-position="fixed">
+        <img  class="logo" src="{{getIcon}}" />
         <h1>Header Google+</h1>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain" ng-controller="smartphoneGpContentCtrl">
- <!--<label>Text</label>
+        <div data-role="fieldcontain">
+			<!--<label>Text</label>
             <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
             <h4>Hello {{yourName}} !</h4>-->
             <div id="msgGp" ng-repeat="message in messages">
@@ -145,7 +147,7 @@
                 <!--<div class="cadreMsg">
                                         <!-- Nom du profil -->
                 <!--<b class="fullname">{{getNameProfile(message)}}</b>-->
-				{{socialNetwork}}
+
                 <div class="msgContent">
                     {{message.msgContent}}
                     <!--{{message}}-->
@@ -221,7 +223,7 @@
 
 <div id="optionsPage" data-role="page">
     <div data-role="header" data-position="fixed">
-        <h1>Header Settings</h1>
+        <h1> Settings</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
