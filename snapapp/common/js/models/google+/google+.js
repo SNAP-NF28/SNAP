@@ -31,7 +31,8 @@ angular.module('googleplus',['SNMock']).
         }
             //init
 
-
+		Googleplus.prototype = new SNMock();
+			
         Googleplus.prototype.getSNName = function(){
            return "Googleplus";
         }

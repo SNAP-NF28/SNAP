@@ -31,6 +31,8 @@ angular.module('twitter',['SNMock']).
             return this;
         }
 
+		Twitter.prototype = new SNMock();
+		
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }

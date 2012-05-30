@@ -30,6 +30,8 @@ angular.module('facebook',['SNMock']).
             return this;
         }
 		
+		Facebook.prototype = new SNMock();
+		
         //List methods
         Facebook.prototype.getSNName = function(){
             return "facebook";
