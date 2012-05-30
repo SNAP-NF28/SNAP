@@ -63,10 +63,10 @@
 
             <div class="msgContent well" ng-repeat="message in messages">
 				
-				<div class="ui-block-a">
+				<div class="block">
 					<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
 				</div>
-				<div class="ui-block-b">
+				<div class="block">
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
 					<!-- Message content -->
 					{{getNFirstCharacters(message, 140)}}
