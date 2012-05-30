@@ -45,7 +45,7 @@ angular.module('facebook',['SNMock']).
 				var msg = new Message();
 				msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
 				msg.originalLink = "http://www.facebook.com/";
-				msg.date = 100; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
+				msg.msgDate = 100; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
 				listMessages[i] = msg;
 			}
 			return listMessages;
