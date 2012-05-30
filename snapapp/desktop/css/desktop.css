@@ -17,6 +17,11 @@
         position:static;
         width:auto;
     }
+	
+	.fix-tabs{
+	position:fixed;	
+	width:100%;
+	}
 }
 .search-query{
 	width:88%;
@@ -42,6 +47,7 @@
 
 .fix-tabs{
 	position:fixed;	
+	width:73.5%;
 }
 
 .pane{
@@ -54,14 +60,29 @@
 .msgImgProfile{
 	float : left;
 	width:60px;
+	margin : 10px 10px 10px 10px;
 }
 
 .cadreMsg{
-	width : 90%;
-	float : left;
 	margin-left : 15px;
 }
 
 .clear{
 	clear: both;
+}
+
+@media (max-width: 767px) {
+    .sidebar-nav-fixed {
+        position:static;
+        width:auto;
+    }
+	
+	.fix-tabs{
+	position:fixed;	
+	width:97%;
+	}
+}
+
+.mainPage{
+	margin-top: 45px;	
 }
