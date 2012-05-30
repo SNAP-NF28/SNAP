@@ -79,7 +79,7 @@ function desktopAppCtrlAll($scope) {
     }
 	
 	function sortMsg(a, b){
-		return b.message.date-a.message.date;
+		return b.message.msgDate-a.message.msgDate;
 	}
 	
 	getMsgAll = function(nb){
@@ -93,6 +93,7 @@ function desktopAppCtrlAll($scope) {
 			}
 		}
 		listMess.sort(sortMsg);
+		listMess = listMess.slice(0,nb);
 		return listMess;
 	}
 	
