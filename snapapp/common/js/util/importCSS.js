@@ -8,3 +8,4 @@
 
 $("head").append('<link href="/snapapp/common/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">');
 $("head").append('<link href="/snapapp/common/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">');
+$("head").append('<link href="/snapapp/common/lib/bootstrap/css/gstyle_buttons.css" rel="stylesheet">');

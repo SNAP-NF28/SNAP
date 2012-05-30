@@ -46,11 +46,36 @@ angular.module('googleplus',['SNMock']).
 				listMessages[i]=new Message();
 				listMessages[i].msgContent = "Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur";
 				listMessages[i].originalLink = "http://plus.google.com";
-				listMessages[i].msgDate = 200; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
+				listMessages[i].msgDate = 200; //stockez la date sous forme de seconde depuis un repï¿½re que vous choisirez, je pourrais comparer facilement comme ï¿½a. -Charles
 			}
 			return listMessages;
 		}
-		
+
+        Googleplus.prototype.connect = function(){
+
+            // si l'id n'existe pas on quitte la fonction
+            if (document.getElementById('login-' + this.name) == null) {
+                return;
+            }
+
+
+            document.getElementById('login-' + this.name).innerHTML = "<button id='log-G' class='buttons action'>Connect with Google+</button>";
+
+            document.getElementById('log-G').addEventListener('click', function() {
+                var config = {
+                    'client_id': '331376332087',
+                    'scope': 'https://www.googleapis.com/auth/plus.me'
+                };
+                gapi.auth.authorize(config, function() {
+                    console.log('login complete');
+                    console.log(gapi.auth.getToken());
+                });
+            });
+
+            return;
+        }
+
+
         return Googleplus;
     });
 
