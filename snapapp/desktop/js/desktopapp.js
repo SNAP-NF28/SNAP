@@ -78,6 +78,10 @@ function desktopAppCtrlAll($scope) {
 		this.message=Mess;
     }
 	
+	function sortMsg(a, b){
+		return b.message.date-a.message.date;
+	}
+	
 	getMsgAll = function(nb){
 		var temp;
 		var listMess = [];
@@ -88,8 +92,8 @@ function desktopAppCtrlAll($scope) {
 				listMess.push(temp2);
 			}
 		}
+		listMess.sort(sortMsg);
 		return listMess;
-		console.log(listMess);
 	}
 	
 	$scope.messages = getMsgAll(20);
