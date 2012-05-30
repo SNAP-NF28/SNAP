@@ -21,18 +21,20 @@ angular.module('facebook',['SNMock']).
          *
          */
 
-		 // Heritage :  http://livingmachines.net/2009/02/creating-javascript-classes-part-2-property-inheritance-with-screencast/ 
+		/** Heritage des attributs de la classe SNMock **/
         Facebook = function(){
             SNMock.apply(this);
             //list attributes
             this.name = "Facebook";
 			this.displayName = "Facebook";
+			this.icon = "/snapapp/common/img/logo_facebook_60x60.png";
             return this;
         }
 		
+		/** Heritage des methodes de la classe SNMock **/
 		Facebook.prototype = new SNMock();
 		
-        //List methods
+        /** Surcharge des methodes de la classe SNMock **/
         Facebook.prototype.getSNName = function(){
             return "facebook";
         }

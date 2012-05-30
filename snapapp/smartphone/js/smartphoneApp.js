@@ -1,24 +1,46 @@
 angular.module('smartphoneApp', ['socialNetworks']);
 
+/** Controleur principal **/
 
 function smartphoneAppCtrl($scope, SocialNetworks) {
     $scope.socialNetworks = new SocialNetworks();
 	
 }
 
-function smartphoneFbContentCtrl($scope) {
+/** Controleurs pour chaque reseau social **/
+
+function smartphoneFbCtrl($scope) {
  $scope.socialNetwork = $scope.socialNetworks[0];
- $scope.messages = $scope.socialNetwork.getLastNMessages(20);
+ $scope.messages = $scope.socialNetwork.getLastNMessages(20); 
+ $scope.getIcon = $scope.socialNetwork.icon;
+ 
+ $scope.getImageProfile = function(message) {
+	var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+	if (img) return img;
+	return "./img/defaultProfile.png";
+	}
+
+	$scope.getNFirstCharacters = function(message, lg) {
+	if (message.msgContent.length > lg)
+		return message.msgContent.substring(0, lg) + "....";
+	return message.msgContent;
+	}
+	
+	$scope.getNameProfile = function(message) {
+		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	}
 }
 
-function smartphoneGpContentCtrl($scope) {
+function smartphoneGpCtrl($scope) {
  $scope.socialNetwork = $scope.socialNetworks[1];
  $scope.messages = $scope.socialNetwork.getLastNMessages(20);
+ $scope.getIcon = $scope.socialNetwork.icon;
 }
 
-function smartphoneTwContentCtrl($scope) {
+function smartphoneTwCtrl($scope) {
  $scope.socialNetwork = $scope.socialNetworks[2];
  $scope.messages = $scope.socialNetwork.getLastNMessages(20);
+ $scope.getIcon = $scope.socialNetwork.icon;
 }
 
 /** Controleur pour la navigation : page precedente et page suivante **/
