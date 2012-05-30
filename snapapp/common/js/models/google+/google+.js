@@ -21,18 +21,21 @@ angular.module('googleplus',['SNMock']).
          *
          */
 
+		 /** Heritage des attributs de la classe SNMock **/
         var Googleplus = function(){
             SNMock.apply(this);
             //list attributes
             this.name = "Googleplus";
 			this.displayName = "Google+";
-            this.citation = "G+citation"
+            this.citation = "G+citation";
+			this.icon = "/snapapp/common/img/logo_googlePlus_60x60.png";
             return this;
         }
-            //init
 
+		/** Heritage des methodes de la classe SNMock **/
 		Googleplus.prototype = new SNMock();
 			
+		/** Surcharge des methodes de la classe SNMock **/	
         Googleplus.prototype.getSNName = function(){
            return "Googleplus";
         }

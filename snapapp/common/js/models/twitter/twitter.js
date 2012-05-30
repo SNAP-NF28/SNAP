@@ -21,18 +21,21 @@ angular.module('twitter',['SNMock']).
          *
          */
 
+		 /** Heritage des attributs de la classe SNMock **/
         var Twitter = function(){
 			SNMock.apply(this);
             //list attributes
             this.name = "Twitter";
 			this.displayName = "Twitter";
             this.picture = "TwitPic";
-            this.icon = 'twittIcon';
+            this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
             return this;
         }
-
+		
+		/** Heritage des methodes de la classe SNMock **/
 		Twitter.prototype = new SNMock();
 		
+		/** Surcharge des methodes de la classe SNMock **/
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }
@@ -46,6 +49,29 @@ angular.module('twitter',['SNMock']).
 			}
 			return listMessages;
 		}
+
+        Twitter.prototype.connect = function(){
+
+            //FIXME: Set proper callback url
+            //twttr.anywhere.config({ callbackURL: "http://www.yoursite.com/anywhere-complete" });
+
+            if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
+                this.connectAlreadyCalled = true;
+                twttr.anywhere(function (T) {
+                T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
+                  authComplete: function(user) {
+                    // triggered when auth completed successfully
+                    console.log("You rock baby");
+                  },
+                  signOut: function() {
+                    // triggered when user logs out
+                    console.log("You suck baby");
+                  }
+                });
+              });
+            }
+            return ; //Must return connection object?
+        }
 		
         return Twitter;
     });
