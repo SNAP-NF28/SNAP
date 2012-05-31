@@ -34,10 +34,11 @@
 }
 
 #msgCounter{
-	float:right;
+	float:left;
 	margin-top: 0px;
 	line-height: 10px;
-	padding : 9px 10px 0px 0px;
+	padding : 9px 5px 0px 0px;
+	margin : 0px 0px 5px 0px;
 }
 #envoiMsg{
 	float:right;
@@ -85,4 +86,13 @@
 
 .mainPage{
 	margin-top: 45px;	
+}
+
+.checkBoxRSGroup{
+	float : left;
+	padding : 4px 5px 0px 0px;
+}
+
+.checkboxIconRS{
+	width:20px;
 }

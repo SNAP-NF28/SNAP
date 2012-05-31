@@ -49,11 +49,25 @@ angular.module('desktopApp', ['socialNetworks']).
 
 function desktopAppCtrl($scope, SocialNetworks) {
     $scope.socialNetworks = new SocialNetworks();
+	$scope.counterLimit=-1;
+	
+	 $scope.limitFixer = function() {
+		if($scope.counterLimit>=0){
+			if ($scope.socialNetwork.limit<$scope.counterLimit) $scope.counterLimit=$scope.socialNetwork.limit;
+		}
+		else $scope.counterLimit=$scope.socialNetwork.limit;				
+	};
 }
 
 function desktopAppCtrlMsg($scope) {
-    $scope.messages = $scope.socialNetwork.getLastNMessages(20)
+    $scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	
+	$scope.getImageProfile = function(message) {
+		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+		if (img) return img;
+		return "./img/defaultProfile.png";
+	}
+		
 	$scope.getImageProfile = function(message) {
 		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
 		if (img) return img;
@@ -117,7 +131,7 @@ function desktopAppCtrlAll($scope) {
 }
 function charCounter(target, max, idchamp, btn){ 
 	StrLen = target.value.length; 
-	CharsLeft = 140-StrLen;
+	CharsLeft = max-StrLen;
 	document.getElementById(btn).disabled="";
 	if (StrLen > max ) 
 	{ 

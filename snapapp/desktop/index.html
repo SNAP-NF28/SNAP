@@ -39,8 +39,14 @@
 						onkeydown="charCounter(this,140,'msgCounter','envoiMsg')" 
 						onkeyup="charCounter(this,140,'msgCounter','envoiMsg')" 
 						onBlur="charCounter(this,140,'msgCounter','envoiMsg')"></textarea>
-						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;">
+						
+						<div class="checkBoxRSGroup" ng-repeat="socialNetwork in socialNetworks">
+							<input type="checkbox" class="checkBoxRS" name="check{{socialNetwork.name}}" title="{{socialNetwork.displayName}}" checked="yes">
+							<img class="checkboxIconRS" src="{{socialNetwork.icon}}" />
+							
+						</div>
 						<h1><small><div id="msgCounter"></div></small></h1>
+						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;">
 					</form>
 					<input type="text" ng-model="search" class="search-query" placeholder="Rechercher">
 					</ul>
