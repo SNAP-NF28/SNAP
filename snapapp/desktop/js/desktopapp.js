@@ -49,14 +49,45 @@ angular.module('desktopApp', ['socialNetworks']).
 
 function desktopAppCtrl($scope, SocialNetworks) {
     $scope.socialNetworks = new SocialNetworks();
-	$scope.counterLimit=-1;
-	
-	 $scope.limitFixer = function() {
-		if($scope.counterLimit>=0){
-			if ($scope.socialNetwork.limit<$scope.counterLimit) $scope.counterLimit=$scope.socialNetwork.limit;
+	$scope.cl = {
+        counterLimit: -1,
+		list: []
+    }
+}
+
+function checkboxCtrl($scope) {	
+	$scope.check = true;
+	$scope.limitFixer = function() {
+		if(tmp = $scope.socialNetwork.limitChar){
+			if(tmp>0){
+				$scope.cl.list.push(tmp);
+				if($scope.cl.counterLimit>=0){
+					if (tmp<$scope.cl.counterLimit) $scope.cl.counterLimit=tmp;
+				}
+				else $scope.cl.counterLimit=tmp;
+			}
 		}
-		else $scope.counterLimit=$scope.socialNetwork.limit;				
-	};
+	}
+	
+	$scope.clickLimitChanger = function(check) {
+		if(check==true){
+			if(tmp = $scope.socialNetwork.limitChar){
+				if(tmp>0){
+					$scope.cl.list.push(tmp);
+					$scope.cl.list.sort();
+					$scope.cl.counterLimit=$scope.cl.list[0];
+				}
+			}
+		}
+		else{
+			if(tmp = $scope.socialNetwork.limitChar){
+				if(tmp>0){	
+					tmp2 = $scope.cl.list.indexOf(tmp);
+					$scope.cl.list.splice(tmp2,tmp2);
+				}
+			}
+		}	
+	}
 }
 
 function desktopAppCtrlMsg($scope) {

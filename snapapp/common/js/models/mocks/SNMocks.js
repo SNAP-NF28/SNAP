@@ -7,6 +7,7 @@ angular.module('SNMock',['types']).
             this.picture = "MockPic";
             this.icon = 'cacaIcon';
             this.citation = 'Mockcitation';
+			this.limitChar = "-1";
         };
 
         SNMock.prototype.getSNName = function(){
