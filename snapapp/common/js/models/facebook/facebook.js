@@ -83,6 +83,7 @@ angular.module('facebook',['SNMock']).
 
                     return listMessages;
                 } else {
+                    console.log('no Auth');
                     for (i=0; i<n; i++) {
                         var msg = new Message();
                         msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
@@ -90,6 +91,8 @@ angular.module('facebook',['SNMock']).
                         msg.msgDate = 100; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
                         listMessages[i] = msg;
                     }
+
+                    console.log('nbMsg: ' + listMessages.length);
 
                     return listMessages;
                 }
