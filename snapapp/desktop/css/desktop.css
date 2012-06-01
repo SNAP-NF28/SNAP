@@ -137,3 +137,9 @@ input[type='checkbox'] + label {
 input[type='checkbox'].checkbox-true + label{
 	background-image: url(../img/check.png);
 }
+
+
+ul.nav-tabs>li{
+width : 100px;
+text-align:center;
+}
