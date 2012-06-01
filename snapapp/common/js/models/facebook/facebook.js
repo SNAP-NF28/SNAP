@@ -42,14 +42,64 @@ angular.module('facebook',['SNMock']).
 		
 		Facebook.prototype.getLastNMessages = function(n){
 			var listMessages=new Array();
-			for (i=0; i<n; i++) {
-				var msg = new Message();
-				msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
-				msg.originalLink = "http://www.facebook.com/";
-				msg.msgDate = 100; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
-				listMessages[i] = msg;
-			}
-			return listMessages;
+
+            if(typeof(FB) === "object" && FB._apiKey === null) {
+                FB.init({
+                    appId      : '454890441191384',
+                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
+                    status     : true,
+                    cookie     : true,
+                    xfbml      : true,
+                    oauth      : true
+                });
+            }
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    FB.api('/me/home', function(response) {
+                        var j = 0;
+                        for (var i=0; i<response.data.length; i++) {
+                            if (!response.data[i].message) {
+                                continue;
+                            }
+
+                            if (j >= n) {
+                                return listMessages;
+                            }
+
+                            console.log('msg: ' + response.data[i].message);
+                            var msg = new Message();
+                            msg.msgContent = response.data[i].message;
+                            msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
+                            msg.msgDate = 500; //TODO changer la date
+                            msg.authorId = response.data[i].from.id;
+
+                            listMessages[j] = msg;
+                            j++;
+                            console.log('id: ' + i + ' - ' + msg.msgContent);
+                        }
+                    });
+
+
+
+                    return listMessages;
+                } else {
+                    console.log('no Auth');
+                    for (i=0; i<n; i++) {
+                        var msg = new Message();
+                        msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
+                        msg.originalLink = "http://www.facebook.com/";
+                        msg.msgDate = 100; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
+                        listMessages[i] = msg;
+                    }
+
+                    console.log('nbMsg: ' + listMessages.length);
+
+                    return listMessages;
+                }
+            });
+
+            return listMessages;
 		}
 
         Facebook.prototype.connect = function(){
@@ -76,8 +126,8 @@ angular.module('facebook',['SNMock']).
                         FB.api('/me', function(response) {
                             console.log('Good to see you, ' + response.name + '.');
                             console.log('Your email address, ' + response.email + '.');
+                            window.location.reload();
                         });
-
                     } else if (response.status === 'not_authorized') {
                         console.log("No auth");
                     } else {

@@ -60,7 +60,7 @@ angular.module('googleplus',['SNMock']).
             }
 
 
-            document.getElementById('login-' + this.name).innerHTML = "<button id='log-G' class='buttons action'>Connect with Google+</button>";
+            document.getElementById('login-' + this.name).innerHTML = "<div><button id='log-G' class='buttons action'>Connect with Google+</button><br/><br/></div>";
 
             document.getElementById('log-G').addEventListener('click', function() {
                 var config = {

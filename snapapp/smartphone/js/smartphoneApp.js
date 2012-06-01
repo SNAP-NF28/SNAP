@@ -10,8 +10,9 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 /** Controleurs pour chaque reseau social **/
 
 function smartphoneFbCtrl($scope) {
+
  $scope.socialNetwork = $scope.socialNetworks[0];
- $scope.messages = $scope.socialNetwork.getLastNMessages(20); 
+ $scope.messages = $scope.socialNetwork.getLastNMessages(20);
  $scope.getIcon = $scope.socialNetwork.icon;
  
  $scope.getImageProfile = function(message) {
@@ -29,6 +30,9 @@ function smartphoneFbCtrl($scope) {
 	$scope.getNameProfile = function(message) {
 		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
+
+    // Si on enleve l'alert les messages ne sont pas affichÃ©s Je NE COMPRENDS PAS POURQUOI!!
+    alert('nbMsg: ' + $scope.messages.length); //TODO retirer l'alert
 }
 
 function smartphoneGpCtrl($scope) {
@@ -76,7 +80,7 @@ function smartphoneTwCtrl($scope) {
 }
 
 /** Controleur pour la navigation : page precedente et page suivante **/
-/** On peut changer l'ordre des pages dans pageOrder, ça fonctionnera toujours **/
+/** On peut changer l'ordre des pages dans pageOrder, ï¿½a fonctionnera toujours **/
 
 function smartphoneFooterCtrl($scope) {
 $scope.pageOrder = new Array("homePage", "fbPage", "twPage", "gpPage", "srchPage", "usrPage", "optionsPage");
