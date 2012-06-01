@@ -28,6 +28,7 @@ angular.module('facebook',['SNMock']).
             this.name = "Facebook";
 			this.displayName = "Facebook";
 			this.icon = "/snapapp/common/img/logo_facebook_60x60.png";
+			this.limitChar = 400;
             return this;
         }
 		

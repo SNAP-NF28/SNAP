@@ -42,8 +42,8 @@
 						
 						<div class="checkBoxRSGroup" ng-repeat="socialNetwork in socialNetworks">
 							<div class="chexboxRS" ng-controller="checkboxCtrl">
-								<input type="checkbox" class="checkBoxRS" name="check{{socialNetwork.name}}" title="{{socialNetwork.displayName}}" ng-model="check" ng-click="clickLimitChanger(check)">
-								<img class="checkboxIconRS" src="{{socialNetwork.icon}}" />
+								<input type="checkbox" class="checkbox-{{check}} checkbox" name="check{{socialNetwork.name}}" title="{{socialNetwork.displayName}}" ng-model="check" ng-click="clickLimitChanger(check)">
+								<label for="check{{socialNetwork.name}}"><img class="checkboxIconRS" src="{{socialNetwork.icon}}" /></label>
 								{{limitFixer()}}
 							</div>
 						</div>

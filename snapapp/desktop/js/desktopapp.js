@@ -69,25 +69,26 @@ function checkboxCtrl($scope) {
 		}
 	}
 	
-	$scope.clickLimitChanger = function(check) {
+	/*$scope.clickLimitChanger = function(check) {
 		if(check==true){
-			if(tmp = $scope.socialNetwork.limitChar){
-				if(tmp>0){
-					$scope.cl.list.push(tmp);
+			if($scope.socialNetwork.limitChar){
+				if($scope.socialNetwork.limitChar>0){
+					$scope.cl.list.push($scope.socialNetwork.limitChar);
 					$scope.cl.list.sort();
 					$scope.cl.counterLimit=$scope.cl.list[0];
 				}
 			}
 		}
 		else{
-			if(tmp = $scope.socialNetwork.limitChar){
-				if(tmp>0){	
-					tmp2 = $scope.cl.list.indexOf(tmp);
-					$scope.cl.list.splice(tmp2,tmp2);
+			if($scope.socialNetwork.limitChar = $scope.socialNetwork.limitChar){
+				if($scope.socialNetwork.limitChar>0){	
+					tmp = $scope.cl.list.indexOf($scope.socialNetwork.limitChar);
+					$scope.cl.list.splice(tmp,tmp);
 				}
+				if($scope.cl.list==[]) $scope.cl.counterLimit =-1;
 			}
 		}	
-	}
+	}*/
 }
 
 function desktopAppCtrlMsg($scope) {
@@ -176,7 +177,7 @@ function resize(){
 	var windowheight = window.innerHeight; 
 	var frame = document.getElementsByClassName("pane")
 	for(var i = 0; i < frame.length; i++) {
-		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-105 + "px";
-		else frame[i].style.maxHeight = windowheight-305 + "px";
+		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-85 + "px";
+		else frame[i].style.maxHeight = windowheight-285 + "px";
 	}
 } 
