@@ -44,10 +44,12 @@ angular.module('twitter',['SNMock']).
 		Twitter.prototype.getLastNMessages = function(n){
 			var listMessages=new Array();
 			for (i=0; i<n; i++) {
-				listMessages[i]=new Message();
-				listMessages[i].msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
-				listMessages[i].originalLink = "http://twitter.com/?id=000000";
-				listMessages[i].msgDate = 300; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
+				var msg = new Message();
+				msg.msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
+				msg.originalLink = "http://twitter.com/?id=000000";
+				msg.msgDate = 300; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
+				msg.msgId = "ghi789";
+				listMessages[i] = msg;
 			}
 			return listMessages;
 		}

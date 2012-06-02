@@ -44,10 +44,13 @@ angular.module('googleplus',['SNMock']).
 		Googleplus.prototype.getLastNMessages = function(n){
 			var listMessages=new Array();
 			for (i=0; i<n; i++) {
-				listMessages[i]=new Message();
-				listMessages[i].msgContent = "Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur";
-				listMessages[i].originalLink = "http://plus.google.com";
-				listMessages[i].msgDate = 200; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
+				var msg = new Message();
+				msg.msgContent = "Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur";
+				msg.originalLink = "http://plus.google.com";
+				msg.msgDate = 200; //stockez la date sous forme de seconde depuis un repere que vous choisirez, je pourrais comparer facilement comme �a. -Charles
+				msg.msgId = "def456";
+				
+				listMessages[i] = msg;
 			}
 			return listMessages;
 		}

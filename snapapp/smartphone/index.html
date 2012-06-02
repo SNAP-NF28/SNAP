@@ -30,7 +30,12 @@
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <body ng-controller="smartphoneAppCtrl">
+
 <div id="homePage" data-role="page">
+	<script language="Javascript"> 
+		$('#homePage').live('swipeleft', '{{getPrevPage("homePage")}}');
+		$('#homePage').live('swiperight', '{{getPrevPage("homePage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
         <h1>Header Home</h1>
     </div>
@@ -57,17 +62,21 @@
 
 <!--------------------- Page Facebook --------------------->
 <div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
+	<script language="Javascript"> 
+		$('#fbPage').live('swipeleft', '{{getPrevPage("fbPage")}}');
+		$('#fbPage').live('swiperight', '{{getPrevPage("fbPage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
-        <img  class="logo" src="{{getIcon}}"/>
+        <img  class="logo" ng-src="{{getIcon}}"/>
 		<h1>Header FB</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
 
-            <div class="msgContent well" ng-repeat="message in messages">
+            <div class="msgContent well"  data-socialNetwork ="{{socialNetwork.name}}" data-msgId="{{message.msgId}}" ng-repeat="message in messages">
 				
 				<div class="block">
-					<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 				</div>
 				<div class="block">
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
@@ -79,11 +88,7 @@
 					 <!-- HS : Voir si je ne peux pas generaliser les methodes communes aux 3 RS -->
 					<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true"> Plus...</a></p>
 					
-				</div>
-				<div class="msgDetails">
-				<!-- Lien message original -->
-				</div>
-				
+				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
 				<br class="clear"/>
             </div>
@@ -117,8 +122,12 @@
 
 <!--------------------- Page Twitter --------------------->
 <div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl">
+	<script language="Javascript"> 
+		$('#twPage').live('swipeleft', '{{getPrevPage("twPage")}}');
+		$('#twPage').live('swiperight', '{{getPrevPage("twPage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
-        <img  class="logo" src="{{getIcon}}" />
+        <img  class="logo" ng-src="{{getIcon}}" />
         <h1>Header Twitter</h1>
     </div>
     <div data-role="content">
@@ -127,17 +136,14 @@
             <div class="msgContent well" ng-repeat="message in messages">
 				
 				<div class="block">
-					<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 				</div>
 				<div class="block">
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
 					<!-- Message content -->
-					{{getNFirstCharacters(message, 140)}}
-				</div>
-				<div class="msgDetails">
-				<!-- Lien message original -->
-				</div>
-				
+					<span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
+					<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true"> Plus...</a></p>
+				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
 				<br class="clear"/>
             </div>
@@ -158,8 +164,12 @@
 
 <!--------------------- Page Google Plus --------------------->
 <div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl">
+	<script language="Javascript"> 
+		$('#gpPage').live('swipeleft', '{{getPrevPage("gpPage")}}');
+		$('#gpPage').live('swiperight', '{{getPrevPage("gpPage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
-        <img  class="logo" src="{{getIcon}}" />
+        <img  class="logo" ng-src="{{getIcon}}" />
         <h1>Header Google+</h1>
     </div>
     <div data-role="content">
@@ -168,7 +178,7 @@
             <div class="msgContent well" ng-repeat="message in messages" >
 				
 				<div class="block">
-					<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+					<img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
 				</div>
 				<div class="block">
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
@@ -199,6 +209,10 @@
 
 <!--------------------- Page Recherche --------------------->
 <div id="srchPage" data-role="page">
+	<script language="Javascript"> 
+		$('#srchPage').live('swipeleft', '{{getPrevPage("srchPage")}}');
+		$('#srchPage').live('swiperight', '{{getPrevPage("srchPage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
         <h1>Header Search</h1>
     </div>
@@ -224,6 +238,10 @@
 
 <!--------------------- Page Profil --------------------->
 <div id="usrPage" data-role="page">
+	<script language="Javascript"> 
+		$('#usrPage').live('swipeleft', '{{getPrevPage("usrPage")}}');
+		$('#usrPage').live('swiperight', '{{getPrevPage("usrPage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
         <h1>Header Profile</h1>
     </div>
@@ -251,6 +269,10 @@
 
 <!--------------------- Page Options --------------------->
 <div id="optionsPage" data-role="page">
+	<script language="Javascript"> 
+		$('#optionsPage').live('swipeleft', '{{getPrevPage("optionsPage")}}');
+		$('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
+	</script>
     <div data-role="header" data-position="fixed">
         <h1>Settings</h1>
     </div>

@@ -73,6 +73,7 @@ angular.module('facebook',['SNMock']).
                             msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
                             msg.msgDate = 500; //TODO changer la date
                             msg.authorId = response.data[i].from.id;
+							msg.msgId = "abc123";
 
                             listMessages[j] = msg;
                             j++;
@@ -90,7 +91,8 @@ angular.module('facebook',['SNMock']).
                         msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
                         msg.originalLink = "http://www.facebook.com/";
                         msg.msgDate = 100; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
-                        listMessages[i] = msg;
+                        msg.msgId = "abc123";
+						listMessages[i] = msg;
                     }
 
                     console.log('nbMsg: ' + listMessages.length);
