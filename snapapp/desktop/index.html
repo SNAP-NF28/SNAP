@@ -43,7 +43,7 @@
 						<div class="checkBoxRSGroup" ng-repeat="socialNetwork in socialNetworks">
 							<div class="chexboxRS" ng-controller="checkboxCtrl">
 								<input type="checkbox" class="checkbox-{{check}} checkbox" name="check{{socialNetwork.name}}" title="{{socialNetwork.displayName}}" ng-model="check" ng-click="clickLimitChanger(check)">
-								<label for="check{{socialNetwork.name}}"><img class="checkboxIconRS" src="{{socialNetwork.icon}}" /></label>
+								<label for="check{{socialNetwork.name}}"><img class="checkboxIconRS" ng-src="{{socialNetwork.icon}}" /></label>
 								{{limitFixer()}}
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlAll">
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
-									<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+									<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 									<div class="cadreMsg">
 										<!-- Nom du profil -->
 										<b class="fullname">{{getNameProfile(message)}}</b>
@@ -75,7 +75,7 @@
 												<h3>Détails du message</h3>
 											  </div>
 											  <div class="modal-body">
-												<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+												<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 												<div class="cadreMsg">
 												<b class="fullname">{{getNameProfile(message)}}</b>
 													<div class="msgContent">
@@ -101,7 +101,7 @@
 								<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
-									<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+									<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 									<div class="cadreMsg">
 									<!-- Nom du profil -->
 									<b class="fullname">{{getNameProfile(message)}}</b>
@@ -115,7 +115,7 @@
 											<h3>Détails du message</h3>
 										  </div>
 										  <div class="modal-body">
-											<img class="msgImgProfile" src="{{getImageProfile(message)}}" />
+											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 											<div class="cadreMsg">
 											<b class="fullname">{{getNameProfile(message)}}</b>
 												<div class="msgContent">
