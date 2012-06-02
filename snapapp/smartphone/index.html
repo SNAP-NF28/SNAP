@@ -32,10 +32,6 @@
 <body ng-controller="smartphoneAppCtrl">
 
 <div id="homePage" data-role="page">
-	<script language="Javascript"> 
-		$('#homePage').live('swipeleft', '{{getPrevPage("homePage")}}');
-		$('#homePage').live('swiperight', '{{getPrevPage("homePage")}}');
-	</script>
     <div data-role="header" data-position="fixed">
         <h1>Header Home</h1>
     </div>
@@ -48,6 +44,10 @@
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
+			<script language="Javascript"> 
+				$('#homePage').live('swipeleft', '{{getPrevPage("homePage")}}');
+				$('#homePage').live('swiperight', '{{getPrevPage("homePage")}}');
+			</script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("homePage")}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -69,7 +69,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
 
-            <div class="msgContent well"  data-socialNetwork ="{{socialNetwork.name}}" data-msgId="{{message.msgId}}" ng-repeat="message in messages">
+            <div class="msgContent well"  ng-repeat="message in messages">
 				
 				<div class="block">
 					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
@@ -82,7 +82,7 @@
 					 <!-- Pour le lien vers le message original : passer en parametre l'identifiant du message, et recuperer le message apres -->
 					 <!-- Ne pas oublier de creer un controleur pour la page popup -->
 					 <!-- HS : Voir si je ne peux pas generaliser les methodes communes aux 3 RS -->
-					<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onclick="storeMessage({{message}})"> Plus...</a></p>
+					<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}})"> Plus...</a></p>
 					
 				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
@@ -108,14 +108,14 @@
 </div>
 
 <!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
+<div data-role="page" id="msgDetails">
 
 	<div data-role="header" data-theme="e">
 		<h1>D&eacute;tail du message</h1>
 	</div><!-- /header -->
 
 	<div data-role="content" data-theme="d">	
-				
+
 	</div><!-- /content -->
 </div><!-- /page popup -->
 
@@ -181,11 +181,7 @@
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
 					<!-- Message content -->
 					{{getNFirstCharacters(message, 140)}}
-				</div>
-				<div class="msgDetails">
-				<!-- Lien message original -->
-				</div>
-				
+				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
 				<br class="clear"/>
             </div>
