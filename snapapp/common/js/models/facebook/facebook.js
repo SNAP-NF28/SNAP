@@ -56,7 +56,7 @@ angular.module('facebook',['SNMock']).
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    FB.api('/me/home', function(response) {
+                    FB.api('/me/home', {access_token: response.authResponse.accessToken}, function(response) {
                         var j = 0;
                         for (var i=0; i<response.data.length; i++) {
                             if (!response.data[i].message) {
@@ -79,11 +79,10 @@ angular.module('facebook',['SNMock']).
                             j++;
                             console.log('id: ' + i + ' - ' + msg.msgContent);
                         }
+
+                        return listMessages;
                     });
 
-
-
-                    return listMessages;
                 } else {
                     console.log('no Auth');
                     for (i=0; i<n; i++) {
