@@ -61,16 +61,31 @@
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlAll">
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
-									<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+									<a data-toggle="modal" href="#profilAll">
+										<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+									</a>
 									<div class="cadreMsg">
 										<!-- Nom du profil -->
-										<b class="fullname">{{getNameProfile(message)}}</b>
+										<a data-toggle="modal" href="#profilAll">
+											<b class="fullname">{{getNameProfile(message)}}</b>
+										</a>
+									<div id="profilAll" class="modal hide fade">
+										  <div class="modal-header">
+											<h3>{{getNameProfile(message)}}</h3>
+										  </div>
+										  <div class="modal-body">
+											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+											</div>
+											<div class="modal-footer">
+												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+											</div>
+									</div>
 										<div class="msgContent">
 											{{cutMsg(message,"140")}}
 										</div>
 										<!-- MODAL -->
-										<a data-toggle="modal" href="#detailsAll">Détails</a>	
-											<div id="detailsAll" class="modal hide fade">
+										<a data-toggle="modal" href="#detailsAll{{message.msgid}}">Détails</a>	
+											<div id="detailsAll{{message.msgid}}" class="modal hide fade">
 											  <div class="modal-header">
 												<h3>Détails du message</h3>
 											  </div>
@@ -101,16 +116,31 @@
 								<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
-									<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+									<a data-toggle="modal" href="#profil{{socialNetwork.name}}">
+										<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+									</a>
 									<div class="cadreMsg">
 									<!-- Nom du profil -->
-									<b class="fullname">{{getNameProfile(message)}}</b>
+									<a data-toggle="modal" href="#profil{{socialNetwork.name}}">
+										<b class="fullname">{{getNameProfile(message)}}</b>
+									</a>
+									<div id="profil{{socialNetwork.name}}" class="modal hide fade">
+										  <div class="modal-header">
+											<h3>{{getNameProfile(message)}}</h3>
+										  </div>
+										  <div class="modal-body">
+											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+											</div>
+											<div class="modal-footer">
+												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+											</div>
+									</div>
 									<div class="msgContent">
 										{{cutMsg(message.msgContent,"140")}}
 									</div>
 									<!-- MODAL -->
-									<a data-toggle="modal" href="#details{{socialNetwork.name}}">Détails</a>	
-										<div id="details{{socialNetwork.name}}" class="modal hide fade">
+									<a data-toggle="modal" href="#details{{socialNetwork.name}}{{message.msgid}}">Détails</a>	
+										<div id="details{{socialNetwork.name}}{{message.msgid}}" class="modal hide fade">
 										  <div class="modal-header">
 											<h3>Détails du message</h3>
 										  </div>

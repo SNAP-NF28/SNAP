@@ -23,7 +23,7 @@ angular.module('desktopApp', ['socialNetworks']).
                 '<div class="tabbable">' +
                     '<ul class="nav nav-tabs">' +
                     '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
-                    '<a href="" ng-click="select(pane)">{{pane.title}}</a>' +
+                    '<a href="#{{pane.title}}" ng-click="select(pane)">{{pane.title}}</a>' +
                     '</li>' +
                     '</ul>' +
                     '<div class="tab-content" ng-transclude></div>' +
@@ -113,6 +113,11 @@ function desktopAppCtrlMsg($scope) {
 	$scope.cutMsg = function(message, length){
 		if(message.length>length) return message.substring(0,140) + "....";
 		return message;
+	}
+	
+	$scope.loginDiv = function() {
+		if (!($scope.socialNetwork.isConnected()))
+			return '';
 	}
 }
 
