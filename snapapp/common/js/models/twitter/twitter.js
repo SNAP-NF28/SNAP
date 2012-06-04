@@ -50,8 +50,18 @@ angular.module('twitter',['SNMock']).
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
-                    updateUsrProfile(usr);
-                    self.getLastNMessages(20);//FIXME: handle vary problem
+                    self.profile = new Profile();
+                    self.profile.socialNetworkId = self.id;
+                    self.profile.imageProfileURL = usr.profileImageUrl;
+                    self.profile.name = usr.screenName;
+                    self.profile.description = usr.description;
+                    self.profile.lifePlace = usr.location;
+                    self.profile.followersNb = usr.followersCount;
+                    self.profile.followsNb = usr.friendsCount;
+                    self.profile.msgCount = usr.statusesCount;
+                    self.profile.subscriptionDate = usr.createdAt;
+                    $("#login-Twitter").addClass("hide");
+                    //self.getLastNMessages(20);//FIXME: handle vary problem
                 }
             });
 
@@ -103,17 +113,7 @@ angular.module('twitter',['SNMock']).
         }
 
         function updateUsrProfile(usr){
-            self.profile = new Profile();
-            self.profile.socialNetworkId = self.id;
-            self.profile.imageProfileURL = usr.profileImageUrl;
-            self.profile.name = usr.screenName;
-            self.profile.description = usr.description;
-            self.profile.lifePlace = usr.location;
-            self.profile.followersNb = usr.followersCount;
-            self.profile.followsNb = usr.friendsCount;
-            self.profile.msgCount = usr.statusesCount;
-            self.profile.subscriptionDate = usr.createdAt;
-            $("#login-Twitter").addClass("hide");
+
             
         }
 
@@ -133,8 +133,6 @@ angular.module('twitter',['SNMock']).
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
-                        updateUsrProfile(usr);
-                        self.getLastNMessages(20);//FIXME: handle vary problem
                         console.log("You rock baby");
                       },
                       signOut: function() {
