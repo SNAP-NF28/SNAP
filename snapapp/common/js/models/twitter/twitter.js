@@ -106,8 +106,7 @@ angular.module('twitter',['SNMock']).
             this.profile.msgCount = usr.statusesCount;
             this.profile.subscriptionDate = usr.createdAt;
             $("#login-Twitter").addClass("hide");
-            if (this.prototype.hasOwnProperty('getLastNMessages'))
-                this.getLastNMessages(20);//FIXME: handle vary problem
+            
         }
 
         Twitter.prototype.connect = function(){
@@ -118,6 +117,7 @@ angular.module('twitter',['SNMock']).
                 if (T.isConnected()) {
                     usr = T.currentUser;
                     updateUsrProfile(usr);
+                    this.getLastNMessages(20);//FIXME: handle vary problem
                 } else
                 if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
                     this.connectAlreadyCalled = true;
@@ -126,6 +126,7 @@ angular.module('twitter',['SNMock']).
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
                         updateUsrProfile(usr);
+                        this.getLastNMessages(20);//FIXME: handle vary problem
                         console.log("You rock baby");
                       },
                       signOut: function() {
