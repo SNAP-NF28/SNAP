@@ -106,7 +106,7 @@ angular.module('twitter',['SNMock']).
             this.profile.msgCount = usr.statusesCount;
             this.profile.subscriptionDate = usr.createdAt;
             $("#login-Twitter").addClass("hide");
-            this.getLastNMessages(20);//FIXME: handle vary problem
+            //this.getLastNMessages(20);//FIXME: handle vary problem
         }
 
         Twitter.prototype.connect = function(){
