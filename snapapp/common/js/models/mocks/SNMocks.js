@@ -27,6 +27,10 @@ angular.module('SNMock',['types']).
 			return profile;
 		}
 
+        SNMock.prototype.isConnected = function(){
+            return true; //Must return connection object?
+        }
+
 
 		SNMock.prototype.connect = function(){
 			return ; //Must return connection object?

@@ -39,6 +39,28 @@ angular.module('facebook',['SNMock']).
         Facebook.prototype.getSNName = function(){
             return "facebook";
         }
+
+        Facebook.prototype.isConnected = function() {
+
+            if(typeof(FB) === "object" && FB._apiKey === null) {
+                FB.init({
+                    appId      : '454890441191384',
+                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
+                    status     : true,
+                    cookie     : true,
+                    xfbml      : true,
+                    oauth      : true
+                });
+            }
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    return true;
+                }
+            });
+
+            return false;
+        }
 		
 		Facebook.prototype.getLastNMessages = function(n){
 			var listMessages=new Array();
