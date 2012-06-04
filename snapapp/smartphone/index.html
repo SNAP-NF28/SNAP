@@ -24,16 +24,19 @@
 
 	
 </head>
-<body>
+<!--<body>-->
 <snap-common-scripts></snap-common-scripts>
 <snap-navbar></snap-navbar>
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <body ng-controller="smartphoneAppCtrl">
+<script language="Javascript"> 
+
+</script>
 
 <div id="homePage" data-role="page">
     <div data-role="header" data-position="fixed">
-        <h1>Header Home</h1>
+        <h1>Header Home/All</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
@@ -45,15 +48,15 @@
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
 			<script language="Javascript"> 
-				$('#homePage').live('swipeleft', '{{getPrevPage("homePage")}}');
-				$('#homePage').live('swiperight', '{{getPrevPage("homePage")}}');
+				$('$.mobile.activePage').live('swipeleft', '{{getPrevPage($.mobile.activePage)}}');
+				$('$.mobile.activePage').live('swiperight', '{{getNextPage($.mobile.activePage)}}');
 			</script>
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("homePage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('homePage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("homePage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('homePage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -82,7 +85,7 @@
 					 <!-- Pour le lien vers le message original : passer en parametre l'identifiant du message, et recuperer le message apres -->
 					 <!-- Ne pas oublier de creer un controleur pour la page popup -->
 					 <!-- HS : Voir si je ne peux pas generaliser les methodes communes aux 3 RS -->
-					<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}})"> Plus...</a></p>
+					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}})"> Plus...</a></p>
 					
 				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
@@ -91,17 +94,13 @@
 		</div>
 	</div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-				<script language="Javascript"> 
-					$('#fbPage').live('swipeleft', '{{getPrevPage("fbPage")}}');
-					$('#fbPage').live('swiperight', '{{getPrevPage("fbPage")}}');
-				</script>		
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">		
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("fbPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('fbPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("fbPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('fbPage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -115,7 +114,20 @@
 	</div><!-- /header -->
 
 	<div data-role="content" data-theme="d">	
+		<div class="msgContent well">			
+			<div class="block">
+				<img class="msgImgProfile" src="../common/img/defaultProfile.png" />
+			</div>
+			<div class="block">
+				<b class="userName">  </b>	 
+				<br />
+				<!-- Message content -->
 
+				 <span class="msgContent"> </span>
+			</div>				
+			<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+			<br class="clear"/>
+		</div>	
 	</div><!-- /content -->
 </div><!-- /page popup -->
 
@@ -139,7 +151,7 @@
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
 					<!-- Message content -->
 					<span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
-					<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true"> Plus...</a></p>
+					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage('{{message.msgContent}}', '{{getNameProfile(message)}}', '{{getImageProfile(message)}}')"> Plus...</a></p>
 				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
 				<br class="clear"/>
@@ -153,11 +165,11 @@
 				$('#twPage').live('swiperight', '{{getPrevPage("twPage")}}');
 			</script>
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("twPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('twPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("twPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('twPage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -181,6 +193,7 @@
 					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
 					<!-- Message content -->
 					{{getNFirstCharacters(message, 140)}}
+					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage('{{message.msgContent}}', '{{getNameProfile(message)}}', '{{getImageProfile(message)}}')"> Plus...</a></p>
 				</div>				
 				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
 				<br class="clear"/>
@@ -194,11 +207,11 @@
 				$('#gpPage').live('swiperight', '{{getPrevPage("gpPage")}}');
 			</script>
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("gpPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('gpPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("gpPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('gpPage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -223,11 +236,11 @@
 				$('#srchPage').live('swiperight', '{{getPrevPage("srchPage")}}');
 			</script>		
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("srchPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('srchPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("srchPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('srchPage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -254,11 +267,11 @@
 				$('#usrPage').live('swiperight', '{{getPrevPage("usrPage")}}');
 			</script>
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("usrPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('usrPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("usrPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('usrPage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -302,11 +315,11 @@
 				$('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
 			</script>
             <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage("optionsPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('optionsPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
                 <li> <a href="#" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage("optionsPage")}}")> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('optionsPage')}}")> </a></li>
             </ul>
         </div>
     </div>
