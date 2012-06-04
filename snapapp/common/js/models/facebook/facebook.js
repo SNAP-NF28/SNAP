@@ -95,7 +95,7 @@ angular.module('facebook',['SNMock']).
                             msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
                             msg.msgDate = 500; //TODO changer la date
                             msg.authorId = response.data[i].from.id;
-							msg.msgId = "abc123";
+							msg.msgId = response.data[i].id;
 
                             listMessages[j] = msg;
                             j++;
