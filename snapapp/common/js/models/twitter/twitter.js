@@ -47,6 +47,14 @@ angular.module('twitter',['SNMock']).
             var self = this;
             var msgList = [];
 
+            twttr.anywhere(function (T) {
+                if (T.isConnected()) {
+                    usr = T.currentUser;
+                    updateUsrProfile(usr);
+                    self.getLastNMessages(20);//FIXME: handle vary problem
+                }
+            });
+
             var name;
             if(!self.profile || !self.profile.name){
                 name = 'mellealizee';//return;
