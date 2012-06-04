@@ -115,16 +115,9 @@ function displayMessage() {
 	var msg = $('#msgDetails').data('message');
 	var author = $('#msgDetails').data('author');
 	var authorImg = $('#msgDetails').data('authorImg');
-
-	console.log("img url : " + authorImg);
-	console.log("default img : " + $('#msgDetails').find($('img.msgImgProfile')[0]).attr('src'));
 	
 	$('#msgDetails').find($('b.userName')[0]).text(author);
 	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
-	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);
-	
-	console.log("new url : " + $('#msgDetails').find($('img.msgImgProfile')[0]).attr('src'));
-	
-	console.log("display done");
+	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
 }
 
