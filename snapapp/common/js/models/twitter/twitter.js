@@ -98,6 +98,20 @@ angular.module('twitter',['SNMock']).
             return this.profile;
         }
 
+        function updateUsrProfile(usr){
+            this.profile.socialNetworkId = this.id;
+            this.profile.imageProfileURL = usr.profileImageUrl;
+            this.profile.name = usr.screenName;
+            this.profile.description = usr.description;
+            this.profile.lifePlace = usr.location;
+            this.profile.followersNb = usr.followersCount;
+            this.profile.followsNb = usr.friendsCount;
+            this.profile.msgCount = usr.statusesCount;
+            this.profile.subscriptionDate = usr.createdAt;
+            $("#login-Twitter").addClass("hide");
+            this.getLastNMessages(20);//FIXME: handle vary problem
+        }
+
         Twitter.prototype.connect = function(){
 
             //FIXME: Set proper callback url
@@ -105,16 +119,7 @@ angular.module('twitter',['SNMock']).
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
-                    this.profile.socialNetworkId = this.id;
-                    this.profile.imageProfileURL = usr.profileImageUrl;
-                    this.profile.name = usr.screenName;
-                    this.profile.description = usr.description;
-                    this.profile.lifePlace = usr.location;
-                    this.profile.followersNb = usr.followersCount;
-                    this.profile.followsNb = usr.friendsCount;
-                    this.profile.msgCount = usr.statusesCount;
-                    this.profile.subscriptionDate = usr.createdAt;
-                    $("#login-Twitter").addClass("hide");
+                    updateUsrProfile(usr);
                 } else
                 if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
                     this.connectAlreadyCalled = true;
@@ -122,16 +127,7 @@ angular.module('twitter',['SNMock']).
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
-                        this.profile.socialNetworkId = this.id;
-                        this.profile.imageProfileURL = usr.profileImageUrl;
-                        this.profile.name = usr.screenName;
-                        this.profile.description = usr.description;
-                        this.profile.lifePlace = usr.location;
-                        this.profile.followersNb = usr.followersCount;
-                        this.profile.followsNb = usr.friendsCount;
-                        this.profile.msgCount = usr.statusesCount;
-                        this.profile.subscriptionDate = usr.createdAt;
-                        $("#login-Twitter").addClass("hide");
+                        updateUsrProfile(usr);
                         console.log("You rock baby");
                       },
                       signOut: function() {
