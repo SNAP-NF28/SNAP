@@ -31,7 +31,6 @@ angular.module('twitter',['SNMock']).
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
 			this.limitChar = 140;
-            this.profile = new Profile();
             return this;
         }
 		
@@ -48,8 +47,14 @@ angular.module('twitter',['SNMock']).
 
             var msgList = [];
 
+            var name;
+            if(!this.profile || !this.profile.name){
+                name = 'mellealizee';//return;
+            } else {
+                name = this.profile.name;
+            }
             var data = {
-                q:'mellealizee',
+                q:name,
                 rpp:n
             };
 
@@ -82,15 +87,6 @@ angular.module('twitter',['SNMock']).
                   success: callback
                 });
 
-			var listMessages=new Array();
-			for (i=0; i<n; i++) {
-				var msg = new Message();
-				msg.msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
-				msg.originalLink = "http://twitter.com/?id=000000";
-				msg.msgDate = 300; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
-				msg.msgId = "ghi789";
-				listMessages[i] = msg;
-			}
 			return msgList;
 		}
 
@@ -99,6 +95,7 @@ angular.module('twitter',['SNMock']).
         }
 
         function updateUsrProfile(usr){
+            this.profile = new Profile();
             this.profile.socialNetworkId = this.id;
             this.profile.imageProfileURL = usr.profileImageUrl;
             this.profile.name = usr.screenName;
