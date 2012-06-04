@@ -44,14 +44,14 @@ angular.module('twitter',['SNMock']).
 		
 		Twitter.prototype.getLastNMessages = function(n){
 
-
+            var self = this;
             var msgList = [];
 
             var name;
-            if(!this.profile || !this.profile.name){
+            if(!self.profile || !self.profile.name){
                 name = 'mellealizee';//return;
             } else {
-                name = this.profile.name;
+                name = self.profile.name;
             }
             var data = {
                 q:name,
@@ -64,7 +64,7 @@ angular.module('twitter',['SNMock']).
                 for(m in data.results){
                     var r = data.results[m];
                     var message = new Message();
-                    message.socialNetworkId = this.id;
+                    message.socialNetworkId = self.id;
                     message.msgId = r.id;
                     message.authorId = r.to_user_id_str;
                     message.msgContent = r.text;
@@ -95,38 +95,38 @@ angular.module('twitter',['SNMock']).
         }
 
         function updateUsrProfile(usr){
-            this.profile = new Profile();
-            this.profile.socialNetworkId = this.id;
-            this.profile.imageProfileURL = usr.profileImageUrl;
-            this.profile.name = usr.screenName;
-            this.profile.description = usr.description;
-            this.profile.lifePlace = usr.location;
-            this.profile.followersNb = usr.followersCount;
-            this.profile.followsNb = usr.friendsCount;
-            this.profile.msgCount = usr.statusesCount;
-            this.profile.subscriptionDate = usr.createdAt;
+            self.profile = new Profile();
+            self.profile.socialNetworkId = self.id;
+            self.profile.imageProfileURL = usr.profileImageUrl;
+            self.profile.name = usr.screenName;
+            self.profile.description = usr.description;
+            self.profile.lifePlace = usr.location;
+            self.profile.followersNb = usr.followersCount;
+            self.profile.followsNb = usr.friendsCount;
+            self.profile.msgCount = usr.statusesCount;
+            self.profile.subscriptionDate = usr.createdAt;
             $("#login-Twitter").addClass("hide");
             
         }
 
         Twitter.prototype.connect = function(){
-
+            var self = this;
             //FIXME: Set proper callback url
             //twttr.anywhere.config({ callbackURL: "http://www.yoursite.com/anywhere-complete" });
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
                     updateUsrProfile(usr);
-                    this.getLastNMessages(20);//FIXME: handle vary problem
+                    self.getLastNMessages(20);//FIXME: handle vary problem
                 } else
-                if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
-                    this.connectAlreadyCalled = true;
+                if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
+                    self.connectAlreadyCalled = true;
                     twttr.anywhere(function (T) {
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
                         updateUsrProfile(usr);
-                        this.getLastNMessages(20);//FIXME: handle vary problem
+                        self.getLastNMessages(20);//FIXME: handle vary problem
                         console.log("You rock baby");
                       },
                       signOut: function() {
