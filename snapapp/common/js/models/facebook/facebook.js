@@ -41,8 +41,25 @@ angular.module('facebook',['SNMock']).
         }
 
         Facebook.prototype.isConnected = function() {
+            if(typeof(FB) === "object" && FB._apiKey === null) {
+                return false;
+            }
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    console.log('Connected');
+                    return true;
+                }
+            });
+
+            return false;
+        }
+
+
+        Facebook.prototype.init = function() {
 
             if(typeof(FB) === "object" && FB._apiKey === null) {
+
                 FB.init({
                     appId      : '454890441191384',
                     //channelUrl : '//localhost://8000/app/channel.html', // Channel File
@@ -51,19 +68,95 @@ angular.module('facebook',['SNMock']).
                     xfbml      : true,
                     oauth      : true
                 });
+
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+
+                        FB.api('/me', function(response) {
+                            Facebook.prototype.isConnected = function() {
+                                return true;
+                            }
+                            Facebook.prototype.getUserProfile = function(id) {
+                                FB.api('/me/picture', function(response2) {
+                                    profile.imageProfileURL = response2;
+                                    alert(profile.imageProfileURL);
+                                });
+
+                                var profile = new Profile();
+
+
+                                profile.name = response.name;
+                                profile.firstName = response.first_name;
+                                profile.nickName = response.username;
+                                //console.log(profile.nickName);
+
+                                //console.log(profile.imageProfileURL);
+
+                                //alert(profile.imageProfileURL);
+                                console.log(profile);
+
+
+                                return profile;
+                            }
+                            console.log(response.name);
+                        });
+                    } else if (response.status === 'not_authorized') {
+                        console.log("No auth");
+                    } else {
+                        console.log("No auth");
+                    }
+                });
             }
+
+        }
+
+
+
+        Facebook.prototype.getUserProfile = function(id) {
+            var profile = new Profile();
+
+            this.init();
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    return true;
+
+                    FB.api('/me/picture', function(response) {
+                        profile.imageProfileURL = response;
+                    });
+
+                    FB.api('/me', function(response) {
+
+                        //console.log('your name, ' + response.name + '.');
+
+                        profile.name = response.name;
+                        profile.firstName = response.first_name;
+                        profile.nickName = response.username;
+                        //console.log(profile.nickName);
+
+                        //console.log(profile.imageProfileURL );
+
+                        console.log(profile);
+
+                        return profile;
+                    });
+
+                } else {
+                    console.log('no profile because no auth');
                 }
             });
 
-            return false;
+            if (profile.name == null) {
+                var profile=new Profile();
+                return profile;
+            }
+
+            return profile;
         }
+
 		
 		Facebook.prototype.getLastNMessages = function(n){
-			var listMessages=new Array();
+            var listMessages=new Array();
+            var self = this;
 
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 FB.init({
@@ -93,9 +186,11 @@ angular.module('facebook',['SNMock']).
                             var msg = new Message();
                             msg.msgContent = response.data[i].message;
                             msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
-                            msg.msgDate = 500; //TODO changer la date
                             msg.authorId = response.data[i].from.id;
 							msg.msgId = response.data[i].id;
+                            msg.authorName = response.data[i].from.name;
+
+                            msg.msgDate = new Date(response.data[i].created_time).getTime();
 
                             listMessages[j] = msg;
                             j++;
@@ -111,7 +206,7 @@ angular.module('facebook',['SNMock']).
                         var msg = new Message();
                         msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
                         msg.originalLink = "http://www.facebook.com/";
-                        msg.msgDate = 100; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
+                        msg.msgDate = 111; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
                         msg.msgId = "abc123";
 						listMessages[i] = msg;
                     }
@@ -149,7 +244,7 @@ angular.module('facebook',['SNMock']).
                         FB.api('/me', function(response) {
                             console.log('Good to see you, ' + response.name + '.');
                             console.log('Your email address, ' + response.email + '.');
-                            window.location.reload();
+                            //window.location.reload();
                         });
                     } else if (response.status === 'not_authorized') {
                         console.log("No auth");

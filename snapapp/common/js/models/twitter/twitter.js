@@ -21,29 +21,33 @@ angular.module('twitter',['SNMock']).
          *
          */
 
-		 /** Heritage des attributs de la classe SNMock **/
+        /** Heritage des attributs de la classe SNMock **/
         var Twitter = function(){
-			SNMock.apply(this);
+            SNMock.apply(this);
             //list attributes
             this.name = "Twitter";
             this.id = 'twitter';
-			this.displayName = "Twitter";
+            this.displayName = "Twitter";
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
+<<<<<<< HEAD
 			this.limitChar = 140;
             this.lastMessages = [];
+=======
+            this.limitChar = 140;
+>>>>>>> 377ea16f4b868f7c2cc5d09a06e2ffebbbc607da
             return this;
         }
-		
-		/** Heritage des methodes de la classe SNMock **/
-		Twitter.prototype = new SNMock();
-		
-		/** Surcharge des methodes de la classe SNMock **/
+
+        /** Heritage des methodes de la classe SNMock **/
+        Twitter.prototype = new SNMock();
+
+        /** Surcharge des methodes de la classe SNMock **/
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }
-		
-		Twitter.prototype.getLastNMessages = function(n){
+
+        Twitter.prototype.getLastNMessages = function(n){
 
 
             //alert("This function should not be called");
@@ -91,8 +95,8 @@ angular.module('twitter',['SNMock']).
                     message.authorId = r.to_user_id_str;
                     message.msgContent = r.text;
                     message.originalLink = r.source; //TODO: parse using regex
-                    message.msgDate = r.created_at; 
-                    message.authorImg = r.profile_image_url; 
+                    message.msgDate = r.created_at;
+                    message.authorImg = r.profile_image_url;
                     message.authorName = r.from_user_name;
                     //message.mediaList; //TODO: handle media list
                     //message.localization;
@@ -103,14 +107,19 @@ angular.module('twitter',['SNMock']).
             }
 
             $.ajax({
-                  url: 'http://search.twitter.com/search.json',
-                  data: data,
-                  dataType: 'jsonp',
-                  success: callback
-                });
+                url: 'http://search.twitter.com/search.json',
+                data: data,
+                dataType: 'jsonp',
+                success: callback
+            });
 
+<<<<<<< HEAD
 			return self.lastMessages;
 		}
+=======
+            return msgList;
+        }
+>>>>>>> 377ea16f4b868f7c2cc5d09a06e2ffebbbc607da
 
         Twitter.prototype.getUserProfile = function(id){
             return this.profile;
@@ -118,7 +127,7 @@ angular.module('twitter',['SNMock']).
 
         function updateUsrProfile(usr){
 
-            
+
         }
 
         Twitter.prototype.connect = function(){
@@ -135,6 +144,7 @@ angular.module('twitter',['SNMock']).
                 if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
                     self.connectAlreadyCalled = true;
                     twttr.anywhere(function (T) {
+<<<<<<< HEAD
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
@@ -145,14 +155,24 @@ angular.module('twitter',['SNMock']).
                         // triggered when user logs out
                         console.log("You suck baby");
                       }
+=======
+                        T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
+                            authComplete: function(usr) {
+                                // triggered when auth completed successfully
+                                console.log("You rock baby");
+                            },
+                            signOut: function() {
+                                // triggered when user logs out
+                                console.log("You suck baby");
+                            }
+                        });
+>>>>>>> 377ea16f4b868f7c2cc5d09a06e2ffebbbc607da
                     });
-                  });
                 }
             });
 
             return ; //Must return connection object?
         }
-		
+
         return Twitter;
     });
-
