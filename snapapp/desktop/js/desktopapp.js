@@ -95,18 +95,16 @@ function desktopAppCtrlMsg($scope) {
     $scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	
 	$scope.getImageProfile = function(message) {
-		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
-		if (img) return img;
-		return "./img/defaultProfile.png";
-	}
-		
-	$scope.getImageProfile = function(message) {
-		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+    var img = message.authorImg;
+    if (img) return img;
+		img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
 		if (img) return img;
 		return "./img/defaultProfile.png";
 	}
 	
 	$scope.getNameProfile = function(message) {
+    var name = message.authorName;
+    if (name) return name;
 		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 	
