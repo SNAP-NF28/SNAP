@@ -112,14 +112,8 @@ angular.module('twitter',['SNMock']).
                 dataType: 'jsonp',
                 success: callback
             });
-
-<<<<<<< HEAD
 			return self.lastMessages;
 		}
-=======
-            return msgList;
-        }
->>>>>>> 377ea16f4b868f7c2cc5d09a06e2ffebbbc607da
 
         Twitter.prototype.getUserProfile = function(id){
             return this.profile;
@@ -144,7 +138,6 @@ angular.module('twitter',['SNMock']).
                 if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
                     self.connectAlreadyCalled = true;
                     twttr.anywhere(function (T) {
-<<<<<<< HEAD
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
@@ -155,18 +148,6 @@ angular.module('twitter',['SNMock']).
                         // triggered when user logs out
                         console.log("You suck baby");
                       }
-=======
-                        T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
-                            authComplete: function(usr) {
-                                // triggered when auth completed successfully
-                                console.log("You rock baby");
-                            },
-                            signOut: function() {
-                                // triggered when user logs out
-                                console.log("You suck baby");
-                            }
-                        });
->>>>>>> 377ea16f4b868f7c2cc5d09a06e2ffebbbc607da
                     });
                 }
             });
