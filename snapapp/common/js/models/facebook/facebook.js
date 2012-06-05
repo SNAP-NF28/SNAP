@@ -156,6 +156,7 @@ angular.module('facebook',['SNMock']).
 		
 		Facebook.prototype.getLastNMessages = function(n){
             var listMessages=new Array();
+            var self = this;
 
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 FB.init({
@@ -185,9 +186,11 @@ angular.module('facebook',['SNMock']).
                             var msg = new Message();
                             msg.msgContent = response.data[i].message;
                             msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
-                            msg.msgDate = 500; //TODO changer la date
                             msg.authorId = response.data[i].from.id;
 							msg.msgId = response.data[i].id;
+                            msg.authorName = response.data[i].from.name;
+
+                            msg.msgDate = new Date(response.data[i].created_time).getTime();
 
                             listMessages[j] = msg;
                             j++;
