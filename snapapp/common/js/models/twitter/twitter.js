@@ -49,7 +49,7 @@ angular.module('twitter',['SNMock']).
             //alert("This function should not be called");
 
             var self = this;
-            self.lastMessages = [];
+            //self.lastMessages = [];
 
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
@@ -65,59 +65,45 @@ angular.module('twitter',['SNMock']).
                     self.profile.msgCount = usr.statusesCount;
                     self.profile.subscriptionDate = usr.createdAt;
                     $("#login-Twitter").addClass("hide");
-                    //self.getLastNMessages(20);//FIXME: handle vary problem
+                    
+
+                    usr.homeTimeline({
+                        count:20,
+                        success: function(data){
+                              var m;
+                              if(self.lastMessages)
+                                self.lastMessages.length = 0;
+                              else
+                                self.lastMessages = [];
+                              for(m in data.array){
+                                  var r = data.array[m];
+                                  var message = new Message();
+                                  message.socialNetworkId = self.id;
+                                  message.msgId = r.id;
+                                  message.authorId = r.user.id;
+                                  message.msgContent = r.text;
+                                  message.originalLink = r.source; //TODO: parse using regex
+                                  message.msgDate = r.createdAt;
+                                  message.authorImg = r.user.profileImageUrl;
+                                  message.authorName = r.user.name;
+                                  //message.mediaList; //TODO: handle media list
+                                  //message.localization;
+                                  //message.replyTo;
+                                  self.lastMessages.push(message);
+                              }
+                              if(self.lastMessages.length > 0)
+                                console.log("Messages grabbed from twitter.");
+                              return self.lastMessages;
+                          }
+                        });
                 }
             });
 
-            var name;
-            if(!self.profile || !self.profile.name){
-                name = 'mellealizee';//return;
-            } else {
-                name = self.profile.name;
-            }
-            var data = {
-                q:name,
-                rpp:n
-            };
-
-            var callback = function(data){
-                var m;
-                self.lastMessages.length = 0;
-                for(m in data.results){
-                    var r = data.results[m];
-                    var message = new Message();
-                    message.socialNetworkId = self.id;
-                    message.msgId = r.id;
-                    message.authorId = r.to_user_id_str;
-                    message.msgContent = r.text;
-                    message.originalLink = r.source; //TODO: parse using regex
-                    message.msgDate = r.created_at;
-                    message.authorImg = r.profile_image_url;
-                    message.authorName = r.from_user_name;
-                    //message.mediaList; //TODO: handle media list
-                    //message.localization;
-                    //message.replyTo;
-                    self.lastMessages.push(message);
-                }
-                return self.lastMessages;
-            }
-
-            $.ajax({
-                url: 'http://search.twitter.com/search.json',
-                data: data,
-                dataType: 'jsonp',
-                success: callback
-            });
 			return self.lastMessages;
 		}
 
         Twitter.prototype.getUserProfile = function(id){
             return this.profile;
-        }
-
-        function updateUsrProfile(usr){
-
-
         }
 
         Twitter.prototype.connect = function(){
@@ -128,7 +114,20 @@ angular.module('twitter',['SNMock']).
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
-                    updateUsrProfile(usr);
+                                        usr = T.currentUser;
+                    self.profile = new Profile();
+                    self.profile.socialNetworkId = self.id;
+                    self.profile.imageProfileURL = usr.profileImageUrl;
+                    self.profile.name = usr.screenName;
+                    self.profile.description = usr.description;
+                    self.profile.lifePlace = usr.location;
+                    self.profile.followersNb = usr.followersCount;
+                    self.profile.followsNb = usr.friendsCount;
+                    self.profile.msgCount = usr.statusesCount;
+                    self.profile.subscriptionDate = usr.createdAt;
+                    $("#login-Twitter").addClass("hide");
+                    //self.getLastNMessages(20);//FIXME: handle vary problem
+
                     self.lastMessages = self.getLastNMessages(20);//FIXME: handle vary problem
                 } else
                 if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack

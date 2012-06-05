@@ -23,7 +23,7 @@ angular.module('desktopApp', ['socialNetworks']).
                 '<div class="tabbable">' +
                     '<ul class="nav nav-tabs">' +
                     '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
-                    '<a href="#{{pane.title}}" ng-click="select(pane)">{{pane.title}}</a>' +
+                    '<a href="#{{pane.title}}" ng-click="select(pane)" id="pane-{{pane.title}}">{{pane.title}}</a>' +
                     '</li>' +
                     '</ul>' +
                     '<div class="tab-content" ng-transclude></div>' +
@@ -136,10 +136,11 @@ function desktopAppCtrlAll($scope) {
 		var listMess = [];
 		for(j=0;j<$scope.socialNetworks.length;j++){
 			temp = $scope.socialNetworks[j].getLastNMessages(nb);
-			for(i=0;i<temp.length;i++){
-				var temp2 = new capsuleMessage(j,temp[i])
-				listMess.push(temp2);
-			}
+      if(temp)
+  			for(i=0;i<temp.length;i++){
+  				var temp2 = new capsuleMessage(j,temp[i])
+  				listMess.push(temp2);
+  			}
 		}
 		listMess.sort(sortMsg);
 		listMess = listMess.slice(0,nb);
