@@ -21,62 +21,131 @@ angular.module('twitter',['SNMock']).
          *
          */
 
-		 /** Heritage des attributs de la classe SNMock **/
+        /** Heritage des attributs de la classe SNMock **/
         var Twitter = function(){
-			SNMock.apply(this);
+            SNMock.apply(this);
             //list attributes
             this.name = "Twitter";
-			this.displayName = "Twitter";
+            this.id = 'twitter';
+            this.displayName = "Twitter";
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
-			this.limitChar = 140;
+            this.limitChar = 140;
             return this;
         }
-		
-		/** Heritage des methodes de la classe SNMock **/
-		Twitter.prototype = new SNMock();
-		
-		/** Surcharge des methodes de la classe SNMock **/
+
+        /** Heritage des methodes de la classe SNMock **/
+        Twitter.prototype = new SNMock();
+
+        /** Surcharge des methodes de la classe SNMock **/
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }
-		
-		Twitter.prototype.getLastNMessages = function(n){
-			var listMessages=new Array();
-			for (i=0; i<n; i++) {
-				var msg = new Message();
-				msg.msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
-				msg.originalLink = "http://twitter.com/?id=000000";
-				msg.msgDate = 300; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
-				msg.msgId = "ghi789";
-				listMessages[i] = msg;
-			}
-			return listMessages;
-		}
+
+        Twitter.prototype.getLastNMessages = function(n){
+
+            var self = this;
+            var msgList = [];
+
+            twttr.anywhere(function (T) {
+                if (T.isConnected()) {
+                    usr = T.currentUser;
+                    self.profile = new Profile();
+                    self.profile.socialNetworkId = self.id;
+                    self.profile.imageProfileURL = usr.profileImageUrl;
+                    self.profile.name = usr.screenName;
+                    self.profile.description = usr.description;
+                    self.profile.lifePlace = usr.location;
+                    self.profile.followersNb = usr.followersCount;
+                    self.profile.followsNb = usr.friendsCount;
+                    self.profile.msgCount = usr.statusesCount;
+                    self.profile.subscriptionDate = usr.createdAt;
+                    $("#login-Twitter").addClass("hide");
+                    //self.getLastNMessages(20);//FIXME: handle vary problem
+                }
+            });
+
+            var name;
+            if(!self.profile || !self.profile.name){
+                name = 'mellealizee';//return;
+            } else {
+                name = self.profile.name;
+            }
+            var data = {
+                q:name,
+                rpp:n
+            };
+
+            var callback = function(data){
+                var m;
+                msgList.length = 0;
+                for(m in data.results){
+                    var r = data.results[m];
+                    var message = new Message();
+                    message.socialNetworkId = self.id;
+                    message.msgId = r.id;
+                    message.authorId = r.to_user_id_str;
+                    message.msgContent = r.text;
+                    message.originalLink = r.source; //TODO: parse using regex
+                    message.msgDate = r.created_at;
+                    message.authorImg = r.profile_image_url;
+                    message.authorName = r.from_user_name;
+                    //message.mediaList; //TODO: handle media list
+                    //message.localization;
+                    //message.replyTo;
+                    msgList.push(message);
+                }
+                return msgList;
+            }
+
+            $.ajax({
+                url: 'http://search.twitter.com/search.json',
+                data: data,
+                dataType: 'jsonp',
+                success: callback
+            });
+
+            return msgList;
+        }
+
+        Twitter.prototype.getUserProfile = function(id){
+            return this.profile;
+        }
+
+        function updateUsrProfile(usr){
+
+
+        }
 
         Twitter.prototype.connect = function(){
-
+            var self = this;
             //FIXME: Set proper callback url
             //twttr.anywhere.config({ callbackURL: "http://www.yoursite.com/anywhere-complete" });
+            twttr.anywhere(function (T) {
+                if (T.isConnected()) {
+                    usr = T.currentUser;
+                    updateUsrProfile(usr);
+                    self.getLastNMessages(20);//FIXME: handle vary problem
+                } else
+                if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
+                    self.connectAlreadyCalled = true;
+                    twttr.anywhere(function (T) {
+                        T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
+                            authComplete: function(usr) {
+                                // triggered when auth completed successfully
+                                console.log("You rock baby");
+                            },
+                            signOut: function() {
+                                // triggered when user logs out
+                                console.log("You suck baby");
+                            }
+                        });
+                    });
+                }
+            });
 
-            if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
-                this.connectAlreadyCalled = true;
-                twttr.anywhere(function (T) {
-                T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
-                  authComplete: function(user) {
-                    // triggered when auth completed successfully
-                    console.log("You rock baby");
-                  },
-                  signOut: function() {
-                    // triggered when user logs out
-                    console.log("You suck baby");
-                  }
-                });
-              });
-            }
             return ; //Must return connection object?
         }
-		
+
         return Twitter;
     });
-
