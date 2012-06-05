@@ -56,6 +56,8 @@
             <td>{{socialNetwork.citation}}</td>
             <td>{{socialNetwork.name}} connect: </td>
             <td><span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span></td>
+            <td>{{socialNetwork.isConnected()}}</td>
+            <td>{{getProfile(socialNetwork).name}}</td>
         </tr>
         </tbody>
     </table>
