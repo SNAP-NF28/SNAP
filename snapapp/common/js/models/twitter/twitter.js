@@ -30,12 +30,8 @@ angular.module('twitter',['SNMock']).
             this.displayName = "Twitter";
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
-<<<<<<< HEAD
-			this.limitChar = 140;
+			      this.limitChar = 140;
             this.lastMessages = [];
-=======
-            this.limitChar = 140;
->>>>>>> 377ea16f4b868f7c2cc5d09a06e2ffebbbc607da
             return this;
         }
 
