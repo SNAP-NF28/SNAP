@@ -31,6 +31,7 @@ angular.module('twitter',['SNMock']).
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
 			this.limitChar = 140;
+            this.lastMessages = [];
             return this;
         }
 		
@@ -44,8 +45,11 @@ angular.module('twitter',['SNMock']).
 		
 		Twitter.prototype.getLastNMessages = function(n){
 
+
+            //alert("This function should not be called");
+
             var self = this;
-            var msgList = [];
+            self.lastMessages = [];
 
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
@@ -78,7 +82,7 @@ angular.module('twitter',['SNMock']).
 
             var callback = function(data){
                 var m;
-                msgList.length = 0;
+                self.lastMessages.length = 0;
                 for(m in data.results){
                     var r = data.results[m];
                     var message = new Message();
@@ -93,9 +97,9 @@ angular.module('twitter',['SNMock']).
                     //message.mediaList; //TODO: handle media list
                     //message.localization;
                     //message.replyTo;
-                    msgList.push(message);
+                    self.lastMessages.push(message);
                 }
-                return msgList;
+                return self.lastMessages;
             }
 
             $.ajax({
@@ -105,7 +109,7 @@ angular.module('twitter',['SNMock']).
                   success: callback
                 });
 
-			return msgList;
+			return self.lastMessages;
 		}
 
         Twitter.prototype.getUserProfile = function(id){
@@ -120,12 +124,13 @@ angular.module('twitter',['SNMock']).
         Twitter.prototype.connect = function(){
             var self = this;
             //FIXME: Set proper callback url
-            //twttr.anywhere.config({ callbackURL: "http://www.yoursite.com/anywhere-complete" });
+            //twttr.anywhere.config({ callbackURL: "http://localhost:5000/snapapp/desktop/index.html" });
+
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
                     updateUsrProfile(usr);
-                    self.getLastNMessages(20);//FIXME: handle vary problem
+                    self.lastMessages = self.getLastNMessages(20);//FIXME: handle vary problem
                 } else
                 if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
                     self.connectAlreadyCalled = true;
@@ -133,6 +138,7 @@ angular.module('twitter',['SNMock']).
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
+                        self.lastMessages = self.getLastNMessages(20);
                         console.log("You rock baby");
                       },
                       signOut: function() {

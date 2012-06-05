@@ -92,7 +92,7 @@ function checkboxCtrl($scope) {
 }
 
 function desktopAppCtrlMsg($scope) {
-    $scope.messages = $scope.socialNetwork.getLastNMessages(20);
+    $scope.messages = ($scope.socialNetwork.lastMessages)? $scope.socialNetwork.lastMessages : $scope.socialNetwork.getLastNMessages(20);
 	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
