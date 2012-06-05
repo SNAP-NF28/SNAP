@@ -145,10 +145,10 @@ angular.module('twitter',['SNMock']).
                         console.log("You suck baby");
                       }
                     });
-                }
+                });
+              }
             });
-
-            return ; //Must return connection object?
+          return ; //Must return connection object?
         }
 
         return Twitter;
