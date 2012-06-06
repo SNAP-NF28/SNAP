@@ -54,6 +54,18 @@ angular.module('twitter',['SNMock']).
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
+                    self.doGetMessages(self, usr, n);
+                }
+            });
+
+			return self.lastMessages;
+		}
+
+        Twitter.prototype.getUserProfile = function(id){
+            return this.profile;
+        }
+
+        Twitter.prototype.doGetMessages = function(self, usr, n){
                     self.profile = new Profile();
                     self.profile.socialNetworkId = self.id;
                     self.profile.imageProfileURL = usr.profileImageUrl;
@@ -68,7 +80,7 @@ angular.module('twitter',['SNMock']).
                     
 
                     usr.homeTimeline({
-                        count:20,
+                        count:n,
                         success: function(data){
                               var m;
                               if(self.lastMessages)
@@ -91,19 +103,14 @@ angular.module('twitter',['SNMock']).
                                   //message.replyTo;
                                   self.lastMessages.push(message);
                               }
-                              if(self.lastMessages.length > 0)
+                              if(self.lastMessages.length > 0){
                                 console.log("Messages grabbed from twitter.");
+                                angular.element(document).scope().$apply(null); // force refresh view
+                              }
                               return self.lastMessages;
                           }
                         });
-                }
-            });
-
-			return self.lastMessages;
-		}
-
-        Twitter.prototype.getUserProfile = function(id){
-            return this.profile;
+                        console.log("You rock baby");
         }
 
         Twitter.prototype.connect = function(){
@@ -112,32 +119,13 @@ angular.module('twitter',['SNMock']).
             //twttr.anywhere.config({ callbackURL: "http://localhost:5000/snapapp/desktop/index.html" });
 
             twttr.anywhere(function (T) {
-                if (T.isConnected()) {
-                    usr = T.currentUser;
-                                        usr = T.currentUser;
-                    self.profile = new Profile();
-                    self.profile.socialNetworkId = self.id;
-                    self.profile.imageProfileURL = usr.profileImageUrl;
-                    self.profile.name = usr.screenName;
-                    self.profile.description = usr.description;
-                    self.profile.lifePlace = usr.location;
-                    self.profile.followersNb = usr.followersCount;
-                    self.profile.followsNb = usr.friendsCount;
-                    self.profile.msgCount = usr.statusesCount;
-                    self.profile.subscriptionDate = usr.createdAt;
-                    $("#login-Twitter").addClass("hide");
-                    //self.getLastNMessages(20);//FIXME: handle vary problem
-
-                    self.lastMessages = self.getLastNMessages(20);//FIXME: handle vary problem
-                } else
                 if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
                     self.connectAlreadyCalled = true;
                     twttr.anywhere(function (T) {
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
-                        self.lastMessages = self.getLastNMessages(20);
-                        console.log("You rock baby");
+                        self.doGetMessages(self, usr, 20);
                       },
                       signOut: function() {
                         // triggered when user logs out
