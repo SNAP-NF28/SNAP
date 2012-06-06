@@ -273,6 +273,24 @@ angular.module('facebook',['SNMock']).
 
             return ; //Must return connection object?
         }
+
+
+        Facebook.prototype.sendMessage = function(){
+            if(typeof(FB) === "object" && FB._apiKey === null) {
+                return;
+            }
+
+            var content = $('.newMsg').val();
+            console.log(content);
+
+            FB.api('/me/feed', 'post', { message: content}, function(response) {
+                if (!response || response.error) {
+                    console.log('Error occured');
+                } else {
+                    console.log('Post ID: ' + response.id);
+                }
+            });
+        }
 		
         return Facebook;
     });

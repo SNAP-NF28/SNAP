@@ -31,8 +31,12 @@ angular.module('SNMock',['types']).
             return true; //Must return connection object?
         }
 
+        SNMock.prototype.sendMessage = function(){
+            return ; //Must return connection object?
+        }
 
-		SNMock.prototype.connect = function(){
+
+        SNMock.prototype.connect = function(){
 			return ; //Must return connection object?
 		}
 
