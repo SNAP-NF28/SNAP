@@ -29,6 +29,9 @@ angular.module('facebook',['SNMock']).
 			this.displayName = "Facebook";
 			this.icon = "/snapapp/common/img/logo_facebook_60x60.png";
 			this.limitChar = 400;
+            this.lastMessages = [];
+            this.lastMessagesIds = [];
+            this.lastImgPath = [];
             return this;
         }
 		
@@ -42,7 +45,13 @@ angular.module('facebook',['SNMock']).
 
         Facebook.prototype.isConnected = function() {
             if(typeof(FB) === "object" && FB._apiKey === null) {
-                return false;
+                FB.init({
+                    appId      : '454890441191384',
+                    status     : true,
+                    cookie     : true,
+                    xfbml      : true,
+                    oauth      : true
+                });
             }
 
             FB.getLoginStatus(function(response) {
@@ -62,7 +71,6 @@ angular.module('facebook',['SNMock']).
 
                 FB.init({
                     appId      : '454890441191384',
-                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
                     status     : true,
                     cookie     : true,
                     xfbml      : true,
@@ -79,22 +87,12 @@ angular.module('facebook',['SNMock']).
                             Facebook.prototype.getUserProfile = function(id) {
                                 FB.api('/me/picture', function(response2) {
                                     profile.imageProfileURL = response2;
-                                    alert(profile.imageProfileURL);
                                 });
 
                                 var profile = new Profile();
-
-
                                 profile.name = response.name;
                                 profile.firstName = response.first_name;
                                 profile.nickName = response.username;
-                                //console.log(profile.nickName);
-
-                                //console.log(profile.imageProfileURL);
-
-                                //alert(profile.imageProfileURL);
-                                console.log(profile);
-
 
                                 return profile;
                             }
@@ -111,7 +109,6 @@ angular.module('facebook',['SNMock']).
         }
 
 
-
         Facebook.prototype.getUserProfile = function(id) {
             var profile = new Profile();
 
@@ -126,22 +123,12 @@ angular.module('facebook',['SNMock']).
 
                     FB.api('/me', function(response) {
 
-                        //console.log('your name, ' + response.name + '.');
-
                         profile.name = response.name;
                         profile.firstName = response.first_name;
                         profile.nickName = response.username;
-                        //console.log(profile.nickName);
-
-                        //console.log(profile.imageProfileURL );
-
-                        console.log(profile);
-
                         return profile;
                     });
 
-                } else {
-                    console.log('no profile because no auth');
                 }
             });
 
@@ -153,10 +140,34 @@ angular.module('facebook',['SNMock']).
             return profile;
         }
 
+
+        Facebook.prototype.getImgMessage = function(res) {
+            var self = this;
+
+            FB.getLoginStatus(function(resp) {
+                FB.api('/me/home', function(respon) {
+                    for (var i=0; i<respon.data.length; i++) {
+                        if (!respon.data[i].message) {
+                            continue;
+                        }
+
+                        FB.api('/' + respon.data[i].from.id + '/picture', function(response) {
+                            console.log(response);
+                            self.lastImgPath.push(response);
+                            return response;
+                        });
+                    }
+                    return self.lastImgPath;
+                });
+            });
+
+            return self.lastImgPath;
+        }
+
 		
 		Facebook.prototype.getLastNMessages = function(n){
-            var listMessages=new Array();
             var self = this;
+            self.lastMessages = [];
 
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 FB.init({
@@ -189,35 +200,41 @@ angular.module('facebook',['SNMock']).
                             msg.authorId = response.data[i].from.id;
 							msg.msgId = response.data[i].id;
                             msg.authorName = response.data[i].from.name;
-
                             msg.msgDate = new Date(response.data[i].created_time).getTime();
 
-                            listMessages[j] = msg;
+                            FB.api('/' + msg.authorId + '/picture', function(response) {
+                                self.lastImgPath.push(response);
+                                console.log(response);
+                            });
+
+                            self.lastMessages.push(msg);
                             j++;
-                            console.log('id: ' + i + ' - ' + msg.msgContent);
+                            console.log('id: ' + j + ' - ' + msg.msgContent);
                         }
 
-                        return listMessages;
                     });
+
+                    return self.lastMessages;
+
 
                 } else {
                     console.log('no Auth');
-                    for (i=0; i<n; i++) {
+                    /*for (i=0; i<n; i++) {
                         var msg = new Message();
                         msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
                         msg.originalLink = "http://www.facebook.com/";
                         msg.msgDate = 111; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
                         msg.msgId = "abc123";
-						listMessages[i] = msg;
-                    }
+                        self.lastMessages.push(msg);
+                    }*/
 
-                    console.log('nbMsg: ' + listMessages.length);
+                    console.log('nbMsg: ' + self.lastMessages.length);
 
-                    return listMessages;
+                    return  self.lastMessages;
                 }
             });
 
-            return listMessages;
+            return self.lastMessages;
 		}
 
         Facebook.prototype.connect = function(){
@@ -244,7 +261,6 @@ angular.module('facebook',['SNMock']).
                         FB.api('/me', function(response) {
                             console.log('Good to see you, ' + response.name + '.');
                             console.log('Your email address, ' + response.email + '.');
-                            //window.location.reload();
                         });
                     } else if (response.status === 'not_authorized') {
                         console.log("No auth");
