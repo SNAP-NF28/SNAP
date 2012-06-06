@@ -201,6 +201,7 @@ angular.module('facebook',['SNMock']).
 							msg.msgId = response.data[i].id;
                             msg.authorName = response.data[i].from.name;
                             msg.msgDate = new Date(response.data[i].created_time).getTime();
+                            msg.authorImg = "/snapapp/common/img/defaultProfile.png";
 
                             FB.api('/' + msg.authorId + '/picture', function(response) {
                                 self.lastImgPath.push(response);
