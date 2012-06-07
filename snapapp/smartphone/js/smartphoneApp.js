@@ -5,6 +5,8 @@ angular.module('smartphoneApp', ['socialNetworks']);
 function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.socialNetworks = new SocialNetworks();
 	$('#msgDetails').live('pageshow', function () {displayMessage()});
+	//angular.element(document).scope().$apply(null); // force refresh view
+
 }
 
 /** Controleurs pour chaque reseau social **/
@@ -32,7 +34,7 @@ function smartphoneFbCtrl($scope) {
 	}
 
 	// Si on enleve l'alert les messages ne sont pas affichés Je NE COMPRENDS PAS POURQUOI!!
-	alert('nbMsg: ' + $scope.messages.length); //TODO retirer l'alert
+	//alert('nbMsg: ' + $scope.messages.length); //TODO retirer l'alert
 }
 
 function smartphoneGpCtrl($scope) {
@@ -41,6 +43,8 @@ function smartphoneGpCtrl($scope) {
 	$scope.getIcon = $scope.socialNetwork.icon;
 
 	$scope.getImageProfile = function(message) {
+	var img = message.authorImg;
+  if (img) return img;
 	var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
 	if (img) return img;
 	return "./img/defaultProfile.png";
