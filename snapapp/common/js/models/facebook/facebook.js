@@ -240,6 +240,8 @@ angular.module('facebook',['SNMock']).
 
         Facebook.prototype.connect = function(){
 
+            var self = this;
+
             // si l'id n'existe pas on quitte la fonction
             if (document.getElementById('login-' + this.name) == null) {
                 return;
@@ -256,17 +258,12 @@ angular.module('facebook',['SNMock']).
                 oauth      : true
             });
 
-            if (this.isConnected()) {
-                $('#log-Fb').addClass('hide');
-            }
-
             document.getElementById('log-Fb').addEventListener('click', function() {
                 FB.getLoginStatus(function(response) {
                     if (response.status === 'connected') {
                         FB.api('/me', function(response) {
                             console.log('Good to see you, ' + response.name + '.');
                             console.log('Your email address, ' + response.email + '.');
-                            $('#login-' + this.name).addClass('hide');
                             angular.element(document).scope().$apply(null);
                         });
                     } else if (response.status === 'not_authorized') {
@@ -281,15 +278,15 @@ angular.module('facebook',['SNMock']).
         }
 
 
-        Facebook.prototype.sendMessage = function(){
+        Facebook.prototype.sendMessage = function(text){
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 return;
             }
 
-            var content = $('.newMsg').val();
-            console.log(content);
+            //var content = $('.newMsg').val();
+            console.log(text);
 
-            FB.api('/me/feed', 'post', { message: content}, function(response) {
+            FB.api('/me/feed', 'post', { message: text}, function(response) {
                 if (!response || response.error) {
                     console.log('Error occured');
                 } else {

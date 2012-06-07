@@ -163,6 +163,12 @@ function desktopAppCtrlAll($scope) {
 		if(capsuleMessage.message.msgContent.length>length) return capsuleMessage.message.msgContent.substring(0,140) + "....";
 		return capsuleMessage.message.msgContent;
 	}
+
+    $scope.envoiMessage = function() {
+        alert('EEEE');
+        var msg_content = $('.newMsg');
+        console.log('msgcontenu: ' + msg_content);
+    }
 	
 }
 function charCounter(target, max, idchamp, btn){ 
@@ -184,4 +190,8 @@ function resize(){
 		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-85 + "px";
 		else frame[i].style.maxHeight = windowheight-285 + "px";
 	}
-} 
+}
+
+function sendMessage() {
+
+}
