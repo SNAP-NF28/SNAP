@@ -184,41 +184,42 @@ angular.module('facebook',['SNMock']).
                 if (response.status === 'connected') {
                     FB.api('/me/home', {access_token: response.authResponse.accessToken}, function(response) {
                         var j = 0;
-                        for (var i=0; i<response.data.length; i++) {
-                            if (!response.data[i].message) {
-                                continue;
-                            }
-
-                            if (j >= n) {
-                                return listMessages;
-                            }
-
-                            var msg = new Message();
-                            msg.msgContent = response.data[i].message;
-                            msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
-                            msg.authorId = response.data[i].from.id;
-							msg.msgId = response.data[i].id;
-                            msg.authorName = response.data[i].from.name;
-                            msg.msgDate = new Date(response.data[i].created_time).getTime();
-                            msg.authorImg = "/snapapp/common/img/defaultProfile.png";
-
-                            FB.api('/' + msg.authorId + '/picture', function(response) {
-                                var regex = /[\d]+_([\d]+)_[\d]+/;
-                                for (i in self.lastMessages){
-                                    var m = self.lastMessages[i];
-                                    var match = regex.exec(response);
-                                    if(!match || !match[1])
-                                        return;
-                                    var id = match[1];
-                                    if(m.authorId === id){
-                                        m.authorImg = response;
-                                        angular.element(document).scope().$apply(null); // force refresh view
-                                    }
+                        if (response.data) {
+                            for (var i=0; i<response.data.length; i++) {
+                                if (!response.data[i].message) {
+                                    continue;
                                 }
-                            });
 
-                            self.lastMessages.push(msg);
-                            j++;
+                                if (j >= n) {
+                                    return listMessages;
+                                }
+
+                                var msg = new Message();
+                                msg.msgContent = response.data[i].message;
+                                msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
+                                msg.authorId = response.data[i].from.id;
+                                msg.msgId = response.data[i].id;
+                                msg.authorName = response.data[i].from.name;
+                                msg.msgDate = new Date(response.data[i].created_time).getTime();
+
+                                FB.api('/' + msg.authorId + '/picture', function(response) {
+                                    var regex = /[\d]+_([\d]+)_[\d]+/;
+                                    for (i in self.lastMessages){
+                                        var m = self.lastMessages[i];
+                                        var match = regex.exec(response);
+                                        if(!match || !match[1])
+                                            return;
+                                        var id = match[1];
+                                        if(m.authorId === id){
+                                            m.authorImg = response;
+                                            angular.element(document).scope().$apply(null); // force refresh view
+                                        }
+                                    }
+                                });
+
+                                self.lastMessages.push(msg);
+                                j++;
+                            }
                         }
 
                     });
@@ -256,7 +257,7 @@ angular.module('facebook',['SNMock']).
             });
 
             if (this.isConnected()) {
-                $('#login-Facebook').addClass('hide');
+                $('#log-Fb').addClass('hide');
             }
 
             document.getElementById('log-Fb').addEventListener('click', function() {
