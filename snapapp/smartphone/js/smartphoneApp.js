@@ -41,6 +41,8 @@ function smartphoneGpCtrl($scope) {
 	$scope.getIcon = $scope.socialNetwork.icon;
 
 	$scope.getImageProfile = function(message) {
+	var img = message.authorImg;
+  if (img) return img;
 	var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
 	if (img) return img;
 	return "./img/defaultProfile.png";

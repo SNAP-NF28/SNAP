@@ -31,7 +31,6 @@ angular.module('twitter',['SNMock']).
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
 			      this.limitChar = 140;
-            this.lastMessages = [];
             return this;
         }
 
@@ -49,7 +48,8 @@ angular.module('twitter',['SNMock']).
             //alert("This function should not be called");
 
             var self = this;
-            //self.lastMessages = [];
+            if(!self.lastMessages)
+              self.lastMessages = [];
 
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
