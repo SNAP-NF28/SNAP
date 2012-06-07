@@ -193,7 +193,6 @@ angular.module('facebook',['SNMock']).
                                 return listMessages;
                             }
 
-                            console.log('msg: ' + response.data[i].message);
                             var msg = new Message();
                             msg.msgContent = response.data[i].message;
                             msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
@@ -204,13 +203,22 @@ angular.module('facebook',['SNMock']).
                             msg.authorImg = "/snapapp/common/img/defaultProfile.png";
 
                             FB.api('/' + msg.authorId + '/picture', function(response) {
-                                self.lastImgPath.push(response);
-                                console.log(response);
+                                var regex = /[\d]+_([\d]+)_[\d]+/;
+                                for (i in self.lastMessages){
+                                    var m = self.lastMessages[i];
+                                    var match = regex.exec(response);
+                                    if(!match || !match[1])
+                                        return;
+                                    var id = match[1];
+                                    if(m.authorId === id){
+                                        m.authorImg = response;
+                                        angular.element(document).scope().$apply(null); // force refresh view
+                                    }
+                                }
                             });
 
                             self.lastMessages.push(msg);
                             j++;
-                            console.log('id: ' + j + ' - ' + msg.msgContent);
                         }
 
                     });
@@ -220,16 +228,7 @@ angular.module('facebook',['SNMock']).
 
                 } else {
                     console.log('no Auth');
-                    /*for (i=0; i<n; i++) {
-                        var msg = new Message();
-                        msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
-                        msg.originalLink = "http://www.facebook.com/";
-                        msg.msgDate = 111; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
-                        msg.msgId = "abc123";
-                        self.lastMessages.push(msg);
-                    }*/
 
-                    console.log('nbMsg: ' + self.lastMessages.length);
 
                     return  self.lastMessages;
                 }
@@ -256,12 +255,18 @@ angular.module('facebook',['SNMock']).
                 oauth      : true
             });
 
+            if (this.isConnected()) {
+                $('#login-Facebook').addClass('hide');
+            }
+
             document.getElementById('log-Fb').addEventListener('click', function() {
                 FB.getLoginStatus(function(response) {
                     if (response.status === 'connected') {
                         FB.api('/me', function(response) {
                             console.log('Good to see you, ' + response.name + '.');
                             console.log('Your email address, ' + response.email + '.');
+                            $('#login-' + this.name).addClass('hide');
+                            angular.element(document).scope().$apply(null);
                         });
                     } else if (response.status === 'not_authorized') {
                         console.log("No auth");
