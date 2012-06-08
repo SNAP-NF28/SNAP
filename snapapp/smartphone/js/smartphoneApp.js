@@ -74,7 +74,7 @@ function smartphoneTwCtrl($scope) {
 
 	$scope.getNFirstCharacters = function(message, lg) {
 	if (message.msgContent.length > lg)
-		return message.msgContent.substring(0, lg) + "....";
+		return escape(message.msgContent.substring(0, lg) + "....");
 	return message.msgContent;
 	}
 
@@ -123,5 +123,10 @@ function displayMessage() {
 	$('#msgDetails').find($('b.userName')[0]).text(author);
 	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
 	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
+	
+	$('#msgDetails').removeData('message');
+	$('#msgDetails').removeData('author');
+	$('#msgDetails').removeData('authorImg');
+	
 }
 
