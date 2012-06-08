@@ -18,23 +18,24 @@ function smartphoneFbCtrl($scope) {
 	$scope.getIcon = $scope.socialNetwork.icon;
 
 	$scope.getImageProfile = function(message) {
-	var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
-	if (img) return img;
-	return "./img/defaultProfile.png";
+    var img = message.authorImg;
+    if (img) return img;
+		// img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+		// if (img) return img;
+		return "../common/img/defaultProfile.png";
 	}
-
+	
 	$scope.getNFirstCharacters = function(message, lg) {
 	if (message.msgContent.length > lg)
-		return message.msgContent.substring(0, lg) + "....";
-	return message.msgContent;
+		return unescape(message.msgContent.substring(0, lg)) + "....";
+	return unescape(message.msgContent);
 	}
 
 	$scope.getNameProfile = function(message) {
-		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	//console.log(unescape(message.authorName));	
+    return unescape(message.authorName);
+		//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
-
-	// Si on enleve l'alert les messages ne sont pas affichés Je NE COMPRENDS PAS POURQUOI!!
-	//alert('nbMsg: ' + $scope.messages.length); //TODO retirer l'alert
 }
 
 function smartphoneGpCtrl($scope) {
@@ -52,11 +53,12 @@ function smartphoneGpCtrl($scope) {
 
 	$scope.getNFirstCharacters = function(message, lg) {
 	if (message.msgContent.length > lg)
-		return message.msgContent.substring(0, lg) + "....";
-	return message.msgContent;
+		return unescape(message.msgContent.substring(0, lg)) + "....";
+	return unescape(message.msgContent);
 	}
 
-	$scope.getNameProfile = function(message) {
+	$scope.getNameProfile = function(message) { 
+    //return unescape(message.authorName);
 		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 }
@@ -74,12 +76,13 @@ function smartphoneTwCtrl($scope) {
 
 	$scope.getNFirstCharacters = function(message, lg) {
 	if (message.msgContent.length > lg)
-		return escape(message.msgContent.substring(0, lg) + "....");
-	return message.msgContent;
+		return unescape(message.msgContent.substring(0, lg)) + "....";
+	return unescape(message.msgContent);
 	}
 
-	$scope.getNameProfile = function(message) {
-		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	$scope.getNameProfile = function(message) { 
+    return unescape(message.authorName);
+		//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 }
 
@@ -110,20 +113,33 @@ $(document).bind('pageinit', function(event) {
 }
 
 function storeMessage($msg, $author, $authorImg) {
-	$('#msgDetails').data('message', $msg);
-	$('#msgDetails').data('author', $author);
+	console.log("Message original : " + $msg);
+	console.log("Auteur original : " + $author);
+	
+	$('#msgDetails').data('message', unescape($msg));
+	$('#msgDetails').data('author', unescape($author));
 	$('#msgDetails').data('authorImg', $authorImg);
+	/*
+	console.log("Message stocke : " + $('#msgDetails').data('message'));
+	console.log("Auteur stocke : " + $('#msgDetails').data('author'));
+	*/
 }
 
 function displayMessage() {
 	var msg = $('#msgDetails').data('message');
 	var author = $('#msgDetails').data('author');
 	var authorImg = $('#msgDetails').data('authorImg');
-	
+	/*
+	console.log("Message recupere : " + msg);
+	console.log("Auteur recupere : " + author);
+	*/
 	$('#msgDetails').find($('b.userName')[0]).text(author);
 	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
 	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
-	
+	/*
+	console.log("Message affiche : " + $('#msgDetails').find($('b.userName')[0]).text());
+	console.log("Auteur affiche : " + $('#msgDetails').find($('span.msgContent')[0]).text());
+	*/
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
 	$('#msgDetails').removeData('authorImg');
