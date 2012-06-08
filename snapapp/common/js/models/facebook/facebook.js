@@ -152,7 +152,7 @@ angular.module('facebook',['SNMock']).
             var self = this;
 
             FB.getLoginStatus(function(resp) {
-                FB.api('/me/home', function(respon) {
+                FB.api('/me/home?limit=40', function(respon) {
                     for (var i=0; i<respon.data.length; i++) {
                         if (!respon.data[i].message) {
                             continue;
@@ -177,6 +177,8 @@ angular.module('facebook',['SNMock']).
             var self = this;
             self.lastMessages = [];
 
+            var current_time = new Date().getTime();
+
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 FB.init({
                     appId      : '454890441191384',
@@ -190,7 +192,7 @@ angular.module('facebook',['SNMock']).
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    FB.api('/me/home', {access_token: response.authResponse.accessToken}, function(response) {
+                    FB.api('/me/home?limit=40&until='+current_time, {access_token: response.authResponse.accessToken}, function(response) {
                         var j = 0;
                         if (response.data) {
                             for (var i=0; i<response.data.length; i++) {
@@ -203,11 +205,12 @@ angular.module('facebook',['SNMock']).
                                 }
 
                                 var msg = new Message();
-                                msg.msgContent = response.data[i].message;
+                                msg.msgContent = escape(response.data[i].message);
+                                console.log(msg.msgContent);
                                 msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
                                 msg.authorId = response.data[i].from.id;
                                 msg.msgId = response.data[i].id;
-                                msg.authorName = response.data[i].from.name;
+                                msg.authorName = escape(response.data[i].from.name);
                                 msg.msgDate = new Date(response.data[i].created_time).getTime();
 
                                 FB.api('/' + msg.authorId + '/picture', function(response) {
