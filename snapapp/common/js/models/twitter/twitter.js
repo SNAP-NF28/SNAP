@@ -93,11 +93,11 @@ angular.module('twitter',['SNMock']).
                                   message.socialNetworkId = self.id;
                                   message.msgId = r.id;
                                   message.authorId = r.user.id;
-                                  message.msgContent = r.text;
+                                  message.msgContent = escape(r.text);
                                   message.originalLink = r.source; //TODO: parse using regex
                                   message.msgDate = new Date(r.createdAt).getTime();
                                   message.authorImg = r.user.profileImageUrl;
-                                  message.authorName = r.user.name;
+                                  message.authorName = escape(r.user.name);
                                   //message.mediaList; //TODO: handle media list
                                   //message.localization;
                                   //message.replyTo;

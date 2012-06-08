@@ -203,11 +203,11 @@ angular.module('facebook',['SNMock']).
                                 }
 
                                 var msg = new Message();
-                                msg.msgContent = response.data[i].message;
+                                msg.msgContent = escape(response.data[i].message);
                                 msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
                                 msg.authorId = response.data[i].from.id;
                                 msg.msgId = response.data[i].id;
-                                msg.authorName = response.data[i].from.name;
+                                msg.authorName = escape(response.data[i].from.name);
                                 msg.msgDate = new Date(response.data[i].created_time).getTime();
 
                                 FB.api('/' + msg.authorId + '/picture', function(response) {
