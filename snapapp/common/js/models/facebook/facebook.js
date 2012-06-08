@@ -44,6 +44,14 @@ angular.module('facebook',['SNMock']).
         }
 
         Facebook.prototype.isConnected = function() {
+            
+            if(this.connected)
+                return true;
+
+            self = this;
+
+            console.log('Facebook call: isConnected');
+
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 FB.init({
                     appId      : '454890441191384',
@@ -57,6 +65,7 @@ angular.module('facebook',['SNMock']).
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                     console.log('Connected');
+                    self.connected = true;
                     return true;
                 }
             });
@@ -66,7 +75,7 @@ angular.module('facebook',['SNMock']).
 
 
         Facebook.prototype.init = function() {
-
+            console.log('Facebook call: init');
             if(typeof(FB) === "object" && FB._apiKey === null) {
 
                 FB.init({
@@ -110,38 +119,36 @@ angular.module('facebook',['SNMock']).
 
 
         Facebook.prototype.getUserProfile = function(id) {
-            var profile = new Profile();
 
-            this.init();
+            //console.log('Facebook call: getUserProfile');
 
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
+            if(!this.profile){
+                this.profile = new Profile();
 
-                    FB.api('/me/picture', function(response) {
-                        profile.imageProfileURL = response;
-                    });
+                this.init();
 
-                    FB.api('/me', function(response) {
+                if(this.connected){
 
-                        profile.name = response.name;
-                        profile.firstName = response.first_name;
-                        profile.nickName = response.username;
-                        return profile;
-                    });
+                        FB.api('/me/picture', function(response) {
+                            this.profile.imageProfileURL = response;
+                        });
 
-                }
-            });
+                        FB.api('/me', function(response) {
 
-            if (profile.name == null) {
-                var profile=new Profile();
-                return profile;
+                            this.profile.name = response.name;
+                            this.profile.firstName = response.first_name;
+                            this.profile.nickName = response.username;
+                            return this.profile;
+                        });
+                    }
             }
 
-            return profile;
+            return this.profile;
         }
 
 
         Facebook.prototype.getImgMessage = function(res) {
+            //console.log('Facebook call: getImgMessage');
             var self = this;
 
             FB.getLoginStatus(function(resp) {
@@ -166,6 +173,7 @@ angular.module('facebook',['SNMock']).
 
 		
 		Facebook.prototype.getLastNMessages = function(n){
+            //console.log('Facebook call: getLastNMessages');
             var self = this;
             self.lastMessages = [];
 
@@ -240,45 +248,43 @@ angular.module('facebook',['SNMock']).
 
         Facebook.prototype.connect = function(){
 
-            var self = this;
+            if (!this.isConnected()){
+                console.log('Facebook call: connect');
 
-            // si l'id n'existe pas on quitte la fonction
-            if (document.getElementById('login-' + this.name) == null) {
-                return;
-            }
+                // si l'id n'existe pas on quitte la fonction
+                if (document.getElementById('login-' + this.name) == null) {
+                    return;
+                }
 
-            document.getElementById('login-' + this.name).innerHTML = "<div id='log-Fb' class='fb-login-button'>Connect with Facebook</div>";
+                document.getElementById('login-' + this.name).innerHTML = "<div id='log-Fb' class='fb-login-button'>Connect with Facebook</div>";
 
-            FB.init({
-                appId      : '454890441191384',
-                //channelUrl : '//localhost://8000/app/channel.html', // Channel File
-                status     : true,
-                cookie     : true,
-                xfbml      : true,
-                oauth      : true
-            });
-
-            document.getElementById('log-Fb').addEventListener('click', function() {
-                FB.getLoginStatus(function(response) {
-                    if (response.status === 'connected') {
-                        FB.api('/me', function(response) {
-                            console.log('Good to see you, ' + response.name + '.');
-                            console.log('Your email address, ' + response.email + '.');
-                            angular.element(document).scope().$apply(null);
-                        });
-                    } else if (response.status === 'not_authorized') {
-                        console.log("No auth");
-                    } else {
-                        console.log("No auth");
-                    }
+                FB.init({
+                    appId      : '454890441191384',
+                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
+                    status     : true,
+                    cookie     : true,
+                    xfbml      : true,
+                    oauth      : true
                 });
-            });
 
-            return ; //Must return connection object?
+                document.getElementById('log-Fb').addEventListener('click', function() {
+                     FB.login(function(response) {
+                       if (response.authResponse) {
+                         console.log('Welcome!  Fetching your information.... ');
+                         FB.api('/me', function(response) {
+                           console.log('Good to see you, ' + response.name + '.');
+                         });
+                       } else {
+                         console.log('User cancelled login or did not fully authorize.');
+                       }
+                     }, {scope: 'email,user_about_me,read_stream,publish_stream'});
+                });
+            }
         }
 
 
         Facebook.prototype.sendMessage = function(text){
+            //console.log('Facebook call: sendMessage');
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 return;
             }
