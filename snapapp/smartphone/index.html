@@ -54,224 +54,9 @@
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('homePage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
                 <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('homePage')}}")> </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
-<!--------------------- Page Facebook --------------------->
-<div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
-    <div data-role="header" data-position="fixed">
-        <img  class="logo" ng-src="{{getIcon}}"/>
-		<h1>Header FB</h1>
-    </div>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-
-            <div class="msgContent well"  ng-repeat="message in messages">
-				
-				<div class="block">
-					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
-				</div>
-				<div class="block">
-					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
-					<!-- Message content -->
-
-					 <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
-					 <!-- Pour le lien vers le message original : passer en parametre l'identifiant du message, et recuperer le message apres -->
-					 <!-- Ne pas oublier de creer un controleur pour la page popup -->
-					 <!-- HS : Voir si je ne peux pas generaliser les methodes communes aux 3 RS -->
-					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}})"> Plus...</a></p>
-					
-				</div>				
-				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-				<br class="clear"/>
-            </div>
-		</div>
-	</div>
-    <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">		
-            <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('fbPage')}}")> </a></li>
-                <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
-                <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('fbPage')}}")> </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- Start of third page: #popup -->
-<div data-role="page" id="msgDetails">
-
-	<div data-role="header" data-theme="c">
-		<h1>D&eacute;tail du message</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" data-theme="d">	
-		<div class="msgContent well">			
-			<div class="block">
-				<img class="msgImgProfile" src="../common/img/defaultProfile.png" />
-			</div>
-			<div class="block">
-				<b class="userName">  </b>	 
-				<br />
-				<!-- Message content -->
-
-				 <span class="msgContent"> </span>
-			</div>				
-			<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-			<br class="clear"/>
-		</div>	
-	</div><!-- /content -->
-</div><!-- /page popup -->
-
-
-<!--------------------- Page Twitter --------------------->
-<div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl">
-
-    <div data-role="header" data-position="fixed">
-        <img  class="logo" ng-src="{{getIcon}}" />
-        <h1>Header Twitter</h1>
-    </div>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-
-            <div class="msgContent well" ng-repeat="message in messages">
-				
-				<div class="block">
-					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
-				</div>
-				<div class="block">
-					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
-					<!-- Message content -->
-					<span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
-					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage('{{message.msgContent}}', '{{getNameProfile(message)}}', '{{getImageProfile(message)}}')"> Plus...</a></p>
-				</div>				
-				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-				<br class="clear"/>
-            </div>
-		</div>
-	</div>
-    <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#twPage').live('swipeleft', '{{getPrevPage("twPage")}}');
-				$('#twPage').live('swiperight', '{{getPrevPage("twPage")}}');
-			</script>
-            <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('twPage')}}")> </a></li>
-                <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
-                <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('twPage')}}")> </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!--------------------- Page Google Plus --------------------->
-<div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl">
-    <div data-role="header" data-position="fixed">
-        <img  class="logo" ng-src="{{getIcon}}" />
-        <h1>Header Google+</h1>
-    </div>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-
-            <div class="msgContent well" ng-repeat="message in messages" >
-				
-				<div class="block">
-					<img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
-				</div>
-				<div class="block">
-					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
-					<!-- Message content -->
-					{{getNFirstCharacters(message, 140)}}
-					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage('{{message.msgContent}}', '{{getNameProfile(message)}}', '{{getImageProfile(message)}}')"> Plus...</a></p>
-				</div>				
-				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-				<br class="clear"/>
-            </div>
-		</div>
-	</div>
-    <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#gpPage').live('swipeleft', '{{getPrevPage("gpPage")}}');
-				$('#gpPage').live('swiperight', '{{getPrevPage("gpPage")}}');
-			</script>
-            <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('gpPage')}}")> </a></li>
-                <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
-                <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('gpPage')}}")> </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!--------------------- Page Recherche --------------------->
-<div id="srchPage" data-role="page">
-    <div data-role="header" data-position="fixed">
-        <h1>Header Search</h1>
-    </div>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-            <label>Text</label>
-            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <h4>Hello {{yourName}} !</h4>
-        </div>
-    </div>
-    <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#srchPage').live('swipeleft', '{{getPrevPage("srchPage")}}');
-				$('#srchPage').live('swiperight', '{{getPrevPage("srchPage")}}');
-			</script>		
-            <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('srchPage')}}")> </a></li>
-                <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
-                <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('srchPage')}}")> </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!--------------------- Page Profil --------------------->
-<div id="usrPage" data-role="page">
-    <div data-role="header" data-position="fixed">
-        <h1>Header Profile</h1>
-    </div>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-            <label>Text</label>
-            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <!-- Image du profil -->
-            <h4>Hello {{yourName}} !</h4>
-
-        </div>
-    </div>
-    <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#usrPage').live('swipeleft', '{{getPrevPage("usrPage")}}');
-				$('#usrPage').live('swiperight', '{{getPrevPage("usrPage")}}');
-			</script>
-            <ul>
-                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('usrPage')}}")> </a></li>
-                <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
-                <li> <a href="#srchPage" data-icon="search"> </a></li>
-                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('usrPage')}}")> </a></li>
             </ul>
         </div>
     </div>
@@ -317,13 +102,263 @@
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('optionsPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
-                <li> <a href="#" data-icon="email"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
                 <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('optionsPage')}}")> </a></li>
             </ul>
         </div>
     </div>
 </div>
+
+<!--------------------- Page envoi message --------------------->
+<div id="msgPage" data-role="page">
+    <div data-role="header" data-position="fixed">
+        <h1>Envoi message</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label>Text</label>
+            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
+            <!-- Image du profil -->
+            <h4>Hello {{yourName}} !</h4>
+
+        </div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
+			<script language="Javascript"> 
+				$('#optionsPage').live('swipeleft', '{{getPrevPage("optionsPage")}}');
+				$('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
+			</script>
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("#")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("#")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--------------------- Page Recherche --------------------->
+<div id="srchPage" data-role="page">
+    <div data-role="header" data-position="fixed">
+        <h1>Header Search</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label>Text</label>
+            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
+            <h4>Hello {{yourName}} !</h4>
+        </div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
+			<script language="Javascript"> 
+				$('#srchPage').live('swipeleft', '{{getPrevPage("srchPage")}}');
+				$('#srchPage').live('swiperight', '{{getPrevPage("srchPage")}}');
+			</script>		
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('srchPage')}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('srchPage')}}")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--------------------- Page Profil --------------------->
+<div id="usrPage" data-role="page">
+    <div data-role="header" data-position="fixed">
+        <h1>Header Profile</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label>Text</label>
+            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
+            <!-- Image du profil -->
+            <h4>Hello {{yourName}} !</h4>
+
+        </div>
+    </div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
+			<script language="Javascript"> 
+				$('#usrPage').live('swipeleft', '{{getPrevPage("usrPage")}}');
+				$('#usrPage').live('swiperight', '{{getPrevPage("usrPage")}}');
+			</script>
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('usrPage')}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('usrPage')}}")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--------------------- Page Facebook --------------------->
+<div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
+    <div data-role="header" data-position="fixed">
+        <img  class="logo" ng-src="{{getIcon}}"/>
+		<h1>Header FB</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+
+            <div class="msgContent well"  ng-repeat="message in messages">
+				
+				<div class="block">
+					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+				</div>
+				<div class="block">
+					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
+					<!-- Message content -->
+
+					 <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
+					 <!-- Pour le lien vers le message original : passer en parametre l'identifiant du message, et recuperer le message apres -->
+					 <!-- Ne pas oublier de creer un controleur pour la page popup -->
+					 <!-- HS : Voir si je ne peux pas generaliser les methodes communes aux 3 RS -->
+					<p><a href="#msgDetails"  data-role="button" data-inline="true" data-rel="dialog" data-transition="pop" onClick="storeMessage({{message}})"> Plus...</a></p>
+					
+				</div>				
+				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+				<br class="clear"/>
+            </div>
+		</div>
+	</div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">		
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('fbPage')}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('fbPage')}}")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Details du message -->
+<div data-role="dialog" id="msgDetails">
+	<!--<div data-role="header" data-theme="c">
+		<h1>D&eacute;tail du message</h1>
+	</div>
+-->
+	<div data-role="content" data-theme="d">	
+		<div class="msgContent well">			
+			<div class="block">
+				<img class="msgImgProfile" src="../common/img/defaultProfile.png" />
+			</div>
+			<div class="block">
+				<b class="userName">  </b>	 
+				<br />
+				<!-- Message content -->
+
+				 <span class="msgContent"> </span>
+
+			<br />
+			<a href="#" data-role="button" data-rel="back" data-theme="b" data-mini="true" data-inline="true">Fermer</a>       
+			<a href="#msgPage" data-role="button" data-theme="c" data-mini="true" data-inline="true">Répondre</a>
+			</div>							
+			<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+			<br class="clear"/>
+		</div>	
+	</div>
+</div>
+
+
+<!--------------------- Page Google Plus --------------------->
+<div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl">
+
+    <div data-role="header" data-position="fixed">
+        <img class="logo" ng-src="{{getIcon}}" />
+        <h1>Header Google+</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+
+            <div class="msgContent well" ng-repeat="message in messages" >
+				
+				<div class="block">
+					<img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
+				</div>
+				<div class="block">
+					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
+					<!-- Message content -->
+					{{getNFirstCharacters(message, 140)}}
+					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage('{{message.msgContent}}', '{{getNameProfile(message)}}', '{{getImageProfile(message)}}')"> Plus...</a></p>
+				</div>				
+				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+				<br class="clear"/>
+            </div>
+		</div>
+	</div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
+			<script language="Javascript"> 
+				$('#gpPage').live('swipeleft', '{{getPrevPage("gpPage")}}');
+				$('#gpPage').live('swiperight', '{{getPrevPage("gpPage")}}');
+			</script>
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('gpPage')}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('gpPage')}}")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--------------------- Page Twitter --------------------->
+<div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl">
+
+    <div data-role="header" data-position="fixed">
+        <img  class="logo" ng-src="{{getIcon}}" />
+        <h1>Header Twitter</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+
+            <div class="msgContent well" ng-repeat="message in messages">
+				
+				<div class="block">
+					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+				</div>
+				<div class="block">
+					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
+					<!-- Message content -->
+					<span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
+					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage('{{message.msgContent}}', '{{getNameProfile(message)}}', '{{getImageProfile(message)}}')"> Plus...</a></p>
+				</div>				
+				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+				<br class="clear"/>
+            </div>
+		</div>
+	</div>
+    <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
+			<script language="Javascript"> 
+				$('#twPage').live('swipeleft', '{{getPrevPage("twPage")}}');
+				$('#twPage').live('swiperight', '{{getPrevPage("twPage")}}');
+			</script>
+            <ul>
+                <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('twPage')}}")> </a></li>
+                <li> <a href="#homePage" data-icon="home"> </a></li>
+                <li> <a href="#msgPage" data-icon="email"> </a></li>
+                <li> <a href="#srchPage" data-icon="search"> </a></li>
+                <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('twPage')}}")> </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
