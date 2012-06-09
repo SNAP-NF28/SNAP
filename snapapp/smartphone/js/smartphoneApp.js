@@ -31,6 +31,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 				console.log("fetch " + tmp.length + " messages from " + sn.name);
 				
 				for (var j = 0; j < tmp.length; j++) {
+					tmp[j].socialNetworkMinIcon = sn.miniIcon;
 					tmp_1.push(tmp[j]);
 				}
 			}
@@ -244,12 +245,5 @@ function displayMessage() {
 	
 }
 
-function getThumbnail(sN) {
-	if (sN == "facebook") {
-		return "/snapapp/common/img/logo_facebook_20x20.png";
-	} else if (sN == "twitter") {
-		return "/snapapp/common/img/logo_twitter_20x20.png";
-	}
-}
 
 
