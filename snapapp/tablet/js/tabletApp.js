@@ -8,4 +8,16 @@ function tabletAppCtrl($scope, SocialNetworks) {
         $('#'+selectedPane).removeClass('hide');
     }
 
+    $scope.getMsgImg = function(msg){
+      var img = msg.authorImg;
+      if (img) return img;
+      return "/snapapp/common/img/defaultProfile.png";
+    }
+
+    $scope.getLastMsg = function(sn){
+      if(sn.alreadyFetched)
+        return sn.lastMessages;
+      sn.alreadyFetched = true;
+      return sn.getLastNMessages(10);
+    }
 }

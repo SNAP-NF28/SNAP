@@ -130,8 +130,8 @@
 
             <div ngm-if="socialNetwork.connected" >
                 <ul  data-role="listview" data-split-icon="gear" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
-                    <li ng-repeat="msg in socialNetwork.getLastNMessages(10)"><a href="#">
-                        <img src="{{msg.authorImg}}" height="90px" width="90px"/>
+                    <li ng-repeat="msg in getLastMsg(socialNetwork)"><a href="#">
+                        <img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
                         <h3>{{msg.authorName}}</h3>
                         <p>{{msg.msgContent}}</p>
                         </a><a href="#" data-rel="dialog" data-transition="slideup">Purchase album

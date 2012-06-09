@@ -137,7 +137,6 @@ angular.module('twitter',['SNMock']).
                 });
               }
             });
-          return ; //Must return connection object?
         }
 
         return Twitter;
