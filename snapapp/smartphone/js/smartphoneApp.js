@@ -112,12 +112,12 @@ $(document).bind('pageinit', function(event) {
 	}
 }
 
-function storeMessage($msg, $author, $authorImg) {
-	console.log("Message original : " + $msg);
+function storeMessage($msg, $authorImg) {
+	/*console.log("Message original : " + $msg);
 	console.log("Auteur original : " + $author);
-	
-	$('#msgDetails').data('message', unescape($msg));
-	$('#msgDetails').data('author', unescape($author));
+	*/
+	$('#msgDetails').data('message', escape($msg.msgContent));
+	$('#msgDetails').data('author', unescape($msg.authorName));
 	$('#msgDetails').data('authorImg', $authorImg);
 	/*
 	console.log("Message stocke : " + $('#msgDetails').data('message'));
@@ -126,8 +126,8 @@ function storeMessage($msg, $author, $authorImg) {
 }
 
 function displayMessage() {
-	var msg = $('#msgDetails').data('message');
-	var author = $('#msgDetails').data('author');
+	var msg = unescape($('#msgDetails').data('message'));
+	var author = unescape($('#msgDetails').data('author'));
 	var authorImg = $('#msgDetails').data('authorImg');
 	/*
 	console.log("Message recupere : " + msg);
