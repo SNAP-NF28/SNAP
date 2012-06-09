@@ -56,9 +56,9 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	
 	$scope.sendMsg = function(socialNetworks) {
 		var message = $('textarea#newMsg').val();
-		for(var i; i<socialNetworks.length; i++){
-			if($(".checkboxNMsg")[i].is(':checked')){
-				socialNetworks[i].sendMessage(message);				
+		for(var i=0; i<socialNetworks.length; i++){
+			if ($('#check'+socialNetworks[i].name).attr("checked")){
+				socialNetworks[i].sendMessage(message);
 			}
 		}
 		$("textarea#newMsg").val("");
