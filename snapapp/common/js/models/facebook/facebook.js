@@ -34,6 +34,7 @@ angular.module('facebook',['SNMock']).
             this.lastMessagesIds = [];
             this.lastImgPath = [];
             this.connected = false;
+            this.profile = new Profile();
             return this;
         }
 
@@ -207,6 +208,40 @@ angular.module('facebook',['SNMock']).
                 }
             });
         }
+        
+        Facebook.prototype.getUserProfile(id) {
+        	var self = this;
+        	if (!self.connected) {
+        		return;
+        	}
+        	
+        	if (!self.profile) {
+        		self.profile = new Profile();
+        	}
+        	
+        	console.log('Facebook call: getUserProfile()');
+
+            FB.api('/me', function(response) {
+            	self.profile.name = response.name;
+            	
+            	self.profile.firstName = response.first_name;
+            	self.profile.nickName = response.username;
+            	self.profile.birthDate = response.birthday;
+            	self.profile.subscriptionDate = new Date(response.updated_time).getTime();
+            	
+            	FB.api('/me/picture', function(response) {
+            		self.profile.imageProfileURL = response;
+                	angular.element(document).scope().$apply(null);
+            	});
+            	
+            	angular.element(document).scope().$apply(null);
+             });
+        	
+        	
+        	return self.profile;
+        }
+        
+        
 
         return Facebook;
     });
