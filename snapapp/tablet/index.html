@@ -15,53 +15,132 @@
     <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
     <!-- import Css libs and files-->
     <script src="/snapapp/common/js/util/importCSS.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" href="/snapapp/tablet/css/tablet.css" />
+
 </head>
-<body>
-<!--<snap-common-scripts></snap-common-scripts>
-<snap-navbar></snap-navbar>
--->
-
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div   ng-controller="tabletAppCtrl"  class="hero-unit" style='padding-right:10px;
-	padding-left:10px ; text-align: center;'>
-    <h2>SNAP Tablet</h2>
-    <p>Whohohooo Snap Tablet Mode :)</p>
-    <div id="fb-root"></div>
+<body> 
 
 
-<!--     <p> Test Facebook connect<br/>
-        <div class="fb-login-button" id="connexion">Login with Facebook</div><br/>
-        <div id="userName" style="display: none"></div><br/>
+<div data-role="page" class="type-interior">
 
-        <button id="byebye" style="border-right-color: #000000;">Logout</button>
-    </p>
- -->
+        <div data-role="header" data-position="fixed">
+        <h1>SNAP</h1>
+        </div><!-- /header -->
 
-    <input type="text" ng-model="search" class="search-query" placeholder="Search">
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Picture</th>
-            <th>icon</th>
-            <th>citation</th>
-            <th>connect</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="socialNetwork in socialNetworks | filter:search | orderBy:'name'">
-            <td>{{socialNetwork.name}}</td>
-            <td>{{socialNetwork.picture}}</td>
-            <td><img src="{{socialNetwork.icon}}"></td>
-            <td>{{socialNetwork.citation}}</td>
-            <td>{{socialNetwork.name}} connect: </td>
-            <td><span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span></td>
-            <td>{{socialNetwork.isConnected()}}</td>
-            <td>{{getProfile(socialNetwork).name}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <div data-role="content">
+        <div class="content-primary">
 
-</div>
+
+        <div data-role="navbar" >
+            <ul>
+                <li><a href="#" class="ui-btn-active">All</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Google+</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+        </div><!-- /navbar -->
+
+
+        <ul data-role="listview" data-split-icon="gear" data-split-theme="d" style="padding-left:1.6%; padding-top:1.5%; width:99.9%;";>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Broken Bells</h3>
+                <p>Broken Bells</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Warning</h3>
+                <p>Hot Chip</p>
+                
+            </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Wolfgang Amadeus Phoenix</h3>
+                <p>Phoenix</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Of The Blue Colour Of The Sky</h3>
+                <p>Ok Go</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Elephant</h3>
+                <p>The White Stripes</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Kid A</h3>
+                <p>Radiohead</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>XX</h3>
+                <p>XX</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Congratulations</h3>
+                <p>MGMT</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Ashes Grammar</h3>
+                <p>A Sunny Day in Glasgow</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            
+            <li><a href="index.html">
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>Hot Fuss</h3>
+                <p>Killers</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">   
+                <img src="/snapapp/common/img/defaultProfile.png" />
+                <h3>The Suburbs</h3>
+                <p>Arcade Fire</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+        </ul>
+
+    </div>
+        <!--/content-primary -->
+
+                <div class="content-secondary" style='text-align:center; position: fixed;'>
+                    <h3>Your login</h3>
+                    <img src="/snapapp/common/img/defaultProfile.png" height="100" width="100" />
+                    <input type="search" name="search" id="searc-basic" value="" />
+                    <a href="#" data-role="button" data-icon="plus">New Message</a>
+                    <a href="#" data-role="button" data-icon="home">Your Profile</a>
+                    <a href="#" data-role="button" data-icon="gear">Settings</a>
+                        
+                </div>
+
+            </div><!-- /content -->
+
+            <div data-role="footer" class="footer-docs" data-theme="c">
+                    <p>&copy; 2011-12 The jQuery Foundation</p>
+            </div>
+
+            </div><!-- /page -->
+
+
+
+
+
+
+
+
 </body>
 </html>
