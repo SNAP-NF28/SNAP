@@ -116,8 +116,8 @@ function desktopAppCtrlMsg($scope) {
 	}
 	
 	$scope.loginDiv = function() {
-		if (!($scope.socialNetwork.isConnected()))
-			return '';
+		if ($scope.socialNetwork.isConnected)
+			//return "<span id='login-{{socialNetwork.name}}'>{{socialNetwork.connect()}}</span>"
 	}
 }
 
