@@ -21,14 +21,18 @@
   </head>
   <body onload="resize()" onresize="resize()">
     <snap-common-scripts></snap-common-scripts>
+	<div class="mainPage" ng-controller="desktopAppCtrl">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="#">SNAP</a>
+				<div class="checkBoxRSGroup" ng-repeat="socialNetwork in socialNetworks">
+					<img class="userImgProfile" ng-src="{{socialNetwork.getUserProfile().authorImg}}" />
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="mainPage" ng-controller="desktopAppCtrl">
+	
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span3">
