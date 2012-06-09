@@ -40,7 +40,8 @@
 			 <div class="msgContent well"  ng-repeat="message in getAllMessages(20)">
 
 						<p> {{message.msgContent}}</p>
-						<img class="msgImgProfile" src="getThumbnail('{{message.socialNetworkId}}')" />
+						
+						<img class="msgImgProfile" ng-src="getThumbnail('{{message.socialNetworkId}}')" />
 						<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
 						<br class="clear"/>
 				</div>				
