@@ -44,7 +44,7 @@ angular.module('googleplus',['SNMock']).
 		
 		Googleplus.prototype.getLastNMessages = function(n){
 			var listMessages=new Array();
-			for (i=0; i<n; i++) {
+			/*for (i=0; i<n; i++) {
 				var msg = new Message();
 				msg.msgContent = "Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur";
 				msg.originalLink = "http://plus.google.com";
@@ -52,7 +52,7 @@ angular.module('googleplus',['SNMock']).
 				msg.msgId = "def456";
 				
 				listMessages[i] = msg;
-			}
+			}*/
 			return listMessages;
 		}
 
