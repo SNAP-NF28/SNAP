@@ -61,7 +61,9 @@ function desktopAppCtrl($scope, SocialNetworks) {
 				socialNetworks[i].sendMessage(message);				
 			}
 		}
+		$("textarea#newMsg").val("");
 	}
+		
 }
 
 function checkboxCtrl($scope) {	
