@@ -37,15 +37,16 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			}
 			//$scope.alreadyFetched = true;
 			console.log("fetch done");
-			$scope.allMsg = tmp_1;
+			$scope.allMsg = mergeSort(tmp_1);
+			$scope.allMsg = $scope.allMsg.slice(0, nb);
 		}
 		
 		return $scope.allMsg;
 	}
 	
 }
-/** Controleurs pour chaque reseau social **/
 
+/** Controleurs pour chaque reseau social **/
 function smartphoneFbCtrl($scope) {
 
 	$scope.socialNetwork = $scope.socialNetworks[0];
@@ -109,7 +110,7 @@ function smartphoneGpCtrl($scope) {
 	//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 	
-	    $scope.getLastMsg = function(sn){
+	$scope.getLastMsg = function(sn){
       if(sn.alreadyFetched)
         return sn.lastMessages;
       sn.alreadyFetched = true;
@@ -211,34 +212,25 @@ function merge(left, right)
     return result;
 }
 
+/** Details d'un message **/
+
 function storeMessage($msg, $authorImg) {
-	/*console.log("Message original : " + $msg.msgContent);
-	console.log("Auteur original : " + $msg.authorName);
-	*/
+	
 	$('#msgDetails').data('message', escape($msg.msgContent));
 	$('#msgDetails').data('author', escape($msg.authorName));
 	$('#msgDetails').data('authorImg', $authorImg);
-	/*
-	console.log("Message stocke : " + $('#msgDetails').data('message'));
-	console.log("Auteur stocke : " + $('#msgDetails').data('author'));
-	*/
+	
 }
 
 function displayMessage() {
 	var msg = unescape($('#msgDetails').data('message'));
 	var author = unescape($('#msgDetails').data('author'));
 	var authorImg = $('#msgDetails').data('authorImg');
-	/*
-	console.log("Message recupere : " + msg);
-	console.log("Auteur recupere : " + author);
-	*/
+	
 	$('#msgDetails').find($('b.userName')[0]).text(author);
 	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
 	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
-	/*
-	console.log("Message affiche : " + $('#msgDetails').find($('b.userName')[0]).text());
-	console.log("Auteur affiche : " + $('#msgDetails').find($('span.msgContent')[0]).text());
-	*/
+
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
 	$('#msgDetails').removeData('authorImg');
