@@ -8,4 +8,6 @@ function tabletAppCtrl($scope, SocialNetworks) {
         $('#'+selectedPane).removeClass('hide');
     }
 
+    $scope.isConnected = false;
+
 }

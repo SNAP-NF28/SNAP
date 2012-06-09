@@ -120,7 +120,16 @@
 
         <!-- SN specific pane -->
         <div ng-repeat="socialNetwork in socialNetworks" class="sn-pane hide" id="{{socialNetwork.name}}-pane" >
-            <ul data-role="listview" data-split-icon="gear" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
+            <div ngm-if="!isConnected" style='padding:40px'>
+                <h4>Hi,</h4>
+                <br/>
+                <h4>log in with {{socialNetwork.displayName}} to see your messages!</h4>
+                <br/>
+                <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+            </div>
+
+
+            <ul ngm-if="isConnected" data-role="listview" data-split-icon="gear" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
                 <li><a href="index.html">
                     <img src="/snapapp/common/img/defaultProfile.png" />
                     <h3>Broken Bells ({{socialNetwork.displayName}})</h3>
@@ -143,49 +152,6 @@
                     <img src="/snapapp/common/img/defaultProfile.png" />
                     <h3>Of The Blue Colour Of The Sky ({{socialNetwork.displayName}})</h3>
                     <p>Ok Go</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Elephant ({{socialNetwork.displayName}})</h3>
-                    <p>The White Stripes</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Kid A ({{socialNetwork.displayName}})</h3>
-                    <p>Radiohead</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>XX ({{socialNetwork.displayName}})</h3>
-                    <p>XX</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Congratulations ({{socialNetwork.displayName}})</h3>
-                    <p>MGMT</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Ashes Grammar ({{socialNetwork.displayName}})</h3>
-                    <p>A Sunny Day in Glasgow</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Hot Fuss ({{socialNetwork.displayName}})</h3>
-                    <p>Killers</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">   
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>The Suburbs ({{socialNetwork.displayName}})</h3>
-                    <p>Arcade Fire</p>
                     </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
                 </a></li>
             </ul>
