@@ -196,7 +196,7 @@ function merge(left, right)
     var result = [];
  
     while (left.length && right.length) {
-        if (left[0].msgDate <= right[0].msgDate) {
+        if (left[0].msgDate > right[0].msgDate) {
             result.push(left.shift());
         } else {
             result.push(right.shift());
