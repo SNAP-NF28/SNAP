@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootstrap v2.0.3
  *
  * Copyright 2012 Twitter, Inc
@@ -142,4 +142,23 @@ input[type='checkbox'].checkbox-true + label{
 ul.nav-tabs>li{
 width : 100px;
 text-align:center;
+}
+
+
+.loginButton:before{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: inherit;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 27px;
+	content: "Pour vous connecter à votre compte, veuillez cliquer sur ce bouton";
+}
+
+.loginDiv{	
+	text-align : center;
+	padding-bottom :10px;
+}
+
+.buttons{
+	float : none;
 }

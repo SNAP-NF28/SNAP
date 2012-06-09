@@ -48,7 +48,7 @@
 							</div>
 						</div>
 						<h1><small><div id="msgCounter"></div></small></h1>
-						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;" ng-click="sendMsg(socialNetworks)">
+						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;" disabled="disabled" ng-click="sendMsg(socialNetworks)">
 					</form>
 
                 <input type="text" ng-model="search" class="search-query" placeholder="Rechercher">
@@ -114,7 +114,9 @@
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
-								<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+								<div class="loginDiv">
+									<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+								</div>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profil{{socialNetwork.name}}">

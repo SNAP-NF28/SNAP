@@ -186,10 +186,10 @@ function charCounter(target, max, idchamp, btn){
 	StrLen = target.value.length; 
 	CharsLeft = max-StrLen;
 	document.getElementById(btn).disabled="";
-	if (StrLen > max ) 
+	if (StrLen > max || StrLen == 0) 
 	{ 
 		document.getElementById(btn).disabled="disabled";
-	} 
+	} 	
     document.getElementById(idchamp).innerHTML = CharsLeft;
 } 
 
