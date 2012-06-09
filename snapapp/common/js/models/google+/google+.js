@@ -30,6 +30,7 @@ angular.module('googleplus',['SNMock']).
             this.citation = "G+citation";
 			this.icon = "/snapapp/common/img/logo_googlePlus_60x60.png";
 			this.limitChar = 200;
+            this.connected = false;
             return this;
         }
 
@@ -45,7 +46,7 @@ angular.module('googleplus',['SNMock']).
 			var listMessages=new Array();
 			for (i=0; i<n; i++) {
 				var msg = new Message();
-				msg.msgContent = escape("Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur");
+				msg.msgContent = "Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur";
 				msg.originalLink = "http://plus.google.com";
 				msg.msgDate = 200; //stockez la date sous forme de seconde depuis un repere que vous choisirez, je pourrais comparer facilement comme ca. -Charles
 				msg.msgId = "def456";

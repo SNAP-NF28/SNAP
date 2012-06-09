@@ -32,6 +32,7 @@ angular.module('facebook',['SNMock']).
             this.lastMessages = [];
             this.lastMessagesIds = [];
             this.lastImgPath = [];
+            this.connected = false;
             return this;
         }
 		
@@ -75,44 +76,48 @@ angular.module('facebook',['SNMock']).
 
 
         Facebook.prototype.init = function() {
-            console.log('Facebook call: init');
-            if(typeof(FB) === "object" && FB._apiKey === null) {
+            var self = this;
+            if(!self.alreadyInit){
+                self.alreadyInit = true;
+                console.log('Facebook call: init');
+                if(typeof(FB) === "object" && FB._apiKey === null) {
 
-                FB.init({
-                    appId      : '454890441191384',
-                    status     : true,
-                    cookie     : true,
-                    xfbml      : true,
-                    oauth      : true
-                });
+                    FB.init({
+                        appId      : '454890441191384',
+                        status     : true,
+                        cookie     : true,
+                        xfbml      : true,
+                        oauth      : true
+                    });
 
-                FB.getLoginStatus(function(response) {
-                    if (response.status === 'connected') {
+                    FB.getLoginStatus(function(response) {
+                        if (response.status === 'connected') {
 
-                        FB.api('/me', function(response) {
-                            Facebook.prototype.isConnected = function() {
-                                return true;
-                            }
-                            Facebook.prototype.getUserProfile = function(id) {
-                                FB.api('/me/picture', function(response2) {
-                                    profile.imageProfileURL = response2;
-                                });
+                            FB.api('/me', function(response) {
+                                Facebook.prototype.isConnected = function() {
+                                    return true;
+                                }
+                                Facebook.prototype.getUserProfile = function(id) {
+                                    FB.api('/me/picture', function(response2) {
+                                        profile.imageProfileURL = response2;
+                                    });
 
-                                var profile = new Profile();
-                                profile.name = response.name;
-                                profile.firstName = response.first_name;
-                                profile.nickName = response.username;
+                                    var profile = new Profile();
+                                    profile.name = response.name;
+                                    profile.firstName = response.first_name;
+                                    profile.nickName = response.username;
 
-                                return profile;
-                            }
-                            console.log(response.name);
-                        });
-                    } else if (response.status === 'not_authorized') {
-                        console.log("No auth");
-                    } else {
-                        console.log("No auth");
-                    }
-                });
+                                    return profile;
+                                }
+                                console.log(response.name);
+                            });
+                        } else if (response.status === 'not_authorized') {
+                            console.log("No auth");
+                        } else {
+                            console.log("No auth");
+                        }
+                    });
+                }
             }
 
         }
@@ -179,20 +184,11 @@ angular.module('facebook',['SNMock']).
 
             var current_time = new Date().getTime();
 
-            if(typeof(FB) === "object" && FB._apiKey === null) {
-                FB.init({
-                    appId      : '454890441191384',
-                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
-                    status     : true,
-                    cookie     : true,
-                    xfbml      : true,
-                    oauth      : true
-                });
-            }
+            this.init();
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    FB.api('/me/home?limit=40&until='+current_time, {access_token: response.authResponse.accessToken}, function(response) {
+                    FB.api('/me/feed?limit=' + n, {access_token: response.authResponse.accessToken}, function(response) {
                         var j = 0;
                         if (response.data) {
                             for (var i=0; i<response.data.length; i++) {
@@ -200,17 +196,13 @@ angular.module('facebook',['SNMock']).
                                     continue;
                                 }
 
-                                if (j >= n) {
-                                    return listMessages;
-                                }
-
                                 var msg = new Message();
-                                msg.msgContent = escape(response.data[i].message);
-                                console.log(msg.msgContent);
+                                msg.msgContent = response.data[i].message;
+                                //console.log(msg.msgContent);
                                 msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
                                 msg.authorId = response.data[i].from.id;
                                 msg.msgId = response.data[i].id;
-                                msg.authorName = escape(response.data[i].from.name);
+                                msg.authorName = response.data[i].from.name;
                                 msg.msgDate = new Date(response.data[i].created_time).getTime();
 
                                 FB.api('/' + msg.authorId + '/picture', function(response) {
@@ -251,7 +243,10 @@ angular.module('facebook',['SNMock']).
 
         Facebook.prototype.connect = function(){
 
-            if (!this.isConnected()){
+            var self = this;
+
+            if (!this.isConnected() && !self.connectAlreadyCalled){
+                self.connectAlreadyCalled = true;
                 console.log('Facebook call: connect');
 
                 // si l'id n'existe pas on quitte la fonction
@@ -261,14 +256,7 @@ angular.module('facebook',['SNMock']).
 
                 document.getElementById('login-' + this.name).innerHTML = "<div id='log-Fb' class='fb-login-button'>Connect with Facebook</div>";
 
-                FB.init({
-                    appId      : '454890441191384',
-                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
-                    status     : true,
-                    cookie     : true,
-                    xfbml      : true,
-                    oauth      : true
-                });
+                this.init();
 
                 document.getElementById('log-Fb').addEventListener('click', function() {
                      FB.login(function(response) {

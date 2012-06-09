@@ -120,7 +120,7 @@
 
         <!-- SN specific pane -->
         <div ng-repeat="socialNetwork in socialNetworks" class="sn-pane hide" id="{{socialNetwork.name}}-pane" >
-            <div ngm-if="!isConnected" style='padding:40px'>
+            <div ngm-if="!socialNetwork.connected" style='padding:40px'>
                 <h4>Hi,</h4>
                 <br/>
                 <h4>log in with {{socialNetwork.displayName}} to see your messages!</h4>
@@ -128,33 +128,34 @@
                 <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
             </div>
 
-
-            <ul ngm-if="isConnected" data-role="listview" data-split-icon="gear" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Broken Bells ({{socialNetwork.displayName}})</h3>
-                    <p>Broken Bells</p>
+            <div ngm-if="socialNetwork.connected" >
+                <ul  data-role="listview" data-split-icon="gear" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
+                    <li ng-repeat="msg in socialNetwork.getLastNMessages(10)"><a href="#">
+                        <img src="{{msg.authorImg}}" height="90px" width="90px"/>
+                        <h3>{{msg.authorName}}</h3>
+                        <p>{{msg.msgContent}}</p>
+                        </a><a href="#" data-rel="dialog" data-transition="slideup">Purchase album
+                    </a></li>
+<!--                     <li><a href="index.html">
+                        <img src="/snapapp/common/img/defaultProfile.png" />
+                        <h3>Warning ({{socialNetwork.displayName}})</h3>
+                        <p>Hot Chip</p>
                     </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Warning ({{socialNetwork.displayName}})</h3>
-                    <p>Hot Chip</p>
-                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Wolfgang Amadeus Phoenix ({{socialNetwork.displayName}})</h3>
-                    <p>Phoenix</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-                <li><a href="index.html">
-                    <img src="/snapapp/common/img/defaultProfile.png" />
-                    <h3>Of The Blue Colour Of The Sky ({{socialNetwork.displayName}})</h3>
-                    <p>Ok Go</p>
-                    </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
-                </a></li>
-            </ul>
+                    </a></li>
+                    <li><a href="index.html">
+                        <img src="/snapapp/common/img/defaultProfile.png" />
+                        <h3>Wolfgang Amadeus Phoenix ({{socialNetwork.displayName}})</h3>
+                        <p>Phoenix</p>
+                        </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+                    </a></li>
+                    <li><a href="index.html">
+                        <img src="/snapapp/common/img/defaultProfile.png" />
+                        <h3>Of The Blue Colour Of The Sky ({{socialNetwork.displayName}})</h3>
+                        <p>Ok Go</p>
+                        </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+                    </a></li> -->
+                </ul>
+            </div>
         </div>
         <!-- /SN specific pane -->
     </div>
