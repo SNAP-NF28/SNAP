@@ -6,6 +6,7 @@ angular.module('SNMock',['types']).
 			this.displayName = "Mock";
             this.picture = "MockPic";
             this.icon = 'cacaIcon';
+			this.miniIcon = 'cacaIcon';
             this.citation = 'Mockcitation';
 			this.limitChar = "-1";
         };

@@ -26,8 +26,8 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="#">SNAP</a>
-				<div class="checkBoxRSGroup" ng-repeat="socialNetwork in socialNetworks">
-					<img class="userImgProfile" ng-src="{{socialNetwork.getUserProfile().authorImg}}" />
+				<div class="menuProfil" ng-repeat="socialNetwork in socialNetworks">
+					<img class="userImgProfile" style="background: url()" ng-src="./img/defaultProfile.png" />
 				</div>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 						<div class="checkBoxRSGroup" ng-repeat="socialNetwork in socialNetworks">
 							<div class="chexboxRS" ng-controller="checkboxCtrl">
 								<input type="checkbox" class="checkbox-{{check}} checkbox checkboxNMsg" id="check{{socialNetwork.name}}" name="check{{socialNetwork.name}}" title="{{socialNetwork.displayName}}" ng-model="check" ng-click="clickLimitChanger(check)">
-								<label for="check{{socialNetwork.name}}"><img class="checkboxIconRS" ng-src="{{socialNetwork.icon}}" /></label>
+								<label for="check{{socialNetwork.name}}"><img class="checkboxIconRS" ng-src="{{socialNetwork.miniIcon}}" /></label>
 								{{limitFixer()}}
 							</div>
 						</div>

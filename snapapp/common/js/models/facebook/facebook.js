@@ -28,6 +28,7 @@ angular.module('facebook',['SNMock']).
             this.name = "Facebook";
 			this.displayName = "Facebook";
 			this.icon = "/snapapp/common/img/logo_facebook_60x60.png";
+			this.miniIcon = "/snapapp/common/img/logo_facebook_20x20.png";
 			this.limitChar = 400;
             this.lastMessages = [];
             this.lastMessagesIds = [];

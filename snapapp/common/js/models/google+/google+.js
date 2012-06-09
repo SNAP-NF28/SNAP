@@ -29,6 +29,7 @@ angular.module('googleplus',['SNMock']).
 			this.displayName = "Google+";
             this.citation = "G+citation";
 			this.icon = "/snapapp/common/img/logo_googlePlus_60x60.png";
+			this.miniIcon = "/snapapp/common/img/logo_googlePlus_20x20.png";
 			this.limitChar = 200;
             this.connected = false;
             return this;

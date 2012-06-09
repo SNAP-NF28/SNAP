@@ -140,8 +140,8 @@ input[type='checkbox'].checkbox-true + label{
 
 
 ul.nav-tabs>li{
-width : 100px;
-text-align:center;
+	width : 100px;
+	text-align:center;
 }
 
 
@@ -161,4 +161,14 @@ text-align:center;
 
 .buttons{
 	float : none;
+}
+
+.userImgProfile{
+	margin-right : 10px;
+	margin-top : 5px;
+	width : 30px;
+}
+
+.menuProfil{
+	float : right;
 }
