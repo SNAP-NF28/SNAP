@@ -334,13 +334,13 @@ dd h4 { margin:15px 0 0 0; }
 
 @media all and (min-width: 1200px){
   .type-home .ui-content{
-    background-position: 38.5%;
+    background-position: 15.5%;
   }
   .type-interior .ui-content {
-    background-position: 30%;
+    background-position: 15%;
   }
   .content-secondary {
-    width: 30%;
+    width: 15%;
     padding-right:6%;
     margin: 30px 0 20px 5%;
   }
@@ -354,6 +354,6 @@ dd h4 { margin:15px 0 0 0; }
     padding-right: 3%;*/
   }
   .type-interior .content-primary {
-    width: 70%;
+    width: 85%;
   }
 }

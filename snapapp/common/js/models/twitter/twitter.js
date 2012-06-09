@@ -31,6 +31,7 @@ angular.module('twitter',['SNMock']).
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
 			      this.limitChar = 140;
+            this.connected = false;
             return this;
         }
 
@@ -93,11 +94,11 @@ angular.module('twitter',['SNMock']).
                                   message.socialNetworkId = self.id;
                                   message.msgId = r.id;
                                   message.authorId = r.user.id;
-                                  message.msgContent = escape(r.text);
+                                  message.msgContent = r.text;
                                   message.originalLink = r.source; //TODO: parse using regex
                                   message.msgDate = new Date(r.createdAt).getTime();
                                   message.authorImg = r.user.profileImageUrl;
-                                  message.authorName = escape(r.user.name);
+                                  message.authorName = r.user.name;
                                   //message.mediaList; //TODO: handle media list
                                   //message.localization;
                                   //message.replyTo;
@@ -126,6 +127,7 @@ angular.module('twitter',['SNMock']).
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
                         self.doGetMessages(self, usr, 20);
+                        self.connected = true;
                       },
                       signOut: function() {
                         // triggered when user logs out
@@ -135,7 +137,6 @@ angular.module('twitter',['SNMock']).
                 });
               }
             });
-          return ; //Must return connection object?
         }
 
         return Twitter;
