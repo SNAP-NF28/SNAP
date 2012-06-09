@@ -244,3 +244,12 @@ function displayMessage() {
 	
 }
 
+function getThumbnail(sN) {
+	if (sN == "facebook") {
+		return "/snapapp/common/img/logo_facebook_20x20.png";
+	} else if (sN == "twitter") {
+		return "/snapapp/common/img/logo_twitter_20x20.png";
+	}
+}
+
+
