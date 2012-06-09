@@ -53,6 +53,15 @@ function desktopAppCtrl($scope, SocialNetworks) {
         counterLimit: -1,
 		list: []
     }
+	
+	$scope.sendMsg = function(socialNetworks) {
+		var message = $('textarea#newMsg').val();
+		for(var i; i<socialNetworks.length; i++){
+			if($(".checkboxNMsg")[i].is(':checked')){
+				socialNetworks[i].sendMessage(message);				
+			}
+		}
+	}
 }
 
 function checkboxCtrl($scope) {	
@@ -114,7 +123,7 @@ function desktopAppCtrlMsg($scope) {
 	}
 	
 	$scope.loginDiv = function() {
-		if ($scope.socialNetwork.isConnected)
+		if ($scope.socialNetwork.isConnected){}
 			//return "<span id='login-{{socialNetwork.name}}'>{{socialNetwork.connect()}}</span>"
 	}
 }
