@@ -23,7 +23,7 @@ angular.module('desktopApp', ['socialNetworks']).
                 '<div class="tabbable">' +
                     '<ul class="nav nav-tabs">' +
                     '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
-                    '<a href="#{{pane.title}}" ng-click="select(pane)">{{pane.title}}</a>' +
+                    '<a href="#{{pane.title}}" ng-click="select(pane)" id="pane-{{pane.title}}">{{pane.title}}</a>' +
                     '</li>' +
                     '</ul>' +
                     '<div class="tab-content" ng-transclude></div>' +
@@ -95,19 +95,17 @@ function desktopAppCtrlMsg($scope) {
     $scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	
 	$scope.getImageProfile = function(message) {
-		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
-		if (img) return img;
-		return "./img/defaultProfile.png";
-	}
-		
-	$scope.getImageProfile = function(message) {
-		var img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
-		if (img) return img;
+    var img = message.authorImg;
+    if (img) return img;
+		// img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+		// if (img) return img;
 		return "./img/defaultProfile.png";
 	}
 	
 	$scope.getNameProfile = function(message) {
-		return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+    var name = message.authorName;
+    return name;
+		//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 	
 	$scope.cutMsg = function(message, length){
@@ -138,10 +136,11 @@ function desktopAppCtrlAll($scope) {
 		var listMess = [];
 		for(j=0;j<$scope.socialNetworks.length;j++){
 			temp = $scope.socialNetworks[j].getLastNMessages(nb);
-			for(i=0;i<temp.length;i++){
-				var temp2 = new capsuleMessage(j,temp[i])
-				listMess.push(temp2);
-			}
+      if(temp)
+  			for(i=0;i<temp.length;i++){
+  				var temp2 = new capsuleMessage(j,temp[i])
+  				listMess.push(temp2);
+  			}
 		}
 		listMess.sort(sortMsg);
 		listMess = listMess.slice(0,nb);
@@ -164,6 +163,12 @@ function desktopAppCtrlAll($scope) {
 		if(capsuleMessage.message.msgContent.length>length) return capsuleMessage.message.msgContent.substring(0,140) + "....";
 		return capsuleMessage.message.msgContent;
 	}
+
+    $scope.envoiMessage = function() {
+        alert('EEEE');
+        var msg_content = $('.newMsg');
+        console.log('msgcontenu: ' + msg_content);
+    }
 	
 }
 function charCounter(target, max, idchamp, btn){ 
@@ -185,4 +190,8 @@ function resize(){
 		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-85 + "px";
 		else frame[i].style.maxHeight = windowheight-285 + "px";
 	}
-} 
+}
+
+function sendMessage() {
+
+}

@@ -29,6 +29,9 @@ angular.module('facebook',['SNMock']).
 			this.displayName = "Facebook";
 			this.icon = "/snapapp/common/img/logo_facebook_60x60.png";
 			this.limitChar = 400;
+            this.lastMessages = [];
+            this.lastMessagesIds = [];
+            this.lastImgPath = [];
             return this;
         }
 		
@@ -41,11 +44,17 @@ angular.module('facebook',['SNMock']).
         }
 
         Facebook.prototype.isConnected = function() {
+            
+            if(this.connected)
+                return true;
+
+            self = this;
+
+            console.log('Facebook call: isConnected');
 
             if(typeof(FB) === "object" && FB._apiKey === null) {
                 FB.init({
                     appId      : '454890441191384',
-                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
                     status     : true,
                     cookie     : true,
                     xfbml      : true,
@@ -55,101 +64,48 @@ angular.module('facebook',['SNMock']).
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
+                    console.log('Connected');
+                    self.connected = true;
                     return true;
                 }
             });
 
             return false;
         }
-		
-		Facebook.prototype.getLastNMessages = function(n){
-			var listMessages=new Array();
 
+
+        Facebook.prototype.init = function() {
+            console.log('Facebook call: init');
             if(typeof(FB) === "object" && FB._apiKey === null) {
+
                 FB.init({
                     appId      : '454890441191384',
-                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
                     status     : true,
                     cookie     : true,
                     xfbml      : true,
                     oauth      : true
                 });
-            }
 
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
-                    FB.api('/me/home', {access_token: response.authResponse.accessToken}, function(response) {
-                        var j = 0;
-                        for (var i=0; i<response.data.length; i++) {
-                            if (!response.data[i].message) {
-                                continue;
-                            }
-
-                            if (j >= n) {
-                                return listMessages;
-                            }
-
-                            console.log('msg: ' + response.data[i].message);
-                            var msg = new Message();
-                            msg.msgContent = response.data[i].message;
-                            msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
-                            msg.msgDate = 500; //TODO changer la date
-                            msg.authorId = response.data[i].from.id;
-							msg.msgId = response.data[i].id;
-
-                            listMessages[j] = msg;
-                            j++;
-                            console.log('id: ' + i + ' - ' + msg.msgContent);
-                        }
-
-                        return listMessages;
-                    });
-
-                } else {
-                    console.log('no Auth');
-                    for (i=0; i<n; i++) {
-                        var msg = new Message();
-                        msg.msgContent = "YO SWAAAAAG lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.";
-                        msg.originalLink = "http://www.facebook.com/";
-                        msg.msgDate = 100; //stockez la date sous forme de seconde depuis un rep�re que vous choisirez, je pourrais comparer facilement comme �a. -Charles
-                        msg.msgId = "abc123";
-						listMessages[i] = msg;
-                    }
-
-                    console.log('nbMsg: ' + listMessages.length);
-
-                    return listMessages;
-                }
-            });
-
-            return listMessages;
-		}
-
-        Facebook.prototype.connect = function(){
-
-            // si l'id n'existe pas on quitte la fonction
-            if (document.getElementById('login-' + this.name) == null) {
-                return;
-            }
-
-            document.getElementById('login-' + this.name).innerHTML = "<div id='log-Fb' class='fb-login-button'>Connect with Facebook</div>";
-
-            FB.init({
-                appId      : '454890441191384',
-                //channelUrl : '//localhost://8000/app/channel.html', // Channel File
-                status     : true,
-                cookie     : true,
-                xfbml      : true,
-                oauth      : true
-            });
-
-            document.getElementById('log-Fb').addEventListener('click', function() {
                 FB.getLoginStatus(function(response) {
                     if (response.status === 'connected') {
+
                         FB.api('/me', function(response) {
-                            console.log('Good to see you, ' + response.name + '.');
-                            console.log('Your email address, ' + response.email + '.');
-                            window.location.reload();
+                            Facebook.prototype.isConnected = function() {
+                                return true;
+                            }
+                            Facebook.prototype.getUserProfile = function(id) {
+                                FB.api('/me/picture', function(response2) {
+                                    profile.imageProfileURL = response2;
+                                });
+
+                                var profile = new Profile();
+                                profile.name = response.name;
+                                profile.firstName = response.first_name;
+                                profile.nickName = response.username;
+
+                                return profile;
+                            }
+                            console.log(response.name);
                         });
                     } else if (response.status === 'not_authorized') {
                         console.log("No auth");
@@ -157,9 +113,195 @@ angular.module('facebook',['SNMock']).
                         console.log("No auth");
                     }
                 });
+            }
+
+        }
+
+
+        Facebook.prototype.getUserProfile = function(id) {
+
+            //console.log('Facebook call: getUserProfile');
+
+            if(!this.profile){
+                this.profile = new Profile();
+
+                this.init();
+
+                if(this.connected){
+
+                        FB.api('/me/picture', function(response) {
+                            this.profile.imageProfileURL = response;
+                        });
+
+                        FB.api('/me', function(response) {
+
+                            this.profile.name = response.name;
+                            this.profile.firstName = response.first_name;
+                            this.profile.nickName = response.username;
+                            return this.profile;
+                        });
+                    }
+            }
+
+            return this.profile;
+        }
+
+
+        Facebook.prototype.getImgMessage = function(res) {
+            //console.log('Facebook call: getImgMessage');
+            var self = this;
+
+            FB.getLoginStatus(function(resp) {
+                FB.api('/me/home?limit=40', function(respon) {
+                    for (var i=0; i<respon.data.length; i++) {
+                        if (!respon.data[i].message) {
+                            continue;
+                        }
+
+                        FB.api('/' + respon.data[i].from.id + '/picture', function(response) {
+                            console.log(response);
+                            self.lastImgPath.push(response);
+                            return response;
+                        });
+                    }
+                    return self.lastImgPath;
+                });
             });
 
-            return ; //Must return connection object?
+            return self.lastImgPath;
+        }
+
+		
+		Facebook.prototype.getLastNMessages = function(n){
+            //console.log('Facebook call: getLastNMessages');
+            var self = this;
+            self.lastMessages = [];
+
+            var current_time = new Date().getTime();
+
+            if(typeof(FB) === "object" && FB._apiKey === null) {
+                FB.init({
+                    appId      : '454890441191384',
+                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
+                    status     : true,
+                    cookie     : true,
+                    xfbml      : true,
+                    oauth      : true
+                });
+            }
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    FB.api('/me/home?limit=40&until='+current_time, {access_token: response.authResponse.accessToken}, function(response) {
+                        var j = 0;
+                        if (response.data) {
+                            for (var i=0; i<response.data.length; i++) {
+                                if (!response.data[i].message) {
+                                    continue;
+                                }
+
+                                if (j >= n) {
+                                    return listMessages;
+                                }
+
+                                var msg = new Message();
+                                msg.msgContent = escape(response.data[i].message);
+                                console.log(msg.msgContent);
+                                msg.originalLink = "http://www.facebook.com/"; //TODO changer le lien
+                                msg.authorId = response.data[i].from.id;
+                                msg.msgId = response.data[i].id;
+                                msg.authorName = escape(response.data[i].from.name);
+                                msg.msgDate = new Date(response.data[i].created_time).getTime();
+
+                                FB.api('/' + msg.authorId + '/picture', function(response) {
+                                    var regex = /[\d]+_([\d]+)_[\d]+/;
+                                    for (i in self.lastMessages){
+                                        var m = self.lastMessages[i];
+                                        var match = regex.exec(response);
+                                        if(!match || !match[1])
+                                            return;
+                                        var id = match[1];
+                                        if(m.authorId === id){
+                                            m.authorImg = response;
+                                            angular.element(document).scope().$apply(null); // force refresh view
+                                        }
+                                    }
+                                });
+
+                                self.lastMessages.push(msg);
+                                j++;
+                            }
+                        }
+
+                    });
+
+                    return self.lastMessages;
+
+
+                } else {
+                    console.log('no Auth');
+
+
+                    return  self.lastMessages;
+                }
+            });
+
+            return self.lastMessages;
+		}
+
+        Facebook.prototype.connect = function(){
+
+            if (!this.isConnected()){
+                console.log('Facebook call: connect');
+
+                // si l'id n'existe pas on quitte la fonction
+                if (document.getElementById('login-' + this.name) == null) {
+                    return;
+                }
+
+                document.getElementById('login-' + this.name).innerHTML = "<div id='log-Fb' class='fb-login-button'>Connect with Facebook</div>";
+
+                FB.init({
+                    appId      : '454890441191384',
+                    //channelUrl : '//localhost://8000/app/channel.html', // Channel File
+                    status     : true,
+                    cookie     : true,
+                    xfbml      : true,
+                    oauth      : true
+                });
+
+                document.getElementById('log-Fb').addEventListener('click', function() {
+                     FB.login(function(response) {
+                       if (response.authResponse) {
+                         console.log('Welcome!  Fetching your information.... ');
+                         FB.api('/me', function(response) {
+                           console.log('Good to see you, ' + response.name + '.');
+                         });
+                       } else {
+                         console.log('User cancelled login or did not fully authorize.');
+                       }
+                     }, {scope: 'email,user_about_me,read_stream,publish_stream'});
+                });
+            }
+        }
+
+
+        Facebook.prototype.sendMessage = function(text){
+            //console.log('Facebook call: sendMessage');
+            if(typeof(FB) === "object" && FB._apiKey === null) {
+                return;
+            }
+
+            //var content = $('.newMsg').val();
+            console.log(text);
+
+            FB.api('/me/feed', 'post', { message: text}, function(response) {
+                if (!response || response.error) {
+                    console.log('Error occured');
+                } else {
+                    console.log('Post ID: ' + response.id);
+                }
+            });
         }
 		
         return Facebook;

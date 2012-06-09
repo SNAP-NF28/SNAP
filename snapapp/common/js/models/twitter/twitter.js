@@ -21,62 +21,122 @@ angular.module('twitter',['SNMock']).
          *
          */
 
-		 /** Heritage des attributs de la classe SNMock **/
+        /** Heritage des attributs de la classe SNMock **/
         var Twitter = function(){
-			SNMock.apply(this);
+            SNMock.apply(this);
             //list attributes
             this.name = "Twitter";
-			this.displayName = "Twitter";
+            this.id = 'twitter';
+            this.displayName = "Twitter";
             this.picture = "TwitPic";
             this.icon = "/snapapp/common/img/logo_twitter_60x60.png";
-			this.limitChar = 140;
+			      this.limitChar = 140;
             return this;
         }
-		
-		/** Heritage des methodes de la classe SNMock **/
-		Twitter.prototype = new SNMock();
-		
-		/** Surcharge des methodes de la classe SNMock **/
+
+        /** Heritage des methodes de la classe SNMock **/
+        Twitter.prototype = new SNMock();
+
+        /** Surcharge des methodes de la classe SNMock **/
         Twitter.prototype.getSNName = function(){
             return "Twitter";
         }
-		
-		Twitter.prototype.getLastNMessages = function(n){
-			var listMessages=new Array();
-			for (i=0; i<n; i++) {
-				var msg = new Message();
-				msg.msgContent = "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur";
-				msg.originalLink = "http://twitter.com/?id=000000";
-				msg.msgDate = 300; //stockez la date sous forme de seconde depuis un repère que vous choisirez, je pourrais comparer facilement comme ça. -Charles
-				msg.msgId = "ghi789";
-				listMessages[i] = msg;
-			}
-			return listMessages;
+
+        Twitter.prototype.getLastNMessages = function(n){
+
+
+            //alert("This function should not be called");
+
+            var self = this;
+            if(!self.lastMessages)
+              self.lastMessages = [];
+
+            twttr.anywhere(function (T) {
+                if (T.isConnected()) {
+                    usr = T.currentUser;
+                    self.doGetMessages(self, usr, n);
+                }
+            });
+
+			return self.lastMessages;
 		}
 
-        Twitter.prototype.connect = function(){
-
-            //FIXME: Set proper callback url
-            //twttr.anywhere.config({ callbackURL: "http://www.yoursite.com/anywhere-complete" });
-
-            if(!this.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
-                this.connectAlreadyCalled = true;
-                twttr.anywhere(function (T) {
-                T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
-                  authComplete: function(user) {
-                    // triggered when auth completed successfully
-                    console.log("You rock baby");
-                  },
-                  signOut: function() {
-                    // triggered when user logs out
-                    console.log("You suck baby");
-                  }
-                });
-              });
-            }
-            return ; //Must return connection object?
+        Twitter.prototype.getUserProfile = function(id){
+            return this.profile;
         }
-		
+
+        Twitter.prototype.doGetMessages = function(self, usr, n){
+                    self.profile = new Profile();
+                    self.profile.socialNetworkId = self.id;
+                    self.profile.imageProfileURL = usr.profileImageUrl;
+                    self.profile.name = usr.screenName;
+                    self.profile.description = usr.description;
+                    self.profile.lifePlace = usr.location;
+                    self.profile.followersNb = usr.followersCount;
+                    self.profile.followsNb = usr.friendsCount;
+                    self.profile.msgCount = usr.statusesCount;
+                    self.profile.subscriptionDate = usr.createdAt;
+                    $("#login-Twitter").addClass("hide");
+                    
+
+                    usr.homeTimeline({
+                        count:n,
+                        success: function(data){
+                              var m;
+                              if(self.lastMessages)
+                                self.lastMessages.length = 0;
+                              else
+                                self.lastMessages = [];
+                              for(m in data.array){
+                                  var r = data.array[m];
+                                  var message = new Message();
+                                  message.socialNetworkId = self.id;
+                                  message.msgId = r.id;
+                                  message.authorId = r.user.id;
+                                  message.msgContent = escape(r.text);
+                                  message.originalLink = r.source; //TODO: parse using regex
+                                  message.msgDate = new Date(r.createdAt).getTime();
+                                  message.authorImg = r.user.profileImageUrl;
+                                  message.authorName = escape(r.user.name);
+                                  //message.mediaList; //TODO: handle media list
+                                  //message.localization;
+                                  //message.replyTo;
+                                  self.lastMessages.push(message);
+                              }
+                              if(self.lastMessages.length > 0){
+                                console.log("Messages grabbed from twitter.");
+                                angular.element(document).scope().$apply(null); // force refresh view
+                              }
+                              return self.lastMessages;
+                          }
+                        });
+                        console.log("You rock baby");
+        }
+
+        Twitter.prototype.connect = function(){
+            var self = this;
+            //FIXME: Set proper callback url
+            //twttr.anywhere.config({ callbackURL: "http://localhost:5000/snapapp/desktop/index.html" });
+
+            twttr.anywhere(function (T) {
+                if(!self.connectAlreadyCalled){ //FIXME: Ugly Ugly Ugly hack
+                    self.connectAlreadyCalled = true;
+                    twttr.anywhere(function (T) {
+                    T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
+                      authComplete: function(usr) {
+                        // triggered when auth completed successfully
+                        self.doGetMessages(self, usr, 20);
+                      },
+                      signOut: function() {
+                        // triggered when user logs out
+                        console.log("You suck baby");
+                      }
+                    });
+                });
+              }
+            });
+          return ; //Must return connection object?
+        }
+
         return Twitter;
     });
-

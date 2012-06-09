@@ -33,7 +33,7 @@
 		<div class="row-fluid">
 			<div class="span3">
 				<div class="well sidebar-nav sidebar-nav-fixed">
-					<form ng-submit="envoiMEssage()">
+					<form ng-submit="envoiMessage()">
 						<textarea class="newMsg" placeholder="Nouveau message" 
 						onfocus="charCounter(this,{{cl.counterLimit}},'msgCounter','envoiMsg')" 
 						onkeydown="charCounter(this,{{cl.counterLimit}},'msgCounter','envoiMsg')" 
@@ -50,7 +50,8 @@
 						<h1><small><div id="msgCounter"></div></small></h1>
 						<input class="btn btn-primary" type="submit" id="envoiMsg" value="Envoyer &raquo;">
 					</form>
-					<input type="text" ng-model="search" class="search-query" placeholder="Rechercher">
+
+                <input type="text" ng-model="search" class="search-query" placeholder="Rechercher">
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
@@ -84,7 +85,7 @@
 											{{cutMsg(message,"140")}}
 										</div>
 										<!-- MODAL -->
-										<a data-toggle="modal" href="#detailsAll{{message.msgid}}">Détails</a>	
+										<a data-toggle="modal" href="#detailsAll{{message.msgId}}">Détails</a>
 											<div id="detailsAll{{message.msgId}}" class="modal hide fade">
 											  <div class="modal-header">
 												<h3>Détails du message</h3>
@@ -171,5 +172,5 @@
 			</div>
 		</div>
 	</div>
-  </body>	
+  </body>
 </html>

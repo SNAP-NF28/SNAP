@@ -9,7 +9,6 @@ angular.module('socialNetworks', ['facebook','googleplus','twitter']).
         //SocialNetworks.prototype.toSmth = function(cb) {
         //    return
         //};
-
         return SocialNetworks;
     });
 
