@@ -37,8 +37,8 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			}
 			//$scope.alreadyFetched = true;
 			console.log("fetch done");
-			$scope.allMsg = mergeSort(tmp_1);
-			$scope.allMsg = $scope.allMsg.slice(0, nb);
+			var tmp_2 = mergeSort(tmp_1);
+			$scope.allMsg = tmp_2.slice(0, nb);
 		}
 		
 		return $scope.allMsg;
