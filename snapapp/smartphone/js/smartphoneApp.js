@@ -117,7 +117,7 @@ function storeMessage($msg, $authorImg) {
 	console.log("Auteur original : " + $author);
 	*/
 	$('#msgDetails').data('message', escape($msg.msgContent));
-	$('#msgDetails').data('author', unescape($msg.authorName));
+	$('#msgDetails').data('author', escape($msg.authorName));
 	$('#msgDetails').data('authorImg', $authorImg);
 	/*
 	console.log("Message stocke : " + $('#msgDetails').data('message'));
