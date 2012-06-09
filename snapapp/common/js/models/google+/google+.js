@@ -45,9 +45,9 @@ angular.module('googleplus',['SNMock']).
 			var listMessages=new Array();
 			for (i=0; i<n; i++) {
 				var msg = new Message();
-				msg.msgContent = "Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur";
+				msg.msgContent = escape("Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur");
 				msg.originalLink = "http://plus.google.com";
-				msg.msgDate = 200; //stockez la date sous forme de seconde depuis un repere que vous choisirez, je pourrais comparer facilement comme �a. -Charles
+				msg.msgDate = 200; //stockez la date sous forme de seconde depuis un repere que vous choisirez, je pourrais comparer facilement comme ca. -Charles
 				msg.msgId = "def456";
 				
 				listMessages[i] = msg;
