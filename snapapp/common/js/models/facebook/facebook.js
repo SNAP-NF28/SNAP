@@ -111,7 +111,7 @@ angular.module('facebook',['SNMock']).
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    FB.api('/me/feed?limit=' + 40, {access_token: response.authResponse.accessToken}, function(response) {
+                    FB.api('/me/home?limit=' + 40, {access_token: response.authResponse.accessToken}, function(response) {
                         var j = 0;
                         self.lastMessages.length = 0;
 
@@ -145,7 +145,6 @@ angular.module('facebook',['SNMock']).
                                         }
                                     }
                                 });
-
                                 self.lastMessages.push(msg);
                                 j++;
                             }
