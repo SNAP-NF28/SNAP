@@ -50,16 +50,39 @@ angular.module('twitter',['SNMock']).
             //alert("This function should not be called");
 
             var self = this;
-            if(!self.lastMessages)
+            if(!self.lastMessages) {
+			//	console.log("nothing !!");
               self.lastMessages = [];
-
+			}
+			/*else {
+			
+				console.log("something with a size of " + self.lastMessages.length);
+				for (var j = 0; j < self.lastMessages.length; j++)
+					console.log ("bouh " + self.lastMessages[j].msgContent);
+			}
+			
+			console.log("pending....");*/
             twttr.anywhere(function (T) {
                 if (T.isConnected()) {
                     usr = T.currentUser;
                     self.doGetMessages(self, usr, n);
+					console.log("messages fetched !");
                 }
+				else {
+				//console.log("not connected :/");
+				}
             });
-
+			//console.log("done");
+			/*
+			 if(!self.lastMessages) {
+				console.log("nothing 2 !!");
+			}
+			else {
+			
+				console.log("2 something with a size of " + self.lastMessages.length);
+				for (var j = 0; j < self.lastMessages.length; j++)
+					console.log ("bouh 2 " + self.lastMessages[j].msgContent);
+			}*/
 			return self.lastMessages;
 		}
 
@@ -79,7 +102,6 @@ angular.module('twitter',['SNMock']).
                     self.profile.msgCount = usr.statusesCount;
                     self.profile.subscriptionDate = usr.createdAt;
                     $("#login-Twitter").addClass("hide");
-                    
 
                     usr.homeTimeline({
                         count:n,
@@ -100,6 +122,7 @@ angular.module('twitter',['SNMock']).
                                   message.msgDate = new Date(r.createdAt).getTime();
                                   message.authorImg = r.user.profileImageUrl;
                                   message.authorName = r.user.name;
+								  message.socialNetworkId = "twitter";
                                   //message.mediaList; //TODO: handle media list
                                   //message.localization;
                                   //message.replyTo;

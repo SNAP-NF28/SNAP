@@ -18,11 +18,11 @@
     <!--<script src="/snapapp/smartphone/lib/jquery-mobile-angular-adapter-standalone-1.0.7-rc1.js" type="text-javascript"></script>-->
     <!-- import Css libs and files-->
     <script src="/snapapp/common/js/util/importCSS.js"></script>
-	<link rel="stylesheet"  type="text/css" href="css/smartphone.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.0.css">
+    <link rel="stylesheet"  type="text/css" href="css/smartphone.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.0.css">
     <link rel="stylesheet"  type="text/css" href="css/jqm-icon-pack-1.1.1-original.css" />
 
-	
+
 </head>
 <!--<body>-->
 <snap-common-scripts></snap-common-scripts>
@@ -30,27 +30,27 @@
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <body ng-controller="smartphoneAppCtrl">
-<script language="Javascript"> 
-
-</script>
 
 <div id="homePage" data-role="page">
     <div data-role="header" data-position="fixed">
         <h1>Header Home/All</h1>
     </div>
-    <div data-role="content">
+	<div data-role="content">
         <div data-role="fieldcontain">
-            <label>Text</label>
-            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <h4>Hello {{yourName}} !</h4>
-        </div>
+			 <div class="msgContent well"  ng-repeat="message in getAllMessages(20)">
+
+						<p> {{message.msgContent}}</p>
+						<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+						<br class="clear"/>
+				</div>				
+		</div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('$.mobile.activePage').live('swipeleft', '{{getPrevPage($.mobile.activePage)}}');
-				$('$.mobile.activePage').live('swiperight', '{{getNextPage($.mobile.activePage)}}');
-			</script>
+            <script language="Javascript">
+                $('$.mobile.activePage').live('swipeleft', '{{getPrevPage($.mobile.activePage)}}');
+                $('$.mobile.activePage').live('swiperight', '{{getNextPage($.mobile.activePage)}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('homePage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -69,36 +69,36 @@
     </div>
     <div data-role="content">
         <div data-role="collapsible">
-		   <h3>General settings</h3>
-		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
-		</div>
-		<br /><br />
-		<div data-role="collapsible">
-		   <h3>Facebook settings</h3>
-		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
-		</div>
-		<br /><br />		
+            <h3>General settings</h3>
+            <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+        </div>
+        <br /><br />
         <div data-role="collapsible">
-		   <h3>Google+ settings</h3>
-		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
-		</div>		
-		<br /><br />		
+            <h3>Facebook settings</h3>
+            <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+        </div>
+        <br /><br />
         <div data-role="collapsible">
-		   <h3>Twitter settings</h3>
-		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
-		</div>
-		<br /><br />		
+            <h3>Google+ settings</h3>
+            <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+        </div>
+        <br /><br />
         <div data-role="collapsible">
-		   <h3>Advanced settings</h3>
-		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
-		</div>
+            <h3>Twitter settings</h3>
+            <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+        </div>
+        <br /><br />
+        <div data-role="collapsible">
+            <h3>Advanced settings</h3>
+            <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+        </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#optionsPage').live('swipeleft', '{{getPrevPage("optionsPage")}}');
-				$('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
-			</script>
+            <script language="Javascript">
+                $('#optionsPage').live('swipeleft', '{{getPrevPage("optionsPage")}}');
+                $('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('optionsPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -126,10 +126,10 @@
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#optionsPage').live('swipeleft', '{{getPrevPage("optionsPage")}}');
-				$('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
-			</script>
+            <script language="Javascript">
+                $('#optionsPage').live('swipeleft', '{{getPrevPage("optionsPage")}}');
+                $('#optionsPage').live('swiperight', '{{getPrevPage("optionsPage")}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("#")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -155,10 +155,10 @@
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#srchPage').live('swipeleft', '{{getPrevPage("srchPage")}}');
-				$('#srchPage').live('swiperight', '{{getPrevPage("srchPage")}}');
-			</script>		
+            <script language="Javascript">
+                $('#srchPage').live('swipeleft', '{{getPrevPage("srchPage")}}');
+                $('#srchPage').live('swiperight', '{{getPrevPage("srchPage")}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('srchPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -186,10 +186,10 @@
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#usrPage').live('swipeleft', '{{getPrevPage("usrPage")}}');
-				$('#usrPage').live('swiperight', '{{getPrevPage("usrPage")}}');
-			</script>
+            <script language="Javascript">
+                $('#usrPage').live('swipeleft', '{{getPrevPage("usrPage")}}');
+                $('#usrPage').live('swiperight', '{{getPrevPage("usrPage")}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('usrPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -203,61 +203,61 @@
 
 <!-- Details du message -->
 <div data-role="dialog" id="msgDetails">
-	<!--<div data-role="header" data-theme="c">
-		<h1>D&eacute;tail du message</h1>
+    <!--<div data-role="header" data-theme="c">
+         <h1>D&eacute;tail du message</h1>
 	</div>
 	-->
-	<div data-role="content" data-theme="d">	
-		<div class="msgContent well">
-					
-			<div class="block">
-				<img class="msgImgProfile" src="../common/img/defaultProfile.png" />
-			</div>
-			<div class="block">
-				<b class="userName">  </b>	 
-				<br />
-				<!-- Message content -->
+    <div data-role="content" data-theme="d">
+        <div class="msgContent well">
 
-				 <span class="msgContent"> </span>
+            <div class="block">
+                <img class="msgImgProfile" src="../common/img/defaultProfile.png" />
+            </div>
+            <div class="block">
+                <b class="userName">  </b>
+                <br />
+                <!-- Message content -->
 
-			<br />
-			<a href="#" data-role="button" data-rel="back" data-theme="b" data-mini="true" data-inline="true">Fermer</a>       
-			<a href="#msgPage" data-role="button" data-theme="c" data-mini="true" data-inline="true">Répondre</a>
-			</div>							
-			<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-			<br class="clear"/>
-		</div>	
-	</div>
+                <span class="msgContent"> </span>
+
+                <br />
+                <a href="#" data-role="button" data-rel="back" data-theme="b" data-mini="true" data-inline="true">Fermer</a>
+                <a href="#msgPage" data-role="button" data-theme="c" data-mini="true" data-inline="true">Répondre</a>
+            </div>
+            <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+            <br class="clear"/>
+        </div>
+    </div>
 </div>
 
 <!--------------------- Page Facebook --------------------->
 <div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
     <div data-role="header" data-position="fixed">
         <img  class="logo" ng-src="{{getIcon}}"/>
-		<h1>Header FB</h1>
+        <h1>Header FB</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-			<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well"  ng-repeat="message in messages">
-				
-				<div class="block">
-					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
-				</div>
-				<div class="block">
-					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
-					<!-- Message content -->
-					 <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
-					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
-					
-				</div>				
-				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-				<br class="clear"/>
+            <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+            <div class="msgContent well"  ng-repeat="message in getLastMsg(socialNetwork)">
+
+                <div class="block">
+                    <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+                </div>
+                <div class="block">
+                    <b class="userName">{{getNameProfile(message)}}</b>	 <br />
+                    <!-- Message content -->
+                    <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
+                    <p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
+
+                </div>
+                <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+                <br class="clear"/>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">		
+        <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('fbPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -278,29 +278,30 @@
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-			<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well" ng-repeat="message in messages" >
-				
-				<div class="block">
-					<img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
-				</div>
-				<div class="block">
-					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
-					<!-- Message content -->
-					{{getNFirstCharacters(message, 140)}}
-										<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
-				</div>				
-				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-				<br class="clear"/>
+            <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork)" >
+
+                <div class="block">
+                    <img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
+                </div>
+                <div class="block">
+                    <b class="userName">{{getNameProfile(message)}}</b>	 <br />
+					
+                    <!-- Message content -->
+                    {{getNFirstCharacters(message, 140)}}
+                    <p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
+                </div>
+                <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+                <br class="clear"/>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#gpPage').live('swipeleft', '{{getPrevPage("gpPage")}}');
-				$('#gpPage').live('swiperight', '{{getPrevPage("gpPage")}}');
-			</script>
+            <script language="Javascript">
+                $('#gpPage').live('swipeleft', '{{getPrevPage("gpPage")}}');
+                $('#gpPage').live('swiperight', '{{getPrevPage("gpPage")}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('gpPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>
@@ -321,29 +322,29 @@
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-			<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well" ng-repeat="message in messages">
-				
-				<div class="block">
-					<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
-				</div>
-				<div class="block">
-					<b class="userName">{{getNameProfile(message)}}</b>	 <br />
-					<!-- Message content -->
-					<span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
-					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
-				</div>				
-				<!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-				<br class="clear"/>
+            <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork)">
+
+                <div class="block">
+                    <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+                </div>
+                <div class="block">
+                    <b class="userName">{{getNameProfile(message)}}</b>	 <br />
+                    <!-- Message content -->
+                    <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
+                    <p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
+                </div>
+                <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+                <br class="clear"/>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
-			<script language="Javascript"> 
-				$('#twPage').live('swipeleft', '{{getPrevPage("twPage")}}');
-				$('#twPage').live('swiperight', '{{getPrevPage("twPage")}}');
-			</script>
+            <script language="Javascript">
+                $('#twPage').live('swipeleft', '{{getPrevPage("twPage")}}');
+                $('#twPage').live('swiperight', '{{getPrevPage("twPage")}}');
+            </script>
             <ul>
                 <li> <a href="#" data-icon="arrow-l" onClick=$.mobile.changePage("{{getPrevPage('twPage')}}")> </a></li>
                 <li> <a href="#homePage" data-icon="home"> </a></li>

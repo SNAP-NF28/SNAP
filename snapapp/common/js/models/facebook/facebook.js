@@ -132,6 +132,7 @@ angular.module('facebook',['SNMock']).
                                 msg.authorName = response.data[i].from.name;
                                 msg.msgDate = new Date(response.data[i].created_time).getTime();
                                 msg.authorImg = "/snapapp/common/img/defaultProfile.png";
+								msg.socialNetworkId = "facebook";
                                 FB.api('/' + msg.authorId + '/picture', function(response) {
                                     var regex = /[\d]+_([\d]+)_[\d]+/;
                                     for (i in self.lastMessages){

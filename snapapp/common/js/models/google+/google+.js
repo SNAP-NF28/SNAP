@@ -51,6 +51,7 @@ angular.module('googleplus',['SNMock']).
 				msg.originalLink = "http://plus.google.com";
 				msg.msgDate = 200; //stockez la date sous forme de seconde depuis un repere que vous choisirez, je pourrais comparer facilement comme ca. -Charles
 				msg.msgId = "def456";
+				msg.socialNetworkId = "google+";
 				
 				listMessages[i] = msg;
 			}*/
