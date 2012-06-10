@@ -34,6 +34,7 @@ angular.module('facebook',['SNMock']).
             this.lastMessagesIds = [];
             this.lastImgPath = [];
             this.connected = false;
+            this.profile = new Profile();
             return this;
         }
 
@@ -112,7 +113,7 @@ angular.module('facebook',['SNMock']).
 
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    FB.api('/me/feed?limit=' + 40, {access_token: response.authResponse.accessToken}, function(response) {
+                    FB.api('/me/home?limit=' + 40, {access_token: response.authResponse.accessToken}, function(response) {
                         var j = 0;
                         self.lastMessages.length = 0;
 
@@ -147,7 +148,6 @@ angular.module('facebook',['SNMock']).
                                         }
                                     }
                                 });
-
                                 self.lastMessages.push(msg);
                                 j++;
                             }
@@ -207,6 +207,38 @@ angular.module('facebook',['SNMock']).
                 }
             });
         }
+        
+        Facebook.prototype.getUserProfile = function(id){
+			var self = this;
+			
+			if (!self.profile) {
+				self.profile = new Profile();
+			}
+			
+			console.log('Facebook call: getUserProfile');
+
+		    FB.api('/me', function(response) {
+		    	self.profile.name = response.name;
+		    	
+		    	self.profile.firstName = response.first_name;
+		    	self.profile.nickName = response.username;
+		    	self.profile.birthDate = response.birthday;
+		    	self.profile.subscriptionDate = new Date(response.updated_time).getTime();
+		    	
+		    	FB.api('/me/picture', function(response) {
+		    		self.profile.imageProfileURL = response;
+		        	angular.element(document).scope().$apply(null);
+		    	});
+		    	
+		    	angular.element(document).scope().$apply(null);
+		     });
+			
+			
+			return self.profile;
+		}
+
+        
+        
 
         return Facebook;
     });

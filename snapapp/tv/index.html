@@ -25,7 +25,7 @@
 <div   ng-controller="tvAppCtrl"  class="hero-unit" style='padding-right:10px;
 	padding-left:10px ; text-align: center;'>
     <h2>SNAP TV</h2>
-    <p>Whohohooo Snap TV Mode :)</p>
+    <p>Whohohooo Snap TV Mode :) & Test functions</p>
 
     <input type="text" ng-model="search" class="search-query" placeholder="Search">
     <table>
@@ -35,6 +35,9 @@
             <th>Picture</th>
             <th>icon</th>
             <th>citation</th>
+            <th>Connection</th>
+            <th>IsConnected</th>
+            <th>User name</th>
         </tr>
         </thead>
         <tbody>
@@ -43,10 +46,12 @@
             <td>{{socialNetwork.picture}}</td>
             <td>{{socialNetwork.icon}}</td>
             <td>{{socialNetwork.citation}}</td>
+            <td>{{socialNetwork.connect()}}</td>
+            <td>{{socialNetwork.isConnected()}}</td>
+            <td>{{socialNetwork.getUserProfile(0).name}}</td>
         </tr>
         </tbody>
     </table>
-
 </div>
 </body>
 </html>

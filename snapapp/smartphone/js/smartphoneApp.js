@@ -31,6 +31,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 				console.log("fetch " + tmp.length + " messages from " + sn.name);
 				
 				for (var j = 0; j < tmp.length; j++) {
+					tmp[j].socialNetworkMinIcon = sn.miniIcon;
 					tmp_1.push(tmp[j]);
 				}
 			}
@@ -243,4 +244,6 @@ function displayMessage() {
 	$('#msgDetails').removeData('authorImg');
 	
 }
+
+
 
