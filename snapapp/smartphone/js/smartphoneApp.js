@@ -295,7 +295,7 @@ function formatDate(date){
 			return "hier";
 		}
 		else {
-			var c = "Le " + d.toString('dddd, dd MMMM yyyy HH:mm');
+			var c = "le " + d.toString('dddd, dd MMMM yyyy HH:mm');
 			return c;
 		}
 	  
