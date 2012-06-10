@@ -4,9 +4,6 @@ angular.module('smartphoneApp', ['socialNetworks']);
 
 function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.socialNetworks = new SocialNetworks();
-	$(document).bind('pageinit', function(event) {
-    var activePage = $(event.target);
-	});
 	
 	$('#msgDetails').live('pageshow', function () {displayMessage()});
 	
