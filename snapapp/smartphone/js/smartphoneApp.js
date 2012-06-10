@@ -400,7 +400,8 @@ function displayMessage() {
 	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
 */
 	$('.userName').text(author);
-	console.log("Auteur inscrit : " + $('.userName').text());
+	$('.msgContent').text(msg);
+	$('#msgDetails').find($('.msgImgProfile')[0]).attr('src', authorImg);
 	
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
