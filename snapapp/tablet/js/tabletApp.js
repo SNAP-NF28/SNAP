@@ -86,12 +86,14 @@ function tabletAppCtrl($scope, SocialNetworks) {
           }
         }
         sessionStorage.removeItem('tabletMsg2Send');
-        if(okNotif)
-          //console.log(okNotif);
+        if(okNotif){
+          console.log(okNotif);
           sessionStorage.setItem("tabletOkNotif", okNotif);
-        if(problemNotif)
-          //console.log(problemNotif);
+        }
+        if(problemNotif){
+          console.log(problemNotif);
           sessionStorage.setItem("tabletProblemNotif", problemNotif);
+        }
         $('#ackMsgspent').trigger('click');
       }
     };
