@@ -394,14 +394,12 @@ function displayMessage() {
 	var msg = unescape($('#msgDetails').data('message'));
 	var author = unescape($('#msgDetails').data('author'));
 	var authorImg = $('#msgDetails').data('authorImg');	
-	/*
-	$('#msgDetails').find($('b.userName')[0]).text(author);
-	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
-	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
-*/
-	$('.userName').text(author);
-	$('.msgContent').text(msg);
-	$('#msgDetails').find($('.msgImgProfile')[0]).attr('src', authorImg);
+	
+	$('#msgDetails').find($('.userName')[0]).text(author);
+	$('#msgDetails').find($('.msgContent')[0]).text(msg);
+	$('#msgDetails').find($('.msgImgProfile')[0]).attr('src', authorImg);	
+
+	//$('#msgDetails').find($('.msgImgProfile')[0]).attr('src', authorImg);
 	
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
