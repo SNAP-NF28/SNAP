@@ -68,11 +68,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		return message.msgDate;
 	}
 	
-    $scope.formatDate = function(date){
-      var d = new Date(date);
-      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
-    }
-	
 }
 
 /** Controleurs pour chaque reseau social **/
@@ -112,11 +107,11 @@ function smartphoneFbCtrl($scope) {
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
     }
-	
+	/*
     $scope.formatDate = function(date){
       var d = new Date(date);
       return d.toString('dddd, MMMM d, yyyy - h:m tt');       
-    }
+    }*/
 }
 
 function smartphoneGpCtrl($scope) {
@@ -150,11 +145,11 @@ function smartphoneGpCtrl($scope) {
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
     }
-	
+	/*
     $scope.formatDate = function(date){
       var d = new Date(date);
       return d.toString('dddd, MMMM d, yyyy - h:m tt');      
-    }
+    }*/
 }
 
 function smartphoneTwCtrl($scope) {
@@ -188,11 +183,11 @@ function smartphoneTwCtrl($scope) {
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
     }
-	
+	/*
     $scope.formatDate = function(date){
       var d = new Date(date);
       return d.toString('dddd, MMMM d, yyyy - h:m tt');     
-    }
+    }*/
 }
 
 /** Controleur pour la navigation : page precedente et page suivante **/
@@ -281,5 +276,29 @@ function displayMessage() {
 	
 }
 
-
+function formatDate(date){
+      var d1 = new Date(date);
+	  var d2 = new Date();
+	  
+	  if (d1.getMinutes() == d2.getMinutes()) {
+		return "il y a quelques secondes";
+		}
+	  else if (d1.getHours() == d2.getHours()) {
+		var m = d2.getMinutes() - d1.getMinutes();
+		return "il y a " + m + " minutes";
+		}
+	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
+		var h = d2.getHours() - d1.getHours();
+		return "il y a " + h + " heures";
+		}
+		else if (d2.getDate() - d1.getDate() == 1){
+			return "hier";
+		}
+		else {
+			var c = "Le " + d.toString('dddd, dd MMMM yyyy HH:mm');
+			return c;
+		}
+	  
+      //return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+    }
 
