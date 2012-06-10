@@ -208,7 +208,7 @@ angular.module('facebook',['SNMock']).
             });
         }
         
-        Facebook.prototype.getUserProfile = function(id){
+        Facebook.prototype.getUserProfile = function(){
 			var self = this;
 			
 			if (!self.profile) {
@@ -230,8 +230,7 @@ angular.module('facebook',['SNMock']).
 		        	angular.element(document).scope().$apply(null);
 		    	});
 		    	
-		    	angular.element(document).scope().$apply(null);
-		     });
+		    });
 			
 			
 			return self.profile;

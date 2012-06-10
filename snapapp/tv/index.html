@@ -46,9 +46,10 @@
             <td>{{socialNetwork.picture}}</td>
             <td>{{socialNetwork.icon}}</td>
             <td>{{socialNetwork.citation}}</td>
-            <td>{{socialNetwork.connect()}}</td>
+            <td><span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span></td>
             <td>{{socialNetwork.isConnected()}}</td>
-            <td>{{socialNetwork.getUserProfile(0).name}}</td>
+            <td>{{getUserProfile(socialNetwork.name).name}}</td>
+            <td><img src="{{getUserProfile(socialNetwork.name).imageProfileURL}}"/></td>
         </tr>
         </tbody>
     </table>

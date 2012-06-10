@@ -23,7 +23,7 @@ angular.module('SNMock',['types']).
 			return listMessages;
 		}
 		
-		SNMock.prototype.getUserProfile = function(id){
+		SNMock.prototype.getUserProfile = function(){
 			var profile=new Profile();
 			return profile;
 		}
