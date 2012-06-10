@@ -192,7 +192,7 @@
 	<div ng-repeat="socialNetwork in socialNetworks">
 		<div id="profilUser{{socialNetwork.name}}" class="modal hide fade">
 			<div class="modal-header">
-				<h3>Charles de Bellabre</h3>
+				<h3>{{getUserNameProfile(socialNetwork)}}</h3>
 			</div>
 			<div class="modal-body">
 				<img class="msgImgProfile" ng-src="{{getUserImageProfile(socialNetwork)}}" />

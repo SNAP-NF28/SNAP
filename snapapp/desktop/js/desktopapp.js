@@ -69,9 +69,16 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	}
 	
 	$scope.getUserImageProfile = function(socialNetwork) {
-	if (socialNetwork.isConnected()) var img = socialNetwork.getUserProfile().imageProfileURL;
-    if (img) return img;
-	return "./img/defaultProfile.png";
+		if (socialNetwork.isConnected()) var img = socialNetwork.getUserProfile().imageProfileURL;
+		if (img) return img;
+		return "./img/defaultProfile.png";
+	}
+	
+	$scope.getUserNameProfile = function(socialNetwork) {
+		var name;
+		if (socialNetwork.isConnected()) name = socialNetwork.getUserProfile().name;
+		else name="Un profil";
+		return name;
 	}
 		
 }
