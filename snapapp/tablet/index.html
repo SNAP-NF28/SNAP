@@ -129,12 +129,13 @@
             </div>
 
             <div ngm-if="socialNetwork.connected" >
-                <ul  data-role="listview" data-split-icon="gear" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
-                    <li ng-repeat="msg in getLastMsg(socialNetwork)"><a href="#">
+                <ul  data-role="listview" data-split-icon="plu" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
+                    <li ng-repeat="msg in getLastMsg(socialNetwork)"><a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
                         <img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
-                        <h3>{{msg.authorName}}</h3>
+                        <h5>{{msg.authorName}}</h5>
+                        <p>Posted on <em>{{formatDate(msg.msgDate)}}</em></p>
                         <p>{{msg.msgContent}}</p>
-                        </a><a href="#" data-rel="dialog" data-transition="slideup">Purchase album
+                        </a><a href="newmsg.html" data-rel="dialog" data-transition="slidedown">Reply
                     </a></li>
                 </ul>
             </div>
@@ -147,9 +148,9 @@
             <h3>Your login</h3>
             <img src="/snapapp/common/img/defaultProfile.png" height="100" width="100" />
             <input type="search" name="search" id="searc-basic" value="" />
-            <a href="#" data-role="button" data-icon="plus">New Message</a>
-            <a href="#" data-role="button" data-icon="home">Your Profile</a>
-            <a href="#" data-role="button" data-icon="gear">Settings</a>
+            <a href="newmsg.html" data-rel="dialog" data-transition="slidedown" data-role="button" data-icon="plus">New Message</a>
+            <a href="profile.html" data-rel="dialog" data-transition="slidedown" data-role="button" data-icon="home">Your Profile</a>
+            <a href="settings.html" data-rel="dialog" data-transition="slidedown" data-role="button" data-icon="gear">Settings</a>
                 
         </div>
 
@@ -160,14 +161,6 @@
     </div>
 
 </div><!-- /page -->
-
-
-
-
-
-
-
-
 
 
 </body>

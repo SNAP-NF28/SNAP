@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SNAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AngularJS Project for School :)">
+    <meta name="author" content="SNAP Project">
+
+    <!-- import jQuery
+   <script src="/snapapp/common/lib/jquery/jquery-1.7.2.min.js"></script>
+
+   <!-- import Js libs and files-->
+    <script src="/snapapp/common/js/load.js"></script>
+    <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
+    <!-- import Css libs and files-->
+    <script src="/snapapp/common/js/util/importCSS.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" href="/snapapp/tablet/css/tablet.css" />
+
+</head>
+<body> 
+
+
+<div data-role="dialog" ng-controller="tabletMsgCtrl"> 
+    <div data-role="header" data-theme="d">
+        <h2>Message Detail</h2>
+    </div>
+    <div data-role="content" data-theme="c">
+        
+        <img src="{{msg.authorImg}}" height="100" width="100" style='text-align:center;' />
+        <h4>Message from {{msg.socialNetworkId}}</h4>
+        <h5>Posted by <em>{{msg.authorName}}</em> On <em>{{formatDate(msg.msgDate)}}</em></h5>
+        <h6>Content</h6>
+        <p>{{msg.msgContent}}</p>
+        <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">Ok</a>    
+    </div>
+</div>
+
+</body>
+</html>
