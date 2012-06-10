@@ -35,8 +35,10 @@
 						  <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-						  <li><a data-toggle="modal" href="#profilUser{{socialNetwork.name}}">Voir ma page de profil</a></li>
+						  <li><a data-toggle="modal" href="#profilUser{{socialNetwork.name}}"><b class="fullname">{{getUserNameProfile(socialNetwork)}}</b>
+																		<small class="metadata">Voir ma page de profil</small></a></li>
 						  <li class="divider"></li>
+						  <li><a data-toggle="modal" href="#parametres">Paramètres</a></li>
 						  <li><a href="#" ng-click="logout(socialNetwork)">Déconnexion</a></li>
 						</ul>
 					</div>
@@ -201,6 +203,17 @@
 				<a href="#" class="btn" data-dismiss="modal" >Close</a>										
 			</div>
 		</div>
+	</div>
+	<div id="parametres" class="modal hide fade">
+			<div class="modal-header">
+				<h3>Paramètres</h3>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+			</div>
 	</div>
 	</div>
   </body>

@@ -198,5 +198,16 @@ ul.nav-tabs>li{
  
  .menuSNtrue
  {
- display:inline;
+	display:inline;
+ }
+ 
+ small.metadata{
+	display: block;
+    font-size: 11px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	font-weight: normal;
+	color: #999999;
+	line-height: 14px;
  }

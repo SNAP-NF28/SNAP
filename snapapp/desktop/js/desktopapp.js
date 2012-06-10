@@ -219,7 +219,3 @@ function resize(){
 		else frame[i].style.maxHeight = windowheight-285 + "px";
 	}
 }
-
-function sendMessage() {
-
-}
