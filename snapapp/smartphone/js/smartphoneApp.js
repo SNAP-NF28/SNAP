@@ -70,7 +70,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('d MMMM yyyy à h:m');      
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
     }
 	
 }
@@ -115,7 +115,7 @@ function smartphoneFbCtrl($scope) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('d MMMM yyyy à h:m');      
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');       
     }
 }
 
@@ -153,7 +153,7 @@ function smartphoneGpCtrl($scope) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('d MMMM yyyy à h:m');      
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
     }
 }
 
@@ -191,7 +191,7 @@ function smartphoneTwCtrl($scope) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('d MMMM yyyy à h:m');      
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');     
     }
 }
 
