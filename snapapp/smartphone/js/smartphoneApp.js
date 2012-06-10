@@ -366,6 +366,10 @@ function displayMessage() {
 	var author = unescape($('#msgDetails').data('author'));
 	var authorImg = $('#msgDetails').data('authorImg');
 	
+	console.log("Message recupere : " + msg);
+	console.log("Auteur recupere : " + author);
+	
+	
 	$('#msgDetails').find($('b.userName')[0]).text(author);
 	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
 	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
