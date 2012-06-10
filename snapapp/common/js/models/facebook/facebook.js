@@ -200,13 +200,13 @@ angular.module('facebook',['SNMock']).
             //var content = $('.newMsg').val();
             console.log(text);
 
-            // FB.api('/me/feed', 'post', { message: text}, function(response) {
-            //     if (!response || response.error) {
-            //         console.log('Error occured');
-            //     } else {
-            //         console.log('Post ID: ' + response.id);
-            //     }
-            // });
+            FB.api('/me/feed', 'post', { message: text}, function(response) {
+                if (!response || response.error) {
+                    console.log('Error occured');
+                } else {
+                    console.log('Post ID: ' + response.id);
+                }
+            });
 
             return true;
         }
