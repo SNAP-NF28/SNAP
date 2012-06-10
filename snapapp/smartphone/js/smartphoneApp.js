@@ -12,11 +12,11 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
 	$('$.mobile.activePage').swiperight(function() {
 		getNextPage('$.mobile.activePage');
-	}
+	});
 	
 	$('$.mobile.activePage').swipeleft(function() {
 		getPrevPage('$.mobile.activePage');
-	}
+	});
 
 	$scope.pageOrder = new Array("homePage", "fbPage", "twPage", "gpPage", "srchPage", "usrPage", "optionsPage");
 	$scope.getPrevPage = function (curPage) {
