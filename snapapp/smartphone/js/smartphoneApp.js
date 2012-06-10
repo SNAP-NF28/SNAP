@@ -9,7 +9,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
 	/** WTF 10 APPELS ???!! **/
 	$scope.getAllMessages = function(nb) { 
-		if ($scope.allMsg && $scope.allMsg.length > nb) {
+		if ($scope.allMsg && $scope.allMsg.length > 0) {
 			console.log("all messages already sorted");
 			return $scope.allMsg;
 		} else {
@@ -19,7 +19,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			for (var i = 0; i < $scope.socialNetworks.length; i++) {
 				var sn = $scope.socialNetworks[i];
 				var tmp = [];
-				if(sn.lastMessages && sn.lastMessages.length >= nb) {
+				if(sn && sn.lastMessages) {
 					console.log("messages from " + sn.name + " already fetched");
 					tmp = sn.lastMessages;
 				} else {
