@@ -4,7 +4,36 @@ angular.module('smartphoneApp', ['socialNetworks']);
 
 function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.socialNetworks = new SocialNetworks();
+	$(document).bind('pageinit', function(event) {
+    var activePage = $(event.target);
+	});
 	$('#msgDetails').live('pageshow', function () {displayMessage()});
+	$('$.mobile.activePage').swiperight(function() {
+		getNextPage($.mobile.activePage)
+	}
+	$('$.mobile.activePage').swipeleft(function() {
+		getPrevPage($.mobile.activePage)
+	}
+
+	$scope.pageOrder = new Array("homePage", "fbPage", "twPage", "gpPage", "srchPage", "usrPage", "optionsPage");
+	$scope.getPrevPage = function (curPage) {
+		var idx = $scope.pageOrder.indexOf(curPage);
+		if (idx <= 0) {
+			idx += $scope.pageOrder.length;
+		}
+		idx--;
+		return "#" + $scope.pageOrder[idx];
+	}
+	$scope.getNextPage = function (curPage) {
+		var idx = $scope.pageOrder.indexOf(curPage);
+		if (idx >=  $scope.pageOrder.length - 1) {
+			idx -= $scope.pageOrder.length;
+		}
+		idx++;
+		return "#" + $scope.pageOrder[idx];
+	}
+	
+	
 	//angular.element(document).scope().$apply(null); // force refresh view
 	
 	/** WTF 10 APPELS ???!! **/
