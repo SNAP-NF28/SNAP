@@ -191,3 +191,7 @@ ul.nav-tabs>li{
  .dropdown-toggle{
 	margin-right: 20px;
  }
+ 
+ .menuSNfalse{
+	display : none;
+ }

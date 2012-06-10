@@ -67,6 +67,12 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	$scope.logout = function(socialNetwork) {
 		socialNetwork.logout();
 	}
+	
+	$scope.getUserImageProfile = function(socialNetwork) {
+	if (socialNetwork.isConnected()) var img = socialNetwork.getUserProfile().imageProfileURL;
+    if (img) return img;
+	return "./img/defaultProfile.png";
+	}
 		
 }
 

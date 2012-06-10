@@ -27,11 +27,11 @@
 			<div class="container">
 				<a class="brand" href="#">SNAP</a>
 					<div class="containerMenuProfil">
-					<div class="dropdown menuProfil" id="menu{{socialNetwork.name}}" ng-repeat="socialNetwork in socialNetworks">
+					<div class="dropdown menuProfil menuSN{{socialNetwork.isConnected()}}" id="menu{{socialNetwork.name}}" ng-repeat="socialNetwork in socialNetworks">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#menu{{socialNetwork.name}}">
 						  <img class="iconRSProfile" ng-src="{{socialNetwork.miniIcon}}" />
-						  <img class="userImgProfile" ng-src="./img/defaultProfile.png" />
-						  <!--<img class="userImgProfile" ng-src="{{socialNetwork.getUserProfile().imageProfileURL}}" />-->
+						   <!--<img class="userImgProfile" ng-src="./img/defaultProfile.png" />-->
+						  <img class="userImgProfile" ng-src="{{getUserImageProfile(socialNetwork)}}" />
 						  <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
@@ -195,7 +195,7 @@
 				<h3>Charles de Bellabre</h3>
 			</div>
 			<div class="modal-body">
-				<img class="msgImgProfile" ng-src="./img/defaultProfile.png" />
+				<img class="msgImgProfile" ng-src="{{getUserImageProfile(socialNetwork)}}" />
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal" >Close</a>										
