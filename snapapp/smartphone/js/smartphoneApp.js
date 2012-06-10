@@ -276,8 +276,8 @@ function displayMessage() {
 	
 }
 
-function formatDate(date) {
-      var d1 = new Date(date);
+function formatDate(message) {
+      var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
 	  
 	  if (d1.getMinutes() == d2.getMinutes()) {
