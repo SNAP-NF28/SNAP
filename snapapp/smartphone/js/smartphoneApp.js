@@ -19,7 +19,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			for (var i = 0; i < $scope.socialNetworks.length; i++) {
 				var sn = $scope.socialNetworks[i];
 				var tmp = [];
-				if(sn.lastMessages && sn.lastMessages > nb) {
+				if(sn.lastMessages && sn.lastMessages >= nb) {
 					console.log("messages from " + sn.name + " already fetched");
 					tmp = sn.lastMessages;
 				} else {
