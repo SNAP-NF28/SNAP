@@ -29,6 +29,32 @@ function tabletAppCtrl($scope, SocialNetworks) {
     $scope.onMsgDetail = function(msg){
       sessionStorage.setItem('tabletCurrentMsg', JSON.stringify(msg)); // OMG :| this is a hack!
     }
+
+    $scope.getAllMsg = function(){
+      var msgList = [];
+      for(i in $scope.socialNetworks){
+        var sn = $scope.socialNetworks[i];
+        var msgL = $scope.getLastMsg(sn);
+        if(sn && msgL){
+          //console.log('TabletAll: Grabbed ' + msgL.length + 'msg from ' + sn.id );
+          msgList = msgList.concat(msgL);
+        }
+      }
+      console.log('TabletAll: Total Grabbed ' + msgList.length + 'msg');
+      msgList.sort(function(a,b){
+        return b.msgDate - a.msgDate;
+      });
+      return msgList;
+    }
+
+    $scope.anyConnected = function(){
+      for(i in $scope.socialNetworks){
+        var sn = $scope.socialNetworks[i];
+        if(sn.connected == true)
+          return true;
+      }
+      return false;
+    }
 }
 
 function tabletMsgCtrl($scope){
