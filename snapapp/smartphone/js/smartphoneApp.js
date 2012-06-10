@@ -44,7 +44,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		return $scope.allMsg;
 	}
 	
-$scope.getImageProfile = function(message) {
+	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
     if (img) return img;
 		// img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
@@ -70,7 +70,7 @@ $scope.getImageProfile = function(message) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+      return d.toString('d MMMM yyyy à h:m');      
     }
 	
 }
@@ -115,7 +115,7 @@ function smartphoneFbCtrl($scope) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+      return d.toString('d MMMM yyyy à h:m');      
     }
 }
 
@@ -153,7 +153,7 @@ function smartphoneGpCtrl($scope) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+      return d.toString('d MMMM yyyy à h:m');      
     }
 }
 
@@ -191,7 +191,7 @@ function smartphoneTwCtrl($scope) {
 	
     $scope.formatDate = function(date){
       var d = new Date(date);
-      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+      return d.toString('d MMMM yyyy à h:m');      
     }
 }
 
