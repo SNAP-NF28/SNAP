@@ -69,14 +69,14 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	}
 	
 	$scope.getUserImageProfile = function(socialNetwork) {
-		if (socialNetwork.isConnected()) var img = socialNetwork.getUserProfile().imageProfileURL;
+		if (socialNetwork.connected) var img = socialNetwork.getUserProfile().imageProfileURL;
 		if (img) return img;
 		return "./img/defaultProfile.png";
 	}
 	
 	$scope.getUserNameProfile = function(socialNetwork) {
 		var name;
-		if (socialNetwork.isConnected()) name = socialNetwork.getUserProfile().name;
+		if (socialNetwork.connected) name = socialNetwork.getUserProfile().name;
 		else name="Un profil";
 		return name;
 	}
@@ -142,7 +142,7 @@ function desktopAppCtrlMsg($scope) {
 	}
 	
 	$scope.loginDiv = function() {
-		if ($scope.socialNetwork.isConnected){}
+		if ($scope.socialNetwork.connected){}
 			//return "<span id='login-{{socialNetwork.name}}'>{{socialNetwork.connect()}}</span>"
 	}
 }

@@ -27,7 +27,7 @@
 			<div class="container">
 				<a class="brand" href="#">SNAP</a>
 					<div class="containerMenuProfil">
-					<div class="dropdown menuProfil menuSN{{socialNetwork.isConnected()}}" id="menu{{socialNetwork.name}}" ng-repeat="socialNetwork in socialNetworks">
+					<div class="dropdown menuProfil menuSN{{socialNetwork.connected}}" id="menu{{socialNetwork.name}}" ng-repeat="socialNetwork in socialNetworks">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#menu{{socialNetwork.name}}">
 						  <img class="iconRSProfile" ng-src="{{socialNetwork.miniIcon}}" />
 						   <!--<img class="userImgProfile" ng-src="./img/defaultProfile.png" />-->
