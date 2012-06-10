@@ -276,26 +276,26 @@ function displayMessage() {
 	
 }
 
-function formatDate(date){
+function formatDate(date) {
       var d1 = new Date(date);
 	  var d2 = new Date();
 	  
 	  if (d1.getMinutes() == d2.getMinutes()) {
-		return "il y a quelques secondes";
+		return "Il y a quelques secondes";
 		}
 	  else if (d1.getHours() == d2.getHours()) {
 		var m = d2.getMinutes() - d1.getMinutes();
-		return "il y a " + m + " minutes";
+		return "Il y a " + m + " minutes";
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
 		var h = d2.getHours() - d1.getHours();
-		return "il y a " + h + " heures";
+		return "Il y a " + h + " heures";
 		}
 		else if (d2.getDate() - d1.getDate() == 1){
-			return "hier";
+			return "Hier";
 		}
 		else {
-			var c = "le " + d.toString('dddd, dd MMMM yyyy HH:mm');
+			var c = "Le " + d.toString('dddd, dd MMMM yyyy HH:mm');
 			return c;
 		}
 	  
