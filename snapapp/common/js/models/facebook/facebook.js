@@ -250,9 +250,6 @@ angular.module('facebook',['SNMock']).
         	
         }
 
-        
-        
-
         return Facebook;
     });
 
