@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SNAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AngularJS Project for School :)">
+    <meta name="author" content="SNAP Project">
+
+    <!-- import jQuery
+   <script src="/snapapp/common/lib/jquery/jquery-1.7.2.min.js"></script>
+
+   <!-- import Js libs and files-->
+    <script src="/snapapp/common/js/load.js"></script>
+    <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
+    <!-- import Css libs and files-->
+    <script src="/snapapp/common/js/util/importCSS.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" href="/snapapp/tablet/css/tablet.css" />
+
+</head>
+<body> 
+
+
+<div data-role="dialog" id="newMessage"> 
+    <div data-role="header" data-theme="d">
+        <h2>New Message</h2>
+    </div>
+    <div data-role="content" data-theme="c">
+        <h3>Write a new post:</h3>
+        <textarea name="textarea" id="textarea"></textarea>
+        <h3>Select where you want to publish</h3>
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
+                <label for="checkbox-1a">Facebook</label>
+
+                <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
+                <label for="checkbox-2a">Google+</label>
+
+                <input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
+                <label for="checkbox-3a">Twitter</label>
+
+            </fieldset>
+            </div>
+
+        <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="b">Post</a>
+        <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">Back</a>    
+    </div>
+</div>
+
+</body>
+</html>

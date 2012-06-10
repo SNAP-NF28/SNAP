@@ -20,4 +20,23 @@ function tabletAppCtrl($scope, SocialNetworks) {
       sn.alreadyFetched = true;
       return sn.getLastNMessages(10);
     }
+
+    $scope.formatDate = function(date){
+      var d = new Date(date);
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+    }
+
+    $scope.onMsgDetail = function(msg){
+      sessionStorage.setItem('tabletCurrentMsg', JSON.stringify(msg)); // OMG :| this is a hack!
+    }
+}
+
+function tabletMsgCtrl($scope){
+  $scope.msg = JSON.parse(sessionStorage.getItem("tabletCurrentMsg"));
+  console.log($scope.msg);
+
+  $scope.formatDate = function(date){
+      var d = new Date(date);
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+    }
 }
