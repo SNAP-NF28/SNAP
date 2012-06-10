@@ -40,6 +40,11 @@ angular.module('SNMock',['types']).
         SNMock.prototype.connect = function(){
 			return ; //Must return connection object?
 		}
+        
+
+        SNMock.prototype.logout = function(){
+			return ; //Must return connection object?
+		}
 
         return SNMock;
     });

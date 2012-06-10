@@ -235,6 +235,17 @@ angular.module('facebook',['SNMock']).
 			
 			return self.profile;
 		}
+        
+        Facebook.prototype.logout = function(){
+        	if (!this.connected) {
+        		return;
+        	}
+
+        	FB.logout(function(response) {
+        		  console.log('SNAP Thank you ! Bye');
+        	});
+        	
+        }
 
         
         
