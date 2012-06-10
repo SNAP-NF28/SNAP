@@ -191,6 +191,35 @@
     </div>
 </div>
 
+<!-- Details du message -->
+<div data-role="dialog" id="msgDetails">
+    <!--<div data-role="header" data-theme="c">
+         <h1>D&eacute;tail du message</h1>
+	</div>
+	-->
+    <div data-role="content" data-theme="d">
+        <div class="msgContent well">
+
+            <div class="block">
+                <img class="msgImgProfile" src="../common/img/defaultProfile.png" />
+            </div>
+            <div class="block">
+                <b class="userName">  </b>
+                <br />
+                <!-- Message content -->
+
+                <span class="msgContent"> </span>
+
+                <br />
+                <a href="#" data-role="button" data-rel="back" data-theme="b" data-mini="true" data-inline="true">Fermer</a>
+                <a href="#msgPage" data-role="button" data-theme="c" data-mini="true" data-inline="true">Répondre</a>
+            </div>
+            <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
+            <br class="clear"/>
+        </div>
+    </div>
+</div>
+
 <!--------------------- Page Facebook --------------------->
 <div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
     <div data-role="header" data-position="fixed">
@@ -227,35 +256,6 @@
                 <li> <a href="#srchPage" data-icon="search"> </a></li>
                 <li> <a href="#" data-icon="arrow-r" onClick=$.mobile.changePage("{{getNextPage('fbPage')}}")> </a></li>
             </ul>
-        </div>
-    </div>
-</div>
-
-<!-- Details du message -->
-<div data-role="dialog" id="msgDetails">
-    <!--<div data-role="header" data-theme="c">
-         <h1>D&eacute;tail du message</h1>
-	</div>
-	-->
-    <div data-role="content" data-theme="d">
-        <div class="msgContent well">
-
-            <div class="block">
-                <img class="msgImgProfile" src="../common/img/defaultProfile.png" />
-            </div>
-            <div class="block">
-                <b class="userName">  </b>
-                <br />
-                <!-- Message content -->
-
-                <span class="msgContent"> </span>
-
-                <br />
-                <a href="#" data-role="button" data-rel="back" data-theme="b" data-mini="true" data-inline="true">Fermer</a>
-                <a href="#msgPage" data-role="button" data-theme="c" data-mini="true" data-inline="true">Répondre</a>
-            </div>
-            <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
-            <br class="clear"/>
         </div>
     </div>
 </div>
