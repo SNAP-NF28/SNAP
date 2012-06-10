@@ -170,10 +170,12 @@ ul.nav-tabs>li{
 
 .menuProfil{
 	float : left;
+	display:inline;
 }
 
 .containerMenuProfil{
-	margin-left : 70%;
+	float : right;
+	margin-right : 50px;
 }
 
 .iconRSProfile{

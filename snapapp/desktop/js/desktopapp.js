@@ -63,6 +63,10 @@ function desktopAppCtrl($scope, SocialNetworks) {
 		}
 		$("textarea#newMsg").val("");
 	}
+	
+	$scope.logout = function(socialNetwork) {
+		socialNetwork.logout();
+	}
 		
 }
 
