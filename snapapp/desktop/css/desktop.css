@@ -169,11 +169,11 @@ ul.nav-tabs>li{
 }
 
 .menuProfil{
-	float : right;
+	float : left;
 }
 
 .containerMenuProfil{
-	margin-right : 80px;
+	margin-left : 70%;
 }
 
 .iconRSProfile{

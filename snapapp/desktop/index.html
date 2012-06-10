@@ -31,10 +31,11 @@
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#menu{{socialNetwork.name}}">
 						  <img class="iconRSProfile" ng-src="{{socialNetwork.miniIcon}}" />
 						  <img class="userImgProfile" ng-src="./img/defaultProfile.png" />
+						  <!--<img class="userImgProfile" ng-src="{{socialNetwork.getUserProfile().imageProfileURL}}" />-->
 						  <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-						  <li><a href="#">Voir ma page de profil</a></li>
+						  <li><a data-toggle="modal" href="#profilUser{{socialNetwork.name}}">Voir ma page de profil</a></li>
 						  <li class="divider"></li>
 						  <li><a href="#">Déconnexion</a></li>
 						</ul>
@@ -43,7 +44,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span3">
@@ -188,6 +188,20 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div ng-repeat="socialNetwork in socialNetworks">
+		<div id="profilUser{{socialNetwork.name}}" class="modal hide fade">
+			<div class="modal-header">
+				<h3>Charles de Bellabre</h3>
+			</div>
+			<div class="modal-body">
+				<img class="msgImgProfile" ng-src="./img/defaultProfile.png" />
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+			</div>
+		</div>
+	</div>
 	</div>
   </body>
 </html>
