@@ -11,11 +11,11 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$('#msgDetails').live('pageshow', function () {displayMessage()});
 	
 	$('$.mobile.activePage').swiperight(function() {
-		getNextPage('$.mobile.activePage')
+		getNextPage('$.mobile.activePage');
 	}
 	
 	$('$.mobile.activePage').swipeleft(function() {
-		getPrevPage('$.mobile.activePage')
+		getPrevPage('$.mobile.activePage');
 	}
 
 	$scope.pageOrder = new Array("homePage", "fbPage", "twPage", "gpPage", "srchPage", "usrPage", "optionsPage");
