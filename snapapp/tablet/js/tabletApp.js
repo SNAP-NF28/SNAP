@@ -2,6 +2,25 @@ angular.module('tabletApp', ['socialNetworks']);
 
 function tabletAppCtrl($scope, SocialNetworks) {
 
+    var panes = [
+      'All-pane',
+      'Facebook-pane',
+      'Facebook-pane',
+      'Twitter-pane'
+    ];
+
+    $scope.currentPane = panes[0];
+
+    $scope.paneRightShift = function(){
+      var ind = panes.indexOf($scope.currentPane);
+      $scope.selectPane(panes[(ind + 1) % panes.length])
+    }
+
+    $scope.paneLeftShift = function(){
+      var ind = panes.indexOf($scope.currentPane);
+      $scope.selectPane(panes[(ind - 1 >= 0)? ind - 1 : panes.length])
+    }
+
     var getSn = function(){
       if($scope.getSnAlreadyCalled)
         return $scope.socialNetworks;
@@ -12,6 +31,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
     $scope.socialNetworks = getSn();
 
     $scope.selectPane = function(selectedPane){
+        $scope.currentPane = selectedPane;
         $(".sn-pane").addClass('hide');
         $('#'+selectedPane).removeClass('hide');
     }
