@@ -6,11 +6,11 @@ function tvAppCtrl($scope, SocialNetworks) {
     
     $scope.getUserProfile = function(name) {
     	if (name == 'Facebook') {
-    		socialNetworks[0].getUserProfile();
+    		$scope.socialNetworks[0].getUserProfile();
     	} else if (name == 'Twitter') {
-    		socialNetworks[2].getUserProfile();
+    		$scope.socialNetworks[2].getUserProfile();
     	} else {
-    		socialNetworks[1].getUserProfile();
+    		$scope.socialNetworks[1].getUserProfile();
     	}
     	
     }
