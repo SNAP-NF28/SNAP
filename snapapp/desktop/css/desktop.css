@@ -164,7 +164,6 @@ ul.nav-tabs>li{
 }
 
 .userImgProfile{
-	margin-right : 10px;
 	margin-top : 5px;
 	width : 30px;
 }
@@ -172,3 +171,21 @@ ul.nav-tabs>li{
 .menuProfil{
 	float : right;
 }
+
+.containerMenuProfil{
+	margin-right : 80px;
+}
+
+.iconRSProfile{
+	position: absolute;
+	top: 20px;
+	width : 15px;
+ }
+ 
+ .dropdown .caret {
+	margin-top: 20px;	
+ }
+ 
+ .dropdown-toggle{
+	margin-right: 20px;
+ }
