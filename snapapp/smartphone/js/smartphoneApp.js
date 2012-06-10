@@ -364,16 +364,14 @@ function storeMessage($msg, $authorImg) {
 function displayMessage() {
 	var msg = unescape($('#msgDetails').data('message'));
 	var author = unescape($('#msgDetails').data('author'));
-	var authorImg = $('#msgDetails').data('authorImg');
-	
-	console.log("Message recupere : " + msg);
-	console.log("Auteur recupere : " + author);
-	
+	var authorImg = $('#msgDetails').data('authorImg');	
 	
 	$('#msgDetails').find($('b.userName')[0]).text(author);
 	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
 	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
 
+	console.log("Auteur inscrit : " + $('#msgDetails').find($('b.userName')[0]).text());
+	
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
 	$('#msgDetails').removeData('authorImg');
