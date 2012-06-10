@@ -92,8 +92,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
         if(problemNotif)
           //console.log(problemNotif);
           sessionStorage.setItem("tabletProblemNotif", problemNotif);
-        $('#ackMsgspent').click();
-
+        $('#ackMsgspent').trigger('click');
       }
     };
 }
