@@ -44,6 +44,30 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		return $scope.allMsg;
 	}
 	
+$scope.getImageProfile = function(message) {
+    var img = message.authorImg;
+    if (img) return img;
+		// img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+		// if (img) return img;
+		return "../common/img/defaultProfile.png";
+	}
+	
+	$scope.getNFirstCharacters = function(message, lg) {
+	if (message.msgContent.length > lg)
+		return unescape(message.msgContent.substring(0, lg)) + "....";
+	return unescape(message.msgContent);
+	}
+
+	$scope.getNameProfile = function(message) {
+	//console.log(unescape(message.authorName));	
+    return unescape(message.authorName);
+	//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	}
+	
+	$scope.getDate = function(message) {
+		return message.msgDate;
+	}
+	
     $scope.formatDate = function(date){
       var d = new Date(date);
       return d.toString('dddd, MMMM d, yyyy - h:m tt');      
