@@ -258,7 +258,7 @@
                     <b class="userName">{{getNameProfile(message)}}</b>	 <br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
-					<p>Le <em>{{formatDate(message.msgDate)}}</em></p>
+					<p><em>{{formatDate(message)}}</em></p>
                     <p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
 
                 </div>
@@ -299,7 +299,7 @@
                     <b class="userName">{{getNameProfile(message)}}</b>	 <br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
-					<p>Le <em>{{formatDate(message.msgDate)}}</em></p>
+					<p><em>{{formatDate(message)}}</em></p>
                     <p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
                 </div>
                 <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
@@ -343,7 +343,7 @@
                     <b class="userName">{{getNameProfile(message)}}</b>	 <br />
                     <!-- Message content -->
                     <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
-					<p>Le <em>{{formatDate(message.msgDate)}}</em></p>
+					<p><em>{{formatDate(message)}}</em></p>
                     <p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
                 </div>
                 <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
