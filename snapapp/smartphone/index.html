@@ -46,7 +46,7 @@
 					<br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
-					<p><em><script language="javascript" type="text/javascript">var d = {{message.msgDate}}; document.write(formatDate(d));</script></em></p>
+					<p><em><script language="javascript" type="text/javascript">var d = message.msgDate; document.write(formatDate(d));</script></em></p>
 					<p><a href="#msgDetails" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
                 </div>
                 <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
