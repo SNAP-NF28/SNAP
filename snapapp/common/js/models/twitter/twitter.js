@@ -45,102 +45,100 @@ angular.module('twitter',['SNMock']).
         }
 
         Twitter.prototype.getLastNMessages = function(n){
+          var self = this;
+          if(!self.lastMessages) {
+            self.lastMessages = [];
+	        }
 
+          if(self.lastMessages.length > 0)
+            return self.lastMessages;
 
-            //alert("This function should not be called");
-
-            var self = this;
-            if(!self.lastMessages) {
-			//	console.log("nothing !!");
-              self.lastMessages = [];
-			}
-			/*else {
-			
-				console.log("something with a size of " + self.lastMessages.length);
-				for (var j = 0; j < self.lastMessages.length; j++)
-					console.log ("bouh " + self.lastMessages[j].msgContent);
-			}
-			
-			console.log("pending....");*/
-            twttr.anywhere(function (T) {
-                if (T.isConnected()) {
-                    usr = T.currentUser;
-                    self.doGetMessages(self, usr, n);
-					console.log("messages fetched !");
-                }
-				else {
-				//console.log("not connected :/");
-				}
-            });
-			//console.log("done");
-			/*
-			 if(!self.lastMessages) {
-				console.log("nothing 2 !!");
-			}
-			else {
-			
-				console.log("2 something with a size of " + self.lastMessages.length);
-				for (var j = 0; j < self.lastMessages.length; j++)
-					console.log ("bouh 2 " + self.lastMessages[j].msgContent);
-			}*/
-			return self.lastMessages;
-		}
+          twttr.anywhere(function (T) {
+            if (T.isConnected()) {
+              usr = T.currentUser;
+              self.doGetMessages(self, usr, n);
+              console.log("messages fetched !");
+            }
+            console.log("not connected :/");
+		      });
+    			return self.lastMessages;
+    		}
 
         Twitter.prototype.getUserProfile = function(id){
             return this.profile;
         }
 
         Twitter.prototype.doGetMessages = function(self, usr, n){
-                    self.profile = new Profile();
-                    self.profile.socialNetworkId = self.id;
-                    self.profile.imageProfileURL = usr.profileImageUrl;
-                    self.profile.name = usr.screenName;
-                    self.profile.description = usr.description;
-                    self.profile.lifePlace = usr.location;
-                    self.profile.followersNb = usr.followersCount;
-                    self.profile.followsNb = usr.friendsCount;
-                    self.profile.msgCount = usr.statusesCount;
-                    self.profile.subscriptionDate = usr.createdAt;
-                    $("#login-Twitter").addClass("hide");
+          self.profile = new Profile();
+          self.profile.socialNetworkId = self.id;
+          self.profile.imageProfileURL = usr.profileImageUrl;
+          self.profile.name = usr.screenName;
+          self.profile.description = usr.description;
+          self.profile.lifePlace = usr.location;
+          self.profile.followersNb = usr.followersCount;
+          self.profile.followsNb = usr.friendsCount;
+          self.profile.msgCount = usr.statusesCount;
+          self.profile.subscriptionDate = usr.createdAt;
+          $("#login-Twitter").addClass("hide");
 
-                    usr.homeTimeline({
-                        count:n,
-                        success: function(data){
-                              var m;
-                              if(self.lastMessages)
-                                self.lastMessages.length = 0;
-                              else
-                                self.lastMessages = [];
-                              for(m in data.array){
-                                  var r = data.array[m];
-                                  var message = new Message();
-                                  message.socialNetworkId = self.id;
-                                  message.msgId = r.id;
-                                  message.authorId = r.user.id;
-                                  message.msgContent = r.text;
-                                  message.originalLink = r.source; //TODO: parse using regex
-                                  message.msgDate = new Date(r.createdAt).getTime();
-                                  message.authorImg = r.user.profileImageUrl;
-                                  message.authorName = r.user.name;
-								  message.socialNetworkId = "twitter";
-                                  //message.mediaList; //TODO: handle media list
-                                  //message.localization;
-                                  //message.replyTo;
-                                  self.lastMessages.push(message);
-                              }
-                              if(self.lastMessages.length > 0){
-                                console.log("Messages grabbed from twitter.");
-                                angular.element(document).scope().$apply(null); // force refresh view
-                              }
-                              return self.lastMessages;
-                          }
-                        });
-                        console.log("You rock baby");
-        }
+          usr.homeTimeline({
+              count:n,
+              success: function(data){
+                    var m;
+                    if(self.lastMessages)
+                      self.lastMessages.length = 0;
+                    else
+                      self.lastMessages = [];
+                    for(m in data.array){
+                      var r = data.array[m];
+                      var message = new Message();
+                      message.socialNetworkId = self.id;
+                      message.msgId = r.id;
+                      message.authorId = r.user.id;
+                      message.msgContent = r.text;
+                      message.originalLink = r.source; //TODO: parse using regex
+                      message.msgDate = new Date(r.createdAt).getTime();
+                      message.authorImg = r.user.profileImageUrl;
+                      message.authorName = r.user.name;
+  	                  message.socialNetworkId = "twitter";
+                      //message.mediaList; //TODO: handle media list
+                      //message.localization;
+                      //message.replyTo;
+                      self.lastMessages.push(message);
+                    }
+                    if(self.lastMessages.length > 0){
+                      console.log("Messages grabbed from twitter.");
+                      angular.element(document).scope().$apply(null); // force refresh view
+                    }
+                    return self.lastMessages;
+                }
+              });
+              console.log("You rock baby");
+          }
 
         Twitter.prototype.sendMessage = function(text){
-          return false;
+
+          $(document.body).append('<div id="tbox"></div>');
+
+          twttr.anywhere(function (T) {
+            T("#tbox").tweetBox({
+              //height: 0,
+              //width: 0,
+              defaultContent: text,
+              counter: false,
+              label: "",
+              onTweet: function(){
+                $('#tbox').html(""); // delete the tbox :)
+              }
+            });
+          });
+          
+          //FIXME: Rooooho : SoooOOoOOoOOOOo Ugly Hack :'(
+          setTimeout("var iframe = $('iframe'); var tweetBoxBtn = $('#tweeting-button', iframe.contents()); if(tweetBoxBtn){tweetBoxBtn.click();console.log('Tweet Sent!');$('#tbox').remove();}", 250);
+
+          return true;
         }
+
 
         Twitter.prototype.connect = function(){
             var self = this;

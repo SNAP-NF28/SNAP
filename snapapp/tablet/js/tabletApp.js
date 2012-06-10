@@ -11,12 +11,12 @@ function tabletAppCtrl($scope, SocialNetworks) {
 
     $scope.currentPane = panes[0];
 
-    $scope.paneRightShift = function(){
+    $scope.paneLeftShift = function(){
       var ind = panes.indexOf($scope.currentPane);
       $scope.selectPane(panes[(ind + 1) % panes.length])
     }
 
-    $scope.paneLeftShift = function(){
+    $scope.paneRightShift = function(){
       var ind = panes.indexOf($scope.currentPane);
       $scope.selectPane(panes[(ind - 1 >= 0)? ind - 1 : panes.length])
     }
@@ -95,13 +95,13 @@ function tabletAppCtrl($scope, SocialNetworks) {
           //console.log(sn.id,msg.sn);
           if(msg.sn.indexOf(sn.id) != -1)
             if(!sn.connected)
-              problemNotif += "<br/> Message could't be delivered to " + sn.displayName + " because you are not authenticated.";
+              problemNotif += "<br/> Message could't be delivered to <strong>" + sn.displayName + "</strong> because you are not authenticated.";
             else{
               var sent = sn.sendMessage(content);
               if(sent)
                 okNotif += "<br/> Message delivered to " + sn.displayName;
               else
-                problemNotif += "<br/> Message could't be delivered to " + sn.displayName + " because something bad happened :( .";
+                problemNotif += "<br/> Message could't be delivered to <strong>" + sn.displayName + " </strong>because something bad happened :( .";
             console.log('Sending "' + content + '" to ' + sn.id);
           }
         }
