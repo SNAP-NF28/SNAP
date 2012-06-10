@@ -44,6 +44,11 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		return $scope.allMsg;
 	}
 	
+    $scope.formatDate = function(date){
+      var d = new Date(date);
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+    }
+	
 }
 
 /** Controleurs pour chaque reseau social **/
@@ -83,6 +88,11 @@ function smartphoneFbCtrl($scope) {
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
     }
+	
+    $scope.formatDate = function(date){
+      var d = new Date(date);
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+    }
 }
 
 function smartphoneGpCtrl($scope) {
@@ -116,6 +126,11 @@ function smartphoneGpCtrl($scope) {
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
     }
+	
+    $scope.formatDate = function(date){
+      var d = new Date(date);
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
+    }
 }
 
 function smartphoneTwCtrl($scope) {
@@ -148,6 +163,11 @@ function smartphoneTwCtrl($scope) {
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
+    }
+	
+    $scope.formatDate = function(date){
+      var d = new Date(date);
+      return d.toString('dddd, MMMM d, yyyy - h:m tt');      
     }
 }
 
