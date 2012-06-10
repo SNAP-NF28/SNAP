@@ -157,6 +157,8 @@ ul.nav-tabs>li{
 .loginDiv{	
 	text-align : center;
 	padding-bottom :10px;
+	display:block; 
+	overflow:auto;
 }
 
 .buttons{
@@ -210,4 +212,12 @@ ul.nav-tabs>li{
 	font-weight: normal;
 	color: #999999;
 	line-height: 14px;
+ }
+ 
+ iframe{
+ 	text-align : center;
+	padding-bottom :10px;
+	display:block; 
+	overflow:auto;
+	margin-left: 40%;
  }
