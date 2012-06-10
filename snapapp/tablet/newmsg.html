@@ -22,7 +22,7 @@
 <body> 
 
 
-<div data-role="dialog" id="newMessage"> 
+<div data-role="dialog" id="newMessage" ng-controller="tabletSendMsgCtrl"> 
     <div data-role="header" data-theme="d">
         <h2>New Message</h2>
     </div>
@@ -32,19 +32,19 @@
         <h3>Select where you want to publish</h3>
         <div data-role="fieldcontain">
             <fieldset data-role="controlgroup">
-                <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
-                <label for="checkbox-1a">Facebook</label>
+                <input type="checkbox" name="fb" id="fb" class="custom" />
+                <label for="fb">Facebook</label>
 
-                <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
-                <label for="checkbox-2a">Google+</label>
+                <input type="checkbox" name="googleplus" id="googleplus" class="custom" />
+                <label for="googleplus">Google+</label>
 
-                <input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
-                <label for="checkbox-3a">Twitter</label>
+                <input type="checkbox" name="checkbox-3a" id="twtr" class="custom" />
+                <label for="twtr">Twitter</label>
 
             </fieldset>
             </div>
 
-        <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="b">Post</a>
+        <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="b" ngm-click='sendMsg()'>Post</a>
         <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">Back</a>    
     </div>
 </div>

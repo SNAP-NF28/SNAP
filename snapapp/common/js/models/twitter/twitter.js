@@ -138,6 +138,10 @@ angular.module('twitter',['SNMock']).
                         console.log("You rock baby");
         }
 
+        Twitter.prototype.sendMessage = function(text){
+          return false;
+        }
+
         Twitter.prototype.connect = function(){
             var self = this;
             //FIXME: Set proper callback url

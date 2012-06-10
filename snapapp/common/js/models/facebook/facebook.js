@@ -25,6 +25,7 @@ angular.module('facebook',['SNMock']).
         Facebook = function(){
             SNMock.apply(this);
             //list attributes
+            this.id = 'fb';
             this.name = "Facebook";
 			this.displayName = "Facebook";
 			this.icon = "/snapapp/common/img/logo_facebook_60x60.png";
@@ -193,19 +194,21 @@ angular.module('facebook',['SNMock']).
         Facebook.prototype.sendMessage = function(text){
             //console.log('Facebook call: sendMessage');
             if(typeof(FB) === "object" && FB._apiKey === null) {
-                return;
+                return false;
             }
 
             //var content = $('.newMsg').val();
             console.log(text);
 
-            FB.api('/me/feed', 'post', { message: text}, function(response) {
-                if (!response || response.error) {
-                    console.log('Error occured');
-                } else {
-                    console.log('Post ID: ' + response.id);
-                }
-            });
+            // FB.api('/me/feed', 'post', { message: text}, function(response) {
+            //     if (!response || response.error) {
+            //         console.log('Error occured');
+            //     } else {
+            //         console.log('Post ID: ' + response.id);
+            //     }
+            // });
+
+            return true;
         }
         
         Facebook.prototype.getUserProfile = function(){

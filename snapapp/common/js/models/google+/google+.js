@@ -25,6 +25,7 @@ angular.module('googleplus',['SNMock']).
         var Googleplus = function(){
             SNMock.apply(this);
             //list attributes
+            this.id = 'googleplus';
             this.name = "Googleplus";
 			this.displayName = "Google+";
             this.citation = "G+citation";

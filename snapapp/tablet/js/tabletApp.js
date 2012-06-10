@@ -2,7 +2,15 @@ angular.module('tabletApp', ['socialNetworks']);
 
 function tabletAppCtrl($scope, SocialNetworks) {
 
-    $scope.socialNetworks = new SocialNetworks();
+    var getSn = function(){
+      if($scope.getSnAlreadyCalled)
+        return $scope.socialNetworks;
+      $scope.getSnAlreadyCalled = true;
+      return new SocialNetworks();
+    }
+
+    $scope.socialNetworks = getSn();
+
     $scope.selectPane = function(selectedPane){
         $(".sn-pane").addClass('hide');
         $('#'+selectedPane).removeClass('hide');
@@ -55,6 +63,39 @@ function tabletAppCtrl($scope, SocialNetworks) {
       }
       return false;
     }
+
+    $scope.sendPendingMsg = function(){
+      var msg = JSON.parse(sessionStorage.getItem('tabletMsg2Send'));
+      if(msg){
+        var content = msg.content;
+        var okNotif = "";
+        var problemNotif = "";
+        for(i in $scope.socialNetworks){
+          var sn = $scope.socialNetworks[i];
+          //console.log(sn.id,msg.sn);
+          if(msg.sn.indexOf(sn.id) != -1)
+            if(!sn.connected)
+              problemNotif += "<br/> Message could't be delivered to " + sn.displayName + " because you are not authenticated.";
+            else{
+              var sent = sn.sendMessage(content);
+              if(sent)
+                okNotif += "<br/> Message delivered to " + sn.displayName;
+              else
+                problemNotif += "<br/> Message could't be delivered to " + sn.displayName + " because something bad happened :( .";
+            console.log('Sending "' + content + '" to ' + sn.id);
+          }
+        }
+        sessionStorage.removeItem('tabletMsg2Send');
+        if(okNotif)
+          //console.log(okNotif);
+          sessionStorage.setItem("tabletOkNotif", okNotif);
+        if(problemNotif)
+          //console.log(problemNotif);
+          sessionStorage.setItem("tabletProblemNotif", problemNotif);
+        $('#ackMsgspent').click();
+
+      }
+    };
 }
 
 function tabletMsgCtrl($scope){
@@ -65,4 +106,54 @@ function tabletMsgCtrl($scope){
       var d = new Date(date);
       return d.toString('dddd, MMMM d, yyyy - h:m tt');      
     }
+}
+
+function tabletSendMsgCtrl($scope, SocialNetworks){
+
+  var getSn = function(){
+      if($scope.getSnAlreadyCalled)
+        return $scope.socialNetworks;
+      $scope.getSnAlreadyCalled = true;
+      return new SocialNetworks();
+    }
+
+    $scope.socialNetworks = getSn();
+
+  $scope.sendMsg = function(){
+    var content = $('#textarea').val();
+
+    if(content === "")
+      return;
+
+    var fb = $('#fb').attr('checked');
+    var googleplus = $('#googleplus').attr('checked');
+    var twtr = $('#twtr').attr('checked');
+    var sn = [];
+    if(fb)
+      sn.push("fb");
+    if(googleplus)
+      sn.push('googleplus');
+    if(twtr)
+      sn.push('twitter');
+
+    sessionStorage.setItem('tabletMsg2Send', JSON.stringify({
+      content: content,
+      sn: sn
+    }));
+  }
+}
+
+function tabletNotifMsgCtrl($scope){
+  $scope.fetchNotif = function(){
+    var okNotif =sessionStorage.getItem("tabletOkNotif");
+    sessionStorage.removeItem("tabletOkNotif"); 
+    if(okNotif){
+      $('#okNotif').html(okNotif);
+    }
+    var problemNotif = sessionStorage.getItem("tabletProblemNotif");
+    sessionStorage.removeItem('tabletProblemNotif');
+    if(problemNotif){
+      $('#problemNotif').html(problemNotif);
+    }
+  }
 }

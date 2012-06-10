@@ -23,7 +23,7 @@
 
 
 <div data-role="page" id='one' class="type-interior" ng-controller="tabletAppCtrl">
-
+        {{sendPendingMsg()}}
         <div data-role="header" data-position="fixed">
         <h1>SNAP</h1>
         </div><!-- /header -->
@@ -113,6 +113,8 @@
 
 </div><!-- /page -->
 
+<!-- Hidden link -->
+<a id='ackMsgspent' href="ackMsgspent.html" data-rel="dialog" data-transition="slidedown" ></a>
 
 </body>
 </html>

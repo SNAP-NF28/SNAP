@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SNAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AngularJS Project for School :)">
+    <meta name="author" content="SNAP Project">
+
+    <!-- import jQuery
+   <script src="/snapapp/common/lib/jquery/jquery-1.7.2.min.js"></script>
+
+   <!-- import Js libs and files-->
+    <script src="/snapapp/common/js/load.js"></script>
+    <script data-main="js/load.js" src="/snapapp/common/lib/requirejs/require-jquery.js"></script>
+    <!-- import Css libs and files-->
+    <script src="/snapapp/common/js/util/importCSS.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" href="/snapapp/tablet/css/tablet.css" />
+
+</head>
+<body> 
+
+
+<div data-role="dialog" ng-controller="tabletNotifMsgCtrl"> 
+    <div data-role="header" data-theme="d">
+        <h2>Message Delivery</h2>
+    </div>
+    <div data-role="content" data-theme="c">
+        {{fetchNotif()}}
+        <p id="okNotif" style="color:darkgreen;"></p>
+        <p id="problemNotif" style="color:darkred;"></p>
+        <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">Ok</a>    
+    </div>
+</div>
+
+</body>
+</html>
