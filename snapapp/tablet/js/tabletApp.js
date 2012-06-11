@@ -31,9 +31,18 @@ function tabletAppCtrl($scope, SocialNetworks) {
     $scope.socialNetworks = getSn();
 
     $scope.selectPane = function(selectedPane){
+      //force refresh messages
+      for(i in $scope.socialNetworks){
+        var sn = $scope.socialNetworks[i];
+        sn.alreadyFetched = false;
+        $scope.getLastMsg(sn);
+      }
+      //Change pane
+      if($scope.currentPane != selectedPane){
         $scope.currentPane = selectedPane;
         $(".sn-pane").addClass('hide');
         $('#'+selectedPane).removeClass('hide');
+      }
     }
 
     $scope.getMsgImg = function(msg){
@@ -46,7 +55,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
       if(sn.alreadyFetched)
         return sn.lastMessages;
       sn.alreadyFetched = true;
-      return sn.getLastNMessages(10);
+      return sn.getLastNMessages(20);
     }
 
     $scope.formatDate = function(date){
@@ -82,6 +91,14 @@ function tabletAppCtrl($scope, SocialNetworks) {
           return true;
       }
       return false;
+    }
+
+    $scope.onMyProfileDetail = function(){
+
+    }
+
+    $scope.onFriendProfileDetail = function(){
+      
     }
 
     $scope.sendPendingMsg = function(){

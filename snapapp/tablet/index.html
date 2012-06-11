@@ -23,7 +23,6 @@
 
 
 <div data-role="page" id='one' class="type-interior" ng-controller="tabletAppCtrl">
-        {{sendPendingMsg()}}
         <div data-role="header" data-position="fixed">
         <h1>SNAP</h1>
         </div><!-- /header -->
@@ -33,7 +32,7 @@
         <div class="content-secondary" style='text-align:center; position: fixed;' >
             <h3>Your login</h3>
             <img src="/snapapp/common/img/defaultProfile.png" height="100" width="100" />
-            <input type="search" name="search" class="search-query" id="search-box" placeholder="Search in Messages" ng-model="search"/>
+            <input name="search" class="search-query" id="search-box" placeholder="Search in Messages" ng-model="search"/>
             <a href="newmsg.html" data-rel="dialog" data-transition="slidedown" data-role="button" data-icon="plus">New Message</a>
             <a href="profile.html" data-rel="dialog" data-transition="slidedown" data-role="button" data-icon="home">Your Profile</a>
             <a href="settings.html" data-rel="dialog" data-transition="slidedown" data-role="button" data-icon="gear">Settings</a>
@@ -106,7 +105,7 @@
     </div><!-- /content -->
 
     <div data-role="footer" class="footer-docs" data-theme="c" data-position="fixed">
-            <p>&copy; 2012 - SNAP</p>
+            <p>&copy; 2012 - SNAP</p> {{sendPendingMsg()}}
     </div>
 
 </div><!-- /page -->
