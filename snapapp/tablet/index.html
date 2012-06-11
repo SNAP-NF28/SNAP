@@ -45,7 +45,7 @@
             <ul> <!-- FIXME: Ugly... should have been done with ng-repeat, be it integrates baddly with the navbar... -->
                 <li><a href="#" class="ui-btn-active" ngm-click="selectPane('All-pane')">All</a></li>
                 <li><a href="#" ngm-click="selectPane('Facebook-pane')">Facebook</a></li>
-                <li><a href="#" ngm-click="selectPane(''Facebook-pane'')">Google+</a></li>
+                <li><a href="#" ngm-click="selectPane('Googleplus-pane')">Google+</a></li>
                 <li><a href="#" ngm-click="selectPane('Twitter-pane')">Twitter</a></li>
             </ul>
         </div>
@@ -61,15 +61,15 @@
                 <br/>
                 <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
             </div>
-            <ul ngm-if="anyConnected()" data-role="listview" data-split-icon="plus" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
+            <ul ngm-if="anyConnected()" data-role="listview" data-split-icon="plus" data-split-theme="d" >
                 <li ng-repeat="msg in getAllMsg()">
                     <a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
                     <img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
                     <h5>{{msg.authorName}}</h5>
                     <p>Posted on <em>{{formatDate(msg.msgDate)}}</em></p>
                     <p>{{msg.msgContent}}</p>
-                    </a><a href="newmsg.html" data-rel="dialog" data-transition="slidedown">Reply
-                </a></li>
+                    </a><a href="newmsg.html" data-rel="dialog" data-transition="slidedown">Reply</a>
+                </li>
             </ul>
         </div>
         <!-- /"All" pane -->

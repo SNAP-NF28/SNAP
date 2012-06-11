@@ -5,7 +5,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
     var panes = [
       'All-pane',
       'Facebook-pane',
-      'Facebook-pane',
+      'Googleplus-pane',
       'Twitter-pane'
     ];
 
