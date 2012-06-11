@@ -17,7 +17,13 @@
 	float: left;
 	width:60px;
 }
- 
+
+.imgProfile {
+	margin-right: 10px;
+	float: left;
+	width:60px;
+} 
+
 .block{
 	float: none;
 }

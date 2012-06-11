@@ -395,11 +395,11 @@ function displayMessage() {
 	var author = unescape($('#msgDetails').data('author'));
 	var authorImg = $('#msgDetails').data('authorImg');	
 	
-	$('#msgDetails').find($('b.userName')[0]).text(author);
-	$('#msgDetails').find($('span.msgContent')[0]).text(msg);
-	$('#msgDetails').find($('img.msgImgProfile')[0]).attr('src', authorImg);	
+	$('#msgDetails').find($('b.usrName')[0]).text(author);
+	$('#msgDetails').find($('span.msgText')[0]).text(msg);
+	$('#msgDetails').find($('img.imgProfile')[0]).attr('src', authorImg);	
 
-	console.log("Auteur inscrit : " + $('#msgDetails').find($('b.userName')[0]).text());
+	//$('#msgDetails').find($('.msgImgProfile')[0]).attr('src', authorImg);
 	
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
