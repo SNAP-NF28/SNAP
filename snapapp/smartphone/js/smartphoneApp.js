@@ -175,7 +175,12 @@ function smartphoneFbCtrl($scope) {
 		}
 	  else if (d1.getHours() == d2.getHours()) {
 		var m = d2.getMinutes() - d1.getMinutes();
-		return "Il y a " + m + " minutes";
+		var c = "Il y a " + m ;
+		if (m == 1)
+			c += " minute";
+		else
+			c += " minutes";
+		return c;
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
 		var h = d2.getHours() - d1.getHours();
@@ -310,7 +315,7 @@ function smartphoneTwCtrl($scope) {
 		return c;
 		}
 		else if (d2.getDate() - d1.getDate() == 1){
-			return "Hier";
+			return "Hier a " + d1.toString('HH:mm');
 		}
 		else {
 			var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');

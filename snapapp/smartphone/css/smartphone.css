@@ -32,4 +32,16 @@
 	clear: both;
 }
 
+.socialNetworkIcon {
+	margin-right: 10px;
+	float: left;
+	width:40px;
+}
+
+.minIcon {
+	position: absolute;
+	top: 20px;
+	width : 15px;
+}
+
  
