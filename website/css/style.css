@@ -1,0 +1,35 @@
+/** all.css pour le test **/
+
+/** Agencement en blocs **/
+
+.block{
+	float: none;
+}
+
+ .clear{
+	clear: both;
+}
+
+/** Texte **/
+
+.userName {
+
+
+}
+
+.msgContent {
+
+}
+
+/** Images **/
+
+.msgImgProfile {
+	margin-right: 10px;
+	float: left;
+	width:60px;
+}
+
+.minIcon {
+
+
+}
