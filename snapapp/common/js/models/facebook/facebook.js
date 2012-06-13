@@ -225,21 +225,34 @@ angular.module('facebook',['SNMock']).
 		    	self.profile.nickName = response.username;
 		    	self.profile.birthDate = response.birthday;
 		    	self.profile.subscriptionDate = new Date(response.updated_time).getTime();
+		    	self.profile.imageProfileURL = null;
 		    	
-		    	FB.api('/me/picture', function(response) {
-		    		self.profile.imageProfileURL = response;
-		        	angular.element(document).scope().$apply(null);
-		    	});
-		    	
+			    self.loadImgProfile(self);
+		    	angular.element(document).scope().$apply(null);
 		    });
-			
+
+		    return self.profile;
+        }
+        
+        Facebook.prototype.loadImgProfile = function(self) {
+        	console.log('Facebook call: loadImgProfile');
+        	
+	    	FB.api('/me/picture', function(response) {
+	    		self.profile.imageProfileURL = response;
+	        	angular.element(document).scope().$apply(null);
+	    	});
+	    	return self.profile;
         }
         
         Facebook.prototype.getUserProfile = function(){
 			var self = this;
 			
-			if (!self.profile || !self.profile.imageProfileURL) {
+			if (!self.profile || !self.profile.birthDate) {
 				self.loadProfile(self);
+			}
+			
+			if (!self.profile.imageProfileURL) {
+				self.loadImgProfile(self);
 			}
 			
 			return self.profile;
