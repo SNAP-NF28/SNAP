@@ -216,7 +216,7 @@ angular.module('facebook',['SNMock']).
         		self.profile = new Profile();
         	}
         	
-        	console.log('Facebook call: loadProfile');
+        	//console.log('Facebook call: loadProfile');
         	
         	
 		    FB.api('/me', function(response) {
@@ -233,11 +233,11 @@ angular.module('facebook',['SNMock']).
         }
         
         Facebook.prototype.loadImgProfile = function(self) {
-        	console.log('Facebook call: loadImgProfile');
+        	//console.log('Facebook call: loadImgProfile');
         	
 	    	FB.api('/me/picture', function(response) {
 	    		self.profile.imageProfileURL = response;
-	    		//angular.element(document).scope().$apply(null);
+	    		angular.element(document).scope().$apply(null);
 	    	});
 	    	return self.profile;
         }
