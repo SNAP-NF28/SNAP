@@ -83,10 +83,14 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	
 	$scope.getUserDateOfInscriptionProfile = function(socialNetwork) {
 		var dateSub;
-		if (socialNetwork.connected) dateSub = socialNetwork.getUserProfile().subscriptionDate;
-		else dateSub="A day";
-				
-		return dateSub;
+		if (socialNetwork.connected) {
+			dateSub = socialNetwork.getUserProfile().subscriptionDate;
+			var dateS = new Date(dateSub);
+			return dateS.getDate() + '/' + dateS.getMonth() + '/' + dateS.getFullYear();
+		} else {
+			dateSub="A day";
+			return dateSub;
+		}
 	}
 		
 }
@@ -199,12 +203,6 @@ function desktopAppCtrlAll($scope) {
 		if(capsuleMessage.message.msgContent.length>length) return capsuleMessage.message.msgContent.substring(0,140) + "....";
 		return capsuleMessage.message.msgContent;
 	}
-
-    $scope.envoiMessage = function() {
-        alert('EEEE');
-        var msg_content = $('.newMsg');
-        console.log('msgcontenu: ' + msg_content);
-    }
 	
 }
 function charCounter(target, max, idchamp, btn){ 
