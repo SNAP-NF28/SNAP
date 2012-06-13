@@ -86,7 +86,7 @@ function desktopAppCtrl($scope, SocialNetworks) {
 		if (socialNetwork.connected) {
 			dateSub = socialNetwork.getUserProfile().subscriptionDate;
 			var dateS = new Date(dateSub);
-			return dateS.getDate() + '/' + dateS.getMonth() + '/' + dateS.getFullYear();
+			return dateS.getDate() + '/' + dateS.getMonth()+1 + '/' + dateS.getFullYear();
 		} else {
 			dateSub="A day";
 			return dateSub;
