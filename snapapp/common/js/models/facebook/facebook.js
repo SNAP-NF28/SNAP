@@ -228,7 +228,6 @@ angular.module('facebook',['SNMock']).
 		    	self.profile.imageProfileURL = null;
 		    	
 			    self.loadImgProfile(self);
-		    	angular.element(document).scope().$apply(null);
 		    });
 
 		    return self.profile;
@@ -249,10 +248,6 @@ angular.module('facebook',['SNMock']).
 			
 			if (!self.profile || !self.profile.birthDate) {
 				self.loadProfile(self);
-			}
-			
-			if (!self.profile.imageProfileURL) {
-				self.loadImgProfile(self);
 			}
 			
 			return self.profile;
