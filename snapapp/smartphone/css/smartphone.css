@@ -41,9 +41,7 @@
 .minIcon {
 	position: relative;
 	top: 40px;
-	/*bottom: 20px;*/
-	left: 70px;
-	/*float: left;*/
+	right: 70px;
 	width : 20px;
 }
 
