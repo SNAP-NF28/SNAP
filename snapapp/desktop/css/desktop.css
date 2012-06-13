@@ -181,7 +181,7 @@ ul.nav-tabs>li{
 }
 
 .iconRSProfile{
-	/*position: absolute;*/
+	position: absolute;
 	top: 20px;
 	width : 15px;
  }
