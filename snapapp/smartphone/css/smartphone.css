@@ -40,9 +40,9 @@
 
 .minIcon {
 	position: relative;
-	/*top: 60px;*/
+	top: 60px;
 	/*bottom: 20px;*/
-	left: -80px;
+	left: -70px;
 	/*float: left;*/
 	width : 20px;
 }
