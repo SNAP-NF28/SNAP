@@ -211,15 +211,13 @@ angular.module('facebook',['SNMock']).
             return true;
         }
         
-        Facebook.prototype.getUserProfile = function(){
-			var self = this;
-			
-			if (!self.profile) {
-				self.profile = new Profile();
-			}
-			
-			console.log('Facebook call: getUserProfile');
-
+        Facebook.prototype.loadProfile = function(self) {
+        	if (!self.profile) {
+        		self.profile = new Profile();
+        	}
+        	
+        	console.log('Facebook call: loadProfile');
+        	
 		    FB.api('/me', function(response) {
 		    	self.profile.name = response.name;
 		    	
@@ -235,6 +233,14 @@ angular.module('facebook',['SNMock']).
 		    	
 		    });
 			
+        }
+        
+        Facebook.prototype.getUserProfile = function(){
+			var self = this;
+			
+			if (!self.profile || !self.profile.imageProfileURL) {
+				self.loadProfile(self);
+			}
 			
 			return self.profile;
 		}
