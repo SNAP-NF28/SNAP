@@ -1,4 +1,4 @@
-ï»¿<!doctype html>
+<!doctype html>
 <html>
   <head>	
 	<meta charset="utf-8">
@@ -38,8 +38,8 @@
 						  <li><a data-toggle="modal" href="#profilUser{{socialNetwork.name}}"><b class="fullname">{{getUserNameProfile(socialNetwork)}}</b>
 																		<small class="metadata">Voir ma page de profil</small></a></li>
 						  <li class="divider"></li>
-						  <li><a data-toggle="modal" href="#parametres">ParamÃ¨tres</a></li>
-						  <li><a href="#" ng-click="logout(socialNetwork)">DÃ©connexion</a></li>
+						  <li><a data-toggle="modal" href="#parametres">Paramètres</a></li>
+						  <li><a href="#" ng-click="logout(socialNetwork)">Déconnexion</a></li>
 						</ul>
 					</div>
 					</div>
@@ -102,10 +102,10 @@
 											{{cutMsg(message,"140")}}
 										</div>
 										<!-- MODAL -->
-										<a data-toggle="modal" href="#detailsAll{{message.msgId}}">DÃ©tails</a>
+										<a data-toggle="modal" href="#detailsAll{{message.msgId}}">Détails</a>
 											<div id="detailsAll{{message.msgId}}" class="modal hide fade">
 											  <div class="modal-header">
-												<h3>DÃ©tails du message</h3>
+												<h3>Détails du message</h3>
 											  </div>
 											  <div class="modal-body">
 												<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
@@ -159,10 +159,10 @@
 										{{cutMsg(message.msgContent,"140")}}
 									</div>
 									<!-- MODAL -->
-									<a data-toggle="modal" href="#details{{socialNetwork.name}}{{message.msgId}}">DÃ©tails</a>
+									<a data-toggle="modal" href="#details{{socialNetwork.name}}{{message.msgId}}">Détails</a>
 										<div id="details{{socialNetwork.name}}{{message.msgId}}" class="modal hide fade">
 										  <div class="modal-header">
-											<h3>DÃ©tails du message</h3>
+											<h3>Détails du message</h3>
 										  </div>
 										  <div class="modal-body">
 											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
@@ -195,6 +195,7 @@
 		<div id="profilUser{{socialNetwork.name}}" class="modal hide fade">
 			<div class="modal-header">
 				<h3>{{getUserNameProfile(socialNetwork)}}</h3>
+				<p>Inscrit sur {{socialNetwork.displayName}} depuis le {{getUserDateOfInscriptionProfile(socialNetwork)}}</p>
 			</div>
 			<div class="modal-body">
 				<img class="msgImgProfile" ng-src="{{getUserImageProfile(socialNetwork)}}" />
@@ -206,7 +207,7 @@
 	</div>
 	<div id="parametres" class="modal hide fade">
 			<div class="modal-header">
-				<h3>ParamÃ¨tres</h3>
+				<h3>Paramètres</h3>
 			</div>
 			<div class="modal-body">
 				

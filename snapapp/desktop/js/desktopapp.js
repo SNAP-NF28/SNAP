@@ -80,6 +80,14 @@ function desktopAppCtrl($scope, SocialNetworks) {
 		else name="Un profil";
 		return name;
 	}
+	
+	$scope.getUserDateOfInscriptionProfile = function(socialNetwork) {
+		var dateSub;
+		if (socialNetwork.connected) dateSub = socialNetwork.getUserProfile().subscriptionDate;
+		else dateSub="A day";
+				
+		return dateSub;
+	}
 		
 }
 

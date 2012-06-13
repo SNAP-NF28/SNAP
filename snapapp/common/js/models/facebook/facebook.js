@@ -225,7 +225,7 @@ angular.module('facebook',['SNMock']).
 		    	self.profile.firstName = response.first_name;
 		    	self.profile.nickName = response.username;
 		    	self.profile.birthDate = response.birthday;
-		    	self.profile.subscriptionDate = new Date(response.updated_time).getTime();
+		    	self.profile.subscriptionDate = response.updated_time;
 	        	self.loadImgProfile(self);
 		    });
 
