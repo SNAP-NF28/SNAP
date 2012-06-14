@@ -51,7 +51,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
       return "/snapapp/common/img/defaultProfile.png";
     }
 
-	$scope.getMsgImg = function(socialNetwork){
+	$scope.getSocialImg = function(socialNetwork){
       var img = socialNetwork.miniIcon;
       if (img) return img;
       return "";
