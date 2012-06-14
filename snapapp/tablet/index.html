@@ -86,20 +86,17 @@
                 <br/>
                 <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
             </div>
-
-            <div ngm-if="socialNetwork.connected" >
-                        <!-- <input class='hide' type="search" name="search" id="search-box" placeholder="Search in Messages" ng-model="search"/> -->
-                <ul  data-role="listview" data-split-icon="plus" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
-                    <li ng-repeat="msg in getLastMsg(socialNetwork) | filter:search">
-                        <a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
-                        <img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
-                        <h5>{{msg.authorName}}</h5>
-                        <p>Posted on <em>{{formatDate(msg.msgDate)}}</em></p>
-                        <p>{{msg.msgContent}}</p>
-                        </a><a href="newmsg.html" data-rel="dialog" data-transition="slidedown">Reply
-                    </a></li>
-                </ul>
-            </div>
+            <!-- <input class='hide' type="search" name="search" id="search-box" placeholder="Search in Messages" ng-model="search"/> -->
+            <ul ngm-if="socialNetwork.connected" data-role="listview" data-split-icon="plus" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
+                <li ng-repeat="msg in getLastMsg(socialNetwork) | filter:search">
+                    <a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
+                    <img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
+                    <h5>{{msg.authorName}}</h5>
+                    <p>Posted on <em>{{formatDate(msg.msgDate)}}</em></p>
+                    <p>{{msg.msgContent}}</p>
+                    </a><a href="newmsg.html" data-rel="dialog" data-transition="slidedown">Reply
+                </a></li>
+            </ul>
         </div>
         <!-- /SN specific pane -->
     </div>
