@@ -45,4 +45,10 @@
 	width : 20px;
 }
 
+#msgPage .fieldContain {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
  
