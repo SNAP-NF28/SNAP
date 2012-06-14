@@ -20,8 +20,8 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
 	//angular.element(document).scope().$apply(null); // force refresh view
 	
-	$scope.getAllMessages = function(nb, force) { 
-		if ($scope.allMsg && $scope.allMsg.length > 0 && !force) {
+	$scope.getAllMessages = function(nb) { 
+		if ($scope.allMsg && $scope.allMsg.length > 0) {
 			console.log("all messages already sorted");
 			return $scope.allMsg;
 		} else {
@@ -158,8 +158,8 @@ function smartphoneFbCtrl($scope) {
 		return message.msgDate;
 	}
 	 
-	$scope.getLastMsg = function(sn, force){
-      if(sn.alreadyFetched && force == false)
+	$scope.getLastMsg = function(sn){
+      if(sn.alreadyFetched)
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
@@ -232,8 +232,8 @@ function smartphoneGpCtrl($scope) {
 	//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 	
-	$scope.getLastMsg = function(sn, force){
-      if(sn.alreadyFetched && force == false)
+	$scope.getLastMsg = function(sn){
+      if(sn.alreadyFetched)
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
@@ -307,8 +307,8 @@ function smartphoneTwCtrl($scope) {
 	return message.msgDate;
 	}
 	
-	$scope.getLastMsg = function(sn, force){
-      if(sn.alreadyFetched && force == false)
+	$scope.getLastMsg = function(sn){
+      if(sn.alreadyFetched)
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
