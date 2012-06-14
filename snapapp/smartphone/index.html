@@ -33,7 +33,12 @@
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-            <div class="msgContent well"  ng-repeat="message in getAllMessages(20)">
+			<div class="ng-hide:anyConnected()">
+				<h2> Welcome on SNAP ! </h2>
+				<br />
+				<h3>Slide on the different panels to log on your favorite social network ! </h3>
+			</div>
+            <div class="msgContent well" ng-repeat="message in getAllMessages(20)">
                 <div class="block">
 					<img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
 					<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />                    
@@ -314,7 +319,7 @@
 <div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl">
 
     <div data-role="header" data-position="fixed">
-        <img  class="logo" ng-src="{{getIcon}}" />
+        <img class="logo" ng-src="{{getIcon}}" />
         <h1>Twitter</h1>
     </div>
     <div data-role="content">

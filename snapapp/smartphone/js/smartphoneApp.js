@@ -20,6 +20,15 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
 	//angular.element(document).scope().$apply(null); // force refresh view
 	
+	$scope.anyConnected = function(){
+      for(i in $scope.socialNetworks){
+        var sn = $scope.socialNetworks[i];
+        if(sn.connected == true)
+          return true;
+      }
+      return false;
+    }
+	
 	$scope.getAllMessages = function(nb) { 
 		if ($scope.allMsg && $scope.allMsg.length > 0) {
 			console.log("all messages already sorted");
