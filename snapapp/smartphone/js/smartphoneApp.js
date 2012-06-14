@@ -18,29 +18,9 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$("[data-role=header]").fixedtoolbar({ tapToggle: false });
 	$("[data-role=footer]").fixedtoolbar({ tapToggle: false });
 	
-	$scope.pageOrder = new Array("homePage", "fbPage", "twPage", "gpPage", "srchPage", "usrPage", "optionsPage");
-	$scope.getPrevPage = function (curPage) {
-		var idx = $scope.pageOrder.indexOf(curPage);
-		if (idx <= 0) {
-			idx += $scope.pageOrder.length;
-		}
-		idx--;
-		return "#" + $scope.pageOrder[idx];
-	}
-	$scope.getNextPage = function (curPage) {
-		var idx = $scope.pageOrder.indexOf(curPage);
-		if (idx >=  $scope.pageOrder.length - 1) {
-			idx -= $scope.pageOrder.length;
-		}
-		idx++;
-		return "#" + $scope.pageOrder[idx];
-	}
-	
-	
 	//angular.element(document).scope().$apply(null); // force refresh view
 	
-	/** WTF 10 APPELS ???!! **/
-	$scope.getAllMessages = function(nb) { 
+	$scope.getAllMessages = function(nb, force) { 
 		if ($scope.allMsg && $scope.allMsg.length > 0) {
 			console.log("all messages already sorted");
 			return $scope.allMsg;
@@ -51,7 +31,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			for (var i = 0; i < $scope.socialNetworks.length; i++) {
 				var sn = $scope.socialNetworks[i];
 				var tmp = [];
-				if(sn && sn.lastMessages && sn.lastMessages > 0) {
+				if(sn && sn.lastMessages && sn.lastMessages > 0 && force == false) {
 					console.log("messages from " + sn.name + " already fetched");
 					tmp = sn.lastMessages;
 				} else {
@@ -144,7 +124,9 @@ function smartphoneFbCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[0];
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
-
+	$('#fbPage').live('pageshow', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	
+	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
     if (img) return img;
@@ -169,8 +151,8 @@ function smartphoneFbCtrl($scope) {
 		return message.msgDate;
 	}
 	 
-	$scope.getLastMsg = function(sn){
-      if(sn.alreadyFetched)
+	$scope.getLastMsg = function(sn, force){
+      if(sn.alreadyFetched && force == false)
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
@@ -214,7 +196,8 @@ function smartphoneGpCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[1];
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
-
+	$('#gpPage').live('pageshow', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
     if (img) return img;
@@ -235,12 +218,12 @@ function smartphoneGpCtrl($scope) {
 	//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 	
-	$scope.getLastMsg = function(sn){
-      if(sn.alreadyFetched)
+	$scope.getLastMsg = function(sn, force){
+      if(sn.alreadyFetched && force == false)
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
-    }
+	}
 	
 	$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);
@@ -281,6 +264,8 @@ function smartphoneTwCtrl($scope) {
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
 
+	$('#twPage').live('pageshow', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
     if (img) return img;
@@ -301,12 +286,12 @@ function smartphoneTwCtrl($scope) {
 	return message.msgDate;
 	}
 	
-	$scope.getLastMsg = function(sn){
-      if(sn.alreadyFetched)
+	$scope.getLastMsg = function(sn, force){
+      if(sn.alreadyFetched && force == false)
         return sn.lastMessages;
       sn.alreadyFetched = true;
       return sn.getLastNMessages(20);
-    }
+	}
 
 	$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);

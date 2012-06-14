@@ -33,7 +33,7 @@
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-            <div class="msgContent well"  ng-repeat="message in getAllMessages(20)">
+            <div class="msgContent well"  ng-repeat="message in getAllMessages(20, true)">
                 <div class="block">
 					<img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
 					<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />                    
@@ -140,7 +140,6 @@
 				<a href="#" data-role="button" data-theme="c" data-rel="back" data-mini="true" data-inline="true">Annuler</a>
 			</div>
         </div>
-    </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
         <div data-role="navbar" ng-controller="smartphoneFooterCtrl">
             <ul>
@@ -240,7 +239,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well"  ng-repeat="message in getLastMsg(socialNetwork)">
+            <div class="msgContent well"  ng-repeat="message in getLastMsg(socialNetwork, false)">
 
                 <div class="block">
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
@@ -281,7 +280,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork)" >
+            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork, false)" >
 
                 <div class="block">
                     <img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
@@ -321,7 +320,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork)">
+            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork, false)">
 
                 <div class="block">
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
