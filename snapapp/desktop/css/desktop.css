@@ -221,3 +221,10 @@ ul.nav-tabs>li{
 	overflow:auto;
 	margin-left: 40%;
  }
+ 
+ .minIcon{
+	position: relative;
+	top: 51px;
+	right: 71px;
+	width : 20px;
+ }
