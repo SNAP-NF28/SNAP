@@ -52,7 +52,9 @@ function tabletAppCtrl($scope, SocialNetworks) {
     }
 
 	$scope.getSocialImg = function(socialNetwork){
+	  console.log(socialNetwork);
       var img = socialNetwork.miniIcon;
+	  console.log(miniIcon);
       if (img) return img;
       return "";
     }
