@@ -232,4 +232,10 @@ ul.nav-tabs>li{
  .time{
 	display:inline;
 	margin-left : 10px;
+	font-style:italic;
+ }
+ 
+ .cadreMsgAll{
+	position: relative;
+	top: -20px;
  }

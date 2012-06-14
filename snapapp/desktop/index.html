@@ -81,9 +81,9 @@
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profilAll{{message.msgId}}">
 										<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
-										<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />
 									</a>
-									<div class="cadreMsg">
+									<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />
+									<div class="cadreMsg cadreMsgAll">
 										<!-- Nom du profil -->
 										<a data-toggle="modal" href="#profilAll{{message.msgId}}">
 											<b class="fullname">{{getNameProfile(message)}}</b>
@@ -146,6 +146,7 @@
 									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
 										<b class="fullname">{{getNameProfile(message)}}</b>
 									</a>
+									<p class="time">{{formatDate(message)}}</p>	
 									<div id="profil{{socialNetwork.name}}{{message.msgId}}" class="modal hide fade">
 										  <div class="modal-header">
 											<h3>{{getNameProfile(message)}}</h3>
