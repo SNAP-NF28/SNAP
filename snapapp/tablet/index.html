@@ -63,9 +63,10 @@
             <ul ngm-if="anyConnected()" data-role="listview" data-split-icon="plus" data-split-theme="d" >
                 <li ng-repeat="msg in getAllMsg()">
                     <a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
-					<div class="contImgProfile">
+					<!-- <div class="contImgProfile"> -->
 						<img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
-					</div>
+						<!--<img class="minIcon" src="{{socialNetwork.miniIcon}}" />-->
+					<!-- </div> -->
                     <h5>{{msg.authorName}}</h5>
                     <p>Posted on <em>{{formatDate(msg.msgDate)}}</em></p>
                     <p>{{msg.msgContent}}</p>
