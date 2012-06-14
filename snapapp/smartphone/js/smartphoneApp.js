@@ -96,7 +96,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.getDate = function(message) {
 		return message.msgDate;
 	}
-	
 	$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
@@ -104,8 +103,9 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if (d1.getHours() == d2.getHours()) {
-		var m = d2.getMinutes() - d1.getMinutes();
+	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d1.getHours()- d2.getHours();
+		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
@@ -198,7 +198,8 @@ function smartphoneFbCtrl($scope) {
 			var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
 			return c;
 		} 
-    }}
+    }
+}
 
 function smartphoneGpCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[1];
