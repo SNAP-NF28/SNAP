@@ -60,7 +60,7 @@
                 <br/>
                 <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
             </div>
-            <ul ngm-if="anyConnected()" data-role="listview" data-split-icon="plus" data-split-theme="d" >
+            <ul ngm-if="anyConnected()" data-role="listview" data-split-icon="plus" data-split-theme="d"  style="padding-left:1.6%; width:99.9%;">
                 <li ng-repeat="msg in getAllMsg()">
                     <a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
 					<!-- <div class="contImgProfile"> -->
