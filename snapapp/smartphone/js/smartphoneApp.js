@@ -21,7 +21,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	//angular.element(document).scope().$apply(null); // force refresh view
 	
 	$scope.getAllMessages = function(nb, force) { 
-		if ($scope.allMsg && $scope.allMsg.length > 0) {
+		if ($scope.allMsg && $scope.allMsg.length > 0 && !force) {
 			console.log("all messages already sorted");
 			return $scope.allMsg;
 		} else {
@@ -31,7 +31,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			for (var i = 0; i < $scope.socialNetworks.length; i++) {
 				var sn = $scope.socialNetworks[i];
 				var tmp = [];
-				if(sn && sn.lastMessages && sn.lastMessages > 0 && force == false) {
+				if(sn && sn.lastMessages && sn.lastMessages > 0 && !force) {
 					console.log("messages from " + sn.name + " already fetched");
 					tmp = sn.lastMessages;
 				} else {
@@ -90,7 +90,14 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
 			var h = d2.getHours()- d1.getHours();
 			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-			return "Il y a " + m + " minutes";
+			var c = "Il y a ";
+			if (m == 1) {
+				c += "1 minute";
+				return c;
+			}
+			c += m;
+			c += " minutes";
+			return c;
 			}
 		  else {
 			var h = d2.getHours() - d1.getHours();
@@ -169,7 +176,14 @@ function smartphoneFbCtrl($scope) {
 		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
 			var h = d2.getHours()- d1.getHours();
 			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-			return "Il y a " + m + " minutes";
+			var c = "Il y a ";
+			if (m == 1) {
+				c += "1 minute";
+				return c;
+			}
+			c += m;
+			c += " minutes";
+			return c;
 			}
 		  else {
 			var h = d2.getHours() - d1.getHours();
@@ -236,7 +250,14 @@ function smartphoneGpCtrl($scope) {
 		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
 			var h = d2.getHours()- d1.getHours();
 			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-			return "Il y a " + m + " minutes";
+			var c = "Il y a ";
+			if (m == 1) {
+				c += "1 minute";
+				return c;
+			}
+			c += m;
+			c += " minutes";
+			return c;
 			}
 		  else {
 			var h = d2.getHours() - d1.getHours();
@@ -304,7 +325,14 @@ function smartphoneTwCtrl($scope) {
 		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
 			var h = d2.getHours()- d1.getHours();
 			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-			return "Il y a " + m + " minutes";
+			var c = "Il y a ";
+			if (m == 1) {
+				c += "1 minute";
+				return c;
+			}
+			c += m;
+			c += " minutes";
+			return c;
 			}
 		  else {
 			var h = d2.getHours() - d1.getHours();
