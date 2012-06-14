@@ -159,8 +159,9 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if (d1.getHours() == d2.getHours()) {
-		var m = d2.getMinutes() - d1.getMinutes();
+	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d2.getHours()- d1.getHours();
+		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
