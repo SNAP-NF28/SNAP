@@ -126,6 +126,10 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		} 
     }
 	
+	$scope.counter = 0; // compteur pour l'envoi de messages
+	$scope.setCounter = function() {
+	
+	}
 }
 
 /** Controleurs pour chaque reseau social **/
@@ -173,14 +177,10 @@ function smartphoneFbCtrl($scope) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if (d1.getHours() == d2.getHours()) {
-		var m = d2.getMinutes() - d1.getMinutes();
-		var c = "Il y a " + m ;
-		if (m == 1)
-			c += " minute";
-		else
-			c += " minutes";
-		return c;
+	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d1.getHours()- d2.getHours();
+		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
+		return "Il y a " + m + " minutes";
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
 		var h = d2.getHours() - d1.getHours();
@@ -239,8 +239,9 @@ function smartphoneGpCtrl($scope) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if (d1.getHours() == d2.getHours()) {
-		var m = d2.getMinutes() - d1.getMinutes();
+	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d1.getHours()- d2.getHours();
+		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
@@ -297,12 +298,13 @@ function smartphoneTwCtrl($scope) {
 		$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
-	  
+
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if (d1.getHours() == d2.getHours()) {
-		var m = d2.getMinutes() - d1.getMinutes();
+	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d1.getHours()- d2.getHours();
+		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
 	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
