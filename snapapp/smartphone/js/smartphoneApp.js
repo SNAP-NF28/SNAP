@@ -177,8 +177,8 @@ function smartphoneFbCtrl($scope) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d1.getHours()- d2.getHours();
+	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d2.getHours()- d1.getHours();
 		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
@@ -240,8 +240,8 @@ function smartphoneGpCtrl($scope) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d1.getHours()- d2.getHours();
+	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d2.getHours()- d1.getHours();
 		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
@@ -303,8 +303,8 @@ function smartphoneTwCtrl($scope) {
 	  if (d1.getMinutes() == d2.getMinutes()) {
 		return "Il y a quelques secondes";
 		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d1.getHours()-d2.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d1.getHours()- d2.getHours();
+	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+		var h = d2.getHours()- d1.getHours();
 		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
 		return "Il y a " + m + " minutes";
 		}
