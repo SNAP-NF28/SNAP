@@ -239,7 +239,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well"  ng-repeat="message in getLastMsg(socialNetwork, false)">
+            <div class="msgContent well"  ng-repeat="message in getLastMsg(socialNetwork, true)">
 
                 <div class="block">
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
@@ -280,7 +280,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork, false)" >
+            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork, true)" >
 
                 <div class="block">
                     <img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
@@ -320,7 +320,7 @@
     <div data-role="content">
         <div data-role="fieldcontain">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
-            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork, false)">
+            <div class="msgContent well" ng-repeat="message in getLastMsg(socialNetwork, true)">
 
                 <div class="block">
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
