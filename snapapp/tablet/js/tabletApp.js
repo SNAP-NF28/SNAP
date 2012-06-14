@@ -50,14 +50,6 @@ function tabletAppCtrl($scope, SocialNetworks) {
       if (img) return img;
       return "/snapapp/common/img/defaultProfile.png";
     }
-
-	$scope.getSocialImg = function(socialNetwork){
-	  console.log(socialNetwork);
-      var img = socialNetwork.miniIcon;
-	  console.log(miniIcon);
-      if (img) return img;
-      return "";
-    }
 	
     $scope.getLastMsg = function(sn){
       if(sn.alreadyFetched)

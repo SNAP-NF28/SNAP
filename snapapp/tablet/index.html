@@ -65,7 +65,7 @@
                     <a ngm-click="onMsgDetail(msg)" href="msgdetail.html">
 					<div class="contImgProfile">
 						<img src="{{getMsgImg(msg)}}" height="90px" width="90px"/>
-						<img class="iconRSProfile" ng-src="{{getSocialImg(socialNetwork)}}" />
+						<img class="iconRSProfile" ng-src="{{message.socialNetworkMinIcon}}" />
 					</div>
                     <h5>{{msg.authorName}}</h5>
                     <p>Posted on <em>{{formatDate(msg.msgDate)}}</em></p>
