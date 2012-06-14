@@ -15,6 +15,9 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		getPrevPage('$.mobile.activePage');
 	});
 
+	$("[data-role=header]").fixedtoolbar({ tapToggle: false });
+	$("[data-role=footer]").fixedtoolbar({ tapToggle: false });
+	
 	$scope.pageOrder = new Array("homePage", "fbPage", "twPage", "gpPage", "srchPage", "usrPage", "optionsPage");
 	$scope.getPrevPage = function (curPage) {
 		var idx = $scope.pageOrder.indexOf(curPage);
