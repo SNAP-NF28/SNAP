@@ -79,16 +79,17 @@
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
 								<div class="msgContainer well" ng-repeat="message in getAllMessages(20) | filter:search">
 									<!-- Image du profil -->
-									<a data-toggle="modal" href="#profilAll">
+									<a data-toggle="modal" href="#profilAll{{message.msgId}}">
 										<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 										<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />
 									</a>
 									<div class="cadreMsg">
 										<!-- Nom du profil -->
-										<a data-toggle="modal" href="#profilAll">
+										<a data-toggle="modal" href="#profilAll{{message.msgId}}">
 											<b class="fullname">{{getNameProfile(message)}}</b>
 										</a>
-									<div id="profilAll" class="modal hide fade">
+										<p class="time">{{formatDate(message)}}</p>
+									<div id="profilAll{{message.msgId}}" class="modal hide fade">
 										  <div class="modal-header">
 											<h3>{{getNameProfile(message)}}</h3>
 										  </div>
@@ -137,15 +138,15 @@
 								</div>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
-									<a data-toggle="modal" href="#profil{{socialNetwork.name}}">
+									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
 										<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 									</a>
 									<div class="cadreMsg">
 									<!-- Nom du profil -->
-									<a data-toggle="modal" href="#profil{{socialNetwork.name}}">
+									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
 										<b class="fullname">{{getNameProfile(message)}}</b>
 									</a>
-									<div id="profil{{socialNetwork.name}}" class="modal hide fade">
+									<div id="profil{{socialNetwork.name}}{{message.msgId}}" class="modal hide fade">
 										  <div class="modal-header">
 											<h3>{{getNameProfile(message)}}</h3>
 										  </div>

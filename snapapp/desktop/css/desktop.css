@@ -228,3 +228,8 @@ ul.nav-tabs>li{
 	right: 71px;
 	width : 20px;
  }
+ 
+ .time{
+	display:inline;
+	margin-left : 10px;
+ }
