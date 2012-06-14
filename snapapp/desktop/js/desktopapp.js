@@ -180,6 +180,10 @@ function desktopAppCtrl($scope, SocialNetworks) {
 			return c;
 		} 
     }
+	
+	$scope.getDescriptionProfile = function(message) {
+		return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut tellus sed neque auctor varius feugiat quis turpis. Quisque commodo nullam.";
+	}
 }
 
 function checkboxCtrl($scope) {	
@@ -244,55 +248,12 @@ function desktopAppCtrlMsg($scope) {
 		if ($scope.socialNetwork.connected){}
 			//return "<span id='login-{{socialNetwork.name}}'>{{socialNetwork.connect()}}</span>"
 	}
+	
+	$scope.getDescriptionProfile = function(message) {
+		return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut tellus sed neque auctor varius feugiat quis turpis. Quisque commodo nullam.";
+	}
 }
 
-/*
-function desktopAppCtrlAll($scope) {
-
- 	var capsuleMessage = function(RS,Mess){
-        this.reseau=RS;
-		this.message=Mess;
-    }
-	
-	function sortMsg(a, b){
-		return b.message.msgDate-a.message.msgDate;
-	}
-	
-	getMsgAll = function(nb){
-		var temp;
-		var listMess = [];
-		for(j=0;j<$scope.socialNetworks.length;j++){
-			temp = $scope.socialNetworks[j].getLastNMessages(nb);
-      if(temp)
-  			for(i=0;i<temp.length;i++){
-  				var temp2 = new capsuleMessage(j,temp[i])
-  				listMess.push(temp2);
-  			}
-		}
-		listMess.sort(sortMsg);
-		listMess = listMess.slice(0,nb);
-		return listMess;
-	}
-	
-	$scope.messages = getMsgAll(20);
-	
-	$scope.getImageProfile = function(capsuleMessage) {
-		var img = $scope.socialNetworks[capsuleMessage.reseau].getUserProfile(capsuleMessage.message.socialNetworkId).imageProfileURL;
-		if (img) return img;
-		return "./img/defaultProfile.png";
-	}
-	
-	$scope.getNameProfile = function(capsuleMessage) {
-		return $scope.socialNetworks[capsuleMessage.reseau].getUserProfile(capsuleMessage.message.socialNetworkId).name;
-	}
-	
-	$scope.cutMsg = function(capsuleMessage, length){
-		if(capsuleMessage.message.msgContent.length>length) return capsuleMessage.message.msgContent.substring(0,140) + "....";
-		return capsuleMessage.message.msgContent;
-	}
-	
-}
-*/
 function charCounter(target, max, idchamp, btn){ 
 	StrLen = target.value.length; 
 	CharsLeft = max-StrLen;

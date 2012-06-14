@@ -89,17 +89,23 @@
 											<b class="fullname">{{getNameProfile(message)}}</b>
 										</a>
 										<p class="time">{{formatDate(message)}}</p>
-									<div id="profilAll{{message.msgId}}" class="modal hide fade">
-										  <div class="modal-header">
-											<h3>{{getNameProfile(message)}}</h3>
-										  </div>
-										  <div class="modal-body">
-											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
-											</div>
-											<div class="modal-footer">
-												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
-											</div>
-									</div>
+										<div id="profilAll{{message.msgId}}" class="modal hide fade">
+											  <div class="modal-header">
+												<h3>{{getNameProfile(message)}}</h3>
+											  </div>
+											  <div class="modal-body">
+												<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+												<div class="cadreMsg">
+													<b class="fullname">Description</b>
+														<div class="msgContent">
+															{{getDescriptionProfile(message)}}
+														</div>
+												</div>
+												</div>
+												<div class="modal-footer">
+													<a href="#" class="btn" data-dismiss="modal" >Close</a>										
+												</div>
+										</div>
 										<div class="msgContent">
 											{{cutMsg(message.msgContent,"140")}}
 										</div>
@@ -113,6 +119,7 @@
 												<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 												<div class="cadreMsg">
 												<b class="fullname">{{getNameProfile(message)}}</b>
+												<p class="time">{{formatDate(message)}}</p>
 													<div class="msgContent">
 														{{message.msgContent}}
 													</div>
@@ -153,6 +160,12 @@
 										  </div>
 										  <div class="modal-body">
 											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
+											<div class="cadreMsg">
+													<b class="fullname">Description</b>
+														<div class="msgContent">
+															{{getDescriptionProfile(message)}}
+														</div>
+												</div>
 											</div>
 											<div class="modal-footer">
 												<a href="#" class="btn" data-dismiss="modal" >Close</a>										
@@ -171,6 +184,7 @@
 											<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
 											<div class="cadreMsg">
 											<b class="fullname">{{getNameProfile(message)}}</b>
+											<p class="time">{{formatDate(message)}}</p>
 												<div class="msgContent">
 													{{message.msgContent}}
 												</div>
@@ -198,10 +212,14 @@
 		<div id="profilUser{{socialNetwork.name}}" class="modal hide fade">
 			<div class="modal-header">
 				<h3>{{getUserNameProfile(socialNetwork)}}</h3>
-				<p>Inscrit sur {{socialNetwork.displayName}} depuis le {{getUserDateOfInscriptionProfile(socialNetwork)}}</p>
 			</div>
 			<div class="modal-body">
 				<img class="msgImgProfile" ng-src="{{getUserImageProfile(socialNetwork)}}" />
+				<b class="fullname">Description</b>
+					<div class="msgContent">
+						<p>Inscrit sur {{socialNetwork.displayName}} depuis le {{getUserDateOfInscriptionProfile(socialNetwork)}}</p>
+						{{getDescriptionProfile(message)}}
+					</div>
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal" >Close</a>										
