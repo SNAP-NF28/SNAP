@@ -76,8 +76,8 @@
 				<div class="row-fluid">
 					<tabs class="fix-tabs">
 						<pane class="pane" title="All">
-							<div class="scrollable-pane" ng-controller="desktopAppCtrlAll">
-								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
+							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
+								<div class="msgContainer well" ng-repeat="message in getAllMessages(20) | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profilAll">
 										<img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
@@ -99,7 +99,7 @@
 											</div>
 									</div>
 										<div class="msgContent">
-											{{cutMsg(message,"140")}}
+											{{cutMsg(message.msgContent,"140")}}
 										</div>
 										<!-- MODAL -->
 										<a data-toggle="modal" href="#detailsAll{{message.msgId}}">Détails</a>

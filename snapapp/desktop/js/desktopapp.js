@@ -97,6 +97,60 @@ function desktopAppCtrl($scope, SocialNetworks) {
 		}
 	}
 		
+	$scope.getAllMessages = function(nb) { 
+		if ($scope.allMsg && $scope.allMsg.length > 0) {
+			console.log("all messages already sorted");
+			return $scope.allMsg;
+		} else {
+			console.log("get all messages");
+			
+			var tmp_1 = [];
+			for (var i = 0; i < $scope.socialNetworks.length; i++) {
+				var sn = $scope.socialNetworks[i];
+				var tmp = [];
+				if(sn && sn.lastMessages && sn.lastMessages > 0) {
+					console.log("messages from " + sn.name + " already fetched");
+					tmp = sn.lastMessages;
+				} else {
+					//sn.alreadyFetched = true;
+					console.log(" fetch from " + sn.name);
+					tmp = sn.getLastNMessages(nb);
+				}
+				
+				console.log("fetch " + tmp.length + " messages from " + sn.name);
+				
+				for (var j = 0; j < tmp.length; j++) {
+					tmp[j].socialNetworkMinIcon = sn.miniIcon;
+					tmp_1.push(tmp[j]);
+				}
+			}
+			//$scope.alreadyFetched = true;
+			console.log("fetch done");
+			var tmp_2 = mergeSort(tmp_1);
+			$scope.allMsg = tmp_2.slice(0, nb);
+		}
+		
+		return $scope.allMsg;
+	}
+		
+	$scope.getImageProfile = function(message) {
+    var img = message.authorImg;
+    if (img) return img;
+		// img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
+		// if (img) return img;
+		return "./img/defaultProfile.png";
+	}
+	
+	$scope.getNameProfile = function(message) {
+    var name = message.authorName;
+    return name;
+		//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
+	}
+	
+	$scope.cutMsg = function(message, length){
+		if(message.length>length) return message.substring(0,140) + "....";
+		return message;
+	}
 }
 
 function checkboxCtrl($scope) {	
@@ -163,7 +217,7 @@ function desktopAppCtrlMsg($scope) {
 	}
 }
 
-
+/*
 function desktopAppCtrlAll($scope) {
 
  	var capsuleMessage = function(RS,Mess){
@@ -209,6 +263,7 @@ function desktopAppCtrlAll($scope) {
 	}
 	
 }
+*/
 function charCounter(target, max, idchamp, btn){ 
 	StrLen = target.value.length; 
 	CharsLeft = max-StrLen;
@@ -228,4 +283,39 @@ function resize(){
 		if(window.innerWidth > 768) frame[i].style.maxHeight = windowheight-85 + "px";
 		else frame[i].style.maxHeight = windowheight-285 + "px";
 	}
+}
+
+/** Tri fusion **/
+/* Functions mergeSort & merge : http://www.stoimen.com/blog/2010/07/02/friday-algorithms-javascript-merge-sort/ */
+function mergeSort(arr)
+{
+    if (arr.length < 2)
+        return arr;
+ 
+    var middle = parseInt(arr.length / 2);
+    var left   = arr.slice(0, middle);
+    var right  = arr.slice(middle, arr.length);
+ 
+    return merge(mergeSort(left), mergeSort(right));
+}
+ 
+function merge(left, right)
+{
+    var result = [];
+ 
+    while (left.length && right.length) {
+        if (left[0].msgDate > right[0].msgDate) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+ 
+    while (left.length)
+        result.push(left.shift());
+ 
+    while (right.length)
+        result.push(right.shift());
+ 
+    return result;
 }
