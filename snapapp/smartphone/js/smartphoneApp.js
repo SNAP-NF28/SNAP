@@ -103,29 +103,32 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
 	  
-	  if (d1.getMinutes() == d2.getMinutes()) {
-		return "Il y a quelques secondes";
-		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d2.getHours()- d1.getHours();
-		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-		return "Il y a " + m + " minutes";
-		}
-	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
-		var h = d2.getHours() - d1.getHours();
-		var c = "Il y a " + h ;
-		if (h == 1)
-			c += " heure";
-		else
-			c += " heures";
-		return c;
-		}
-		else if (d2.getDate() - d1.getDate() == 1){
-			return "Hier";
+	  if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
+		  if (d1.getMinutes() == d2.getMinutes()) {
+			return "Il y a quelques secondes";
+			}
+		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+			var h = d2.getHours()- d1.getHours();
+			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
+			return "Il y a " + m + " minutes";
+			}
+		  else {
+			var h = d2.getHours() - d1.getHours();
+			var c = "Il y a " + h ;
+			if (h == 1)
+				c += " heure";
+			else
+				c += " heures";
+			return c;
+			} 
 		}
 		else {
-			var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
-			return c;
+			if ((d2.getDate() - d1.getDate() == 1) && (d1.getMonth() == d2.getMonth()) ){
+				return "Hier";
+			}else {
+				var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
+				return c;
+			}
 		} 
     }
 	
@@ -177,29 +180,32 @@ function smartphoneFbCtrl($scope) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
 	  
-	  if (d1.getMinutes() == d2.getMinutes()) {
-		return "Il y a quelques secondes";
-		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d2.getHours()- d1.getHours();
-		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-		return "Il y a " + m + " minutes";
-		}
-	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
-		var h = d2.getHours() - d1.getHours();
-		var c = "Il y a " + h ;
-		if (h == 1)
-			c += " heure";
-		else
-			c += " heures";
-		return c;
-		}
-		else if (d2.getDate() - d1.getDate() == 1){
-			return "Hier";
+	  if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
+		  if (d1.getMinutes() == d2.getMinutes()) {
+			return "Il y a quelques secondes";
+			}
+		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+			var h = d2.getHours()- d1.getHours();
+			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
+			return "Il y a " + m + " minutes";
+			}
+		  else {
+			var h = d2.getHours() - d1.getHours();
+			var c = "Il y a " + h ;
+			if (h == 1)
+				c += " heure";
+			else
+				c += " heures";
+			return c;
+			} 
 		}
 		else {
-			var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
-			return c;
+			if ((d2.getDate() - d1.getDate() == 1) && (d1.getMonth() == d2.getMonth()) ){
+				return "Hier";
+			}else {
+				var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
+				return c;
+			}
 		} 
     }
 }
@@ -236,33 +242,36 @@ function smartphoneGpCtrl($scope) {
       return sn.getLastNMessages(20);
     }
 	
-		$scope.formatDate = function(message) {
+	$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
 	  
-	  if (d1.getMinutes() == d2.getMinutes()) {
-		return "Il y a quelques secondes";
-		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d2.getHours()- d1.getHours();
-		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-		return "Il y a " + m + " minutes";
-		}
-	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
-		var h = d2.getHours() - d1.getHours();
-		var c = "Il y a " + h ;
-		if (h == 1)
-			c += " heure";
-		else
-			c += " heures";
-		return c;
-		}
-		else if (d2.getDate() - d1.getDate() == 1){
-			return "Hier";
+	  if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
+		  if (d1.getMinutes() == d2.getMinutes()) {
+			return "Il y a quelques secondes";
+			}
+		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+			var h = d2.getHours()- d1.getHours();
+			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
+			return "Il y a " + m + " minutes";
+			}
+		  else {
+			var h = d2.getHours() - d1.getHours();
+			var c = "Il y a " + h ;
+			if (h == 1)
+				c += " heure";
+			else
+				c += " heures";
+			return c;
+			} 
 		}
 		else {
-			var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
-			return c;
+			if ((d2.getDate() - d1.getDate() == 1) && (d1.getMonth() == d2.getMonth()) ){
+				return "Hier";
+			}else {
+				var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
+				return c;
+			}
 		} 
     }
 }
@@ -299,33 +308,36 @@ function smartphoneTwCtrl($scope) {
       return sn.getLastNMessages(20);
     }
 
-		$scope.formatDate = function(message) {
+	$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
-
-	  if (d1.getMinutes() == d2.getMinutes()) {
-		return "Il y a quelques secondes";
-		}
-	  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
-		var h = d2.getHours()- d1.getHours();
-		var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-		return "Il y a " + m + " minutes";
-		}
-	  else if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
-		var h = d2.getHours() - d1.getHours();
-		var c = "Il y a " + h ;
-		if (h == 1)
-			c += " heure";
-		else
-			c += " heures";
-		return c;
-		}
-		else if (d2.getDate() - d1.getDate() == 1){
-			return "Hier a " + d1.toString('HH:mm');
+	  
+	  if ((d1.getDate() == d2.getDate()) && (d1.getMonth() == d2.getMonth())) {
+		  if (d1.getMinutes() == d2.getMinutes()) {
+			return "Il y a quelques secondes";
+			}
+		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
+			var h = d2.getHours()- d1.getHours();
+			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
+			return "Il y a " + m + " minutes";
+			}
+		  else {
+			var h = d2.getHours() - d1.getHours();
+			var c = "Il y a " + h ;
+			if (h == 1)
+				c += " heure";
+			else
+				c += " heures";
+			return c;
+			} 
 		}
 		else {
-			var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
-			return c;
+			if ((d2.getDate() - d1.getDate() == 1) && (d1.getMonth() == d2.getMonth()) ){
+				return "Hier";
+			}else {
+				var c = "Le " + d1.toString('dddd, dd MMMM yyyy HH:mm');
+				return c;
+			}
 		} 
     }
 }
