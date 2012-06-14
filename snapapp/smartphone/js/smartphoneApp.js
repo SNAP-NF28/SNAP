@@ -124,7 +124,7 @@ function smartphoneFbCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[0];
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
-	$('#fbPage').live('pageshow', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	$('#fbPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
 	
 	
 	$scope.getImageProfile = function(message) {
@@ -196,7 +196,7 @@ function smartphoneGpCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[1];
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
-	$('#gpPage').live('pageshow', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	$('#gpPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
 	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
@@ -264,7 +264,7 @@ function smartphoneTwCtrl($scope) {
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
 
-	$('#twPage').live('pageshow', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	$('#twPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
 	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
