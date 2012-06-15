@@ -7,14 +7,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
 	$('#msgDetails').live('pageshow', function () {displayMessage()});
 	
-	$('$.mobile.activePage').swiperight(function() {
-		getNextPage('$.mobile.activePage');
-	});
-	
-	$('$.mobile.activePage').swipeleft(function() {
-		getPrevPage('$.mobile.activePage');
-	});
-
+	/** Force fixed toolbars (no toggle tap) **/
 	$("[data-role=header]").fixedtoolbar({ tapToggle: false });
 	$("[data-role=footer]").fixedtoolbar({ tapToggle: false });
 	
@@ -466,5 +459,9 @@ function displayMessage() {
 	$('#msgDetails').removeData('author');
 	$('#msgDetails').removeData('authorImg');
 	
+}
+
+function displayProfile() {
+	var id = unescape($('#usrPage').data('profile'));
 }
 
