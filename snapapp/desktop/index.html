@@ -76,12 +76,14 @@
 					<tabs class="fix-tabs">
 						<pane class="pane" title="All">
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
-								<!-- IF noConnected -->
-								<div ng-repeat="socialNetwork in socialNetworks">
-									<div class="loginDiv">
-										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+								<!-- IF !anyConnected -->
+								<any ng-hide="!anyConnected()">
+									<div ng-repeat="socialNetwork in socialNetworks">
+										<p>Connectez vous avec votre compte {{socialNetwork.displayName}}
+											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span><br/>
+										</p>
 									</div>
-								</div>
+								</any>
 								<!-- END ID -->
 								
 								
