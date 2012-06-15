@@ -97,7 +97,6 @@ angular.module('facebook',['SNMock']).
                 });
             }
             //angular.element(document).scope().$apply(null);
-			window.location.reload();
         }
 
 
