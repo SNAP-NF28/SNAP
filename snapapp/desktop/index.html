@@ -78,10 +78,8 @@
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
 								<!-- IF !anyConnected -->
 									<div ng-repeat="socialNetwork in socialNetworks">
-										<ANY ng-hide="socialNetwork.connected">
 											Connectez vous avec votre compte {{socialNetwork.name}}<br/> 
-											<span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span><br/>
-										</ANY>									
+											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span><br/>									
 									</div>
 
 								<!-- END ID -->
