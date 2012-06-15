@@ -305,7 +305,7 @@ function smartphoneTwCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[2];
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
-	$scope.getUserName = escape($scope.socialNetwork.profile.name);
+	//$scope.getUserName = escape($scope.socialNetwork.profile.name);
 	
 	//$('#twPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
 	
@@ -466,15 +466,13 @@ function displayMessage() {
 	$('#msgDetails').removeData('message');
 	$('#msgDetails').removeData('author');
 	$('#msgDetails').removeData('authorImg');
+	$('#msgDetails').removeData('socialNetwork');
 	
 }
 
 function storeUser($socialNetwork, $author) {
 	$('#usrPage').data('socialNetwork', $socialNetwork);
 	$('#usrPage').data('profile', escape($author));
-	console.log("social network : " + $socialNetwork);
-	console.log("author 1 : " + $author);
-	console.log("author 2 : " + $('#usrPage').data('profile'));
 }
 
 function displayProfile() {
