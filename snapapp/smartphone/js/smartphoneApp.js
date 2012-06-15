@@ -443,6 +443,7 @@ function storeMessage($msg, $authorImg) {
 	
 	$('#msgDetails').data('message', escape($msg.msgContent));
 	$('#msgDetails').data('author', escape($msg.authorName));
+	$('#msgDetails').data('socialNetwork', $msg.socialNetworkId);
 	$('#msgDetails').data('authorImg', $authorImg);
 	
 }
@@ -450,8 +451,12 @@ function storeMessage($msg, $authorImg) {
 function displayMessage() {
 	var msg = unescape($('#msgDetails').data('message'));
 	var author = unescape($('#msgDetails').data('author'));
+	var socialnetwork = $('#msgDetails').data('socialNetwork');
 	var authorImg = $('#msgDetails').data('authorImg');	
 	
+	$('#msgDetails').find($('a.displayProfile')[0]).bind('click', function() {
+		storeUser(socialnetwork, escape(author));
+	});
 	$('#msgDetails').find($('b.usrName')[0]).text(author);
 	$('#msgDetails').find($('span.msgText')[0]).text(msg);
 	$('#msgDetails').find($('img.imgProfile')[0]).attr('src', authorImg);	

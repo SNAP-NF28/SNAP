@@ -87,7 +87,7 @@ angular.module('facebook',['SNMock']).
                            console.log('Good to see you, ' + response.name + '.');
                            self.connected = true;
                            angular.element(document).scope().$apply(null);
-						   window.location.reload();
+						   window.location.reload(); // force refresh window right after logging in
                          });
                        } else {
                          console.log('User cancelled login or did not fully authorize.');
