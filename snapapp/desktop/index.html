@@ -77,7 +77,7 @@
 						<pane class="pane" title="All">
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
 								<!-- IF !anyConnected -->
-								<ANY ng-hide="anyConnected()">
+								<ANY ng-show="!anyConnected()">
 									<div ng-repeat="socialNetwork in socialNetworks">
 										<div class="loginDiv">
 											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
@@ -150,7 +150,7 @@
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
-								<ANY ng-hide="socialNetwork.connected">
+								<!-- <ANY ng-hide="socialNetwork.connected">
 									<div class="loginDiv">
 										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
 									</div>
@@ -159,7 +159,7 @@
 									<div class="loginDiv">
 										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
 									</div>
-								</ANY>
+								</ANY> -->
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
