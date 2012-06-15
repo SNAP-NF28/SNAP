@@ -1,61 +1,107 @@
 <html>
-	<head>
-		 <meta charset="utf-8">
-		<title>Title</title>
-		<script src="js/jquery-1.7.2.min.js" ></script>
-		<script src="bootstrap/js/bootstrap.js" ></script>
-		<script src="bootstrap/js/bootstrap-carousel.js" ></script>
-		<script src="js/website.js" ></script>
+<head>
+    <meta charset="utf-8">
+    <title>Site vitrine SNAP</title>
+    <script src="js/jquery-1.7.2.min.js" ></script>
+    <script src="bootstrap/js/bootstrap.js" ></script>
+    <script src="bootstrap/js/bootstrap-carousel.js" ></script>
+    <script src="js/website.js" ></script>
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li> <a href="#" onClick="toggle(true)"><img src="icons/UK-flag-icon_40x40.png" /></a></li>
+                <li> <a href="#" onClick="toggle(false)"><img src="icons/FR-flag-icon_40x40.png" /></a></li>
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+
+				
+
+            </ul>
+			<ul class="nav fra">
+			    <li><a href="#pst">Pr&eacute;sentation</a></li>
+                <li><a href="#links">Ressources</a></li>
+                <li><a href="#screen">Aper&ccedil;us</a></li>
+                <li><a href="#ccl">Conclusion</a></li>
+			</ul>
+			
+			<ul class="nav eng">
+				<li><a href="#pst">Overview</a></li>
+                <li><a href="#links">Resources</a></li>
+                <li><a href="#screen">Software snapshot</a></li>
+                <li><a href="#ccl">Conclusion</a></li>
+			</ul>
+            <ul class="nav pull-right">
+                <li><a class="brand" href="#contact">SNAP NF28</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    <div class="hero-unit fra">
+        <h1> Social Network Aggregator Platform </h1>
+        <p>	  Aggr&eacute;gateur &eacute;volutif de r&eacute;seaux sociaux </p>
+    </div>
+    <div class="hero-unit eng">
+        <h1> Social Network Aggregator Platform </h1>
+        <p>	Evolutionary Social Network Aggregator </p>
+    </div>
+	
+    <div id="pst">
+	
+        <div class="page-header fra">
+            <h1>Pr&eacute;sentation</h1>
+        </div>
+
+        <div class="page-header eng">
+            <h1>Overview</h1>
+        </div>
+
+        <br />
+
+    </div>
+
+    <div id="links">
+        <div class="page-header fra">
+            <h1>Ressources</h1>
+        </div>
+
+        <div class="page-header eng">
+            <h1>Resources</h1>
+        </div>
 		
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-		<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
-		<link rel="stylesheet" href="css/style.css" />
-	</head>
-	<body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-		<div class="container">
-		  <ul class="nav">
-			<li> <a href="#"><img src="icons/UK-flag-icon_40x40.png" /></a></li>
-			  <li> <a href="#"><img src="icons/FR-flag-icon_40x40.png" /></a></li>
-			  <li class="active">
-				<a href="#">Home</a>
-			  </li>
-			  <li><a href="#pst">Pr&eacute;sentation</a></li>
-			  <li><a href="#links">Ressources</a></li>
-			  <li><a href="#screen">Captures d'&eacute;cran</a></li>
-			  <li><a href="#ccl">Conclusion</a></li>			  
-			</ul>
-			<ul class="nav pull-right">
-				<li><a class="brand" href="#contact">SNAP NF28</a></li>
-			</ul>
-		</div>
-	  </div>
-	 </div>
-	 
-	  <div id="pst">
-	  <div class="hero-unit">
-	  <h1> Qu'est-ce que SNAP ? </h1>
-	  <p> Social Network Adaptater Platform : Aggr&eacute;gateur de r&eacute;seaux sociaux &eacute;volutif </p>
-	  </div>
-	  <p>ta mere en slip</p>
-	  
-	  <br />
+		<br />
+    </div>
 
-	  </div>	 
-	  
-	  <div id="links">
-	  </div>
+    <div id="screen">
+        <div class="page-header fra">
+            <h1>Aper&ccedil;u de l'application</h1>
+        </div>
+        <div class="page-header eng">
+            <h1>Software snapshot</h1>
+        </div>
+		
+		<br />
+    </div>
 
-	  <div id="screen">
-	  </div>	  
 
-	  
-	  <div id="ccl">
-	  </div>
-	  
-	  <div id="contact">
-	  </div>
-
-	</body>
+    <div id="ccl">
+        <div class="page-header">
+            <h1>Conclusion</h1>
+        </div>
+		
+		<br />
+    </div>
+    <div id="contact">
+    </div>
+</div>
+</body>
 </html>
