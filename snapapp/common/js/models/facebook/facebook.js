@@ -87,12 +87,12 @@ angular.module('facebook',['SNMock']).
                            console.log('Good to see you, ' + response.name + '.');
                            self.connected = true;
                            angular.element(document).scope().$apply(null);
+						   window.location.reload();
                          });
                        } else {
                          console.log('User cancelled login or did not fully authorize.');
                        }
                      }, {scope: 'email,user_about_me,user_checkins,user_activities,user_birthday,user_status,read_stream,publish_stream,publish_actions,publish_checkins'});
-					 window.location.reload();
                 });
             }
             //angular.element(document).scope().$apply(null);
