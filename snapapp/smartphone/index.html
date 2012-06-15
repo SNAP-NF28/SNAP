@@ -29,7 +29,7 @@
 
 <div id="homePage" data-role="page" ngm-swipeleft="{{getPrevPage('homePage')}}" ngm-swiperight="{{getNextPage('homePage')}}">
     <div data-role="header" data-position="fixed">
-        <h1>Accueil</h1>
+        <h1>Home</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
@@ -44,7 +44,7 @@
 					<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />                    
                 </div>
                 <div class="block">
-                    <a href="#usrPage" onClick="storeUser({{message.socialNetworkId}}, escape({{getNameProfile(message)}}))"><b class="userName">{{getNameProfile(message)}}</b></a>	
+                    <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
 					<br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
@@ -187,11 +187,14 @@
 <!--------------------- Page Profil --------------------->
 <div id="usrPage" data-role="page" ngm-swipeleft="{{getPrevPage('usrPage')}}" ngm-swiperight="{{getNextPage('usrPage')}}">
     <div data-role="header" data-position="fixed">
-        <h1 id="userNameProfile">Profile</h1>
+        <img  class="logo" /> <h1 class="userNameProfile">Profile</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-            
+            <img class="userProfile" src="../common/img/defaultProfile.png" /> Nom
+			Prenom
+			Date de naissance
+			Date d'inscription sur {{RS}}
 
         </div>
     </div>

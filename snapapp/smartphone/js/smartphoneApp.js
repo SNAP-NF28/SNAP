@@ -462,17 +462,28 @@ function displayMessage() {
 	
 }
 
-function storeUser($socialNetwork, $user) {
-	console.log("profile 1 : " + $user);
+function storeUser($socialNetwork, $msg) {
 	$('#usrPage').data('socialNetwork', $socialNetwork);
-	$('#usrPage').data('profile', escape($user));
-	console.log("profile 2 : " + $('#usrPage').data('profile'));
+	$('#usrPage').data('profile', escape($msg.authorName));
 }
 
 function displayProfile() {
 	var sN = $('#usrPage').data('socialNetwork');
 	var user = unescape($('#usrPage').data('profile')) + "'s profile";
-	console.log("profile 3 : " + user);
-	$('usrPage').find($('h1.userNameProfile')[0]).text(user);
+	var snLogo;
+	
+	if (sN == 'fb') {
+		snLogo = $('Facebook').icon;
+	} else if (sN == "twitter") {
+		snLogo = $('Twitter').icon;
+	} else {
+		snLogo = $('Googleplus').icon;
+	}
+	console.log("logo : " + snLogo);
+	
+	$('#usrPage').find($('h1.userNameProfile')[0]).text(user);
+	$('#usrPage').find($('img.logo')[0]).attr('src', snLogo);
+	
+	$('#usrPage').removeData('profile');
 }
 
