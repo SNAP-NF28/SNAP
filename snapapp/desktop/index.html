@@ -78,7 +78,9 @@
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
 								<!-- IF !anyConnected -->
 									<div ng-repeat="socialNetwork in socialNetworks">
-										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>									
+										<ANY ng-show="!socialNetwork.connected">
+											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+										</ANY>							
 									</div>
 
 								<!-- END ID -->
@@ -147,16 +149,6 @@
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
-								<!-- <ANY ng-hide="socialNetwork.connected">
-									<div class="loginDiv">
-										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
-									</div>
-								</ANY>
-								<ANY ng-show="!socialNetwork.connected">
-									<div class="loginDiv">
-										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
-									</div>
-								</ANY> -->
 								<ANY ng-show="!socialNetwork.connected">
 									<div class="loginDiv">
 										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
