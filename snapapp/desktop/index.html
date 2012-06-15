@@ -160,6 +160,9 @@
 										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
 									</div>
 								</ANY> -->
+								<div class="loginDiv">
+									<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+								</div>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
