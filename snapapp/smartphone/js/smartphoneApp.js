@@ -6,6 +6,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.socialNetworks = new SocialNetworks();
 	
 	$('#msgDetails').live('pageshow', function () {displayMessage()});
+	$('#usrPage').live('pageshow', function () {displayProfile()});
 	
 	/** Force fixed toolbars (no toggle tap) **/
 	$("[data-role=header]").fixedtoolbar({ tapToggle: false });
@@ -461,7 +462,15 @@ function displayMessage() {
 	
 }
 
+function storeUser($socialNetwork, $user) {
+	$('#usrPage').data('socialNetwork', $socialNetwork);
+	$('#usrPage').data('profile', escape($user));
+}
+
 function displayProfile() {
-	var id = unescape($('#usrPage').data('profile'));
+	var sN = $('#usrPage').data('socialNetwork');
+	var user = unescape($('#usrPage').data('profile')) + "'s profile";
+	
+	$('usrPage').find($('h1.userNameProfile').[0]).text(user);
 }
 

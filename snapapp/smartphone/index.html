@@ -187,14 +187,11 @@
 <!--------------------- Page Profil --------------------->
 <div id="usrPage" data-role="page" ngm-swipeleft="{{getPrevPage('usrPage')}}" ngm-swiperight="{{getNextPage('usrPage')}}">
     <div data-role="header" data-position="fixed">
-        <h1>Profile</h1>
+        <h1 id="userNameProfile">Profile</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-            <label>Text</label>
-            <input type="text" name="form.text" ng-model="yourName" placeholder="name" ng-model-instant>
-            <!-- Image du profil -->
-            <h4>Hello {{yourName}} !</h4>
+            
 
         </div>
     </div>
@@ -334,7 +331,7 @@
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                   <a href="#usrPage"> <b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
+                   <a href="#usrPage" onClick="storeUser({{socialNetwork.name}}, {{getNameProfile(message)}})"> <b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
                     <!-- Message content -->
                     <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
 					<p><em>{{formatDate(message)}}</em></p>
