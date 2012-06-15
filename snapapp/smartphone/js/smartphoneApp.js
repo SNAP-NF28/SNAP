@@ -463,14 +463,16 @@ function displayMessage() {
 }
 
 function storeUser($socialNetwork, $user) {
+	console.log("profile 1 : " + $user);
 	$('#usrPage').data('socialNetwork', $socialNetwork);
 	$('#usrPage').data('profile', escape($user));
+	console.log("profile 2 : " + $('#usrPage').data('profile'));
 }
 
 function displayProfile() {
 	var sN = $('#usrPage').data('socialNetwork');
 	var user = unescape($('#usrPage').data('profile')) + "'s profile";
-	
+	console.log("profile 3 : " + user);
 	$('usrPage').find($('h1.userNameProfile')[0]).text(user);
 }
 
