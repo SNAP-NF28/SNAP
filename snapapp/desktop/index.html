@@ -76,6 +76,7 @@
 					<tabs class="fix-tabs">
 						
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
+								<pane class="pane" title="All">
 								<!-- IF !anyConnected -->
 									<div ng-repeat="socialNetwork in socialNetworks">
 										<ANY ng-show="!socialNetwork.connected">
@@ -85,7 +86,7 @@
 
 								<!-- END ID -->
 								
-								<pane class="pane" title="All">
+								
 								<div class="msgContainer well" ng-repeat="message in getAllMessages(20) | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profilAll{{message.msgId}}">
