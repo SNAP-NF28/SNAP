@@ -57,8 +57,10 @@ angular.module('facebook',['SNMock']).
 
         Facebook.prototype.connect = function(){
 
-            if(this.isConnected())
+            if(this.isConnected()) {
                 return;
+				window.location.reload();
+				}
 
             var self = this;
             console.log('Facebook call: connect');
@@ -95,6 +97,7 @@ angular.module('facebook',['SNMock']).
                 });
             }
             //angular.element(document).scope().$apply(null);
+			window.location.reload();
         }
 
 

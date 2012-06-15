@@ -152,7 +152,7 @@ function smartphoneFbCtrl($scope) {
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
 	//$('#fbPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
-	
+	//$scope.getUserName = $scope.socialNetowrk.profile.name;
 	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
@@ -177,7 +177,7 @@ function smartphoneFbCtrl($scope) {
 	$scope.getDate = function(message) {
 		return message.msgDate;
 	}
-	 
+	
 	$scope.getLastMsg = function(sn){
       if(sn.alreadyFetched)
         return sn.lastMessages;
@@ -231,6 +231,7 @@ function smartphoneGpCtrl($scope) {
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
 	//$('#gpPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
+	//$scope.getUserName = $scope.socialNetowrk.profile.name;
 	
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
@@ -304,7 +305,8 @@ function smartphoneTwCtrl($scope) {
 	$scope.socialNetwork = $scope.socialNetworks[2];
 	//$scope.messages = $scope.socialNetwork.getLastNMessages(20);
 	$scope.getIcon = $scope.socialNetwork.icon;
-
+	$scope.getUserName = escape($scope.socialNetwork.profile.name);
+	
 	//$('#twPage').live('pagebeforechange', function () {$scope.getLastMsg($scope.socialNetwork, true)});
 	
 	$scope.getImageProfile = function(message) {
@@ -462,9 +464,12 @@ function displayMessage() {
 	
 }
 
-function storeUser($socialNetwork, $msg) {
+function storeUser($socialNetwork, $author) {
 	$('#usrPage').data('socialNetwork', $socialNetwork);
-	$('#usrPage').data('profile', escape($msg.authorName));
+	$('#usrPage').data('profile', escape($author));
+	console.log("social network : " + $socialNetwork);
+	console.log("author 1 : " + $author);
+	console.log("author 2 : " + $('#usrPage').data('profile'));
 }
 
 function displayProfile() {
@@ -484,6 +489,6 @@ function displayProfile() {
 	$('#usrPage').find($('h1.userNameProfile')[0]).text(user);
 	$('#usrPage').find($('img.logo')[0]).attr('src', snLogo);
 	
-	$('#usrPage').removeData('profile');
+	//$('#usrPage').removeData('profile');
 }
 

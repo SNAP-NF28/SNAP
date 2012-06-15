@@ -44,7 +44,7 @@
 					<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />                    
                 </div>
                 <div class="block">
-                    <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
+                    <a href="#usrPage" onClick='storeUser("{{message.socialNetworkId}}", "{{getNameProfile(message)}}")'><b class="userName">{{getNameProfile(message)}}</b></a>	
 					<br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
@@ -191,11 +191,13 @@
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
-            <img class="userProfile" src="../common/img/defaultProfile.png" /> Nom
-			Prenom
-			Date de naissance
-			Date d'inscription sur {{RS}}
-
+            <img class="userProfile" src="../common/img/defaultProfile.png" width="100px"/> 
+			<p>
+			Nom : <span class="usrName"></span><br />
+			Prenom : <span class="usrFirstName"></span><br />
+			Date de naissance : <span class="usrBirthDate"></span><br />
+			Date d'inscription sur le reseau social :  <span class="usrSubscribeDate"></span><br />
+			</p>
         </div>
     </div>
     <div data-role="footer" data-theme="c" data-position="fixed">
@@ -239,7 +241,7 @@
 <!--------------------- Page Facebook --------------------->
 <div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl" ngm-swipeleft="{{getPrevPage('fbPage')}}" ngm-swiperight="{{getNextPage('fbPage')}}">
     <div data-role="header" data-position="fixed">
-        <img  class="logo" ng-src="{{getIcon}}"/>
+        <img class="logo" ng-src="{{getIcon}}"/>
         <h1>Facebook</h1>
     </div>
     <div data-role="content">
@@ -253,8 +255,8 @@
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                   <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
-                    <!-- Message content -->
+                   <a href="#usrPage" onClick='storeUser("{{message.socialNetworkId}}", "{{getNameProfile(message)}}")'><b class="userName">{{getNameProfile(message)}}</b></a>	
+                    <!-- Message content --><br />
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
                     <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
@@ -282,7 +284,7 @@
 <div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl" ngm-swipeleft="{{getPrevPage('gpPage')}}" ngm-swiperight="{{getNextPage('gpPage')}}">
 
     <div data-role="header" data-position="fixed">
-        <img class="logo" ng-src="{{getIcon}}" />
+        <img class="logo" ng-src="{{getIcon}}"/>
         <h1>Google+</h1>
     </div>
     <div data-role="content">
@@ -294,7 +296,7 @@
                     <img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                    <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
+                    <a href="#usrPage" onClick='storeUser("{{message.socialNetworkId}}", "{{getNameProfile(message)}}")'><b class="userName">{{getNameProfile(message)}}</b></a>	
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
@@ -322,7 +324,7 @@
 <div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl" ngm-swipeleft="{{getPrevPage('twPage')}}" ngm-swiperight="{{getNextPage('twPage')}}">
 
     <div data-role="header" data-position="fixed">
-        <img class="logo" ng-src="{{getIcon}}" />
+         <img class="logo" ng-src="{{getIcon}}"/>
         <h1>Twitter</h1>
     </div>
     <div data-role="content">
@@ -334,9 +336,9 @@
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                   <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
-                    <!-- Message content -->
-                    <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
+                   <a href="#usrPage" onClick='storeUser("{{message.socialNetworkId}}", "{{getNameProfile(message)}}")'><b class="userName">{{getNameProfile(message)}}</b></a>	
+                    <!-- Message content --><br />
+                    {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
                     <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
                 </div>
