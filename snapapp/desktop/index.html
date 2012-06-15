@@ -79,9 +79,7 @@
 								<!-- IF !anyConnected -->
 								<ANY ng-hide="anyConnected()">
 									<div ng-repeat="socialNetwork in socialNetworks">
-										<p>Connectez vous avec votre compte {{socialNetwork.displayName}}
-											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span><br/>
-										</p>
+										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
 									</div>
 								</ANY>
 								<!-- END ID -->
