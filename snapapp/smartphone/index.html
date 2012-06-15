@@ -253,7 +253,7 @@
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                    <a href="#usrPage" onClick="storeUser({{socialNetwork.name}}, {{getNameProfile(message)}})"><b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
+                   <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
@@ -294,7 +294,7 @@
                     <img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                    <a href="#usrPage" onClick="storeUser({{socialNetwork.name}}, {{getNameProfile(message)}})"><b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
+                    <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
@@ -334,7 +334,7 @@
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                   <a href="#usrPage" onClick="storeUser({{socialNetwork.name}}, {{getNameProfile(message)}})"> <b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
+                   <a href="#usrPage" onClick="storeUser('{{message.socialNetworkId}}', {{message}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
                     <!-- Message content -->
                     <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
 					<p><em>{{formatDate(message)}}</em></p>
