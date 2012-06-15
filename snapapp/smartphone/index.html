@@ -44,7 +44,7 @@
 					<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />                    
                 </div>
                 <div class="block">
-                    <a href="#usrPage" onClick="storeUser({{message.socialNetworkId}}, {{getNameProfile(message)}})"><b class="userName">{{getNameProfile(message)}}</b></a>	
+                    <a href="#usrPage" onClick="storeUser({{message.socialNetworkId}}, escape({{getNameProfile(message)}}))"><b class="userName">{{getNameProfile(message)}}</b></a>	
 					<br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
