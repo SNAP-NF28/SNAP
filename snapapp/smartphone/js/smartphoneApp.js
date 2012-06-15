@@ -471,6 +471,6 @@ function displayProfile() {
 	var sN = $('#usrPage').data('socialNetwork');
 	var user = unescape($('#usrPage').data('profile')) + "'s profile";
 	
-	$('usrPage').find($('h1.userNameProfile').[0]).text(user);
+	$('usrPage').find($('h1.userNameProfile')[0]).text(user);
 }
 
