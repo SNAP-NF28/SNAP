@@ -77,11 +77,11 @@
 						<pane class="pane" title="All">
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
 								<!-- IF !anyConnected -->
-								<ANY ng-hide="anyConnected()">
+								<ANY ng-show="!anyConnected()">
 									<div ng-repeat="socialNetwork in socialNetworks">
-										<div class="loginDiv">
+										<ANY ng-hide="socialNetwork.connected">
 											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
-										</div>									
+										</ANY>									
 									</div>
 								</ANY>
 								<!-- END ID -->
