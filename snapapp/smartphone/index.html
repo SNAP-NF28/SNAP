@@ -36,7 +36,7 @@
 			<div class="ng-hide:anyConnected()">
 				<h2> Welcome on SNAP ! </h2>
 				<br />
-				<h3>Slide on the different panels to log on your favorite social network ! </h3>
+				<h3>Slide on the different panels or use the footer navigation bar to log on your favorite social networks ! </h3>
 			</div>
             <div class="msgContent well" ng-repeat="message in getAllMessages(20)">
                 <div class="block">
@@ -122,11 +122,11 @@
     <div data-role="content">
         <div data-role="fieldcontain" id="msgDiv">
             <textarea rows="3" name="textarea" id="textarea" ng-model="msgArea"  
-					placeholder="Tapez ici votre message..." ng-Change="setCounter()" ng-model-instant></textarea>
+					placeholder="Type your message here" ng-Change="setCounter()" ng-model-instant></textarea>
 			<br />
 			
 
-			<br /> <!-- Le bloc suivant doit revenir a la ligne !!!-->
+			<br />
 			<fieldset data-role="controlgroup" data-type="horizontal">
 				<legend>Post on :  </legend>
                 <input type="checkbox" name="fb" id="fbCheckBox" class="custom" />
@@ -229,7 +229,7 @@
                 <span class="msgText"> </span>
 
                 <br />
-				<a href="#msgPage" data-role="button" data-theme="b" data-mini="true" data-inline="true">Reply</a>
+				<a href="#msgPage" data-role="button" data-theme="b" data-mini="true" data-inline="true">Send a message</a>
                 <a href="#" data-role="button" data-rel="back" data-theme="c" data-mini="true" data-inline="true">Cancel</a>
             </div>
             <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
@@ -259,7 +259,7 @@
                     <!-- Message content --><br />
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
-                    <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
+                    <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> More...</a></p>
 
                 </div>
                 <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
@@ -300,7 +300,7 @@
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
-                    <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
+                    <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> More...</a></p>
                 </div>
                 <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
                 <br class="clear"/>
@@ -340,7 +340,7 @@
                     <!-- Message content --><br />
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
-                    <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> Plus...</a></p>
+                    <p><a href="#msgDetails" data-role="button" data-theme="b" data-rel="dialog" data-transition="pop" data-inline="true" onClick="storeMessage({{message}}, '{{getImageProfile(message)}}')"> More...</a></p>
                 </div>
                 <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
                 <br class="clear"/>

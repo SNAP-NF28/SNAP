@@ -12,8 +12,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$("[data-role=header]").fixedtoolbar({ tapToggle: false });
 	$("[data-role=footer]").fixedtoolbar({ tapToggle: false });
 	
-	//angular.element(document).scope().$apply(null); // force refresh view
-	
 	$scope.anyConnected = function(){
       for(i in $scope.socialNetworks){
         var sn = $scope.socialNetworks[i];
@@ -38,7 +36,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 					console.log("messages from " + sn.name + " already fetched");
 					tmp = sn.lastMessages;
 				} else {
-					//sn.alreadyFetched = true;
 					console.log(" fetch from " + sn.name);
 					tmp = sn.getLastNMessages(nb);
 				}
@@ -50,7 +47,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 					tmp_1.push(tmp[j]);
 				}
 			}
-			//$scope.alreadyFetched = true;
 			console.log("fetch done");
 			var tmp_2 = mergeSort(tmp_1);
 			$scope.allMsg = tmp_2.slice(0, nb);
@@ -62,8 +58,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.getImageProfile = function(message) {
     var img = message.authorImg;
     if (img) return img;
-		// img = $scope.socialNetwork.getUserProfile(message.socialNetworkId).imageProfileURL;
-		// if (img) return img;
 		return "../common/img/defaultProfile.png";
 	}
 	
@@ -73,10 +67,8 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	return unescape(message.msgContent);
 	}
 
-	$scope.getNameProfile = function(message) {
-	//console.log(unescape(message.authorName));	
+	$scope.getNameProfile = function(message) {	
     return unescape(message.authorName);
-	//return $scope.socialNetwork.getUserProfile(message.socialNetworkId).name;
 	}
 	
 	$scope.getDate = function(message) {
@@ -123,11 +115,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 		} 
     }
 	
-	$scope.counter = 0; // compteur pour l'envoi de messages
-	$scope.setCounter = function() {
-	
-	}
-	
 	$scope.sendMsg = function() {
 	var message = $('textarea').val();
 	
@@ -137,7 +124,6 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 			if ($(name).attr("checked")){
 				sN.sendMessage(message);
 				$('label[for='+sN.id+'CheckBox]').removeClass('ui-checkbox-on ui-btn-active').addClass('ui-checkbox-off');
-				//$(name).attr("checked", false);
 				console.log($(name).attr("checked"));
 			}
 	}
