@@ -195,6 +195,16 @@ function desktopAppCtrl($scope, SocialNetworks) {
 	$scope.getDescriptionProfile = function(message) {
 		return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut tellus sed neque auctor varius feugiat quis turpis. Quisque commodo nullam.";
 	}
+	
+
+    $scope.anyConnected = function(){
+      for(i in $scope.socialNetworks){
+        var sn = $scope.socialNetworks[i];
+        if(sn.connected == true)
+          return true;
+      }
+      return false;
+    }
 }
 
 function checkboxCtrl($scope) {	
