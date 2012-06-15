@@ -134,17 +134,21 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	
 	}
 	
-	$scope.sendMessage = function() {
-		var message = $('#textarea').val();
-		for(i in $scope.socialNetworks){
-			var sN = $scope.socialNetworks[i];
-			var name = "#" + sN.id + "CheckBox";
-			if ($(name).attr('checked')) {
+	$scope.sendMsg = function() {
+	var message = $('textarea').val();
+	
+	for(var i=0; i<$scope.socialNetworks.length; i++){
+		var sN = $scope.socialNetworks[i];	
+		var name = '#'+ sN.id+'CheckBox';
+			if ($(name).attr("checked")){
 				sN.sendMessage(message);
+				$('label[for='+sN.id+'CheckBox]').removeClass('ui-checkbox-on ui-btn-active').addClass('ui-checkbox-off');
+				//$(name).attr("checked", false);
+				console.log($(name).attr("checked"));
 			}
-		}
-		$('#textarea').val("");
 	}
+	$('textarea').val('');
+}
 }
 
 /** Controleurs pour chaque reseau social **/
@@ -417,8 +421,7 @@ function mergeSort(arr)
     return merge(mergeSort(left), mergeSort(right));
 }
  
-function merge(left, right)
-{
+function merge(left, right) {
     var result = [];
  
     while (left.length && right.length) {
@@ -464,6 +467,4 @@ function displayMessage() {
 	$('#msgDetails').removeData('authorImg');
 	
 }
-
-
 
