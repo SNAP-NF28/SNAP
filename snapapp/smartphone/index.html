@@ -27,7 +27,7 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
 <body ng-controller="smartphoneAppCtrl">
 
-<div id="homePage" data-role="page">
+<div id="homePage" data-role="page" ngm-swipeleft="{{getPrevPage('homePage')}}" ngm-swiperight="{{getNextPage('homePage')}}">
     <div data-role="header" data-position="fixed">
         <h1>Accueil</h1>
     </div>
@@ -71,7 +71,7 @@
 </div>
 
 <!--------------------- Page Options --------------------->
-<div id="optionsPage" data-role="page">
+<div id="optionsPage" data-role="page" ngm-swipeleft="{{getPrevPage('optionsPage')}}" ngm-swiperight="{{getNextPage('optionsPage')}}">
     <div data-role="header" data-position="fixed">
         <h1>Options</h1>
     </div>
@@ -115,9 +115,9 @@
 </div>
 
 <!--------------------- Page envoi message --------------------->
-<div id="msgPage" data-role="page">
+<div id="msgPage" data-role="page" ngm-swipeleft="{{getPrevPage('msgPage')}}" ngm-swiperight="{{getNextPage('msgPage')}}">
     <div data-role="header" data-position="fixed">
-        <h1>Envoyer un message</h1>
+        <h1>Send a message</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain" id="msgDiv">
@@ -128,7 +128,7 @@
 
 			<br /> <!-- Le bloc suivant doit revenir a la ligne !!!-->
 			<fieldset data-role="controlgroup" data-type="horizontal">
-				<legend>Poster sur :  </legend>
+				<legend>Post on :  </legend>
                 <input type="checkbox" name="fb" id="fbCheckBox" class="custom" />
                 <label for="fbCheckBox">Facebook</label>
 
@@ -141,8 +141,8 @@
 				
 			</fieldset>
 			<div>
-				<a href="#" data-role="button" data-theme="b" data-rel="back" data-mini="true" data-inline="true" ng-click="sendMsg()">Envoyer</a>
-				<a href="#" data-role="button" data-theme="c" data-rel="back" data-mini="true" data-inline="true">Annuler</a>
+				<a href="#" data-role="button" data-theme="b" data-rel="back" data-mini="true" data-inline="true" ng-click="sendMsg()">Send</a>
+				<a href="#" data-role="button" data-theme="c" data-rel="back" data-mini="true" data-inline="true">Cancel</a>
 			</div>
 			</div>
         </div>
@@ -160,9 +160,9 @@
 </div>
 
 <!--------------------- Page Recherche --------------------->
-<div id="srchPage" data-role="page">
+<div id="srchPage" data-role="page" ngm-swipeleft="{{getPrevPage('srchPage')}}" ngm-swiperight="{{getNextPage('srchPage')}}">
     <div data-role="header" data-position="fixed">
-        <h1>Recherche</h1>
+        <h1>Search</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
@@ -185,9 +185,9 @@
 </div>
 
 <!--------------------- Page Profil --------------------->
-<div id="usrPage" data-role="page">
+<div id="usrPage" data-role="page" ngm-swipeleft="{{getPrevPage('usrPage')}}" ngm-swiperight="{{getNextPage('usrPage')}}">
     <div data-role="header" data-position="fixed">
-        <h1>Profil</h1>
+        <h1>Profile</h1>
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
@@ -227,8 +227,8 @@
                 <span class="msgText"> </span>
 
                 <br />
-				<a href="#msgPage" data-role="button" data-theme="b" data-mini="true" data-inline="true">Répondre</a>
-                <a href="#" data-role="button" data-rel="back" data-theme="c" data-mini="true" data-inline="true">Fermer</a>
+				<a href="#msgPage" data-role="button" data-theme="b" data-mini="true" data-inline="true">Reply</a>
+                <a href="#" data-role="button" data-rel="back" data-theme="c" data-mini="true" data-inline="true">Cancel</a>
             </div>
             <!-- Oblige de mettre ca sinon ca fait un gros escalier pas beau -->
             <br class="clear"/>
@@ -237,7 +237,7 @@
 </div>
 
 <!--------------------- Page Facebook --------------------->
-<div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl">
+<div id="fbPage" data-role="page" ng-controller="smartphoneFbCtrl" ngm-swipeleft="{{getPrevPage('fbPage')}}" ngm-swiperight="{{getNextPage('fbPage')}}">
     <div data-role="header" data-position="fixed">
         <img  class="logo" ng-src="{{getIcon}}"/>
         <h1>Facebook</h1>
@@ -279,7 +279,7 @@
 </div>
 
 <!--------------------- Page Google Plus --------------------->
-<div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl">
+<div id="gpPage" data-role="page" ng-controller="smartphoneGpCtrl" ngm-swipeleft="{{getPrevPage('gpPage')}}" ngm-swiperight="{{getNextPage('gpPage')}}">
 
     <div data-role="header" data-position="fixed">
         <img class="logo" ng-src="{{getIcon}}" />
@@ -319,7 +319,7 @@
 </div>
 
 <!--------------------- Page Twitter --------------------->
-<div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl">
+<div id="twPage" data-role="page" ng-controller="smartphoneTwCtrl" ngm-swipeleft="{{getPrevPage('twPage')}}" ngm-swiperight="{{getNextPage('twPage')}}">
 
     <div data-role="header" data-position="fixed">
         <img class="logo" ng-src="{{getIcon}}" />
