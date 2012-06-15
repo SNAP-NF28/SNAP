@@ -150,9 +150,11 @@
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
-								<div class="loginDiv">
-									<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
-								</div>
+								<ANY ng-hide="socialNetwork.connected">
+									<div class="loginDiv">
+										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+									</div>
+								</ANY>
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
