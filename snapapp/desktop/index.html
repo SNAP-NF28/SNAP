@@ -76,12 +76,13 @@
 					<tabs class="fix-tabs">
 						<pane class="pane" title="All">
 							<div class="scrollable-pane"><!--ng-controller="desktopAppCtrlAll"-->
-								<!-- IF noConnected -->
-								<div ng-repeat="socialNetwork in socialNetworks">
-									<div class="loginDiv">
-										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+								<!-- IF !anyConnected -->
+									<div ng-repeat="socialNetwork in socialNetworks">
+										<ANY ng-show="!socialNetwork.connected">
+											<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+										</ANY>							
 									</div>
-								</div>
+
 								<!-- END ID -->
 								
 								
@@ -148,9 +149,11 @@
 						</pane>
 						<pane class="pane" ng-repeat="socialNetwork in socialNetworks" title="{{socialNetwork.displayName}}">
 							<div class="scrollable-pane" ng-controller="desktopAppCtrlMsg">
-								<div class="loginDiv">
-									<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
-								</div>
+								<!-- <ANY ng-show="!socialNetwork.connected">
+									<div class="loginDiv">
+										<span id="login-{{socialNetwork.name}}" class="loginButton">{{socialNetwork.connect()}}</span>
+									</div>
+								</ANY> -->
 								<div class="msgContainer well" ng-repeat="message in messages | filter:search">
 									<!-- Image du profil -->
 									<a data-toggle="modal" href="#profil{{socialNetwork.name}}{{message.msgId}}">
