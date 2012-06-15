@@ -44,7 +44,7 @@
 					<img class="minIcon" ng-src="{{message.socialNetworkMinIcon}}" />                    
                 </div>
                 <div class="block">
-                    <b class="userName">{{getNameProfile(message)}}</b>	
+                    <a href="#usrPage"><b class="userName">{{getNameProfile(message)}}</b></a>	
 					<br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
@@ -132,16 +132,16 @@
                 <input type="checkbox" name="fb" id="fbCheckBox" class="custom" />
                 <label for="fbCheckBox">Facebook</label>
 
-                <input type="checkbox" name="googleplus" id="gpCheckBox" class="custom" />
-                <label for="gpCheckBox">Google+</label>
+                <input type="checkbox" name="googleplus" id="googleplusCheckBox" class="custom" />
+                <label for="googleplusCheckBox">Google+</label>
 
-                <input type="checkbox" name="twitter" id="twCheckBox" class="custom" />
-                <label for="twCheckBox">Twitter</label>
+                <input type="checkbox" name="twitter" id="twitterCheckBox" class="custom" />
+                <label for="twitterCheckBox">Twitter</label>
 				</div>
 				
 			</fieldset>
 			<div>
-				<a href="#" data-role="button" data-theme="b" data-rel="back" data-mini="true" data-inline="true" onClick="sendMessage()">Envoyer</a>
+				<a href="#" data-role="button" data-theme="b" data-rel="back" data-mini="true" data-inline="true" onClick="{{sendMessage()}}">Envoyer</a>
 				<a href="#" data-role="button" data-theme="c" data-rel="back" data-mini="true" data-inline="true">Annuler</a>
 			</div>
         </div>
@@ -243,14 +243,16 @@
     </div>
     <div data-role="content">
         <div data-role="fieldcontain">
+		<div class="ng-hide:socialNetwork.connected">
             <span id="login-{{socialNetwork.name}}">{{socialNetwork.connect()}}</span>
+		</div>
             <div class="msgContent well"  ng-repeat="message in getLastMsg(socialNetwork)">
 
                 <div class="block">
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                    <b class="userName">{{getNameProfile(message)}}</b>	 <br />
+                    <a href="#usrPage"><b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
@@ -291,7 +293,7 @@
                     <img class="msgImgProfile"ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                    <b class="userName">{{getNameProfile(message)}}</b>	 <br />
+                    <a href="#usrPage"><b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
                     <!-- Message content -->
                     {{getNFirstCharacters(message, 140)}} <br />
 					<p><em>{{formatDate(message)}}</em></p>
@@ -331,7 +333,7 @@
                     <img class="msgImgProfile" ng-src="{{getImageProfile(message)}}" />
                 </div>
                 <div class="block">
-                    <b class="userName">{{getNameProfile(message)}}</b>	 <br />
+                   <a href="#usrPage"> <b class="userName">{{getNameProfile(message)}}</b></a>	 <br />
                     <!-- Message content -->
                     <span class="msgContent">{{getNFirstCharacters(message, 140)}}</span>
 					<p><em>{{formatDate(message)}}</em></p>

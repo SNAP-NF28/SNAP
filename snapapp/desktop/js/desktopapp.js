@@ -163,7 +163,14 @@ function desktopAppCtrl($scope, SocialNetworks) {
 		  else if ((d1.getHours() == d2.getHours()) || ((d2.getHours()-d1.getHours() == 1) && (d2.getMinutes() < d1.getMinutes()))) {
 			var h = d2.getHours()- d1.getHours();
 			var m = (60*h + d2.getMinutes()) - d1.getMinutes();
-			return "Il y a " + m + " minutes";
+			var c = "Il y a ";
+			if (m == 1) {
+				c += "1 minute";
+				return c;
+			}
+			c += m;
+			c += " minutes";
+			return c;
 			}
 		  else {
 			var h = d2.getHours() - d1.getHours();

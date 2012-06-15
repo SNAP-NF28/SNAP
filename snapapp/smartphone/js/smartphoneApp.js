@@ -88,6 +88,7 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.getDate = function(message) {
 		return message.msgDate;
 	}
+	
 	$scope.formatDate = function(message) {
       var d1 = new Date(message.msgDate);
 	  var d2 = new Date();
@@ -131,6 +132,18 @@ function smartphoneAppCtrl($scope, SocialNetworks) {
 	$scope.counter = 0; // compteur pour l'envoi de messages
 	$scope.setCounter = function() {
 	
+	}
+	
+	$scope.sendMessage = function() {
+		var message = $('#textarea').val();
+		for(i in $scope.socialNetworks){
+			var sN = $scope.socialNetworks[i];
+			var name = "#" + sN.id + "CheckBox";
+			if ($(name).attr('checked')) {
+				sN.sendMessage(message);
+			}
+		}
+		$('#textarea').val("");
 	}
 }
 
