@@ -27,14 +27,14 @@ formfactor.register({
   ],*/
   'phone': [
     'phone',
-    function() { return navigator.userAgent.toLowerCase().indexOf("mobile") > 0 } ,
-    function() { return navigator.userAgent.toLowerCase().indexOf("phone") > 0 },
+    function() { return navigator.userAgent.toLowerCase().indexOf("mobile") > 0 && !((navigator.userAgent.toLowerCase().indexOf("ipad") > 0))} ,
+    function() { return navigator.userAgent.toLowerCase().indexOf("phone") > 0 && !((navigator.userAgent.toLowerCase().indexOf("ipad") > 0))},
   ],
 	'tablet': [
 	'tablet',
-	function () { return navigator.userAgent.toLowerCase().indexOf("android") > 0 && !(navigator.userAgent.toLowerCase().indexOf("mobile") > 0) },
-    function () { return navigator.userAgent.indexOf("iPad") > 0 },
-    function() { return navigator.userAgent.indexOf("Xoom") > 0 }
+	function () { return navigator.userAgent.toLowerCase().indexOf("android") > 0 && !((navigator.userAgent.toLowerCase().indexOf("mobile") > 0)) },
+    function () { return navigator.userAgent.toLowerCase().indexOf("ipad") > 0 },
+    function() { return navigator.userAgent.toLowerCase().indexOf("xoom") > 0 }
   ],
   'tv': [
     'tv', 
