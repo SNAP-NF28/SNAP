@@ -13,12 +13,16 @@ function tabletAppCtrl($scope, SocialNetworks) {
 
     $scope.paneLeftShift = function(){
       var ind = panes.indexOf($scope.currentPane);
-      $scope.selectPane(panes[(ind + 1) % panes.length])
+      var prevPane = panes[(ind + 1) % panes.length];
+      $('#'+prevPane).click();
+      $scope.selectPane(prevPane);
     }
 
     $scope.paneRightShift = function(){
       var ind = panes.indexOf($scope.currentPane);
-      $scope.selectPane(panes[(ind - 1 >= 0)? ind - 1 : panes.length])
+      var nextPane = panes[(ind - 1 >= 0)? ind - 1 : panes.length];
+      $('#'+nextPane).click();
+      $scope.selectPane(nextPane);
     }
 
     var getSn = function(){

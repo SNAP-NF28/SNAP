@@ -324,11 +324,11 @@ dd h4 { margin:15px 0 0 0; }
     width: 20%;
   }
   .content-primary {
-    width: 78%;
+    width: 80%;
 /*    padding-right: 1%;*/
   } 
   .type-interior .ui-content {
-    background-position: 22%;
+    background-position: 20%;
   }
 }
 
