@@ -91,3 +91,6 @@ function displayRemainingTime(){
 	$('#timeLbl').text('Redirecting in ' + Math.max(Math.ceil(remainingTimeMS / 1000.),0) + ' s');
 	displayTimer = setTimeout("displayRemainingTime()", 1000);
 }
+
+$.mobile.hidePageLoadingMsg();
+
