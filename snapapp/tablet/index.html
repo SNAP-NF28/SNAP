@@ -42,10 +42,10 @@
         <!-- Navbar: Pane selector -->
         <div data-role="navbar" >
             <ul> <!-- FIXME: Ugly... should have been done with ng-repeat, be it integrates baddly with the navbar... -->
-                <li><a href="#" class="ui-btn-active" ngm-click="selectPane('All-pane')">All</a></li>
-                <li><a href="#" ngm-click="selectPane('Facebook-pane')">Facebook</a></li>
-                <li><a href="#" ngm-click="selectPane('Googleplus-pane')">Google+</a></li>
-                <li><a href="#" ngm-click="selectPane('Twitter-pane')">Twitter</a></li>
+                <li><a href="#" id='All-btn' class="ui-btn-active" ngm-click="selectPane('All-pane')">All</a></li>
+                <li><a href="#" id='Facebook-btn' ngm-click="selectPane('Facebook-pane')">Facebook</a></li>
+                <li><a href="#" id='Googleplus-btn' ngm-click="selectPane('Googleplus-pane')">Google+</a></li>
+                <li><a href="#" id='Twitter-btn' ngm-click="selectPane('Twitter-pane')">Twitter</a></li>
             </ul>
         </div>
         <!-- /Navbar: Pane selector -->
