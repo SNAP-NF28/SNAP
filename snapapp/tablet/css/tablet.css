@@ -321,14 +321,14 @@ dd h4 { margin:15px 0 0 0; }
     background-position: 39%;
   }
   .content-secondary {
-    width: 34%;
+    width: 20%;
   }
   .content-primary {
-    width: 56%;
+    width: 78%;
 /*    padding-right: 1%;*/
   } 
   .type-interior .ui-content {
-    background-position: 34%;
+    background-position: 22%;
   }
 }
 
