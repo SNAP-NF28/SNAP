@@ -19,5 +19,6 @@ require({paths: {order: "/snapapp/common/lib/requirejs/order"}},
     ], function() {
         angular.bootstrap(document, ['tabletApp']);
         $(document).trigger("");
+        $.mobile.hidePageLoadingMsg();
     });
 
