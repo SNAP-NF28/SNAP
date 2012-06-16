@@ -1,7 +1,7 @@
 //Common scripts to load
 //define(commonScripts,[
 commonScripts = [
-    "order!/snapapp/common/lib/angular/angular.js",
+    "order!/snapapp/common/lib/angular/angular.min.js",
     "order!/snapapp/common/js/models/facebook/facebook.js",
     "order!http://platform.twitter.com/anywhere.js?id=HDz4lPcTE9tIMD3SV3Nkg&v=1",
     "order!http://connect.facebook.net/en_US/all.js",

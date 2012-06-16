@@ -1,10 +1,10 @@
 require({paths: {order: "/snapapp/common/lib/requirejs/order"}},
     [
         //List here script specific to smartphone
-        "order!/snapapp/smartphone/lib/jquery.mobile-1.1.0.js",
+        "order!/snapapp/smartphone/lib/jquery.mobile-1.1.0.min.js",
         "order!/snapapp/common/lib/angular/angular.min.js",
         "order!/snapapp/common/lib/date.js",
-        "order!https://raw.github.com/tigbro/jquery-mobile-angular-adapter/master/compiled/jquery-mobile-angular-adapter-1.0.7-rc2.js",
+        "order!https://raw.github.com/tigbro/jquery-mobile-angular-adapter/master/compiled/jquery-mobile-angular-adapter-1.0.7-rc2.min.js",
         "order!/snapapp/common/js/models/facebook/facebook.js",
         "order!http://platform.twitter.com/anywhere.js?id=HDz4lPcTE9tIMD3SV3Nkg&v=1",
         "order!http://connect.facebook.net/en_US/all.js",
