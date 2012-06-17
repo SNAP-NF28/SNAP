@@ -72,6 +72,7 @@ var formfactorActions = [ //TODO: Look for ressources needed
         "/snapapp/common/js/models/socialNetworks.js",
         "/snapapp/tablet/js/tabletApp.js",
         //additional scripts
+        "http://anywhere.platform.twitter.com/1.2.0/javascripts/tweet_box.bundle.js",
         "https://apis.google.com/_/apps-static/_/js/gapi/client/rt=j/ver=C3gMxNHYp0E.fr./sv=1/am=!rFmBCPi40VqIDfp2cA/d=1/rs=AItRSTNtba_fwu1cPVsKtdIBy1r40dDTiA/cb=gapi.loaded_0",
         "http://anywhere.platform.twitter.com/1.2.0/javascripts/client.js",
         "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",
@@ -80,7 +81,8 @@ var formfactorActions = [ //TODO: Look for ressources needed
         "https://twitter-any.s3.amazonaws.com/server/production/xd_receiver.js",
         "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",
         "http://twitter.com/javascripts/i18n/fr.js",
-        "http://anywhere.platform.twitter.com/1.2.0/javascripts/connect.bundle.js"
+        "http://anywhere.platform.twitter.com/1.2.0/javascripts/connect.bundle.js",
+
     ]
  },
   {
