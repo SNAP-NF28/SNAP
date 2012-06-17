@@ -27,10 +27,64 @@
         <h2>Settings</h2>
     </div>
     <div data-role="content" data-theme="c">
-        
+        <div data-role="collapsible">
+            <h3>General settings</h3>
+            <label for="flip-a">Offline mode :</label>
+			<select name="slider" id="flip-a" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select> 
+			<br />
+			
+			<label for="nb">Number of messages per wall : </label>
+			<input type="text" name="name" id="nb" value=""  />
+			
+			
+        </div>
+        <br /><br />
+        <div data-role="collapsible">
+            <h3>Facebook settings</h3>
+            <label for="flip-fb">Remember me :</label>
+			<select name="slider" id="flip-fb" data-role="slider">
+				<option value="off">No</option>
+				<option value="on">Yes</option>
+			</select>
+
+            <a href="#" data-role="button" data-icon="delete">Delete social network</a>
+			
+        </div>
+        <br /><br />
+        <div data-role="collapsible">
+            <h3>Google+ settings</h3>
+            <label for="flip-gp">Remember me :</label>
+			<select name="slider" id="flip-gp" data-role="slider">
+				<option value="off">No</option>
+				<option value="on">Yes</option>
+			</select>
+			
+			<a href="#" data-role="button" data-icon="delete">Delete social network</a>
+        </div>
+        <br /><br />
+        <div data-role="collapsible">
+            <h3>Twitter settings</h3>
+            <label for="flip-tw">Remember me :</label>
+			<select name="slider" id="flip-tw" data-role="slider">
+				<option value="off">No</option>
+				<option value="on">Yes</option>
+			</select>
+			
+			<a href="#" data-role="button" data-icon="delete">Delete social network</a>
+        </div>
+		
+        <br /><br />
+        <div data-role="collapsible">
+            <h3>Advanced settings</h3>
+            <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+        </div>
         <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">Ok</a>    
     </div>
 </div>
 
 </body>
 </html>
+

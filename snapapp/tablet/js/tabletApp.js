@@ -144,7 +144,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
 function tabletMsgCtrl($scope){
   $scope.msg = JSON.parse(sessionStorage.getItem("tabletCurrentMsg"));
   console.log($scope.msg);
-
+  
   $scope.formatDate = function(date){
       var d = new Date(date);
       return d.toString('dddd, MMMM d, yyyy - h:m tt');      
