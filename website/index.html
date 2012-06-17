@@ -78,14 +78,13 @@
         <p>
             Nous avons accordé une attention particulière à l’étude des interactions de l’utilisateur ainsi que des contextes d'utilisation associés aux différents périphériques. 
             En effet, nous cherchons une interface la plus adaptée au terminal utilisé, et donc aux interactions propres à ce terminal. 
-        </p>
+        </p><br />
+		<p><a href="#links"> Tester le site, récupérer le code ou les documents</a></p>
     </div>
 
-    <div class="content eng"> <br/><br/>
+    <div class="content eng">
         Content goes here
     </div>
-    <br />
-
 </div>
 
 <div id="tech">
@@ -97,8 +96,43 @@
         <h1>Technical aspects</h1>
     </div>
 
-    <div class="content fra"> <br/><br/>
-        Le contenu va ici
+    <div class="content fra">
+        <h2>Côté serveur</h2>
+		
+		<p> Notre site web comporte une partie serveur réduite, et nous avons favorisé l'exécution de code côté client. En effet, la tâche du serveur est
+		de fournir les scripts spécifiques au périphérique utilisé, aucun traitement n'est réalisé à distance. 
+		</p>
+		
+		<p>	Nous avons tout de même déployé notre site sur <a href="#links">Heroku</a>, un serveur distant, en développant un serveur 
+		basé sur <a href="#links">Node.js</a>, et ce pour plusieurs raisons :			
+		</p>
+		<dl>
+					<dt> Prise en charge de différents périphériques </dt>
+			<dd> Les terminaux autres que les ordinateurs ne gèrent pas les interfaces logiques de type <em>localhost</em> </dd>
+						<dt> Dépendance face à la configuration de la machine</dt>
+			<dd> La nécessité d'un déploiement extérieur se fait aussi sentir dans le cadre la compatibilité du site sur plusieurs navigateurs et pour 
+			des configurations différentes</dd>
+			<dt> Temps de chargement </dt>
+			<dd> Les tests en local font que les scripts sont chargés quasi-instantanément, ce qui ne correspond pas au cheminement réel des données sur le
+				Web</dd>
+
+		</dl>
+		
+		<h2>Côté client</h2>
+		
+		<h3>Amélioration du code</h3>
+		
+		angular
+		
+		<h3>Ergonomie & esthétique</h3>
+		jquery mobile, bootstrap
+		
+		<h3>Utilitaires</h3>
+		
+		jquery
+		formfactor
+		modernizr
+		sdk developpeurs
     </div>
 
     <div class="content eng"> <br/><br/>
@@ -217,12 +251,11 @@
 
                         <h3> Serveur de d&eacute;ploiement </h3> <br />
                         <p><a href="http://www.heroku.com">Heroku</a></p>
+                        <p><a href="http://nodejs.org">Node.js</a></p>						
                     </div>
                     <div class="span3">
                         <h3> Autres technologies </h3> <br />
                         <p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></p>
-
-                        <p><a href="http://nodejs.org">Node.js</a></p>
 
                         <p><a href="http://docs.JQuery.com/Main_Page">Documentation JQuery</a></p>
                         <p><a href="http://JQuerymobile.com/demos/1.1.0/">Documentation JQuery Mobile</a></p>
@@ -259,12 +292,11 @@
 
                         <h3> Deployment server </h3> <br />
                         <p><a href="http://www.heroku.com">Heroku</a></p>
+						<p><a href="http://nodejs.org">Node.js</a></p>
                     </div>
                     <div class="span3">
                         <h3> Other libraries </h3> <br />
                         <p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></p>
-
-                        <p><a href="http://nodejs.org">Node.js</a></p>
 
                         <p><a href="http://docs.JQuery.com/Main_Page">JQuery ocumentation</a></p>
                         <p><a href="http://JQuerymobile.com/demos/1.1.0/">JQuery Mobile documentation</a></p>
