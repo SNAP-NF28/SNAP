@@ -4,6 +4,8 @@ $(document).ready(function () {
   toggle(false);
 });
 
+$('#navbarSNAP').scrollspy();
+
 /** Toggle en/fr **/
 function toggle(bool) {
 	if (bool) { /* English */
