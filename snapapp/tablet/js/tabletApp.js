@@ -69,7 +69,7 @@ function tabletAppCtrl($scope, SocialNetworks) {
 
     $scope.onMsgDetail = function(msg){
       sessionStorage.setItem('tabletCurrentMsg', JSON.stringify(msg)); // OMG :| this is a hack!
-      window.location = "msgdetail.html"; //OMG another hack to make the ipad work :\
+      $('#msgdetailbtn').click(); //OMG another hack to make the ipad work :\)
     }
 
     $scope.getAllMsg = function(){
