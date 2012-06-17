@@ -120,23 +120,85 @@
 		
 		<h2>Côté client</h2>
 		
-		<h3>Amélioration du code</h3>
+		<h3>Amélioration du code</h3><br />
 		
-		angular
+		<p>Nous avons utilisé le <em>framework</em> JavaScript <a href="#links">Angular.js</a> pour pouvoir structurer notre code. Ce <em>framework</em>,
+		originellement créé pour gérer du contenu exclusivement statique, permet de s'affranchir de la gestion des appels asynchrones. En effet, il 
+		implémente un ensemble de mécanismes pour faciliter la gestion du code via le <em>design pattern</em> Modèle-Vue-Contrôleur, notamment
+		le <em>two-way binding</em> (lien à double sens, donc entre la vue et le modèle). Le code produit, fortement influencé par le modèle MVC, 
+		est modulaire. </p>
 		
-		<h3>Ergonomie & esthétique</h3>
-		jquery mobile, bootstrap
+		<p> Toutefois, l'utilisation de ce <em>framework</em> n'est pas dénuée de défauts : <a href="#links">Angular.js</a> est une technologie très récente, son
+		utilisation ne s'est pas encore démocratisée, d'où un certain manque de documentation. De plus, de nombreuses actions sont réalisées automatiquement par
+		ce <em>framework</em>, d'où parfois une "mystification" du fonctionnement du site. </p>
 		
-		<h3>Utilitaires</h3>
+		<h3>Ergonomie & esthétique</h3><br />
 		
-		jquery
-		formfactor
-		modernizr
-		sdk developpeurs
+		<p>L'objectif du projet étant de tirer parti des dernières avancées technologies pour réaliser une interface ergonomique et personnalisée, nous avons
+		donc utilisé les propriétés offertes par HTML5 et CSS3, notamment les APIs de <em>sessionStorage</em> et le <em>manifest</em> (pour HTML5), et
+		certaines propriétés CSS3 telles que les coins arrondis (<em>border-radius</em>), les ombres (<em>box-shadow</em>, <em>text-shadow</em>) 
+		ou les transitions (<em>transition</em>). </p>
+		
+		<p><a href="#links">JQuery Mobile</a> est un <em>framework</em> graphique libre porté par communauté <a href="#links">JQuery</a>, et compatible avec
+		la plupart des navigateurs mobiles du marché. Nous l'avons donc utilisé pour la réalisation des interfaces <em>smartphone</em> et tablette. 
+		De plus, le rendu visuel des composants se rapproche de celui des applications natives des 
+		systèmes d'exploitation mobiles (i.e. iOS et android).</p>
+		
+		<p> Cependant, un des points critiques de ce <em>framework</em> est son manque d’interopérabilité avec <a href="#links">Angular.js</a>. En effet,
+		ces deux <em>frameworks </em> procèdent à des modifications automatiques du <em>Document Object Model</em> ("mystification"). 
+		Nous avons donc trouvé un <a href="#links">adaptateur JQuery Mobile/Angular</a> <em>open-source</em> fourni par un développeur indépendant</p>
+		
+		<p>
+		<a href="#links">Bootstrap</a> est un <em>framework</em> graphique développé par et pour <em>twitter</em>, offert ensuite au monde du libre.
+		Nous avons l'utilisé principalement pour l’interface pour ordinateur, où toute la partie graphique est prise en charge par <a href="#links">Bootstrap</a>,
+		et pour l’écran de chargement et de détection du terminal.
+		</p>
+		
+		<h3>Utilitaires</h3><br />
+		
+		<p>
+		L'utilisation de la bibliothèque JavaScript <a href="#links">JQuery</a> est très répandue, en fait très rares sont les applications JavaScript qui n'en font pas usage.
+		<a href="#links">JQuery</a>  fournit de nombreux outils pour faciliter la plupart des opérations communes et fastidieuses : manipulation du DOM, implémentation
+		de systèmes AJAX.... Son utilisation s'est donc imposée dans le cadre de notre projet.
+		</p>
+		
+		<p><a href="https://github.com/PaulKinlan/formfactor">Formfactor</a> est une petite bibliothèque JavaScript encore au stade expérimental, et permet de
+		tester certaines caractéristiques du navigateur web (principalement à l’aide du <em>DOM</em> et de bibliothèques tierces comme 
+		<a href="http://modernizr.com/">modernizr.js</a>), et de moduler le comportement de la page en fonction du résultat de ces tests. Dans le cadre de
+		notre projet, nous avons donc pu ainsi tester la résolution de l'écran, le <em>user-agent</em>, et la présence de fonctionnalités telles que le tactile,
+		pour récupérer le type de terminal sur lequel l'utilisateur se trouve, et donc rediriger ce dernier vers l'interface la plus adaptée (tablette, 
+		<em>smartphone</em> ou desktop).</p>
+
+		<p><a href="http://requirejs.org/">RequireJS</a> est une bibliothèque JavaScript généralement utilisée pour le chargement asynchrone de scripts, 
+		même si le nombre de fonctionnalités offertes par cette bibliothèque a beaucoup augmenté depuis ses premières versions.
+		Le chargement de script représente un point primordial dans notre projet, dans la mesure où nous avons développé de nombreux scripts, 
+		parfois lourds, alors qu'un des points critiques de notre site est sa réactivité.</p>
+		
+		<p>L'utilisation des <em>Software development Kits</em> (SDK) développés par les réseaux sociaux ne s'est pas faite sans mal. Tout d'abord, les 
+		bibliothèques fournies par les réseaux sociaux sont beaucoup plus fréquentes pour les langages serveurs que pour les langages clients. Celà est dû au fait
+		que les développeurs concentrent en général leur travail côté serveur plutôt que côté client, mais c'est aussi dû au mode d'authentification sur les réseaux
+		sociaux. En effet, tout le code exécuté côté client est directement accessible et visible en clair par ce même client. Le développement de SDK sécurisés côté 
+		client requiert un surcoût en travail pour les réseaux sociaux, qui sont donc plus réticents à développer ce type de solution.
+		</p>
+		
+		<p>
+		Nous avons donc utilisé les <em>frameworks</em> directement fournis par <a href="http://developers.facebook.com/docs/reference/JavaScript/">Facebook</a> 
+		et <a href="https://dev.twitter.com/docs/anywhere/welcome">twitter</a>, celui fourni par Facebook étant mieux documenté que celui de twitter.
+		Nous n’avons pas pu nous procurer un SDK JavaScript pour Google+. C’est d’ailleurs la raison pour laquelle nous n’avons pas intégré ce réseau social 
+		dans notre projet.
+		</p>
     </div>
 
     <div class="content eng"> <br/><br/>
-        Content goes here
+		 <h2>Server side</h2>
+		 
+		  <h2>Client side</h2>
+		  
+			<h3>Code improvement </h3>
+			
+			<h3>Ergonomics & aesthetics</h3>
+			
+			<h3>Utility libraries</h3>
     </div>
     <br />
 </div>
