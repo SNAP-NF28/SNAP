@@ -60,8 +60,7 @@
     </div>
 
     <div class="content fra">
-        <p>	SNAP est un projet réalisé
-            dans le cadre de l’UV NF28 à l’Université de Technologie de Compiègne.
+        <p>	SNAP est un projet réalisé dans le cadre de l’UV NF28 à l’Université de Technologie de Compiègne.
         </p>
         <p>
         	L’objectif de notre application est d’étudier les moyens de personnalisation de l’expérience utilisateur offerts par les dernières technologies Web.
@@ -103,8 +102,30 @@
         <h1>Technical aspects</h1>
     </div>
 
-    <div class="content fra"> <br/><br/>
-        Le contenu va ici
+    <div class="content fra">
+        <h2>Côté serveur</h2>
+		
+		<p> Notre site web comporte une partie serveur réduite, et nous avons favorisé l'exécution de code côté client. En effet, la tâche du serveur est
+		de fournir les scripts spécifiques au périphérique utilisé, aucun traitement n'est réalisé à distance.
+		</p>
+		
+		<p>	Nous avons tout de même déployé notre site sur <a href="#links">Heroku</a>, un serveur distant, et ce, pour plusieurs raisons :			
+		</p>
+		<dl>
+					<dt> Prise en charge de différents terminaux </dt>
+			<dd> Les terminaux autres que les ordinateurs ne gèrent pas les interfaces logiques de type <em>localhost</em> </dd>
+						<dt> Dépendance face à la configuration de la machine</dt>
+			<dd> La nécessité d'un déploiement extérieur se fait aussi sentir dans le cadre la compatibilité du site sur plusieurs navigateurs et pour 
+			des configurations différentes</dd>
+			<dt> Temps de chargement </dt>
+			<dd> Les tests en local font que les scripts sont chargés quasi-instantanément, ce qui ne correspond pas au cheminement réel des données sur le
+				Web</dd>
+
+		</dl>
+		<h2>Côté client</h2>
+		
+		
+		
     </div>
 
     <div class="content eng"> <br/><br/>
