@@ -55,7 +55,33 @@ var formfactorActions = [ //TODO: Look for ressources needed
   },
   {
     "formfactor": "tablet",
-    //"resources": ["/FausseRessource/tablet.js"]
+    "resources": [
+        "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js",
+        "/snapapp/common/lib/angular/angular.min.js",
+        "/snapapp/common/lib/date.js",
+        "https://raw.github.com/tigbro/jquery-mobile-angular-adapter/master/compiled/min/jquery-mobile-angular-adapter-1.0.7-rc2.js",
+        "/snapapp/common/js/models/facebook/facebook.js",
+        "http://platform.twitter.com/anywhere.js?id=HDz4lPcTE9tIMD3SV3Nkg&v=1",
+        "http://connect.facebook.net/en_US/all.js",
+        "https://apis.google.com/js/client.js",
+        "/snapapp/common/js/models/google+/google+.js",
+        "/snapapp/common/js/models/mocks/SNMocks.js",
+        "/snapapp/common/js/models/mocks/typeMocks.js",
+        "/snapapp/common/js/models/types.js",
+        "/snapapp/common/js/models/twitter/twitter.js",
+        "/snapapp/common/js/models/socialNetworks.js",
+        "/snapapp/tablet/js/tabletApp.js",
+        //additional scripts
+        "https://apis.google.com/_/apps-static/_/js/gapi/client/rt=j/ver=C3gMxNHYp0E.fr./sv=1/am=!rFmBCPi40VqIDfp2cA/d=1/rs=AItRSTNtba_fwu1cPVsKtdIBy1r40dDTiA/cb=gapi.loaded_0",
+        "http://anywhere.platform.twitter.com/1.2.0/javascripts/client.js",
+        "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",
+        "http://anywhere.platform.twitter.com/1.2.0/javascripts/client.bundle.js",
+        "http://anywhere.platform.twitter.com/1.2.0/javascripts/api.bundle.js",
+        "https://twitter-any.s3.amazonaws.com/server/production/xd_receiver.js",
+        "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",
+        "http://twitter.com/javascripts/i18n/fr.js",
+        "http://anywhere.platform.twitter.com/1.2.0/javascripts/connect.bundle.js"
+    ]
  },
   {
     "formfactor": "desktop",
