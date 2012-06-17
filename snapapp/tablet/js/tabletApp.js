@@ -177,11 +177,13 @@ function tabletSendMsgCtrl($scope, SocialNetworks){
       sn.push('googleplus');
     if(twtr)
       sn.push('twitter');
-
-    sessionStorage.setItem('tabletMsg2Send', JSON.stringify({
-      content: content,
-      sn: sn
-    }));
+    try{
+      sessionStorage.setItem('tabletMsg2Send', JSON.stringify({
+        content: content,
+        sn: sn
+      }));  
+    }
+    catch(err){}
   }
 }
 
