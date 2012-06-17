@@ -60,37 +60,31 @@
     </div>
 
     <div class="content fra">
-        <p>	SNAP est un projet réalisé dans le cadre de l’UV NF28 à l’Université de Technologie de Compiègne.
+        <p>	
+        	SNAP est un projet réalisé dans le cadre de l’UV NF28 à l’Université de Technologie de Compiègne.
         </p>
         <p>
-        	L’objectif de notre application est d’étudier les moyens de personnalisation de l’expérience utilisateur offerts par les dernières technologies Web.
-            Pour cela, nous proposons de décliner un site web applicatif sous la forme de plusieurs interfaces, adaptées à differents types de terminaux.
-            En particulier, nous proposons des interfaces dédiées pour les ordinateurs, les smartphones et les tablettes.
+        	Afin d’étudier la conception et le développement de systèmes interactifs, 
+        	nous proposons de décliner un site Web applicatif sous la forme de plusieurs interfaces, 
+        	adaptées à différents types de terminaux. Nous avons ainsi tiré parti des dernières technologies Web 
+        	afin de proposer une personnalisation avancée de l’expérience utilisateur. 
+        	En particulier, nous proposons des interfaces dédiées pour les ordinateurs, les smartphones et les tablettes.
         </p>
         <p>
-            D'autre part, notre application offre une fonctionnalité de détection du périphérique utilisé par le client.
-            Ainsi le type de terminal est automatiquement détecté au chargement de l’application
-            Cependant l’utilisateur peut changer manuellement le type et ce dernier sera mémorisé pour ses prochains passages.
+            Notre site permet à l’utilisateur de faire l’agrégation des fils d’actualités de ses différents réseaux sociaux. 
+            En plus de l’agrégation des messages, SNAP permet aussi à l’utilisateur de poster des messages sur un ou plusieurs réseaux sociaux 
+            simultanément parmi ceux actuellement intégrés dans le site, soit Facebook et Twitter.
         </p>
         <p>
-            Notre application permet à l’utilisateur de faire l’agrégation des fils d’actualités de ses différents réseau sociaux.
-            En plus de l’agrégation des messages, SNAP permet aussi à l’utilisateur de poster des messages sur tous ses réseaux sociaux à la fois.
-            Cela simplifie la vie des utlisateurs qui veulent partager des informations sur plusieurs plateformes sociales. 
-            Notre application prend en charge les deux réseaux sociaux les plus utilisés dans le monde qui sont Facebook et Twitter.
-        </p>
-        <p>
-        	Nous avons accordé une attention particulière à l’étude des interactions de l’utilisateur ainsi que son contexte d'utilisation. 
-        	En effet, les interactions tiennent une place centrale dans notre projet puisque nous cherchons une interface la plus adaptée possible
-        	au terminal utilisé et donc aux interactions propres à ce terminal. 
-        	En particulier, notre application est fortement susceptible d’être utilisée en situation de mobilité notamment si elle est utilisée sur un smartphone ou dans une moins mesure sur une tablette tactile. 
-        </p>
+            Nous avons accordé une attention particulière à l’étude des interactions de l’utilisateur ainsi que des contextes d'utilisation associés aux différents périphériques. 
+            En effet, nous cherchons une interface la plus adaptée au terminal utilisé, et donc aux interactions propres à ce terminal. 
+        </p><br />
+		<p><a href="#links"> Tester le site, récupérer le code ou les documents</a></p>
     </div>
 
-    <div class="content eng"> <br/><br/>
+    <div class="content eng">
         Content goes here
     </div>
-    <br />
-
 </div>
 
 <div id="tech">
@@ -106,13 +100,14 @@
         <h2>Côté serveur</h2>
 		
 		<p> Notre site web comporte une partie serveur réduite, et nous avons favorisé l'exécution de code côté client. En effet, la tâche du serveur est
-		de fournir les scripts spécifiques au périphérique utilisé, aucun traitement n'est réalisé à distance.
+		de fournir les scripts spécifiques au périphérique utilisé, aucun traitement n'est réalisé à distance. 
 		</p>
 		
-		<p>	Nous avons tout de même déployé notre site sur <a href="#links">Heroku</a>, un serveur distant, et ce, pour plusieurs raisons :			
+		<p>	Nous avons tout de même déployé notre site sur <a href="#links">Heroku</a>, un serveur distant, en développant un serveur 
+		basé sur <a href="#links">Node.js</a>, et ce pour plusieurs raisons :			
 		</p>
 		<dl>
-					<dt> Prise en charge de différents terminaux </dt>
+					<dt> Prise en charge de différents périphériques </dt>
 			<dd> Les terminaux autres que les ordinateurs ne gèrent pas les interfaces logiques de type <em>localhost</em> </dd>
 						<dt> Dépendance face à la configuration de la machine</dt>
 			<dd> La nécessité d'un déploiement extérieur se fait aussi sentir dans le cadre la compatibilité du site sur plusieurs navigateurs et pour 
@@ -122,10 +117,22 @@
 				Web</dd>
 
 		</dl>
+		
 		<h2>Côté client</h2>
 		
+		<h3>Amélioration du code</h3>
 		
+		angular
 		
+		<h3>Ergonomie & esthétique</h3>
+		jquery mobile, bootstrap
+		
+		<h3>Utilitaires</h3>
+		
+		jquery
+		formfactor
+		modernizr
+		sdk developpeurs
     </div>
 
     <div class="content eng"> <br/><br/>
@@ -188,12 +195,11 @@
 
                         <h3> Serveur de d&eacute;ploiement </h3> <br />
                         <p><a href="http://www.heroku.com">Heroku</a></p>
+                        <p><a href="http://nodejs.org">Node.js</a></p>						
                     </div>
                     <div class="span3">
                         <h3> Autres technologies </h3> <br />
                         <p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></p>
-
-                        <p><a href="http://nodejs.org">Node.js</a></p>
 
                         <p><a href="http://docs.JQuery.com/Main_Page">Documentation JQuery</a></p>
                         <p><a href="http://JQuerymobile.com/demos/1.1.0/">Documentation JQuery Mobile</a></p>
@@ -230,12 +236,11 @@
 
                         <h3> Deployment server </h3> <br />
                         <p><a href="http://www.heroku.com">Heroku</a></p>
+						<p><a href="http://nodejs.org">Node.js</a></p>
                     </div>
                     <div class="span3">
                         <h3> Other libraries </h3> <br />
                         <p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></p>
-
-                        <p><a href="http://nodejs.org">Node.js</a></p>
 
                         <p><a href="http://docs.JQuery.com/Main_Page">JQuery ocumentation</a></p>
                         <p><a href="http://JQuerymobile.com/demos/1.1.0/">JQuery Mobile documentation</a></p>
