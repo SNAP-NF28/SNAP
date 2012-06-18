@@ -152,8 +152,11 @@ angular.module('twitter',['SNMock']).
                     T("#login-Twitter").connectButton({ //Fixme: use Twitter.name
                       authComplete: function(usr) {
                         // triggered when auth completed successfully
+                        $(document.body).append('<div id="tbox"></div>');
                         self.doGetMessages(self, usr, 20);
                         self.connected = true;
+                        $('#tbox').remove();
+
                       },
                       signOut: function() {
                         // triggered when user logs out
