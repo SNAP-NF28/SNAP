@@ -1,9 +1,10 @@
-<html>
+﻿<html>
 <head>
     <meta charset="utf-8">
     <title>Site vitrine SNAP</title>
     <script src="js/jquery-1.7.2.min.js" ></script>
     <script src="bootstrap/js/bootstrap.js" ></script>
+    <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-carousel.js" ></script>
     <script src="js/website.js" ></script>
 
@@ -18,89 +19,494 @@
             <ul class="nav">
                 <li> <a href="#" onClick="toggle(true)"><img src="icons/UK-flag-icon_40x40.png" /></a></li>
                 <li> <a href="#" onClick="toggle(false)"><img src="icons/FR-flag-icon_40x40.png" /></a></li>
-                <li class="active">
-                    <a href="#">Home</a>
-                </li>
+                <li><a href="#">Home</a></li>
             </ul>
-			<ul class="nav fra">
-			    <li><a href="#pst">Pr&eacute;sentation</a></li>
-                <li><a href="#tech">Technique</a></li>				
-				<li><a href="#screen">Aper&ccedil;us</a></li>
+            <ul class="nav fra">
+                <li><a href="#pst">Pr&eacute;sentation</a></li>
+                <li><a href="#tech">Technique</a></li>
+                <li><a href="#screen">Aper&ccedil;us</a></li>
                 <li><a href="#links">Ressources</a></li>
-			</ul>
-			
-			<ul class="nav eng">
-				<li><a href="#pst">Overview</a></li>
-				<li><a href="#tech">Technical aspects</a></li>
+            </ul>
+
+            <ul class="nav eng">
+                <li><a href="#pst">Overview</a></li>
+                <li><a href="#tech">Technical aspects</a></li>
                 <li><a href="#screen">Software snapshots</a></li>
-                <li><a href="#links">Resources</a></li>				
-			</ul>
+                <li><a href="#links">Resources</a></li>
+            </ul>
             <ul class="nav pull-right">
-                <li><a class="brand" href="#contact">SNAP NF28</a></li>
+                <li><a class="brand" data-toggle="modal" href="#contact">SNAP NF28</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="container">
+<div class="hero-unit fra">
+    <h1> Social Network Aggregator Platform </h1>
+    <p>	  Agr&eacute;gateur &eacute;volutif de r&eacute;seaux sociaux </p>
+</div>
+<div class="hero-unit eng">
+    <h1> Social Network Aggregator Platform </h1>
+    <p>	Evolutionary Social Network Aggregator </p>
+</div>
+<div id="pst">
 
-    <div class="hero-unit fra">
-        <h1> Social Network Aggregator Platform </h1>
-        <p>	  Agr&eacute;gateur &eacute;volutif de r&eacute;seaux sociaux </p>
+    <div class="page-header fra">
+        <h1>Pr&eacute;sentation</h1>
     </div>
-    <div class="hero-unit eng">
-        <h1> Social Network Aggregator Platform </h1>
-        <p>	Evolutionary Social Network Aggregator </p>
+
+    <div class="page-header eng">
+        <h1>Overview</h1>
+    </div>
+
+    <div class="content fra">
+        <p>	
+        	SNAP est un projet réalisé dans le cadre de l’UV NF28 à l’Université de Technologie de Compiègne.
+        </p>
+        <p>
+        	Afin d’étudier la conception et le développement de systèmes interactifs, 
+        	nous proposons de décliner un site Web applicatif sous la forme de plusieurs interfaces, 
+        	adaptées à différents types de terminaux. Nous avons ainsi tiré parti des dernières technologies Web 
+        	afin de proposer une personnalisation avancée de l’expérience utilisateur. 
+        	En particulier, nous proposons des interfaces dédiées pour les ordinateurs, les smartphones et les tablettes.
+        </p>
+        <p>
+            Notre site permet à l’utilisateur de faire l’agrégation des fils d’actualités de ses différents réseaux sociaux. 
+            En plus de l’agrégation des messages, SNAP permet aussi à l’utilisateur de poster des messages sur un ou plusieurs réseaux sociaux 
+            simultanément parmi ceux actuellement intégrés dans le site, soit Facebook et Twitter.
+        </p>
+        <p>
+            Nous avons accordé une attention particulière à l’étude des interactions de l’utilisateur ainsi que des contextes d'utilisation associés aux différents périphériques. 
+            En effet, nous cherchons une interface la plus adaptée au terminal utilisé, et donc aux interactions propres à ce terminal. 
+        </p><br />
+		<p><a href="#links"> Tester le site, récupérer le code ou les documents</a></p>
+    </div>
+
+    <div class="content eng">
+        Content goes here
+    </div>
+</div>
+
+<div id="tech">
+    <div class="page-header fra">
+        <h1>Aspects techniques</h1>
+    </div>
+
+    <div class="page-header eng">
+        <h1>Technical aspects</h1>
+    </div>
+
+    <div class="content fra">
+        <h2>Côté serveur</h2>
+		
+		<p> Notre site web comporte une partie serveur réduite, et nous avons favorisé l'exécution de code côté client. En effet, la tâche du serveur est
+		de fournir les scripts spécifiques au périphérique utilisé, aucun traitement n'est réalisé à distance. 
+		</p>
+		
+		<p>	Nous avons tout de même déployé notre site sur <a href="#links">Heroku</a>, un serveur distant, en développant un serveur 
+		basé sur <a href="#links">Node.js</a>, et ce pour plusieurs raisons :			
+		</p>
+		<dl>
+					<dt> Prise en charge de différents périphériques </dt>
+			<dd> Les terminaux autres que les ordinateurs ne gèrent pas les interfaces logiques de type <em>localhost</em> </dd>
+						<dt> Dépendance face à la configuration de la machine</dt>
+			<dd> La nécessité d'un déploiement extérieur se fait aussi sentir dans le cadre la compatibilité du site sur plusieurs navigateurs et pour 
+			des configurations différentes</dd>
+			<dt> Temps de chargement </dt>
+			<dd> Les tests en local font que les scripts sont chargés quasi-instantanément, ce qui ne correspond pas au cheminement réel des données sur le
+				Web</dd>
+
+		</dl>
+		
+		<h2>Côté client</h2>
+		
+		<h3>Amélioration du code</h3><br />
+		
+		<p>Nous avons utilisé le <em>framework</em> JavaScript <a href="#links">Angular.js</a> pour pouvoir structurer notre code. Ce <em>framework</em>,
+		originellement créé pour gérer du contenu exclusivement statique, permet de s'affranchir de la gestion des appels asynchrones. En effet, il 
+		implémente un ensemble de mécanismes pour faciliter la gestion du code via le <em>design pattern</em> Modèle-Vue-Contrôleur, notamment
+		le <em>two-way binding</em> (lien à double sens, donc entre la vue et le modèle). Le code produit, fortement influencé par le modèle MVC, 
+		est modulaire. </p>
+		
+		<p> Toutefois, l'utilisation de ce <em>framework</em> n'est pas dénuée de défauts : <a href="#links">Angular.js</a> est une technologie très récente, son
+		utilisation ne s'est pas encore démocratisée, d'où un certain manque de documentation. De plus, de nombreuses actions sont réalisées automatiquement par
+		ce <em>framework</em>, d'où parfois une "mystification" du fonctionnement du site. </p>
+		
+		<h3>Ergonomie & esthétique</h3><br />
+		
+		<p>L'objectif du projet étant de tirer parti des dernières avancées technologies pour réaliser une interface ergonomique et personnalisée, nous avons
+		donc utilisé les propriétés offertes par HTML5 et CSS3, notamment les APIs de <em>sessionStorage</em> et le <em>manifest</em> (pour HTML5), et
+		certaines propriétés CSS3 telles que les coins arrondis (<em>border-radius</em>), les ombres (<em>box-shadow</em>, <em>text-shadow</em>) 
+		ou les transitions (<em>transition</em>). </p>
+		
+		<p><a href="#links">JQuery Mobile</a> est un <em>framework</em> graphique libre porté par communauté <a href="#links">JQuery</a>, et compatible avec
+		la plupart des navigateurs mobiles du marché. Nous l'avons donc utilisé pour la réalisation des interfaces <em>smartphone</em> et tablette. 
+		De plus, le rendu visuel des composants se rapproche de celui des applications natives des 
+		systèmes d'exploitation mobiles (i.e. iOS et android).</p>
+		
+		<p> Cependant, un des points critiques de ce <em>framework</em> est son manque d’interopérabilité avec <a href="#links">Angular.js</a>. En effet,
+		ces deux <em>frameworks </em> procèdent à des modifications automatiques du <em>Document Object Model</em> ("mystification"). 
+		Nous avons donc trouvé un <a href="#links">adaptateur JQuery Mobile/Angular</a> <em>open-source</em> fourni par un développeur indépendant</p>
+		
+		<p>
+		<a href="#links">Bootstrap</a> est un <em>framework</em> graphique développé par et pour <em>twitter</em>, offert ensuite au monde du libre.
+		Nous avons l'utilisé principalement pour l’interface pour ordinateur, où toute la partie graphique est prise en charge par <a href="#links">Bootstrap</a>,
+		et pour l’écran de chargement et de détection du terminal.
+		</p>
+		
+		<h3>Utilitaires</h3><br />
+		
+		<p>
+		L'utilisation de la bibliothèque JavaScript <a href="#links">JQuery</a> est très répandue, en fait très rares sont les applications JavaScript qui n'en font pas usage.
+		<a href="#links">JQuery</a>  fournit de nombreux outils pour faciliter la plupart des opérations communes et fastidieuses : manipulation du DOM, implémentation
+		de systèmes AJAX.... Son utilisation s'est donc imposée dans le cadre de notre projet.
+		</p>
+		
+		<p><a href="https://github.com/PaulKinlan/formfactor">Formfactor</a> est une petite bibliothèque JavaScript encore au stade expérimental, et permet de
+		tester certaines caractéristiques du navigateur web (principalement à l’aide du <em>DOM</em> et de bibliothèques tierces comme 
+		<a href="http://modernizr.com/">modernizr.js</a>), et de moduler le comportement de la page en fonction du résultat de ces tests. Dans le cadre de
+		notre projet, nous avons donc pu ainsi tester la résolution de l'écran, le <em>user-agent</em>, et la présence de fonctionnalités telles que le tactile,
+		pour récupérer le type de terminal sur lequel l'utilisateur se trouve, et donc rediriger ce dernier vers l'interface la plus adaptée (tablette, 
+		<em>smartphone</em> ou desktop).</p>
+
+		<p><a href="http://requirejs.org/">RequireJS</a> est une bibliothèque JavaScript généralement utilisée pour le chargement asynchrone de scripts, 
+		même si le nombre de fonctionnalités offertes par cette bibliothèque a beaucoup augmenté depuis ses premières versions.
+		Le chargement de script représente un point primordial dans notre projet, dans la mesure où nous avons développé de nombreux scripts, 
+		parfois lourds, alors qu'un des points critiques de notre site est sa réactivité.</p>
+		
+		<p>L'utilisation des <em>Software development Kits</em> (SDK) développés par les réseaux sociaux ne s'est pas faite sans mal. Tout d'abord, les 
+		bibliothèques fournies par les réseaux sociaux sont beaucoup plus fréquentes pour les langages serveurs que pour les langages clients. Celà est dû au fait
+		que les développeurs concentrent en général leur travail côté serveur plutôt que côté client, mais c'est aussi dû au mode d'authentification sur les réseaux
+		sociaux. En effet, tout le code exécuté côté client est directement accessible et visible en clair par ce même client. Le développement de SDK sécurisés côté 
+		client requiert un surcoût en travail pour les réseaux sociaux, qui sont donc plus réticents à développer ce type de solution.
+		</p>
+		
+		<p>
+		Nous avons donc utilisé les <em>frameworks</em> directement fournis par <a href="http://developers.facebook.com/docs/reference/JavaScript/">Facebook</a> 
+		et <a href="https://dev.twitter.com/docs/anywhere/welcome">twitter</a>, celui fourni par Facebook étant mieux documenté que celui de twitter.
+		Nous n’avons pas pu nous procurer un SDK JavaScript pour Google+. C’est d’ailleurs la raison pour laquelle nous n’avons pas intégré ce réseau social 
+		dans notre projet.
+		</p>
+    </div>
+
+    <div class="content eng"> <br/><br/>
+		 <h2>Server side</h2>
+		 
+		  <h2>Client side</h2>
+		  
+			<h3>Code improvement </h3>
+			
+			<h3>Ergonomics & aesthetics</h3>
+			
+			<h3>Utility libraries</h3>
+    </div>
+    <br />
+</div>
+
+<div id="screen">
+    <div class="page-header fra">
+        <h1>Aper&ccedil;u de l'application</h1>
+    </div>
+
+    <div class="page-header eng">
+        <h1>Software snapshots</h1>
+    </div>
+
+    <div class="content fra"> <br/><br/>
+		<p>
+        Nous avons fait en sorte que chaque interface prenne en compte les spécificités de la plateforme à laquelle elles sont liées.
+		</p>
+		<p>
+        Au lancement de l'application, celle-ci va reconnaitre la plateforme utilisée.
+		</p>
+		<div id="myCarousel0" class="carousel carouselDesktop slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+			<div class="active item">
+			    <img src="./img/SNAPLoading.png" alt="">
+                <div class="carousel-caption">
+				<h4>Plateforme reconnue!</h4>
+                  <p>Une fois la plateforme reconnue, l'application va rediriger l'utilisateur vers l'interface correspondante. </p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/SNAPLoading1.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Choisir une autre plateforme</h4>
+                  <p>L'utilisateur
+				  a toutefois un délais pour choisir une autre interface s'il le désire.</p>
+                </div>
+			</div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel0" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel0" data-slide="next">&rsaquo;</a>
+		</div>
+		<p>
+		Pour le desktop, nous avons décidé d'utiliser majoritairement des liens et zone cliquables de petite taille, tout en ayant une interface
+		affichant beaucoup de fonctionnalité.
+		</p>
+		<div id="myCarousel" class="carousel carouselDesktop slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+			<div class="active item">
+			    <img src="./img/connexionDesktop.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connexion à l'application</h4>
+                  <p>Pour connecter ses différents comptes à l'application, il suffit à l'utilisateur de cliquer sur les boutons disposés
+				  à cet effet et à rentrer ses identifiants.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/connecteDesktop.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Compte connecté!</h4>
+                  <p>Une fois le compte connecté, le mur du réseau social se remplit des derniers activités de vos contacts. Un menu s'ajoute aussi
+					dans la barre supérieure de l'application pour gérer votre compte, le visualiser ou se déconnecter.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/allDesktop.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Le mur aggrégé</h4>
+                  <p>Depuis ce mur, vous pouvez voir tous les derniers statuts postés sur vos différents réseau sociaux!</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/rechercheDesktop.png" alt="">
+                <div class="carousel-caption">
+                  <h4>La recherche</h4>
+                  <p>Depuis la barre de recherche à gauche de lapplication, vous pouvez effectuer une recherche. Les résultats vont s'afficher instantanément
+				  sur votre mur selon l'onglet où vous vous situez.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/detailsMessageDesktop.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Détail d'un message</h4>
+                  <p>Cliquez sur le lien "détails" pour afficher plus de détails et d'options concernant le message.</p>
+                </div>
+			</div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+		
+		<p>
+			Pour la tablette, nous nous somme concetré sur le contenu auquel l'utilisateur souhaite accéder. Nous utilisons aussi des boutons et des
+			zones cliquables de taille moyenne pour être utilisable au doigt. Nous avons aussi fait en sorte d'intégrer les interactions tactiles à l'interface.
+		</p>
+		<div id="myCarousel2" class="carousel carouselDesktop slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+			<div class="active item">
+			    <img src="./img/connexionTablet.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connexion à l'application</h4>
+                  <p>Pour connecter ses différents comptes à l'application, il suffit à l'utilisateur de cliquer sur les boutons disposés
+				  à cet effet et à rentrer ses identifiants.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/connecteTablet.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Compte connecté!</h4>
+                  <p>Une fois le compte connecté, le mur du réseau social se remplit des derniers activités de vos contacts.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/allTablet.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Le mur aggrégé</h4>
+                  <p>Depuis ce mur, vous pouvez voir tous les derniers statuts postés sur vos différents réseau sociaux!</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/newMessageTablet.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Ecrire un message</h4>
+                  <p>Cliquez sur le bouton "nouveau message" pour afficher une fenêtre vous permettant d'écrire un nouveau message
+				  sur vos différents réseaux sociaux.</p>
+                </div>
+			</div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel2" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel2" data-slide="next">&rsaquo;</a>
+		</div>
+    </div>
+
+		<p>
+			Pour le smartphone, nous avons décidé de n'afficher que presque uniquement le contenu pertunant pour l'utilisateur dans chaque section. Nous utilisons
+			zones cliquables de préférence en bas de l'écran pour être utilisable au pouce. Nous avons aussi fait en sorte d'intégrer les interactions tactiles à l'interface.
+		</p>
+		<div id="myCarousel3" class="carousel carouselSmartphone slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+			<div class="active item">
+				<img src="./img/tw_smartphone.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Compte connecté!</h4>
+                  <p>Une fois le compte connecté, le mur du réseau social se remplit des derniers activités de vos contacts.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/all_smartphone.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Le mur aggrégé</h4>
+                  <p>Depuis ce mur, vous pouvez voir tous les derniers statuts postés sur vos différents réseau sociaux!</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/msg_smartphone.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Ecrire un message</h4>
+                  <p>Cliquez sur l'icône de nouveau message pour afficher une fenêtre vous permettant d'écrire un nouveau message
+				  sur vos différents réseaux sociaux.</p>
+                </div>
+			</div>
+			<div class="item">
+				<img src="./img/detail_msg_smartphone.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Détail d'un message</h4>
+                  <p>Cliquez sur le bouton "More..." pour afficher plus de détails et d'options concernant le message.</p>
+                </div>
+			</div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel3" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel3" data-slide="next">&rsaquo;</a>
+		</div>
     </div>
 	
-    <div id="pst">
-	
-        <div class="page-header fra">
-            <h1>Pr&eacute;sentation</h1>
-        </div>
+    <div class="content eng"> <br/><br/>
+        Content goes here
+    </div>
 
-        <div class="page-header eng">
-            <h1>Overview</h1>
-        </div>
+    <br />
+</div>
 
+<div id="links">
+    <div class="page-header fra">
+        <h1>Ressources</h1>
+    </div>
+
+    <div class="page-header eng">
+        <h1>Resources</h1>
+    </div>
+
+    <div class="content row fra">
+        <div class="span3">
+            <h2>Liens utiles SNAP</h2> <br />
+
+            <p><a href="http://snapnf28.herokuapp.com/snapapp/index.html">Site web de l'application </a></p>
+            <p><a href="https://github.com/SNAP-NF28/SNAP">D&eacute;p&ocirc;t GitHub de l'application</a></p> <br />
+        </div>
+        <div class="span3">
+            <h2> Documents </h2> <br />
+            <p><a href="docs/CdC_snap.pdf">Cahier des charges </a></p>
+            <p><a href="docs/Rapport_snap.pdf">Rapport final </a></p>
+            <p><a href="https://trello.com/board/nf28-snap/4fa79b4d7d4c9c2d24375d9f">Board Trello </a></p> <br />
+        </div>
+        <div class="row">
+            <div class="span6">
+                <h2> Technologies utilis&eacute;es </h2> <br />
+                <div class="row">
+                    <div class="span3">
+                        <h3> Angular.js </h3> <br />
+                        <p><a href="http://angularjs.org/#/list">Site officiel</a></p>
+                        <p><a href="http://docs.angularjs.org/guide/">Guide du d&eacute;veloppeur</a></p> <br />
+
+                        <h3> Serveur de d&eacute;ploiement </h3> <br />
+                        <p><a href="http://www.heroku.com">Heroku</a></p>
+                        <p><a href="http://nodejs.org">Node.js</a></p>						
+                    </div>
+                    <div class="span3">
+                        <h3> Autres technologies </h3> <br />
+                        <p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></p>
+
+                        <p><a href="http://docs.JQuery.com/Main_Page">Documentation JQuery</a></p>
+                        <p><a href="http://JQuerymobile.com/demos/1.1.0/">Documentation JQuery Mobile</a></p>
+
+                        <p><a href="https://github.com/tigbro/JQuery-mobile-angular-adapter">Adaptateur Angular/JQuery Mobile</a></p> <br />
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content row eng">
+        <div class="span3">
+            <h2>SNAP useful links</h2> <br />
+
+            <p><a href="http://snapnf28.herokuapp.com/snapapp/index.html">Application website </a></p>
+            <p><a href="https://github.com/SNAP-NF28/SNAP">GitHub repository</a></p> <br />
+        </div>
+        <div class="span3">
+            <h2> Documents </h2> <br />
+            <p><a href="docs/CdC_snap.pdf">Scope statements (in French)</a></p>
+            <p><a href="docs/Rapport_snap.pdf">Final report (in French)</a></p>
+            <p><a href="https://trello.com/board/nf28-snap/4fa79b4d7d4c9c2d24375d9f">Trello Board</a></p> <br />
+        </div>
+        <div class="row">
+            <div class="span6">
+                <h2> Technical resources</h2> <br />
+                <div class="row">
+                    <div class="span3">
+                        <h3> Angular.js </h3> <br />
+                        <p><a href="http://angularjs.org/#/list">Official website</a></p>
+                        <p><a href="http://docs.angularjs.org/guide/">Developer's guide</a></p> <br />
+
+                        <h3> Deployment server </h3> <br />
+                        <p><a href="http://www.heroku.com">Heroku</a></p>
+						<p><a href="http://nodejs.org">Node.js</a></p>
+                    </div>
+                    <div class="span3">
+                        <h3> Other libraries </h3> <br />
+                        <p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></p>
+
+                        <p><a href="http://docs.JQuery.com/Main_Page">JQuery ocumentation</a></p>
+                        <p><a href="http://JQuerymobile.com/demos/1.1.0/">JQuery Mobile documentation</a></p>
+
+                        <p><a href="https://github.com/tigbro/JQuery-mobile-angular-adapter">Angular/JQuery Mobile adapter</a></p> <br />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="contact" class="modal hide fade">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Contact</h3>
+    </div>
+    <div class="modal-body fra">
+        <p>Notre groupe est composé de : </p>
+        <p> Pierrick DEHEEGER</p>
+        <p> Charles LAJOUMARD DE BELLABRE</p>
+        <p> Kim-Adeline MIGUEL</p>
+        <p> Romain YON</p>
         <br />
-
+        <p> Nous sommes joignables à l'adresse : snapnf28[at]gmail[.]com</p>
+    </div>
+	<div class="modal-body eng">
+        <p>Our project group is composed of : </p>
+        <p> Pierrick DEHEEGER</p>
+        <p> Charles LAJOUMARD DE BELLABRE</p>
+        <p> Kim-Adeline MIGUEL</p>
+        <p> Romain YON</p>
+        <br />
+        <p> You can contact us at : snapnf28[at]gmail[.]com</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary eng" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary fr" data-dismiss="modal">Fermer</a>
     </div>
 
-	<div id="tech">
-        <div class="page-header fra">
-            <h1>Aspects techniques</h1>
-        </div>
-		<div class="page-header eng">
-            <h1>Technical aspects</h1>
-        </div>
-		<br />
-    </div>
-
-    <div id="screen">
-        <div class="page-header fra">
-            <h1>Aper&ccedil;u de l'application</h1>
-        </div>
-        <div class="page-header eng">
-            <h1>Software snapshots</h1>
-        </div>
-		
-		<br />
-    </div>
-
-    <div id="links">
-        <div class="page-header fra">
-            <h1>Ressources</h1>
-        </div>
-
-        <div class="page-header eng">
-            <h1>Resources</h1>
-        </div>
-		
-		<br />
-    </div>
-	
-    <div id="contact">
-    </div>
 </div>
 </body>
 </html>
